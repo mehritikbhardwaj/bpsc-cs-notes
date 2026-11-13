@@ -11,7 +11,7 @@ EMOJI = {'computer-networking':'🌐','internet-of-things-iot':'📡','dbms-sql'
  'boolean-algebra-digital-electronics':'💡','software-engineering':'🛠️','operating-system':'💻','theory-of-computation':'⚙️',
  'cloud-computing':'☁️','cyber-security':'🛡️','c-object-oriented-programming':'🧩','c-programming-complete':'🅲',
  'computer-fundamentals':'🖥️','python-programming-pandas':'🐍','web-technology':'🕸️','java-basics':'☕',
- 'society-law-ethics':'⚖️','emerging-trends':'🚀','quick-revision-one-liners':'⚡','problem-solving':'🧭','understanding-data':'📊'}
+ 'society-law-ethics':'⚖️','emerging-trends':'🚀','quick-revision-one-liners':'⚡','previous-year-questions':'📝','problem-solving':'🧭','understanding-data':'📊'}
 
 def slug(s):
     s = re.sub(r'<[^>]+>', '', s); s = html.unescape(s).lower()
@@ -27,7 +27,7 @@ ORDER = ['computer-fundamentals','number-system-codes','boolean-algebra-digital-
  'operating-system','problem-solving','data-structures-algorithms','c-programming-complete','c-object-oriented-programming','java-basics',
  'python-programming-pandas','understanding-data','dbms-sql','computer-networking','web-technology','internet-of-things-iot','cloud-computing',
  'cyber-security','software-engineering','theory-of-computation','artificial-intelligence-ml','multimedia',
- 'society-law-ethics','emerging-trends','quick-revision-one-liners']
+ 'society-law-ethics','emerging-trends','quick-revision-one-liners','previous-year-questions']
 secs.sort(key=lambda s: ORDER.index(slug(re.search(r'data-title="([^"]+)"', s[0]).group(1))))
 
 chapters = []
@@ -123,6 +123,14 @@ def jsonld(obj):
 
 written = []
 
+TITLE_OVERRIDE = {
+    'previous-year-questions': 'BPSC TRE Computer Science Previous Year Question Paper',
+}
+DESC_OVERRIDE = {
+    'previous-year-questions': 'BPSC TRE Computer Science ke previous year question papers — official PDF download '
+                               '(2023 aur 2024) aur 160 solved-format MCQs online padhne ke liye.',
+}
+
 # ---------- one page per chapter ----------
 for i, c in enumerate(chapters):
     tnames = ', '.join(t['t'] for t in c['topics'][:5])
@@ -142,9 +150,10 @@ for i, c in enumerate(chapters):
             {'@type': 'ListItem', 'position': 2, 'name': c['title'], 'item': url},
         ],
     })
-    written.append(page(f'{c["id"]}.html',
-        f'{c["title"]} Notes in Hindi | STET & BPSC TRE CS',
-        desc, url, section(c, i, 'h1'), c['topics'], c['id'], ld))
+    title = TITLE_OVERRIDE.get(c['id'], f'{c["title"]} Notes in Hindi | STET & BPSC TRE CS')
+    desc = DESC_OVERRIDE.get(c['id'], desc)
+    written.append(page(f'{c["id"]}.html', title, desc, url, section(c, i, 'h1'),
+                        c['topics'], c['id'], ld))
 
 # ---------- landing page ----------
 cards = ''.join(

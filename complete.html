@@ -62,6 +62,22 @@ aside{position:sticky;top:60px;height:calc(100vh - 60px);width:var(--side);flex:
 .buybtn{border:0;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px rgba(79,70,229,.3)}
 .buybtn:disabled{opacity:.6;cursor:progress}
 .side-buy{display:block;margin:10px 6px 0;padding:12px 14px;border-radius:14px;text-align:center;border:0;width:calc(100% - 12px);cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif}
+.note{color:var(--muted);font-size:14px}
+.paper-dl{display:grid;gap:10px;margin:14px 0 6px}
+.paper{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.paper:hover{border-color:var(--brand)}
+.paper .e{font-size:26px}
+.paper b{display:block;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:15px}
+.paper small{color:var(--muted);font-size:12.5px}
+.paper .go{margin-left:auto;font-size:20px}
+.pyq{padding:14px 16px;margin:12px 0;border-radius:16px;background:var(--paper);border:1px solid var(--line)}
+.pyq-q{margin:0 0 8px;font-weight:600}
+.pyq-o{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.pyq-o li{display:flex;gap:9px;align-items:baseline;font-size:15px}
+.pyq-o li span{flex:none;width:22px;height:22px;border-radius:7px;background:var(--brand-soft);color:var(--brand);font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center}
+.pyq-a{margin-top:10px}
+.pyq-a summary{cursor:pointer;color:var(--brand);font-weight:700;font-size:14px}
+.pyq-a p{margin:8px 0 0;font-size:15px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);z-index:99;max-width:min(92vw,340px);padding:11px 16px;border-radius:14px;background:#1b1830;color:#fff;font:600 13.5px "Plus Jakarta Sans",system-ui,sans-serif;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .views{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font:700 12.5px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
@@ -230,7 +246,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 </header>
 <div class="scrim" id="scrim"></div>
 <div class="wrap">
-  <aside id="side"><div class="side-prog"><div><b data-done-count>0</b> chapters done</div><div class="pbar2"><i data-done-bar></i></div></div><button class="side-buy" id="sideBuy">⬇️ Download complete PDF</button><div class="side-h">Chapters</div><a class="side-ch" style="--h:47" href="/computer-fundamentals" data-side="computer-fundamentals"><span class="e">🖥️</span><span>Computer Fundamentals</span><span class="tick">✓</span></a><a class="side-ch" style="--h:94" href="/number-system-codes" data-side="number-system-codes"><span class="e">🔢</span><span>Number System &amp; Codes</span><span class="tick">✓</span></a><a class="side-ch" style="--h:141" href="/boolean-algebra-digital-electronics" data-side="boolean-algebra-digital-electronics"><span class="e">💡</span><span>Boolean Algebra &amp; Digital Electronics</span><span class="tick">✓</span></a><a class="side-ch" style="--h:188" href="/computer-architecture-memory" data-side="computer-architecture-memory"><span class="e">🧠</span><span>Computer Architecture &amp; Memory</span><span class="tick">✓</span></a><a class="side-ch" style="--h:235" href="/operating-system" data-side="operating-system"><span class="e">💻</span><span>Operating System</span><span class="tick">✓</span></a><a class="side-ch" style="--h:282" href="/problem-solving" data-side="problem-solving"><span class="e">🧭</span><span>Problem Solving</span><span class="tick">✓</span></a><a class="side-ch" style="--h:329" href="/data-structures-algorithms" data-side="data-structures-algorithms"><span class="e">🌳</span><span>Data Structures &amp; Algorithms</span><span class="tick">✓</span></a><a class="side-ch" style="--h:16" href="/c-programming-complete" data-side="c-programming-complete"><span class="e">🅲</span><span>C Programming (Complete)</span><span class="tick">✓</span></a><a class="side-ch" style="--h:63" href="/c-object-oriented-programming" data-side="c-object-oriented-programming"><span class="e">🧩</span><span>C++ &amp; Object-Oriented Programming</span><span class="tick">✓</span></a><a class="side-ch" style="--h:110" href="/java-basics" data-side="java-basics"><span class="e">☕</span><span>Java Basics</span><span class="tick">✓</span></a><a class="side-ch" style="--h:157" href="/python-programming-pandas" data-side="python-programming-pandas"><span class="e">🐍</span><span>Python Programming &amp; Pandas</span><span class="tick">✓</span></a><a class="side-ch" style="--h:204" href="/understanding-data" data-side="understanding-data"><span class="e">📊</span><span>Understanding Data</span><span class="tick">✓</span></a><a class="side-ch" style="--h:251" href="/dbms-sql" data-side="dbms-sql"><span class="e">🗄️</span><span>DBMS &amp; SQL</span><span class="tick">✓</span></a><a class="side-ch" style="--h:298" href="/computer-networking" data-side="computer-networking"><span class="e">🌐</span><span>Computer Networking</span><span class="tick">✓</span></a><a class="side-ch" style="--h:345" href="/web-technology" data-side="web-technology"><span class="e">🕸️</span><span>Web Technology</span><span class="tick">✓</span></a><a class="side-ch" style="--h:32" href="/internet-of-things-iot" data-side="internet-of-things-iot"><span class="e">📡</span><span>Internet of Things (IoT)</span><span class="tick">✓</span></a><a class="side-ch" style="--h:79" href="/cloud-computing" data-side="cloud-computing"><span class="e">☁️</span><span>Cloud Computing</span><span class="tick">✓</span></a><a class="side-ch" style="--h:126" href="/cyber-security" data-side="cyber-security"><span class="e">🛡️</span><span>Cyber Security</span><span class="tick">✓</span></a><a class="side-ch" style="--h:173" href="/software-engineering" data-side="software-engineering"><span class="e">🛠️</span><span>Software Engineering</span><span class="tick">✓</span></a><a class="side-ch" style="--h:220" href="/theory-of-computation" data-side="theory-of-computation"><span class="e">⚙️</span><span>Theory of Computation</span><span class="tick">✓</span></a><a class="side-ch" style="--h:267" href="/artificial-intelligence-ml" data-side="artificial-intelligence-ml"><span class="e">🤖</span><span>Artificial Intelligence &amp; ML</span><span class="tick">✓</span></a><a class="side-ch" style="--h:314" href="/multimedia" data-side="multimedia"><span class="e">🎬</span><span>Multimedia</span><span class="tick">✓</span></a><a class="side-ch" style="--h:1" href="/society-law-ethics" data-side="society-law-ethics"><span class="e">⚖️</span><span>Society, Law &amp; Ethics</span><span class="tick">✓</span></a><a class="side-ch" style="--h:48" href="/emerging-trends" data-side="emerging-trends"><span class="e">🚀</span><span>Emerging Trends</span><span class="tick">✓</span></a><a class="side-ch" style="--h:95" href="/quick-revision-one-liners" data-side="quick-revision-one-liners"><span class="e">⚡</span><span>Quick Revision: One-liners</span><span class="tick">✓</span></a></aside>
+  <aside id="side"><div class="side-prog"><div><b data-done-count>0</b> chapters done</div><div class="pbar2"><i data-done-bar></i></div></div><button class="side-buy" id="sideBuy">⬇️ Download complete PDF</button><div class="side-h">Chapters</div><a class="side-ch" style="--h:47" href="/computer-fundamentals" data-side="computer-fundamentals"><span class="e">🖥️</span><span>Computer Fundamentals</span><span class="tick">✓</span></a><a class="side-ch" style="--h:94" href="/number-system-codes" data-side="number-system-codes"><span class="e">🔢</span><span>Number System &amp; Codes</span><span class="tick">✓</span></a><a class="side-ch" style="--h:141" href="/boolean-algebra-digital-electronics" data-side="boolean-algebra-digital-electronics"><span class="e">💡</span><span>Boolean Algebra &amp; Digital Electronics</span><span class="tick">✓</span></a><a class="side-ch" style="--h:188" href="/computer-architecture-memory" data-side="computer-architecture-memory"><span class="e">🧠</span><span>Computer Architecture &amp; Memory</span><span class="tick">✓</span></a><a class="side-ch" style="--h:235" href="/operating-system" data-side="operating-system"><span class="e">💻</span><span>Operating System</span><span class="tick">✓</span></a><a class="side-ch" style="--h:282" href="/problem-solving" data-side="problem-solving"><span class="e">🧭</span><span>Problem Solving</span><span class="tick">✓</span></a><a class="side-ch" style="--h:329" href="/data-structures-algorithms" data-side="data-structures-algorithms"><span class="e">🌳</span><span>Data Structures &amp; Algorithms</span><span class="tick">✓</span></a><a class="side-ch" style="--h:16" href="/c-programming-complete" data-side="c-programming-complete"><span class="e">🅲</span><span>C Programming (Complete)</span><span class="tick">✓</span></a><a class="side-ch" style="--h:63" href="/c-object-oriented-programming" data-side="c-object-oriented-programming"><span class="e">🧩</span><span>C++ &amp; Object-Oriented Programming</span><span class="tick">✓</span></a><a class="side-ch" style="--h:110" href="/java-basics" data-side="java-basics"><span class="e">☕</span><span>Java Basics</span><span class="tick">✓</span></a><a class="side-ch" style="--h:157" href="/python-programming-pandas" data-side="python-programming-pandas"><span class="e">🐍</span><span>Python Programming &amp; Pandas</span><span class="tick">✓</span></a><a class="side-ch" style="--h:204" href="/understanding-data" data-side="understanding-data"><span class="e">📊</span><span>Understanding Data</span><span class="tick">✓</span></a><a class="side-ch" style="--h:251" href="/dbms-sql" data-side="dbms-sql"><span class="e">🗄️</span><span>DBMS &amp; SQL</span><span class="tick">✓</span></a><a class="side-ch" style="--h:298" href="/computer-networking" data-side="computer-networking"><span class="e">🌐</span><span>Computer Networking</span><span class="tick">✓</span></a><a class="side-ch" style="--h:345" href="/web-technology" data-side="web-technology"><span class="e">🕸️</span><span>Web Technology</span><span class="tick">✓</span></a><a class="side-ch" style="--h:32" href="/internet-of-things-iot" data-side="internet-of-things-iot"><span class="e">📡</span><span>Internet of Things (IoT)</span><span class="tick">✓</span></a><a class="side-ch" style="--h:79" href="/cloud-computing" data-side="cloud-computing"><span class="e">☁️</span><span>Cloud Computing</span><span class="tick">✓</span></a><a class="side-ch" style="--h:126" href="/cyber-security" data-side="cyber-security"><span class="e">🛡️</span><span>Cyber Security</span><span class="tick">✓</span></a><a class="side-ch" style="--h:173" href="/software-engineering" data-side="software-engineering"><span class="e">🛠️</span><span>Software Engineering</span><span class="tick">✓</span></a><a class="side-ch" style="--h:220" href="/theory-of-computation" data-side="theory-of-computation"><span class="e">⚙️</span><span>Theory of Computation</span><span class="tick">✓</span></a><a class="side-ch" style="--h:267" href="/artificial-intelligence-ml" data-side="artificial-intelligence-ml"><span class="e">🤖</span><span>Artificial Intelligence &amp; ML</span><span class="tick">✓</span></a><a class="side-ch" style="--h:314" href="/multimedia" data-side="multimedia"><span class="e">🎬</span><span>Multimedia</span><span class="tick">✓</span></a><a class="side-ch" style="--h:1" href="/society-law-ethics" data-side="society-law-ethics"><span class="e">⚖️</span><span>Society, Law &amp; Ethics</span><span class="tick">✓</span></a><a class="side-ch" style="--h:48" href="/emerging-trends" data-side="emerging-trends"><span class="e">🚀</span><span>Emerging Trends</span><span class="tick">✓</span></a><a class="side-ch" style="--h:95" href="/quick-revision-one-liners" data-side="quick-revision-one-liners"><span class="e">⚡</span><span>Quick Revision: One-liners</span><span class="tick">✓</span></a><a class="side-ch" style="--h:142" href="/previous-year-questions" data-side="previous-year-questions"><span class="e">📝</span><span>Previous Year Questions</span><span class="tick">✓</span></a></aside>
   <main>
     <div class="view" id="chapters">
 <section class="chapter show" id="computer-fundamentals" style="--h:47">
@@ -3358,7 +3374,1626 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Truth-table rows = 2ⁿ; K-map cells = 2ⁿ; hosts in subnet = 2ʰ − 2; full-mesh links = n(n−1)/2.</li>
 <li>CMM levels = 5; SDLC stages = 7; ML steps = 7.</li>
 </ul>
-</div><nav class="pager"><a class="pg prev" href="/emerging-trends"><small>← Previous</small><b>🚀 Emerging Trends</b></a><span></span></nav></section>
+</div><nav class="pager"><a class="pg prev" href="/emerging-trends"><small>← Previous</small><b>🚀 Emerging Trends</b></a><a class="pg next" href="/previous-year-questions"><small>Next →</small><b>📝 Previous Year Questions</b></a></nav></section>
+<section class="chapter show" id="previous-year-questions" style="--h:142">
+<header class="banner"><div class="b-emoji">📝</div><div class="b-text"><div class="kicker">Chapter 26</div><h2>Previous Year Questions</h2>
+<div class="b-meta">3 topics · ~33 min read</div></div>
+<button class="done-btn" data-done="previous-year-questions">☐ Mark as done</button></header>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#previous-year-questions-full-question-papers-pdf">Full question papers (PDF)</a><a class="chip" href="#previous-year-questions-bpsc-tre-2-0-15-dec-2023">BPSC TRE 2.0 — 15 Dec 2023</a><a class="chip" href="#previous-year-questions-bpsc-tre-9-aug-2024">BPSC TRE — 9 Aug 2024</a></div></div>
+<div class="content">
+
+<h3 id="previous-year-questions-full-question-papers-pdf">Full question papers (PDF)</h3>
+<p class="note">BPSC ke official question booklets — poora paper, Hindi aur English dono, Language + General Studies + Computer Science ke saath.</p>
+<div class="paper-dl">
+<a class="paper" href="/papers/bpsc-tre-2023-12-15-computer-science.pdf" download><span class="e">📄</span><span><b>BPSC TRE 2.0 — 15 December 2023</b><small>Official booklet · 48 pages · PDF</small></span><span class="go">⬇️</span></a>
+<a class="paper" href="/papers/bpsc-tre-2024-08-09-computer-science.pdf" download><span class="e">📄</span><span><b>BPSC TRE — 9 August 2024</b><small>Official booklet · 48 pages · PDF</small></span><span class="go">⬇️</span></a>
+</div>
+<p class="note">Source: Bihar Public Service Commission. <a href="https://bpsc.bihar.gov.in/wp-content/uploads/BPSC_content/QuestionBooklets/NB-2023-12-15-26.pdf" rel="nofollow">BPSC TRE 2.0 — 15 December 2023 (bpsc.bihar.gov.in)</a> · <a href="https://bpsc.bihar.gov.in/wp-content/uploads/BPSC_content/QuestionBooklets/NB-2024-08-09-49.pdf" rel="nofollow">BPSC TRE — 9 August 2024 (bpsc.bihar.gov.in)</a></p>
+<h3 id="previous-year-questions-bpsc-tre-2-0-15-dec-2023">BPSC TRE 2.0 — 15 Dec 2023</h3>
+<p class="note">Official question booklet se, Computer Science section (Q71–Q150). Kul 80 questions.</p>
+<div class="pyq">
+<p class="pyq-q"><b>71.</b> The brain of computer is</p>
+<ul class="pyq-o">
+<li><span>A</span> CPU</li>
+<li><span>B</span> memory</li>
+<li><span>C</span> I/O device</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>72.</b> Intel 8085 microprocessor is of _____ generation.</p>
+<ul class="pyq-o">
+<li><span>A</span> first</li>
+<li><span>B</span> second</li>
+<li><span>C</span> third</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>73.</b> The maximum memory size of third generation microprocessor is</p>
+<ul class="pyq-o">
+<li><span>A</span> 4 GB</li>
+<li><span>B</span> 16 MB</li>
+<li><span>C</span> 16 GB</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>74.</b> CPU on a single chip is called</p>
+<ul class="pyq-o">
+<li><span>A</span> microprocessor</li>
+<li><span>B</span> microcontroller</li>
+<li><span>C</span> solid-state device</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>75.</b> Computer on a single chip is called</p>
+<ul class="pyq-o">
+<li><span>A</span> microcontroller</li>
+<li><span>B</span> microprocessor</li>
+<li><span>C</span> assembler</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>76.</b> Which one of the following is used for playing video games?</p>
+<ul class="pyq-o">
+<li><span>A</span> Mouse</li>
+<li><span>B</span> Trackball</li>
+<li><span>C</span> Joystick</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>77.</b> _____ is used to store softwares that does not update.</p>
+<ul class="pyq-o">
+<li><span>A</span> SRAM</li>
+<li><span>B</span> DRAM</li>
+<li><span>C</span> ROM</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>78.</b> Which of the following contains a laser?</p>
+<ul class="pyq-o">
+<li><span>A</span> CD Drive</li>
+<li><span>B</span> RAM</li>
+<li><span>C</span> Hard Disk Drive</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>79.</b> A computer program that converts an assembly language program into equivalent machine language program is called</p>
+<ul class="pyq-o">
+<li><span>A</span> compiler</li>
+<li><span>B</span> assembler</li>
+<li><span>C</span> linker</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>80.</b> A computer program that converts a high-level language program into an equivalent machine language program is called</p>
+<ul class="pyq-o">
+<li><span>A</span> assembler</li>
+<li><span>B</span> compiler</li>
+<li><span>C</span> loader</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>81.</b> A computer program that translates high-level language program into machine lan- guage program statement-by- statement is called</p>
+<ul class="pyq-o">
+<li><span>A</span> compiler</li>
+<li><span>B</span> loader</li>
+<li><span>C</span> interpreter</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>82.</b> Which of the following is not an operating system?</p>
+<ul class="pyq-o">
+<li><span>A</span> Linux</li>
+<li><span>B</span> Windows</li>
+<li><span>C</span> Oracle</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>83.</b> A software that runs on a computer hardware and serves as a platform for other softwares to run is called</p>
+<ul class="pyq-o">
+<li><span>A</span> system software</li>
+<li><span>B</span> operating system</li>
+<li><span>C</span> application software</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>84.</b> Which of the following is not a system tool?</p>
+<ul class="pyq-o">
+<li><span>A</span> Scandisk</li>
+<li><span>B</span> Format</li>
+<li><span>C</span> Folder</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>85.</b> The key/keys used to delete a file without allowing it to store in recycle bin is/are</p>
+<ul class="pyq-o">
+<li><span>A</span> Delete</li>
+<li><span>B</span> Shift + Delete</li>
+<li><span>C</span> Ctrl + Delete</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>86.</b> The three main components of a digital computer system are</p>
+<ul class="pyq-o">
+<li><span>A</span> memory, I/O, DMA</li>
+<li><span>B</span> ALU, CPU, memory</li>
+<li><span>C</span> memory, CPU, I/O</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>87.</b> FFFF will be the last memory location in a memory of size</p>
+<ul class="pyq-o">
+<li><span>A</span> 16K</li>
+<li><span>B</span> 32K</li>
+<li><span>C</span> 64K</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>88.</b> The cost of storing a bit is minimum in</p>
+<ul class="pyq-o">
+<li><span>A</span> cache</li>
+<li><span>B</span> register</li>
+<li><span>C</span> magnetic tape</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>89.</b> Tera means</p>
+<ul class="pyq-o">
+<li><span>A</span> 220</li>
+<li><span>B</span> 240</li>
+<li><span>C</span> 230</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>90.</b> Which of the following system softwares resides always in main memory?</p>
+<ul class="pyq-o">
+<li><span>A</span> Loader</li>
+<li><span>B</span> Linker</li>
+<li><span>C</span> Assembler</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>91.</b> The postfix expression equivalent of the prefix expression /c42 /c43 /c45ab cd is</p>
+<ul class="pyq-o">
+<li><span>A</span> ab cd/c43 /c45 /c42</li>
+<li><span>B</span> abcd /c43 /c45 /c42</li>
+<li><span>C</span> ab cd/c43 /c42 /c45</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>92.</b> Which data structure is used to convert infix notation to postfix notation?</p>
+<ul class="pyq-o">
+<li><span>A</span> Stack</li>
+<li><span>B</span> Queue</li>
+<li><span>C</span> Tree</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>93.</b> The data structure in which data are added at the rear and deleted from front is called</p>
+<ul class="pyq-o">
+<li><span>A</span> stack</li>
+<li><span>B</span> queue</li>
+<li><span>C</span> linked list</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>94.</b> Queue data structure uses</p>
+<ul class="pyq-o">
+<li><span>A</span> FIFO</li>
+<li><span>B</span> LIFO</li>
+<li><span>C</span> LILO</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>95.</b> Stack data structure uses</p>
+<ul class="pyq-o">
+<li><span>A</span> FIFO</li>
+<li><span>B</span> LIFO</li>
+<li><span>C</span> LILO</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>96.</b> A constructor is called whenever</p>
+<ul class="pyq-o">
+<li><span>A</span> an object is created</li>
+<li><span>B</span> a class is created</li>
+<li><span>C</span> a class is declared</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>97.</b> All members of a structure in C++ are _____ by default.</p>
+<ul class="pyq-o">
+<li><span>A</span> public</li>
+<li><span>B</span> private</li>
+<li><span>C</span> protected</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>98.</b> In C++, all members of a class are _____ by default.</p>
+<ul class="pyq-o">
+<li><span>A</span> public</li>
+<li><span>B</span> private</li>
+<li><span>C</span> protected</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>99.</b> In C++, what does a class hold?</p>
+<ul class="pyq-o">
+<li><span>A</span> Array</li>
+<li><span>B</span> Data</li>
+<li><span>C</span> Data and functions</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>100.</b> The number of access specifiers in class of C++ is</p>
+<ul class="pyq-o">
+<li><span>A</span> 2</li>
+<li><span>B</span> 3</li>
+<li><span>C</span> 4</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>101.</b> Which of the following is used to define the members of a class externally in C++?</p>
+<ul class="pyq-o">
+<li><span>A</span> :</li>
+<li><span>B</span> :□:</li>
+<li><span>C</span> #</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>102.</b> Which concept of C++ is used to reuse the written code?</p>
+<ul class="pyq-o">
+<li><span>A</span> Polymorphism</li>
+<li><span>B</span> Inheritance</li>
+<li><span>C</span> Encapsulation</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>103.</b> What will be the output of the following program fragment? int i = 10; void main(□) { int i = 20; { int i = 30; printf(“%d, %d”, i, :□:i); } }</p>
+<ul class="pyq-o">
+<li><span>A</span> 30,10</li>
+<li><span>B</span> 30,20</li>
+<li><span>C</span> 20,30</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>104.</b> Choose the correct statement about inline function in C++.</p>
+<ul class="pyq-o">
+<li><span>A</span> It speeds up the execution.</li>
+<li><span>B</span> It slows down the execution.</li>
+<li><span>C</span> It decreases the code size.</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>105.</b> What will be the output of the following? int a = 5; cout &lt;&lt;“FIRST”□&lt;&lt;(a&lt;&lt;2) &lt;&lt;“SECOND”;</p>
+<ul class="pyq-o">
+<li><span>A</span> FIRST 52 SECOND</li>
+<li><span>B</span> FIRST 20 SECOND</li>
+<li><span>C</span> SECOND 25 FIRST</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>106.</b> cout in C++ stands for</p>
+<ul class="pyq-o">
+<li><span>A</span> class output</li>
+<li><span>B</span> character output</li>
+<li><span>C</span> common output</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>107.</b> Group of instructions that directs a computer is called</p>
+<ul class="pyq-o">
+<li><span>A</span> memory</li>
+<li><span>B</span> storage</li>
+<li><span>C</span> program</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>108.</b> A computer program consists of</p>
+<ul class="pyq-o">
+<li><span>A</span> system flowchart</li>
+<li><span>B</span> program flowchart</li>
+<li><span>C</span> algorithms written in computer language</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>109.</b> The topology with highest reliability is</p>
+<ul class="pyq-o">
+<li><span>A</span> star</li>
+<li><span>B</span> ring</li>
+<li><span>C</span> mesh</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>110.</b> End-to-end connectivity is provided from host-to-host in</p>
+<ul class="pyq-o">
+<li><span>A</span> network layer</li>
+<li><span>B</span> transport layer</li>
+<li><span>C</span> session layer</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>111.</b> The _____ measures the number of lost or garbled messages as a fraction of the total sent in the sampling period.</p>
+<ul class="pyq-o">
+<li><span>A</span> residual error rate</li>
+<li><span>B</span> transfer failure probability</li>
+<li><span>C</span> connection release failure probability</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>112.</b> A high-speed communication equipment typically would not be needed for</p>
+<ul class="pyq-o">
+<li><span>A</span> e-mail</li>
+<li><span>B</span> transferring large volume of data</li>
+<li><span>C</span> supporting communication between nodes in a LAN</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>113.</b> A _____ topology uses a single connection to connect all devices together.</p>
+<ul class="pyq-o">
+<li><span>A</span> bus</li>
+<li><span>B</span> star</li>
+<li><span>C</span> ring</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>114.</b> A _____ is used to connect networking devices that are in a very close geographic area such as a floor of a building.</p>
+<ul class="pyq-o">
+<li><span>A</span> WAN</li>
+<li><span>B</span> LAN</li>
+<li><span>C</span> MAN</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>115.</b> In computer network, what is the size of IP address in IPv4?</p>
+<ul class="pyq-o">
+<li><span>A</span> 8 bits</li>
+<li><span>B</span> 16 bits</li>
+<li><span>C</span> 32 bits</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>116.</b> What is the size of MAC address in computer network?</p>
+<ul class="pyq-o">
+<li><span>A</span> 32 bits</li>
+<li><span>B</span> 16 bits</li>
+<li><span>C</span> 48 bits</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>117.</b> What is the name given to the act of gaining illegal entry to computer files through remote terminals or microcomputers?</p>
+<ul class="pyq-o">
+<li><span>A</span> Hacking</li>
+<li><span>B</span> Decoding</li>
+<li><span>C</span> Beating the system</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>118.</b> A computer virus is a software program which has the essential ability to</p>
+<ul class="pyq-o">
+<li><span>A</span> damage data</li>
+<li><span>B</span> damage program</li>
+<li><span>C</span> clone itself</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>119.</b> Copying computer program/ software without the permission of its authors is called</p>
+<ul class="pyq-o">
+<li><span>A</span> larceny</li>
+<li><span>B</span> software piracy</li>
+<li><span>C</span> highway robbery</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>120.</b> A hard disk becomes totally inaccessible when a computer virus corrupts</p>
+<ul class="pyq-o">
+<li><span>A</span> partition table</li>
+<li><span>B</span> file allocation table</li>
+<li><span>C</span> root directory</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>121.</b> An attribute of one table matching the primary key of another table is called as</p>
+<ul class="pyq-o">
+<li><span>A</span> foreign key</li>
+<li><span>B</span> secondary key</li>
+<li><span>C</span> candidate key</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>122.</b> If every non-key attribute is fully dependent on the primary key, then the relation will be in</p>
+<ul class="pyq-o">
+<li><span>A</span> First Normal Form (1NF)</li>
+<li><span>B</span> Second Normal Form (2NF)</li>
+<li><span>C</span> Third Normal Form (3NF)</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>123.</b> In relational database, the data type of values in each column of a table is called</p>
+<ul class="pyq-o">
+<li><span>A</span> attribute</li>
+<li><span>B</span> domain</li>
+<li><span>C</span> relation</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>124.</b> In relational database, the number of attributes of a relation is called the _____ of relation.</p>
+<ul class="pyq-o">
+<li><span>A</span> domain</li>
+<li><span>B</span> degree</li>
+<li><span>C</span> cardinality</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>125.</b> Which of the following SQL commands is used to change the attribute values of one or more rows in a table?</p>
+<ul class="pyq-o">
+<li><span>A</span> Update</li>
+<li><span>B</span> Insert</li>
+<li><span>C</span> Alter</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>126.</b> To retrieve information from a database, which of the following SQL commands is used?</p>
+<ul class="pyq-o">
+<li><span>A</span> Display</li>
+<li><span>B</span> Show</li>
+<li><span>C</span> Select</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>127.</b> Which of the following SQL commands is used to modify the structure of a table?</p>
+<ul class="pyq-o">
+<li><span>A</span> Alter</li>
+<li><span>B</span> Modify</li>
+<li><span>C</span> Update</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>128.</b> Which of the following SQL keywords is used to display data from a table based on certain pattern?</p>
+<ul class="pyq-o">
+<li><span>A</span> IN</li>
+<li><span>B</span> LIKE</li>
+<li><span>C</span> BETWEEN</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>129.</b> Degree and cardinality of a relation in relational database are 4 and 3 respectively. If 3 attributes and 4 tuples are added to the relation, what will be its new cardinality and degree?</p>
+<ul class="pyq-o">
+<li><span>A</span> 7, 6</li>
+<li><span>B</span> 7, 7</li>
+<li><span>C</span> 8, 6</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>130.</b> Which SQL command is used to remove a table from a database?</p>
+<ul class="pyq-o">
+<li><span>A</span> DELETE</li>
+<li><span>B</span> DROP</li>
+<li><span>C</span> ERASE</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>131.</b> The register that contains the address of the next instruction to be executed is called</p>
+<ul class="pyq-o">
+<li><span>A</span> program counter</li>
+<li><span>B</span> instruction register</li>
+<li><span>C</span> accumulator</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>132.</b> The register that contains the instruction that is being executed is called</p>
+<ul class="pyq-o">
+<li><span>A</span> accumulator</li>
+<li><span>B</span> program counter</li>
+<li><span>C</span> instruction register</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>133.</b> The register which holds the address of location of memory to and from which data are to be transferred is known as</p>
+<ul class="pyq-o">
+<li><span>A</span> index register</li>
+<li><span>B</span> memory address register</li>
+<li><span>C</span> memory buffer register</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>134.</b> A storage device used to compensate the difference in flow of data is known as</p>
+<ul class="pyq-o">
+<li><span>A</span> main memory</li>
+<li><span>B</span> auxiliary memory</li>
+<li><span>C</span> buffer</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>135.</b> Memory in which any location can be reached in a fixed amount of time after specifying its address is called</p>
+<ul class="pyq-o">
+<li><span>A</span> Sequential Access Memory</li>
+<li><span>B</span> Random Access Memory</li>
+<li><span>C</span> Secondary Memory</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>136.</b> If ( ) ( ) ( ) ,X YX YX567 2 5 718 8 8/c43 /c61 then the values of X and Y are</p>
+<ul class="pyq-o">
+<li><span>A</span> 4, 3</li>
+<li><span>B</span> 3, 3</li>
+<li><span>C</span> 4, 4</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>137.</b> The range of the numbers that can be represented in 8-bit using 2’s complement represen- tation is</p>
+<ul class="pyq-o">
+<li><span>A</span> –128 to +128</li>
+<li><span>B</span> –127 to +127</li>
+<li><span>C</span> –128 to +127</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>138.</b> If ( ) ( )11 1 12 98 16X Y C /c61 , then the values of X and Y are</p>
+<ul class="pyq-o">
+<li><span>A</span> 5, 1</li>
+<li><span>B</span> 5, 7</li>
+<li><span>C</span> 3, 1</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>139.</b> Which of the following 4-bit numbers equals its 2’s complement?</p>
+<ul class="pyq-o">
+<li><span>A</span> 1010</li>
+<li><span>B</span> 0101</li>
+<li><span>C</span> 1000</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>140.</b> The number of 1’s in the binary representation of the value of the decimal expression of 16 9 16 7 16 5 33 2/c180 /c43 /c180 /c43 /c180 /c43 is</p>
+<ul class="pyq-o">
+<li><span>A</span> 15</li>
+<li><span>B</span> 9</li>
+<li><span>C</span> 12</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>141.</b> The Boolean expression x x y/c43 /c162 equals</p>
+<ul class="pyq-o">
+<li><span>A</span> x y/c43</li>
+<li><span>B</span> x xy/c43</li>
+<li><span>C</span> y yx/c43</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>142.</b> The Boolean expression AB AB A C AC/c43 /c162 /c43 /c162 /c43 is independent of Boolean variable</p>
+<ul class="pyq-o">
+<li><span>A</span> A</li>
+<li><span>B</span> B</li>
+<li><span>C</span> C</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>143.</b> The Boolean expression A BC/c43 equals</p>
+<ul class="pyq-o">
+<li><span>A</span> ( )( )/c162 /c43 /c162 /c43A B A C</li>
+<li><span>B</span> ( )( )A B A C/c43 /c162 /c43</li>
+<li><span>C</span> ( )( )A B A C/c43 /c43</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>144.</b> The Boolean expression x xy/c43 will be equal to</p>
+<ul class="pyq-o">
+<li><span>A</span> x</li>
+<li><span>B</span> y</li>
+<li><span>C</span> x y/c43</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>145.</b> The Boolean expression x x y( ) /c43 is equal to</p>
+<ul class="pyq-o">
+<li><span>A</span> x</li>
+<li><span>B</span> y</li>
+<li><span>C</span> xy</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>146.</b> If x is a Boolean variable, then ((( ) ) )/c162 /c162 /c162 /c162x will be</p>
+<ul class="pyq-o">
+<li><span>A</span> /c162x</li>
+<li><span>B</span> x</li>
+<li><span>C</span> x x/c43 /c162</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>147.</b> In two-valued Boolean algebra, the maximum number of Boolean functions for two variables will be</p>
+<ul class="pyq-o">
+<li><span>A</span> 8</li>
+<li><span>B</span> 12</li>
+<li><span>C</span> 16</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>148.</b> Simplified Boolean function of Boolean function F A C A B AB C BC/c61 /c162 /c43 /c162 /c43 /c162 /c43 is</p>
+<ul class="pyq-o">
+<li><span>A</span> F C A B/c61 /c43 /c162</li>
+<li><span>B</span> F A B B C/c61 /c162 /c43 /c162</li>
+<li><span>C</span> F BC A B/c61 /c43 /c162</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>149.</b> Which of the following logic gates is called universal gate?</p>
+<ul class="pyq-o">
+<li><span>A</span> AND</li>
+<li><span>B</span> OR</li>
+<li><span>C</span> NAND</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>150.</b> The minimum number of NAND gates required to implement Boolean function f x y xy/c61 /c162 /c43 /c162 is</p>
+<ul class="pyq-o">
+<li><span>A</span> 3</li>
+<li><span>B</span> 4</li>
+<li><span>C</span> 6</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<h3 id="previous-year-questions-bpsc-tre-9-aug-2024">BPSC TRE — 9 Aug 2024</h3>
+<p class="note">Official question booklet se, Computer Science section (Q71–Q150). Kul 80 questions.</p>
+<div class="pyq">
+<p class="pyq-q"><b>71.</b> Digital circuit can be made by the repeated use of the _________.</p>
+<ul class="pyq-o">
+<li><span>A</span> NAND gate</li>
+<li><span>B</span> NOR gate</li>
+<li><span>C</span> AND gate</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>72.</b> Which of the following is correct for Digital Circuits?</p>
+<ul class="pyq-o">
+<li><span>A</span> They use analog signals for communication</li>
+<li><span>B</span> They process information using continuous voltage levels</li>
+<li><span>C</span> They are not suitable for high speed operations</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>73.</b> Which of the following is an example of a digital Electronic?</p>
+<ul class="pyq-o">
+<li><span>A</span> Computers</li>
+<li><span>B</span> Mobile phones</li>
+<li><span>C</span> Digital cameras</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above PART - III (Computer Science)</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>74.</b> An OR gate has 4 inputs. The number of words in truth table will be _______.</p>
+<ul class="pyq-o">
+<li><span>A</span> 4</li>
+<li><span>B</span> 8</li>
+<li><span>C</span> 16</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>75.</b> When does a negative level triggered flip-flop in Digital Electronics changes its state?</p>
+<ul class="pyq-o">
+<li><span>A</span> When the clock is Negative</li>
+<li><span>B</span> When the clock is Positive</li>
+<li><span>C</span> When the inputs are all zero</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>76.</b> What is the result of the operation 1010 AND 1100 in binary?</p>
+<ul class="pyq-o">
+<li><span>A</span> 1000</li>
+<li><span>B</span> 1110</li>
+<li><span>C</span> 100</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 2313/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>77.</b> In a half-adder circuit, what are the outputs?</p>
+<ul class="pyq-o">
+<li><span>A</span> Sum and Carry</li>
+<li><span>B</span> Difference and Borrow</li>
+<li><span>C</span> Sum and Difference</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>78.</b> Which of the following is the type of Read Only Memory (ROM)?</p>
+<ul class="pyq-o">
+<li><span>A</span> PROM</li>
+<li><span>B</span> EPROM</li>
+<li><span>C</span> MROM</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>79.</b> What is a PLA?</p>
+<ul class="pyq-o">
+<li><span>A</span> Programmable Logic Application</li>
+<li><span>B</span> Programmable Logic Array</li>
+<li><span>C</span> Programmable Logic Architecture</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>80.</b> How many select lines are required for an 8-to-1 multiplexer?</p>
+<ul class="pyq-o">
+<li><span>A</span> 2</li>
+<li><span>B</span> 3</li>
+<li><span>C</span> 4</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>81.</b> Convert the decimal number 1234 to binary, octal, and hexadecimal. Which of the following options correctly represents these conversions?</p>
+<ul class="pyq-o">
+<li><span>A</span> Binary: 10011010010, Octal: 2322, Hexadecimal: 4D2</li>
+<li><span>B</span> Binary: 11001110010, Octal: 1712, Hexadecimal: 72A</li>
+<li><span>C</span> Binary: 11100110010, Octal: 1642, Hexadecimal: 3CD</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>82.</b> What is Booth’s algorithm used for?</p>
+<ul class="pyq-o">
+<li><span>A</span> Binary to decimal conversion</li>
+<li><span>B</span> Decimal to binary conversion</li>
+<li><span>C</span> Binary multiplication</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>83.</b> Which of the following is error detection code used in digital logic?</p>
+<ul class="pyq-o">
+<li><span>A</span> Hamming code</li>
+<li><span>B</span> Cyclic redundancy check (CRC)</li>
+<li><span>C</span> Checksum</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 2513/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>84.</b> When performing BCD addition, what is the maximum value that can be represented in a single BCD digit?</p>
+<ul class="pyq-o">
+<li><span>A</span> 2</li>
+<li><span>B</span> 10</li>
+<li><span>C</span> 15</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>85.</b> Convert the binary number 1011.1101 to its decimal equivalent. Which of the following is the correct decimal value?</p>
+<ul class="pyq-o">
+<li><span>A</span> 11.75</li>
+<li><span>B</span> 12.125</li>
+<li><span>C</span> 13.5</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>86.</b> What is De Morgan’s theorem used for in digital logic?</p>
+<ul class="pyq-o">
+<li><span>A</span> Simplifying Boolean expressions</li>
+<li><span>B</span> Implementing NAND gates</li>
+<li><span>C</span> Performing binary addition</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>87.</b> What is the purpose of the “don’t care” condition in digital logic?</p>
+<ul class="pyq-o">
+<li><span>A</span> To indicate that the value of a variable does not affect the output</li>
+<li><span>B</span> To prioritize certain inputs over others</li>
+<li><span>C</span> To ensure that all possible input combinations are covered in truth tables</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>88.</b> Which of the following data structures stores elements in a non-linear relationship?</p>
+<ul class="pyq-o">
+<li><span>A</span> Stack</li>
+<li><span>B</span> Queue</li>
+<li><span>C</span> Array</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>89.</b> Which data structure is used for efficient searching, insertion, and deletion of elements?</p>
+<ul class="pyq-o">
+<li><span>A</span> Stack</li>
+<li><span>B</span> Queue</li>
+<li><span>C</span> Hash Table</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 2713/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>90.</b> In a binary search tree, which subtree of a node contains elements that are greater than the node’s value?</p>
+<ul class="pyq-o">
+<li><span>A</span> Left subtree</li>
+<li><span>B</span> Right subtree</li>
+<li><span>C</span> Both subtrees</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>91.</b> The result evaluating the postfix expression 10 5 + 60 6/ * 8</p>
+<ul class="pyq-o">
+<li><span>A</span> 142</li>
+<li><span>B</span> 213</li>
+<li><span>C</span> 284</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>92.</b> In a balanced binary tree, the height of two sub-trees of every node can not differ by more than</p>
+<ul class="pyq-o">
+<li><span>A</span> 2</li>
+<li><span>B</span> 1</li>
+<li><span>C</span> 0</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>93.</b> Write the output of the following program: int a[ ] = {1,2,3,} *p;</p>
+<ul class="pyq-o">
+<li><span>A</span> Junk value</li>
+<li><span>B</span> 3</li>
+<li><span>C</span> Runtime error</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>94.</b> A queue has configuration a, b, c, d. If you want to get the configuration d, c, b, a, you need a minimum of _______.</p>
+<ul class="pyq-o">
+<li><span>A</span> 2 deletions and 3 additions</li>
+<li><span>B</span> 3 deletions and 3 additions</li>
+<li><span>C</span> 4 deletions and 4 additions</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>95.</b> The order of the binary search algorithm is _______.</p>
+<ul class="pyq-o">
+<li><span>A</span> N</li>
+<li><span>B</span> N log n</li>
+<li><span>C</span> N 2</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>96.</b> The preorder traversal of a binary search tree is 15, 10, 12, 11,20, 18, 16, 19. Which one of the following is the postorder traversal of the tree?</p>
+<ul class="pyq-o">
+<li><span>A</span> 20, 19, 18, 16, 15, 12, 11,10</li>
+<li><span>B</span> 11, 12, 10, 16,19,18,20,15</li>
+<li><span>C</span> 19, 16, 18,20,11,12,10,15</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>97.</b> How many distinct binary search trees can be created out of 4 distinct keys?</p>
+<ul class="pyq-o">
+<li><span>A</span> 8</li>
+<li><span>B</span> 24</li>
+<li><span>C</span> 14</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 2913/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>98.</b> #include &lt;stdio.h&gt; int main() { int i = 5, j = 10, k = 15; printf(\&quot;%d \&quot;, sizeof(k /=i+j)); printf(\&quot;%d\&quot;, k); return 0; } Assume size of an integer as 4 bytes. What is the output of above program?</p>
+<ul class="pyq-o">
+<li><span>A</span> 2 1</li>
+<li><span>B</span> 4 1</li>
+<li><span>C</span> 4 15</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>99.</b> Which of the following statements is true about Big-O notation?</p>
+<ul class="pyq-o">
+<li><span>A</span> It represents the lower bound of an algorithm’s runtime.</li>
+<li><span>B</span> It represents the upper bound of an algorithm’s runtime</li>
+<li><span>C</span> It represents the average runtime of an algorithm.</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>100.</b> Which of the following is NOT a step in the Divide and Conquer algorithm?</p>
+<ul class="pyq-o">
+<li><span>A</span> Combine</li>
+<li><span>B</span> Conquer</li>
+<li><span>C</span> Divide</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>101.</b> Merge Sort is an example of which algorithm design paradigm?</p>
+<ul class="pyq-o">
+<li><span>A</span> Greedy</li>
+<li><span>B</span> Divide and Conquer</li>
+<li><span>C</span> Dynamic Programming</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>102.</b> How many edges does a spanning tree of a graph with N vertices have?</p>
+<ul class="pyq-o">
+<li><span>A</span> N</li>
+<li><span>B</span> N-1</li>
+<li><span>C</span> N(N-l)/2</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>103.</b> Which of the following is NOT a graph traversal algorithm?</p>
+<ul class="pyq-o">
+<li><span>A</span> Greedy</li>
+<li><span>B</span> Divide and Conquer</li>
+<li><span>C</span> Dynamic Programming</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 3113/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>104.</b> Which of the following is NOT an NP- Complete problem?</p>
+<ul class="pyq-o">
+<li><span>A</span> Traveling Salesman Problem</li>
+<li><span>B</span> Boolean Satisfiability Problem</li>
+<li><span>C</span> Shortest Path Problem</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>105.</b> Which of the following is an advantage of using arrays?</p>
+<ul class="pyq-o">
+<li><span>A</span> Constant time insertion and deletion</li>
+<li><span>B</span> Ability to store elements of different data types</li>
+<li><span>C</span> Random access to elements using an index</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>106.</b> Which of the following is NOT a basic operation performed on a data structure?</p>
+<ul class="pyq-o">
+<li><span>A</span> Encryption</li>
+<li><span>B</span> Deletion</li>
+<li><span>C</span> Insertion</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>107.</b> Which of the following is a type of operating system?</p>
+<ul class="pyq-o">
+<li><span>A</span> Real-time operating system</li>
+<li><span>B</span> Embedded operating system</li>
+<li><span>C</span> Network operating system</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>108.</b> Which of the following is NOT a memory management technique used by operating systems?</p>
+<ul class="pyq-o">
+<li><span>A</span> Paging</li>
+<li><span>B</span> Segmentation</li>
+<li><span>C</span> Fragmentation</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>109.</b> Which of the following is a file system commonly used in operating systems?</p>
+<ul class="pyq-o">
+<li><span>A</span> NTFS</li>
+<li><span>B</span> FA T32</li>
+<li><span>C</span> HFS+</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 3313/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>110.</b> Which of the following is NOT a type of interrupt?</p>
+<ul class="pyq-o">
+<li><span>A</span> Hardware interrupt</li>
+<li><span>B</span> Memory interrupt</li>
+<li><span>C</span> Software interrupt</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>111.</b> What is a page in paging?</p>
+<ul class="pyq-o">
+<li><span>A</span> A fixed-size block of virtual memory</li>
+<li><span>B</span> A fixed-size block of physical memory</li>
+<li><span>C</span> A type of memory allocation</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>112.</b> In a system with a page size of 4 KB and a physical address space of 64 GB, what is the number of bits required for the page offset?</p>
+<ul class="pyq-o">
+<li><span>A</span> 10 bits</li>
+<li><span>B</span> 12 bits</li>
+<li><span>C</span> 14 bits</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>113.</b> What is a segment base in segmentation?</p>
+<ul class="pyq-o">
+<li><span>A</span> The starting address of a segment in physical memory</li>
+<li><span>B</span> The starting address of a segment in virtual memory</li>
+<li><span>C</span> The ending address of a segment in physical memory</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>114.</b> What causes thrashing to occur?</p>
+<ul class="pyq-o">
+<li><span>A</span> Excessive paging activity</li>
+<li><span>B</span> Insufficient disk space</li>
+<li><span>C</span> Hardware failures</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>115.</b> Consider a system with a total physical memory of 8 GB and total virtual memory of 16 GB. If the system is using 6 GB of physical memory and 10 GB of virtual memory, how much memory is being swapped out?</p>
+<ul class="pyq-o">
+<li><span>A</span> 2 GB</li>
+<li><span>B</span> 4 GB</li>
+<li><span>C</span> 6 GB</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>116.</b> How is the TLB typically organized?</p>
+<ul class="pyq-o">
+<li><span>A</span> As a direct-mapped cache</li>
+<li><span>B</span> As an associative cache</li>
+<li><span>C</span> As a set-associative cache</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>117.</b> Which of the following is a common file operation?</p>
+<ul class="pyq-o">
+<li><span>A</span> Create</li>
+<li><span>B</span> Delete</li>
+<li><span>C</span> Rename</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 3513/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>118.</b> Consider a disk queue with requests for I/O to blocks on cylinders. 98 183 37 122 14 124 65 67 considering FCFS (First Come First Served) scheduling, the total number of head movements is, if the disk head is initially at 53 is?</p>
+<ul class="pyq-o">
+<li><span>A</span> 640</li>
+<li><span>B</span> 620</li>
+<li><span>C</span> 630</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>119.</b> Thread shares with other threads belonging to the same process its</p>
+<ul class="pyq-o">
+<li><span>A</span> thread ID</li>
+<li><span>B</span> program counter</li>
+<li><span>C</span> code section and data section</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>120.</b> Which of the following is NOT a type of DBMS?</p>
+<ul class="pyq-o">
+<li><span>A</span> Relational DBMS</li>
+<li><span>B</span> Object-Oriented DBMS</li>
+<li><span>C</span> Sequential DBMS</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>121.</b> In a relational database, what is a primary key?</p>
+<ul class="pyq-o">
+<li><span>A</span> A key used to uniquely identify each record in a table</li>
+<li><span>B</span> A key used to establish relationships between tables</li>
+<li><span>C</span> A key used to sort records in a table</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>122.</b> Which normal form ensures that every non-prime attribute in a table is fully functionally dependent on the primary key?</p>
+<ul class="pyq-o">
+<li><span>A</span> First Normal Form (1NF)</li>
+<li><span>B</span> Second Normal Form (2NF)</li>
+<li><span>C</span> Third Normal Form (3NF)</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>123.</b> Which SQL command is used to add new rows to a database table?</p>
+<ul class="pyq-o">
+<li><span>A</span> ADD</li>
+<li><span>B</span> CREA TE</li>
+<li><span>C</span> INSERT</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 3713/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>124.</b> Which of the following is a disadvantage of using a distributed database system?</p>
+<ul class="pyq-o">
+<li><span>A</span> Improved data accessibility</li>
+<li><span>B</span> Increased data security</li>
+<li><span>C</span> Data inconsistency</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>125.</b> What is the primary function of a router in a computer network?</p>
+<ul class="pyq-o">
+<li><span>A</span> To connect devices within the same network</li>
+<li><span>B</span> To connect multiple networks together</li>
+<li><span>C</span> To filter incoming traffic based on IP addresses</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>126.</b> In the OSI model, which layer is responsible for routing and forwarding data packets?</p>
+<ul class="pyq-o">
+<li><span>A</span> Data Link Layer</li>
+<li><span>B</span> Transport Layer</li>
+<li><span>C</span> Physical Layer</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>127.</b> Which device is used to connect multiple devices within the same local area network (LAN)?</p>
+<ul class="pyq-o">
+<li><span>A</span> Router</li>
+<li><span>B</span> Switch</li>
+<li><span>C</span> Bridge</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>128.</b> Which protocol is used to send email over the Internet?</p>
+<ul class="pyq-o">
+<li><span>A</span> FTP</li>
+<li><span>B</span> SMTP</li>
+<li><span>C</span> HTTP</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>129.</b> What is the purpose of a subnet mask in TCP/IP networking?</p>
+<ul class="pyq-o">
+<li><span>A</span> To identify the network portion of an IP address</li>
+<li><span>B</span> To identify the host portion of an IP address</li>
+<li><span>C</span> To convert IP addresses into domain names</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 3913/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>130.</b> What is the maximum data rate of Bluetooth version 5.0?</p>
+<ul class="pyq-o">
+<li><span>A</span> 1 Mbps</li>
+<li><span>B</span> 2 Mbps</li>
+<li><span>C</span> 5 Mbps</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>131.</b> Which of the following is a software development life cycle model?</p>
+<ul class="pyq-o">
+<li><span>A</span> Waterfall model</li>
+<li><span>B</span> Agile model</li>
+<li><span>C</span> Spiral model</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>132.</b> Which of the following is NOT a software development requirement?</p>
+<ul class="pyq-o">
+<li><span>A</span> Functional requirements</li>
+<li><span>B</span> System requirements</li>
+<li><span>C</span> Physical requirements</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>133.</b> What is the main difference between verification and validation in software testing?</p>
+<ul class="pyq-o">
+<li><span>A</span> V erification ensures that the software is bug-free, while validation ensures that it meets the requirements.</li>
+<li><span>B</span> Verification is done before coding, while validation is done after coding.</li>
+<li><span>C</span> Verification checks if the software is built right, while validation checks if the right software is built.</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>134.</b> What is the purpose of a software prototype?</p>
+<ul class="pyq-o">
+<li><span>A</span> To serve as the final version of the software</li>
+<li><span>B</span> To replace detailed documentation</li>
+<li><span>C</span> To speed up the software development process</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>135.</b> What is the primary goal of software engineering?</p>
+<ul class="pyq-o">
+<li><span>A</span> To write code efficiently</li>
+<li><span>B</span> To develop software that meets user requirements within budget and schedule constraints</li>
+<li><span>C</span> To develop software with the latest technologies</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 4113/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>136.</b> Which of the following is a pillar of OOP?</p>
+<ul class="pyq-o">
+<li><span>A</span> Inheritance</li>
+<li><span>B</span> Encapsulation</li>
+<li><span>C</span> Abstraction</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>137.</b> Which keyword is used in Java to implement inheritance?</p>
+<ul class="pyq-o">
+<li><span>A</span> extends</li>
+<li><span>B</span> inherits</li>
+<li><span>C</span> implements</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>138.</b> What is the access specifier used to make members of a class accessible only within the same package?</p>
+<ul class="pyq-o">
+<li><span>A</span> private</li>
+<li><span>B</span> public</li>
+<li><span>C</span> package-private</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>139.</b> Inheritance in OOP allows a class to:</p>
+<ul class="pyq-o">
+<li><span>A</span> Inherit properties and behavior from another class</li>
+<li><span>B</span> Create instances of another class</li>
+<li><span>C</span> Override methods of another class</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>140.</b> What is the purpose of HTML in a web application?</p>
+<ul class="pyq-o">
+<li><span>A</span> To define the structure of web pages</li>
+<li><span>B</span> To style web pages</li>
+<li><span>C</span> To add interactivity to web pages</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>141.</b> Which of the following is an example of a server-side scripting language commonly used in web applications?</p>
+<ul class="pyq-o">
+<li><span>A</span> HTML</li>
+<li><span>B</span> CSS</li>
+<li><span>C</span> C++</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>142.</b> What is the computational complexity of the halting problem?</p>
+<ul class="pyq-o">
+<li><span>A</span> O(1)</li>
+<li><span>B</span> O(n)</li>
+<li><span>C</span> Not computable</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>143.</b> Which of the following is NOT a component of a Turing machine?</p>
+<ul class="pyq-o">
+<li><span>A</span> Input tape</li>
+<li><span>B</span> Output tape</li>
+<li><span>C</span> Control unit</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 4313/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>144.</b> Which wireless communication technology is commonly used in IoT devices for short-range communication?</p>
+<ul class="pyq-o">
+<li><span>A</span> Bluetooth</li>
+<li><span>B</span> Wi-Fi</li>
+<li><span>C</span> 4G L TE</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>145.</b> Which of the following is an example of an IoT protocol used for device communication?</p>
+<ul class="pyq-o">
+<li><span>A</span> HTTP</li>
+<li><span>B</span> FTP</li>
+<li><span>C</span> MQTT</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>146.</b> Which of the following is a subfield of AI?</p>
+<ul class="pyq-o">
+<li><span>A</span> Machine Learning</li>
+<li><span>B</span> Robotics</li>
+<li><span>C</span> Natural Language Processing</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>147.</b> Which of the following is a supervised learning algorithm?</p>
+<ul class="pyq-o">
+<li><span>A</span> Decision Tree</li>
+<li><span>B</span> K-means Clustering</li>
+<li><span>C</span> Reinforcement Learning</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>148.</b> Which of the following is NOT a common type of E-Commerce model?</p>
+<ul class="pyq-o">
+<li><span>A</span> Business-to-Consumer (B2C)</li>
+<li><span>B</span> Consumer-to-Business (C2B)</li>
+<li><span>C</span> Consumer-to-Consumer (C2C)</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>149.</b> Which of the following is an example of a B2C E-Commerce website?</p>
+<ul class="pyq-o">
+<li><span>A</span> Alibaba</li>
+<li><span>B</span> Amazon</li>
+<li><span>C</span> Google</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above</li>
+</ul>
+</div>
+<div class="pyq">
+<p class="pyq-q"><b>150.</b> Which of the following is a multimedia authoring tool?</p>
+<ul class="pyq-o">
+<li><span>A</span> Microsoft Word</li>
+<li><span>B</span> Adobe Photoshop</li>
+<li><span>C</span> Adobe Flash</li>
+<li><span>D</span> More than one of the above</li>
+<li><span>E</span> None of the above 4513/HV/M-2024-26/HS-526-E</li>
+</ul>
+</div>
+</div><nav class="pager"><a class="pg prev" href="/quick-revision-one-liners"><small>← Previous</small><b>⚡ Quick Revision: One-liners</b></a><span></span></nav></section>
     </div>
   </main>
 </div>
@@ -3377,7 +5012,7 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
   </div>
 </div>
 
-<script id="meta" type="application/json">[{"id": "computer-fundamentals", "n": 1, "title": "Computer Fundamentals", "emoji": "🖥️", "hue": 47, "mins": 5, "tc": 10}, {"id": "number-system-codes", "n": 2, "title": "Number System & Codes", "emoji": "🔢", "hue": 94, "mins": 6, "tc": 10}, {"id": "boolean-algebra-digital-electronics", "n": 3, "title": "Boolean Algebra & Digital Electronics", "emoji": "💡", "hue": 141, "mins": 7, "tc": 7}, {"id": "computer-architecture-memory", "n": 4, "title": "Computer Architecture & Memory", "emoji": "🧠", "hue": 188, "mins": 6, "tc": 12}, {"id": "operating-system", "n": 5, "title": "Operating System", "emoji": "💻", "hue": 235, "mins": 11, "tc": 15}, {"id": "problem-solving", "n": 6, "title": "Problem Solving", "emoji": "🧭", "hue": 282, "mins": 2, "tc": 6}, {"id": "data-structures-algorithms", "n": 7, "title": "Data Structures & Algorithms", "emoji": "🌳", "hue": 329, "mins": 14, "tc": 15}, {"id": "c-programming-complete", "n": 8, "title": "C Programming (Complete)", "emoji": "🅲", "hue": 16, "mins": 11, "tc": 13}, {"id": "c-object-oriented-programming", "n": 9, "title": "C++ & Object-Oriented Programming", "emoji": "🧩", "hue": 63, "mins": 7, "tc": 13}, {"id": "java-basics", "n": 10, "title": "Java Basics", "emoji": "☕", "hue": 110, "mins": 2, "tc": 3}, {"id": "python-programming-pandas", "n": 11, "title": "Python Programming & Pandas", "emoji": "🐍", "hue": 157, "mins": 5, "tc": 8}, {"id": "understanding-data", "n": 12, "title": "Understanding Data", "emoji": "📊", "hue": 204, "mins": 2, "tc": 4}, {"id": "dbms-sql", "n": 13, "title": "DBMS & SQL", "emoji": "🗄️", "hue": 251, "mins": 15, "tc": 22}, {"id": "computer-networking", "n": 14, "title": "Computer Networking", "emoji": "🌐", "hue": 298, "mins": 12, "tc": 15}, {"id": "web-technology", "n": 15, "title": "Web Technology", "emoji": "🕸️", "hue": 345, "mins": 3, "tc": 4}, {"id": "internet-of-things-iot", "n": 16, "title": "Internet of Things (IoT)", "emoji": "📡", "hue": 32, "mins": 4, "tc": 7}, {"id": "cloud-computing", "n": 17, "title": "Cloud Computing", "emoji": "☁️", "hue": 79, "mins": 2, "tc": 5}, {"id": "cyber-security", "n": 18, "title": "Cyber Security", "emoji": "🛡️", "hue": 126, "mins": 3, "tc": 5}, {"id": "software-engineering", "n": 19, "title": "Software Engineering", "emoji": "🛠️", "hue": 173, "mins": 5, "tc": 6}, {"id": "theory-of-computation", "n": 20, "title": "Theory of Computation", "emoji": "⚙️", "hue": 220, "mins": 4, "tc": 11}, {"id": "artificial-intelligence-ml", "n": 21, "title": "Artificial Intelligence & ML", "emoji": "🤖", "hue": 267, "mins": 3, "tc": 4}, {"id": "multimedia", "n": 22, "title": "Multimedia", "emoji": "🎬", "hue": 314, "mins": 2, "tc": 6}, {"id": "society-law-ethics", "n": 23, "title": "Society, Law & Ethics", "emoji": "⚖️", "hue": 1, "mins": 2, "tc": 5}, {"id": "emerging-trends", "n": 24, "title": "Emerging Trends", "emoji": "🚀", "hue": 48, "mins": 2, "tc": 4}, {"id": "quick-revision-one-liners", "n": 25, "title": "Quick Revision: One-liners", "emoji": "⚡", "hue": 95, "mins": 2, "tc": 2}]</script>
+<script id="meta" type="application/json">[{"id": "computer-fundamentals", "n": 1, "title": "Computer Fundamentals", "emoji": "🖥️", "hue": 47, "mins": 5, "tc": 10}, {"id": "number-system-codes", "n": 2, "title": "Number System & Codes", "emoji": "🔢", "hue": 94, "mins": 6, "tc": 10}, {"id": "boolean-algebra-digital-electronics", "n": 3, "title": "Boolean Algebra & Digital Electronics", "emoji": "💡", "hue": 141, "mins": 7, "tc": 7}, {"id": "computer-architecture-memory", "n": 4, "title": "Computer Architecture & Memory", "emoji": "🧠", "hue": 188, "mins": 6, "tc": 12}, {"id": "operating-system", "n": 5, "title": "Operating System", "emoji": "💻", "hue": 235, "mins": 11, "tc": 15}, {"id": "problem-solving", "n": 6, "title": "Problem Solving", "emoji": "🧭", "hue": 282, "mins": 2, "tc": 6}, {"id": "data-structures-algorithms", "n": 7, "title": "Data Structures & Algorithms", "emoji": "🌳", "hue": 329, "mins": 14, "tc": 15}, {"id": "c-programming-complete", "n": 8, "title": "C Programming (Complete)", "emoji": "🅲", "hue": 16, "mins": 11, "tc": 13}, {"id": "c-object-oriented-programming", "n": 9, "title": "C++ & Object-Oriented Programming", "emoji": "🧩", "hue": 63, "mins": 7, "tc": 13}, {"id": "java-basics", "n": 10, "title": "Java Basics", "emoji": "☕", "hue": 110, "mins": 2, "tc": 3}, {"id": "python-programming-pandas", "n": 11, "title": "Python Programming & Pandas", "emoji": "🐍", "hue": 157, "mins": 5, "tc": 8}, {"id": "understanding-data", "n": 12, "title": "Understanding Data", "emoji": "📊", "hue": 204, "mins": 2, "tc": 4}, {"id": "dbms-sql", "n": 13, "title": "DBMS & SQL", "emoji": "🗄️", "hue": 251, "mins": 15, "tc": 22}, {"id": "computer-networking", "n": 14, "title": "Computer Networking", "emoji": "🌐", "hue": 298, "mins": 12, "tc": 15}, {"id": "web-technology", "n": 15, "title": "Web Technology", "emoji": "🕸️", "hue": 345, "mins": 3, "tc": 4}, {"id": "internet-of-things-iot", "n": 16, "title": "Internet of Things (IoT)", "emoji": "📡", "hue": 32, "mins": 4, "tc": 7}, {"id": "cloud-computing", "n": 17, "title": "Cloud Computing", "emoji": "☁️", "hue": 79, "mins": 2, "tc": 5}, {"id": "cyber-security", "n": 18, "title": "Cyber Security", "emoji": "🛡️", "hue": 126, "mins": 3, "tc": 5}, {"id": "software-engineering", "n": 19, "title": "Software Engineering", "emoji": "🛠️", "hue": 173, "mins": 5, "tc": 6}, {"id": "theory-of-computation", "n": 20, "title": "Theory of Computation", "emoji": "⚙️", "hue": 220, "mins": 4, "tc": 11}, {"id": "artificial-intelligence-ml", "n": 21, "title": "Artificial Intelligence & ML", "emoji": "🤖", "hue": 267, "mins": 3, "tc": 4}, {"id": "multimedia", "n": 22, "title": "Multimedia", "emoji": "🎬", "hue": 314, "mins": 2, "tc": 6}, {"id": "society-law-ethics", "n": 23, "title": "Society, Law & Ethics", "emoji": "⚖️", "hue": 1, "mins": 2, "tc": 5}, {"id": "emerging-trends", "n": 24, "title": "Emerging Trends", "emoji": "🚀", "hue": 48, "mins": 2, "tc": 4}, {"id": "quick-revision-one-liners", "n": 25, "title": "Quick Revision: One-liners", "emoji": "⚡", "hue": 95, "mins": 2, "tc": 2}, {"id": "previous-year-questions", "n": 26, "title": "Previous Year Questions", "emoji": "📝", "hue": 142, "mins": 33, "tc": 3}]</script>
 <script id="topics" type="application/json">[]</script>
 <script>
 (function(){
