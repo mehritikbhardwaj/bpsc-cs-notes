@@ -229,7 +229,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 </header>
 <div class="scrim" id="scrim"></div>
 <div class="wrap">
-  <aside id="side"></aside>
+  <aside id="side">{{SIDE}}</aside>
   <main>
     <div class="view" id="chapters">
 {{BODY}}
@@ -275,18 +275,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 
   document.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
 
-  var side=document.getElementById('side');
-  var s1='<div class="side-prog"><div><b data-done-count>0</b> chapters done</div><div class="pbar2"><i data-done-bar></i></div></div>'+
-         '<button class="side-buy" id="sideBuy">\u2B07\uFE0F Download complete PDF</button><div class="side-h">Chapters</div>';
-  META.forEach(function(c){
-    s1+='<a class="side-ch" style="--h:'+c.hue+'" href="/'+c.id+'" data-side="'+c.id+'"><span class="e">'+c.emoji+
-        '</span><span>'+esc(c.title)+'</span><span class="tick">\u2713</span></a>';
-    if(c.id===CURRENT&&TOPICS.length){
-      s1+='<ul class="side-topics open" data-topics="'+c.id+'">'+TOPICS.map(function(t){
-        return '<li><a href="#'+t.id+'" data-t="'+t.id+'">'+esc(t.t)+'</a></li>'}).join('')+'</ul>';
-    }
-  });
-  side.innerHTML=s1;
+  // sidebar comes rendered from build.py; JS only tracks state
 
   (function(){
     var VIEW_OFFSET=200;  // display-only head start

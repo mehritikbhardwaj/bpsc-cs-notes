@@ -81,6 +81,22 @@ def section(c, i, heading='h1'):
 <div class="chips-wrap"><div class="chips">{chips}</div></div>
 <div class="content">{c['inner']}</div>{pager}</section>'''
 
+# ---------- sidebar, rendered server-side so crawlers see every chapter ----------
+def sidebar(current):
+    out = ['<div class="side-prog"><div><b data-done-count>0</b> chapters done</div>'
+           '<div class="pbar2"><i data-done-bar></i></div></div>'
+           '<button class="side-buy" id="sideBuy">\u2b07\ufe0f Download complete PDF</button>'
+           '<div class="side-h">Chapters</div>']
+    for c in chapters:
+        out.append(f'<a class="side-ch" style="--h:{c["hue"]}" href="/{c["id"]}" data-side="{c["id"]}">'
+                   f'<span class="e">{c["emoji"]}</span><span>{html.escape(c["title"])}</span>'
+                   f'<span class="tick">\u2713</span></a>')
+        if c['id'] == current:
+            lis = ''.join(f'<li><a href="#{t["id"]}" data-t="{t["id"]}">{html.escape(t["t"])}</a></li>'
+                          for t in c['topics'])
+            out.append(f'<ul class="side-topics open" data-topics="{c["id"]}">{lis}</ul>')
+    return ''.join(out)
+
 # ---------- page shell ----------
 tpl = open(tplf, encoding='utf-8').read()
 meta_lite = [{'id': c['id'], 'n': c['n'], 'title': c['title'], 'emoji': c['emoji'],
@@ -94,6 +110,7 @@ def page(path, title, desc, canonical, bodyhtml, topics=None, current='', head_e
     h = h.replace('{{CANONICAL}}', canonical)
     h = h.replace('{{HEAD_EXTRA}}', head_extra)
     h = h.replace('{{CURRENT}}', current)
+    h = h.replace('{{SIDE}}', sidebar(current))
     h = h.replace('{{BODY}}', bodyhtml)
     h = h.replace('{{META}}', META_JSON)
     h = h.replace('{{TOPICS}}', json.dumps(topics or [], ensure_ascii=False).replace('</', '<\\/'))
