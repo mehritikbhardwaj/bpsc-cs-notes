@@ -1,10 +1,16 @@
-// Visible view counter. Storage: Upstash Redis (connect it in Vercel → Storage).
-// Until it is connected this returns 503 and the badge simply stays hidden.
-const BASE = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// Visible view counter. Storage: Upstash Redis.
+// NOTE: credentials are hardcoded below at the owner's request. This repo is
+// public, so treat this token as compromised and rotate it in the Upstash
+// dashboard if the counter is ever tampered with. Vercel also injects the same
+// values as env vars, which take priority over these fallbacks.
+const FALLBACK_URL = 'https://oriented-narwhal-73778.upstash.io';
+const FALLBACK_TOKEN = 'gQAAAAAAASAyAAIgcDEzYmRkOWZjNzdiYzU0ZTUzYTkzMzcxN2ZkYzkwZWNjOQ';
+
+const BASE = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || FALLBACK_URL;
+const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || FALLBACK_TOKEN;
 const KEY = 'site:views';
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store, max-age=0');
 
   if (!BASE || !TOKEN) {
@@ -24,4 +30,4 @@ export default async function handler(req, res) {
   } catch (err) {
     return res.status(502).json({ error: 'counter unavailable' });
   }
-}
+};
