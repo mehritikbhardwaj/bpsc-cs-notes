@@ -46,7 +46,7 @@ for i, c in enumerate(chapters):
     prev = chapters[i-1] if i else None; nxt = chapters[i+1] if i + 1 < len(chapters) else None
     chips = ''.join(f'<a class="chip" href="#{t["id"]}">{html.escape(t["t"])}</a>' for t in c['topics'])
     pager = '<nav class="pager">' + (f'<a class="pg prev" href="#{prev["id"]}"><small>← Previous</small><b>{prev["emoji"]} {html.escape(prev["title"])}</b></a>' if prev else '<span></span>') \
-        + (f'<a class="pg next" href="#{nxt["id"]}"><small>Next →</small><b>{nxt["emoji"]} {html.escape(nxt["title"])}</b></a>' if nxt else '<a class="pg next" href="#home"><small>Home</small><b>All chapters</b></a>') + '</nav>'
+        + (f'<a class="pg next" href="#{nxt["id"]}"><small>Next →</small><b>{nxt["emoji"]} {html.escape(nxt["title"])}</b></a>' if nxt else '<span></span>') + '</nav>'
     html_out.append(f'''<section class="chapter" id="{c['id']}" style="--h:{c['hue']}">
 <header class="banner"><div class="b-emoji">{c['emoji']}</div><div class="b-text"><div class="kicker">Chapter {c['n']}</div><h2>{html.escape(c['title'])}</h2>
 <div class="b-meta">{len(c['topics'])} topics · ~{c['mins']} min read</div></div>
