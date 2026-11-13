@@ -1,14 +1,27 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "regions": [
+    "bom1"
+  ],
   "headers": [
     {
       "source": "/((?!api/).*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
     },
     {
       "source": "/api/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "no-store, max-age=0" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0"
+        }
+      ]
     }
   ]
 }
