@@ -13,16 +13,14 @@ answers = json.load(io.open(ansf, encoding='utf-8')) if ansf != '-' else {}
 
 parts = ['<section class="chapter" data-title="STET Previous Year Questions">',
          '<h2>STET Previous Year Questions</h2>',
-         '<p class="note">Bihar STET 2025 Paper II (Class 11–12, Computer Science) ke official '
-         'question papers — teen shifts, kul {} questions. Bihar Board question papers alag se '
-         'publish nahi karti, isliye ye official response sheets se liye gaye hain.</p>'
+         '<p class="note">Bihar STET 2025 Paper II (Class 11–12, Computer Science) — teen shifts, kul {} questions.</p>'
          .format(sum(len(p['questions']) for p in data))]
 total = 0
 for pi, paper in enumerate(data):
     qs = paper['questions']
     total += len(qs)
     parts.append(f'<h3>{html.escape(paper["paper"])}</h3>')
-    parts.append(f'<p class="note">{len(qs)} questions.</p>')
+    parts.append(f'<p class="note">{len(qs)} questions</p>')
     for q in qs:
         parts.append('<div class="pyq">')
         parts.append(f'<p class="pyq-q"><b>{q["n"]}.</b> {html.escape(q["q"])}</p>')

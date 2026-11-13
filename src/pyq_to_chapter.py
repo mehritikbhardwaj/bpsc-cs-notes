@@ -1,21 +1,23 @@
-"""Turn parsed BPSC question booklets into a chapter page.
+"""Build the BPSC previous-year-questions chapter.
 
-Usage: python3 src/pyq_to_chapter.py <pyq.json> <answers.json|-> <out.html>
-Questions come verbatim from the official booklets; answers.json is optional
-and maps "<paper index>-<question no>" to a letter.
+Usage: python3 src/pyq_to_chapter.py <pyq.json> <out.html>
+
+Questions are printed verbatim from the official booklets, with two
+repairs: pypdf's ligature codes are mapped back to real symbols, and a
+handful of formula questions whose characters came out of the PDF in the
+wrong order are corrected by hand in src/data/bpsc_fixes.json.
+
+Answers are NOT written into the page — they are sold separately and get
+fetched at runtime, so each question only carries a placeholder.
 """
-import json, io, sys, html, re
+import json, io, sys, html, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from clean_text import clean, looks_broken
 
-pyq, ansf, out = sys.argv[1], sys.argv[2], sys.argv[3]
+pyq, out = sys.argv[1], sys.argv[2]
+HERE = os.path.dirname(os.path.abspath(__file__))
 data = json.load(io.open(pyq, encoding='utf-8'))
-answers = json.load(io.open(ansf, encoding='utf-8')) if ansf != '-' else {}
-
-def dedupe(qs):
-    seen = {}
-    for q in qs:
-        if q['n'] not in seen:          # first copy is the English one
-            seen[q['n']] = q
-    return [seen[k] for k in sorted(seen)]
+fixes = json.load(io.open(os.path.join(HERE, 'data', 'bpsc_fixes.json'), encoding='utf-8'))
 
 PAPERS = [
     {'file': '/papers/bpsc-tre-2023-12-15-computer-science.pdf',
@@ -29,37 +31,54 @@ PAPERS = [
 parts = ['<section class="chapter" data-title="Previous Year Questions">',
          '<h2>Previous Year Questions</h2>',
          '<h3>Full question papers (PDF)</h3>',
-         '<p class="note">BPSC ke official question booklets — poora paper, Hindi aur English dono, '
-         'Language + General Studies + Computer Science ke saath.</p>',
+         '<p class="note">Official booklets — poora paper, Hindi aur English dono.</p>',
          '<div class="paper-dl">']
 for pp in PAPERS:
     parts.append(f'<a class="paper" href="{pp["file"]}" download><span class="e">\U0001F4C4</span>'
                  f'<span><b>{html.escape(pp["name"])}</b>'
                  f'<small>Official booklet · 48 pages · PDF</small></span>'
-                 f'<span class="go">\u2b07\ufe0f</span></a>')
+                 f'<span class="go">⬇️</span></a>')
 parts.append('</div>')
 parts.append('<p class="note">Source: Bihar Public Service Commission. '
              + ' · '.join(f'<a href="{pp["src"]}" rel="nofollow">{html.escape(pp["name"])} (bpsc.bihar.gov.in)</a>'
                           for pp in PAPERS) + '</p>')
-total = 0
+
+def dedupe(qs):
+    seen = {}
+    for q in qs:
+        seen.setdefault(q['n'], q)      # first copy is the English one
+    return [seen[k] for k in sorted(seen)]
+
+total = broken = 0
+skipped = []
 for pi, paper in enumerate(data):
     qs = dedupe(paper['questions'])
     total += len(qs)
     parts.append(f'<h3>{html.escape(paper["paper"])}</h3>')
-    parts.append(f'<p class="note">Official question booklet se, Computer Science section '
-                 f'(Q{qs[0]["n"]}–Q{qs[-1]["n"]}). Kul {len(qs)} questions.</p>')
+    parts.append(f'<p class="note">Computer Science section · Q{qs[0]["n"]}–Q{qs[-1]["n"]}</p>')
     for q in qs:
+        key = f'{pi}-{q["n"]}'
+        fix = fixes.get(key, {})
+        stem = clean(fix.get('q', q['q']))
+        opts = {k: clean(v) for k, v in q['o'].items()}
+        opts.update({k: clean(v) for k, v in fix.get('o', {}).items()})
+        unreadable = fix.get('unreadable') or looks_broken(stem) or any(looks_broken(v) for v in opts.values())
+
+        if unreadable:          # symbols did not survive the PDF; a broken question is worse than none
+            broken += 1
+            skipped.append(str(q['n']))
+            continue
         parts.append('<div class="pyq">')
-        parts.append(f'<p class="pyq-q"><b>{q["n"]}.</b> {html.escape(q["q"])}</p>')
+        parts.append(f'<p class="pyq-q"><b>{q["n"]}.</b> {html.escape(stem)}</p>')
         parts.append('<ul class="pyq-o">')
-        for letter in sorted(q['o']):
-            parts.append(f'<li><span>{letter}</span> {html.escape(q["o"][letter])}</li>')
+        for letter in sorted(opts):
+            parts.append(f'<li><span>{letter}</span> {html.escape(opts[letter])}</li>')
         parts.append('</ul>')
-        key = answers.get(f'{pi}-{q["n"]}')
-        if key:
-            parts.append(f'<details class="pyq-a"><summary>Answer</summary>'
-                         f'<p><b>({key})</b> {html.escape(q["o"].get(key, ""))}</p></details>')
+        parts.append(f'<div class="pyq-a" data-ans="{key}"></div>')
         parts.append('</div>')
+if skipped:
+    parts.append(f'<p class="note">Q{", Q".join(skipped)} formula-based hain; unke symbols PDF se theek nahi '
+                 f'nikalte, isliye wo sirf official booklet PDF mein hain.</p>')
 parts.append('</section>')
 io.open(out, 'w', encoding='utf-8').write('\n'.join(parts))
-print(f'{total} questions -> {out}')
+print(f'{total} questions ({broken} flagged unreadable) -> {out}')

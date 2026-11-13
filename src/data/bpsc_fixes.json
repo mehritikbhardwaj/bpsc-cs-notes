@@ -1,0 +1,18 @@
+{
+  "0-140": {"q": "The number of 1's in the binary representation of the value of the expression 9 × 16³ + 7 × 16² + 5 × 16 + 3 is"},
+  "0-141": {"q": "The Boolean expression x + x′y equals",
+            "o": {"A": "x + y", "B": "x + xy", "C": "y + yx"}},
+  "0-142": {"q": "The Boolean expression AB + A′B + A′C + AC is independent of Boolean variable"},
+  "0-143": {"q": "The Boolean expression A + BC equals",
+            "o": {"A": "(A′ + B)(A′ + C)", "B": "(A + B)(A′ + C)", "C": "(A + B)(A + C)"}},
+  "0-144": {"q": "The Boolean expression x + xy will be equal to", "o": {"A": "x", "B": "y", "C": "x + y"}},
+  "0-145": {"q": "The Boolean expression x(x + y) is equal to"},
+  "0-146": {"q": "If x is a Boolean variable, then (((x′)′)′)′ will be",
+            "o": {"A": "x′", "B": "x", "C": "x + x′"}},
+  "0-148": {"q": "Simplified form of the Boolean function F = A′C + A′B + AB′C + BC is",
+            "o": {"A": "F = C + A′B", "B": "F = A′B + B′C", "C": "F = BC + A′B"}},
+  "0-150": {"q": "The minimum number of NAND gates required to implement the Boolean function f = x′y + xy′ is"},
+  "0-91":  {"q": "The postfix expression equivalent of the prefix expression * + − a b c d is", "unreadable": true},
+  "0-136": {"unreadable": true},
+  "0-138": {"unreadable": true}
+}
