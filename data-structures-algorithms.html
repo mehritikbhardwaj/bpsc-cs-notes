@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<title>Data Structures &amp; Algorithms Notes in Hindi | STET &amp; BPSC TRE CS</title>
+<meta name="description" content="Data Structures &amp; Algorithms ke complete notes Hindi mein — Introduction, Array, Stack, Queue, Linked List. STET aur BPSC TRE Computer Science exam ke liye.">
+<link rel="canonical" href="https://bpsc-cs-notes.vercel.app/data-structures-algorithms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structures &amp; Algorithms Notes in Hindi | STET &amp; BPSC TRE CS">
+<meta property="og:description" content="Data Structures &amp; Algorithms ke complete notes Hindi mein — Introduction, Array, Stack, Queue, Linked List. STET aur BPSC TRE Computer Science exam ke liye.">
+<meta property="og:url" content="https://bpsc-cs-notes.vercel.app/data-structures-algorithms">
+<meta property="og:site_name" content="CS Notes — STET / BPSC TRE">
+<meta property="og:locale" content="hi_IN">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Data Structures & Algorithms", "description": "Data Structures & Algorithms ke complete notes Hindi mein — Introduction, Array, Stack, Queue, Linked List. STET aur BPSC TRE Computer Science exam ke liye.", "inLanguage": "hi-IN", "mainEntityOfPage": "https://bpsc-cs-notes.vercel.app/data-structures-algorithms", "articleSection": "Computer Science", "about": ["Introduction", "Array", "Stack", "Queue", "Linked List", "Trees", "Tree Traversal", "Binary Heap", "Graphs", "Graph Algorithms"], "isPartOf": {"@type": "Course", "name": "STET / BPSC TRE Computer Science Notes", "url": "https://bpsc-cs-notes.vercel.app"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CS Notes", "item": "https://bpsc-cs-notes.vercel.app"}, {"@type": "ListItem", "position": 2, "name": "Data Structures & Algorithms", "item": "https://bpsc-cs-notes.vercel.app/data-structures-algorithms"}]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f3ff;--paper:#ffffff;--ink:#1e1b3a;--muted:#6b6890;--line:#e7e4f7;
+  --brand:#4f46e5;--brand2:#7c3aed;--brand-soft:#eef0ff;
+  --fact:#fff7e0;--fact-ink:#8a5a00;--ex:#e8f8ef;--ex-ink:#1d7a45;--note:#ffecec;--note-ink:#b42318;--prac:#e8f1ff;--prac-ink:#1d4ed8;
+  --add:#9333ea;--add-soft:#f6edff;--code:#f4f3fb;--fs:17px;--side:290px;
+  --shadow:0 1px 2px rgba(30,27,58,.06),0 6px 20px rgba(30,27,58,.06);
+}
+[data-theme="dark"]{
+  --bg:#0f0e1a;--paper:#1a1830;--ink:#ecebff;--muted:#a3a0c7;--line:#2c2950;
+  --brand:#8b8cff;--brand2:#b28cff;--brand-soft:#24224a;
+  --fact:#2e2614;--fact-ink:#f3c766;--ex:#132a1f;--ex-ink:#6fd29b;--note:#331a1c;--note-ink:#ff8f86;--prac:#16244a;--prac-ink:#8fb4ff;
+  --add:#c99bff;--add-soft:#2a1d45;--code:#23213d;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:130px}
+body{margin:0;background:var(--bg);color:var(--ink);font:var(--fs)/1.7 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.brand,.card b,.pg b,.kicker,button{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+a{color:var(--brand)}
+code,pre{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.84em}
+button{font-size:14px}
+
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;height:60px;padding:0 14px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:17px;min-width:0}
+.logo{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:17px}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font-weight:600;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.sp{flex:1}
+.ibtn{height:40px;min-width:40px;padding:0 10px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ibtn:hover{border-color:var(--brand)}
+.searchbtn{min-width:220px;justify-content:flex-start;color:var(--muted);font-weight:600}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:0 3px 3px 0}
+
+.wrap{display:flex;max-width:1360px;margin:0 auto}
+aside{position:sticky;top:60px;height:calc(100vh - 60px);width:var(--side);flex:none;overflow-y:auto;padding:16px 12px 40px;border-right:1px solid var(--line)}
+.side-prog{margin:4px 6px 4px;padding:12px 14px;border-radius:16px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));font-size:13.5px;font-weight:600}
+.side-prog b{font:800 18px "Plus Jakarta Sans",system-ui,sans-serif}
+.pbar2{margin-top:8px;height:6px;border-radius:99px;background:rgba(255,255,255,.3);overflow:hidden}
+.pbar2 i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .4s}
+.buybtn{border:0;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px rgba(79,70,229,.3)}
+.buybtn:disabled{opacity:.6;cursor:progress}
+.side-buy{display:block;margin:10px 6px 0;padding:12px 14px;border-radius:14px;text-align:center;border:0;width:calc(100% - 12px);cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);z-index:99;max-width:min(92vw,340px);padding:11px 16px;border-radius:14px;background:#1b1830;color:#fff;font:600 13.5px "Plus Jakarta Sans",system-ui,sans-serif;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.views{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font:700 12.5px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
+.side-h{font:800 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 10px 8px}
+.side-ch{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14.5px;line-height:1.3}
+.side-ch:hover{background:var(--brand-soft)}
+.side-ch.active{background:var(--brand-soft);color:var(--brand)}
+.side-ch .e{width:30px;height:30px;flex:none;border-radius:9px;display:grid;place-items:center;background:hsl(var(--h) 80% 94%);font-size:15px}
+[data-theme="dark"] .side-ch .e{background:hsl(var(--h) 35% 22%)}
+.side-ch .tick{margin-left:auto;color:#16a34a;font-weight:800;display:none}
+.side-ch.is-done .tick{display:inline}
+.side-topics{margin:2px 0 8px 50px;padding:0;list-style:none;display:none}
+.side-topics.open{display:block}
+.side-topics a{display:block;padding:4px 8px;border-radius:8px;font-size:13.5px;color:var(--muted);text-decoration:none;line-height:1.35}
+.side-topics a:hover,.side-topics a.active{color:var(--brand);background:var(--brand-soft)}
+main{flex:1;min-width:0;padding:22px clamp(14px,3.5vw,44px) 110px}
+.view{max-width:860px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:26px 24px 22px;color:#fff;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 60%,#c026d3 120%);box-shadow:var(--shadow)}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero h1{margin:0;font-size:clamp(24px,5.5vw,32px);line-height:1.15;font-weight:800}
+.hero p{margin:4px 0 0;opacity:.9;font-size:15px;font-weight:600}
+.hero .bigsearch{position:relative;z-index:1;margin-top:18px;width:100%;display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:16px;border:0;background:#fff;color:#6b6890;font:600 15.5px "Nunito Sans",system-ui,sans-serif;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.stats{position:relative;z-index:1;display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,.16);border-radius:14px;padding:8px 14px;font-size:13px;line-height:1.3}
+.stat b{display:block;font:800 19px "Plus Jakarta Sans",system-ui,sans-serif}
+.pbar{position:relative;z-index:1;margin-top:14px;height:8px;border-radius:99px;background:rgba(255,255,255,.25);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .4s}
+.continue{display:none;margin-top:16px;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.continue.show{display:flex}
+.continue .e{font-size:26px}
+.continue small{display:block;color:var(--muted);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.continue b{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+.continue .go{margin-left:auto;font-size:22px;color:var(--brand)}
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;margin:28px 2px 12px}
+.sec-title h2{margin:0;font-size:20px;font-weight:800}
+.sec-title span{color:var(--muted);font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.card{position:relative;display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:20px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:hsl(var(--h) 70% 70%)}
+.card .e{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:hsl(var(--h) 85% 94%)}
+[data-theme="dark"] .card .e{background:hsl(var(--h) 35% 22%)}
+.card b{font-size:15.5px;line-height:1.3}
+.card small{color:var(--muted);font-size:12.5px;line-height:1.35}
+.card .num{position:absolute;top:14px;right:14px;font:800 12px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--muted)}
+.card.is-done .num{color:#fff;background:#16a34a;border-radius:99px;padding:2px 8px}
+
+.chapter{display:none}
+.chapter.show{display:block}
+.banner{display:flex;flex-wrap:wrap;align-items:center;gap:14px 16px;padding:22px;border-radius:24px;background:linear-gradient(135deg,hsl(var(--h) 85% 95%),hsl(calc(var(--h) + 40) 85% 93%));border:1px solid hsl(var(--h) 60% 86%)}
+[data-theme="dark"] .banner{background:linear-gradient(135deg,hsl(var(--h) 35% 18%),hsl(calc(var(--h) + 40) 35% 16%));border-color:hsl(var(--h) 30% 28%)}
+.b-emoji{width:62px;height:62px;flex:none;border-radius:18px;background:var(--paper);display:grid;place-items:center;font-size:32px;box-shadow:var(--shadow)}
+.b-text{flex:1;min-width:200px}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:hsl(var(--h) 55% 38%)}
+[data-theme="dark"] .kicker{color:hsl(var(--h) 70% 75%)}
+.banner h2{margin:2px 0 2px;font-size:clamp(22px,5vw,30px);line-height:1.15;font-weight:800}
+.b-meta{color:var(--muted);font-size:14px;font-weight:600}
+.done-btn{border:2px solid hsl(var(--h) 60% 60%);background:var(--paper);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:800;cursor:pointer}
+.done-btn.on{background:#16a34a;border-color:#16a34a;color:#fff}
+.chips-wrap{position:sticky;top:60px;z-index:5;margin:14px -4px 0;padding:10px 4px;background:var(--bg)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:7px 13px;border-radius:99px;background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font:700 13px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
+.chip:hover,.chip.active{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+.content{margin-top:6px}
+.content h3{position:relative;margin:30px 0 12px;padding:14px 16px 14px 18px;border-radius:16px;background:var(--paper);border:1px solid var(--line);font-size:19px;font-weight:800;line-height:1.3;box-shadow:var(--shadow)}
+.content h3::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:5px;border-radius:0 5px 5px 0;background:hsl(var(--h) 70% 55%)}
+.content h4{font-size:16.5px;font-weight:800;margin:22px 0 6px;color:hsl(var(--h) 55% 38%)}
+[data-theme="dark"] .content h4{color:hsl(var(--h) 70% 75%)}
+.content p,.content ul,.content ol{margin:8px 0 12px}
+.content ul,.content ol{padding-left:24px}
+.content li{margin:5px 0}
+.content li::marker{color:hsl(var(--h) 60% 50%)}
+.content b{font-weight:700}
+.tbl{overflow-x:auto;margin:12px 0 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:hsl(var(--h) 80% 96%);font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
+[data-theme="dark"] th{background:hsl(var(--h) 30% 20%)}
+tr:last-child td{border-bottom:0}
+pre{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:14px;overflow-x:auto;line-height:1.55}
+:not(pre)>code{background:var(--code);padding:1px 6px;border-radius:6px}
+.fact,.example,.note,.practice{position:relative;border-radius:16px;padding:38px 16px 12px;margin:16px 0}
+.fact::before,.example::before,.note::before,.practice::before{position:absolute;top:10px;left:16px;font:800 12px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.fact{background:var(--fact)}.fact::before{content:"💡 Exam fact";color:var(--fact-ink)}
+.example{background:var(--ex)}.example::before{content:"✍️ Example";color:var(--ex-ink)}
+.note{background:var(--note)}.note::before{content:"⚠️ Dhyan dein";color:var(--note-ink)}
+.practice{background:var(--prac)}.practice::before{content:"📝 Practice";color:var(--prac-ink)}
+.fact>ul{margin:0}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px}
+.pg{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:18px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.pg.next{text-align:right}
+.pg small{color:var(--muted);font-weight:700}
+.pg b{font-size:15px;line-height:1.3}
+.pg:hover{border-color:var(--brand)}
+
+.overlay{position:fixed;inset:0;z-index:60;display:none;background:rgba(15,14,26,.45);backdrop-filter:blur(3px)}
+.overlay.open{display:block}
+.sbox{position:absolute;left:50%;top:16px;transform:translateX(-50%);width:min(680px,calc(100% - 20px));max-height:calc(100% - 32px);display:flex;flex-direction:column;background:var(--paper);border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
+.srow{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.srow input::-webkit-search-cancel-button{display:none}
+.srow input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font:600 17px "Nunito Sans",system-ui,sans-serif;padding:6px 2px}
+.sres{overflow-y:auto;padding:8px}
+.sres a{display:block;padding:10px 12px;border-radius:14px;text-decoration:none;color:var(--ink)}
+.sres a:hover,.sres a.sel{background:var(--brand-soft)}
+.sres a b{display:block;font:700 15px "Plus Jakarta Sans",system-ui,sans-serif}
+.sres a small{display:block;color:var(--muted);font-size:13px;line-height:1.4}
+.sres mark{background:#fde68a;color:#1e1b3a;border-radius:4px;padding:0 2px}
+.sempty{padding:22px;text-align:center;color:var(--muted);font-size:14.5px}
+.quick{display:flex;flex-wrap:wrap;gap:8px;padding:6px 6px 12px}
+.quick button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:6px 12px;font-weight:700;cursor:pointer}
+
+.bottom{display:none}
+.scrim{display:none}
+@media (max-width:960px){
+  aside{position:fixed;left:0;top:0;height:100%;z-index:55;width:min(86vw,330px);background:var(--paper);transform:translateX(-102%);transition:transform .22s ease;box-shadow:8px 0 30px rgba(0,0,0,.18)}
+  body.nav-open aside{transform:none}
+  body.nav-open .scrim{display:block;position:fixed;inset:0;z-index:50;background:rgba(15,14,26,.4)}
+  .views{padding:5px 8px;font-size:11.5px;gap:3px}
+  .hide-m{display:none!important}
+  .bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:45;padding:6px;border-radius:22px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(30,27,58,.18)}
+  .bottom button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0;border-radius:16px;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer}
+  .bottom button span{font-size:20px;line-height:1.2}
+  .bottom button.on{color:var(--brand);background:var(--brand-soft)}
+  main{padding-top:16px}
+}
+@media (max-width:520px){
+  :root{--fs:16.5px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card{padding:14px;border-radius:18px}
+  .card b{font-size:14.5px}
+  .card .e{width:40px;height:40px;font-size:21px;border-radius:12px}
+  .hero{padding:22px 18px 20px;border-radius:22px}
+  .banner{padding:18px;border-radius:20px}
+  .b-emoji{width:52px;height:52px;font-size:27px;border-radius:15px}
+  .done-btn{width:100%}
+  .pager{grid-template-columns:1fr}
+  .pg.next{text-align:left}
+  .content h3{font-size:17.5px;padding:12px 14px 12px 16px}
+  table{font-size:14px}
+  th,td{padding:8px 10px}
+}
+@media print{
+  html,body{background:#fff!important;height:auto!important;overflow:visible!important}
+  body:not(.paid)>*{display:none!important}
+  body:not(.paid)::before{content:"\1F4D8\00a0 CS Notes \2014 STET / BPSC TRE";display:block;margin:60px 0 14px;font:800 24px system-ui,sans-serif;color:#111;text-align:center}
+  body:not(.paid)::after{content:"Printing and PDF export are turned off. Get the complete PDF from bpsc-cs-notes.vercel.app";display:block;max-width:420px;margin:0 auto;font:16px/1.6 system-ui,sans-serif;color:#444;text-align:center}
+  body.paid .top,body.paid aside,body.paid .bottom,body.paid .scrim,body.paid .ov,body.paid .chips-wrap,body.paid .pager,body.paid .done-btn,body.paid .toast{display:none!important}
+  body.paid main{padding:0}
+  body.paid .chapter{display:block!important;break-before:page}
+  body.paid .chapter:first-of-type{break-before:auto}
+}
+</style>
+</head>
+<body data-chapter="data-structures-algorithms">
+<header class="top">
+  <button class="ibtn" id="menuBtn" aria-label="Index" style="display:none">☰</button>
+  <a class="brand" href="/"><div class="logo">📘</div><span>CS Notes<small>STET · BPSC TRE</small></span></a>
+  <span class="sp"></span>
+  <button class="ibtn searchbtn hide-m" data-open-search>🔍 Search… <kbd style="margin-left:auto;font-size:11px;opacity:.7">/</kbd></button>
+  <span class="views" id="views" hidden></span>
+  <button class="ibtn buybtn hide-m" id="buyBtn">⬇️ Download PDF</button>
+  <button class="ibtn" id="fontBtn" aria-label="Text size" title="Text size">Aa</button>
+  <button class="ibtn" id="themeBtn" aria-label="Dark mode">🌙</button>
+  <div class="progress" id="progress"></div>
+</header>
+<div class="scrim" id="scrim"></div>
+<div class="wrap">
+  <aside id="side"></aside>
+  <main>
+    <div class="view" id="chapters">
+<section class="chapter show" id="data-structures-algorithms" style="--h:329">
+<header class="banner"><div class="b-emoji">🌳</div><div class="b-text"><div class="kicker">Chapter 7</div><h1>Data Structures &amp; Algorithms</h1>
+<div class="b-meta">15 topics · ~14 min read</div></div>
+<button class="done-btn" data-done="data-structures-algorithms">☐ Mark as done</button></header>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#data-structures-algorithms-introduction">Introduction</a><a class="chip" href="#data-structures-algorithms-array">Array</a><a class="chip" href="#data-structures-algorithms-stack">Stack</a><a class="chip" href="#data-structures-algorithms-queue">Queue</a><a class="chip" href="#data-structures-algorithms-linked-list">Linked List</a><a class="chip" href="#data-structures-algorithms-trees">Trees</a><a class="chip" href="#data-structures-algorithms-tree-traversal">Tree Traversal</a><a class="chip" href="#data-structures-algorithms-binary-heap">Binary Heap</a><a class="chip" href="#data-structures-algorithms-graphs">Graphs</a><a class="chip" href="#data-structures-algorithms-graph-algorithms">Graph Algorithms</a><a class="chip" href="#data-structures-algorithms-hashing">Hashing</a><a class="chip" href="#data-structures-algorithms-algorithm-analysis">Algorithm Analysis</a><a class="chip" href="#data-structures-algorithms-searching">Searching</a><a class="chip" href="#data-structures-algorithms-sorting">Sorting</a><a class="chip" href="#data-structures-algorithms-stack-queue-search-sort-in-python">Stack, Queue, Search &amp; Sort in Python</a></div></div>
+<div class="content">
+
+
+<h3 id="data-structures-algorithms-introduction">Introduction</h3>
+<ul>
+<li>A data structure is a way of organising and storing data in a computer so it can be accessed and used efficiently. Fundamental building blocks of programming.</li>
+<li>Notable contributors: Donald Knuth ("The Art of Computer Programming"), Edsger W. Dijkstra, John von Neumann, Alan Turing.</li>
+<li>Operations: searching, sorting, insertion, deletion, updation, traversal.</li>
+</ul>
+<h4>Classification</h4>
+<ul>
+<li><b>Primitive</b> (simple, predefined): integer (0, 42, −11), float (0.0, 4.2), char ('a'), boolean (0/1), pointer (memory address).</li>
+<li><b>Non-primitive</b> (complex, user-defined):
+<ul><li><b>Linear</b>: array, linked list, stack, queue.</li>
+<li><b>Non-linear</b>: tree, graph.</li></ul></li>
+<li><b>Static</b> (fixed size): array. <b>Dynamic</b>: linked list, stack, queue (when implemented with linked list).</li>
+</ul>
+<table>
+<tr><th>Data type (C/Java typical)</th><th>Size</th></tr>
+<tr><td>char / byte</td><td>1 byte</td></tr>
+<tr><td>short</td><td>2 bytes</td></tr>
+<tr><td>int, float</td><td>4 bytes</td></tr>
+<tr><td>long (Java), double</td><td>8 bytes</td></tr>
+<tr><td>boolean</td><td>1 bit (logically; JVM uses 1 byte)</td></tr>
+</table>
+
+<h3 id="data-structures-algorithms-array">Array</h3>
+<ul>
+<li>Collection of similar elements in <b>contiguous</b> memory; random access by index; index starts at 0.</li>
+<li>C: <code>int arr[3] = {1,2,3};</code> &nbsp; Java: <code>int[] arr = new int[5];</code>, multi-dimensional <code>int[][] a;</code></li>
+<li>Advantages: easy to store many elements of the same type, fast access, used heavily in caching. Disadvantage: fixed size → memory wasted if fewer elements inserted; insertion/deletion costly.</li>
+<li>Size of <code>int arr[15]</code> (4-byte int) = 4 × 15 = <b>60 bytes</b>.</li>
+</ul>
+<h4>Address calculation</h4>
+<p>1-D: <code>Addr(A[i]) = B + W × (i − LB)</code><br>
+2-D row-major: <code>Addr(A[i][j]) = B + W × [(i − Lr) × N + (j − Lc)]</code> (N = number of columns)<br>
+2-D column-major: <code>Addr(A[i][j]) = B + W × [(j − Lc) × M + (i − Lr)]</code> (M = number of rows)<br>
+Number of elements in A[L1:U1, L2:U2] = (U1 − L1 + 1) × (U2 − L2 + 1).</p>
+<div class="example">int A[10][20], base 1000, W = 4. A[2][3] row-major = 1000 + 4(2×20 + 3) = <b>1172</b>; column-major = 1000 + 4(3×10 + 2) = <b>1128</b>.<br>
+A[−3:5, 6:11] holds 9 × 6 = <b>54</b> elements.</div>
+
+<h3 id="data-structures-algorithms-stack">Stack</h3>
+<ul>
+<li>Linear structure following <b>LIFO</b> (Last In First Out) — like a pile of plates. Only one end (top) is open.</li>
+<li>Operations: <b>push</b> (add on top), <b>pop</b> (remove top), <b>peek/top</b> (read top without removing), <b>isEmpty</b>, <b>isFull</b>.</li>
+<li>Pop on empty stack → <b>underflow</b>; push on full stack → <b>overflow</b>.</li>
+<li>Applications: function calls (call stack), recursion, undo/redo, expression evaluation &amp; conversion, parenthesis matching, browser back button, stock span problem, DFS.</li>
+<li>Disadvantage: no random access; too many items can cause stack overflow.</li>
+</ul>
+<h4>Expression notations</h4>
+<table>
+<tr><th>Notation</th><th>Form</th><th>Example</th></tr>
+<tr><td>Infix</td><td>operand operator operand</td><td>a + b</td></tr>
+<tr><td>Prefix (Polish)</td><td>operator first</td><td>+ a b</td></tr>
+<tr><td>Postfix (Reverse Polish)</td><td>operator last</td><td>a b +</td></tr>
+</table>
+<p>Precedence (high → low): <code>() [] {}</code> → <code>^</code> (right to left) → <code>* / %</code> (left to right) → <code>+ −</code> (left to right).</p>
+<div class="example">A + B * C → postfix <b>ABC*+</b>, prefix <b>+A*BC</b><br>
+A * B + C → postfix <b>AB*C+</b>, prefix <b>+*ABC</b><br>
+(A + B) * (C − D) → postfix <b>AB+CD−*</b>, prefix <b>*+AB−CD</b><br>
+(A + B) * C − (D − E) ^ F → postfix <b>AB+C*DE−F^−</b><br>
+Evaluate: 5 + 1 × 6 = 11; (5 + 1) × 6 = 36; 2^2^3 = 2^8 = 256 (right associative).</div>
+<p><b>Postfix evaluation using stack:</b> scan left→right; push operands; on operator pop two, apply, push result.</p>
+
+<h3 id="data-structures-algorithms-queue">Queue</h3>
+<ul>
+<li>Linear ordered list following <b>FIFO</b> (First In First Out). Two ends: <b>rear</b> (insertion) and <b>front</b> (deletion).</li>
+<li>Operations: <b>enqueue</b> (add), <b>dequeue</b> (remove), peek, isEmpty, isFull.</li>
+<li>Implemented using arrays (static) or linked list (dynamic); also via stacks.</li>
+<li>Applications: CPU scheduling, printer spooling, handling website traffic (request queue), routers (packet queue), traffic management, BFS, radix sort.</li>
+</ul>
+<h4>Types of queue</h4>
+<ol>
+<li><b>Linear / simple queue</b> — insert at rear, delete from front.</li>
+<li><b>Circular queue (ring buffer)</b> — last position connected to first; avoids wasted space.</li>
+<li><b>Priority queue</b> — served by priority; same priority → FIFO. Implemented with heap.</li>
+<li><b>Deque</b> (double-ended) — insert/delete at both ends (palindrome checker). Types: <i>input-restricted</i> (insert at one end, delete at both) and <i>output-restricted</i> (delete at one end, insert at both).</li>
+</ol>
+<div class="fact">Empty queue: front = rear = −1. One element: front = rear. Full (linear, size N): rear = N − 1. Circular full: (rear + 1) % N == front.</div>
+
+<h3 id="data-structures-algorithms-linked-list">Linked List</h3>
+<ul>
+<li>Collection of <b>nodes</b>; each node = data + pointer (address) to next node. Elements stored anywhere in memory (not contiguous). Head points to first node; last node points to NULL.</li>
+<li>Dynamic size; memory allocated at <b>run time</b> (array: compile time). Access is <b>sequential</b> (array: random). Easy insertion/deletion; no memory pre-allocation.</li>
+<li>Types: <b>Singly</b> (one direction; hash tables), <b>Doubly</b> (prev + next; undo/redo, browser history), <b>Circular</b> (last node points to first; round-robin CPU scheduling), <b>Circular doubly</b>.</li>
+<li><b>Sentinel node</b> — dummy node that holds no data, simplifies boundary cases.</li>
+</ul>
+<pre><code>struct Node { int data; struct Node *next; };</code></pre>
+<table>
+<tr><th>Operation</th><th>Average</th><th>Worst</th></tr>
+<tr><td>Search</td><td>O(n)</td><td>O(n)</td></tr>
+<tr><td>Insertion (at known position)</td><td>O(1)</td><td>O(1)</td></tr>
+<tr><td>Deletion (at known position)</td><td>O(1)</td><td>O(1)</td></tr>
+</table>
+
+<h3 id="data-structures-algorithms-trees">Trees</h3>
+<p>Non-linear hierarchical structure with no closed loops (cycles).</p>
+<h4>Terminology</h4>
+<ul>
+<li><b>Root</b> — top node. <b>Parent / child</b>. <b>Siblings</b> — same parent. <b>Leaf / external / terminal node</b> — no child. <b>Internal node</b> — at least one child. <b>Edge</b> — link; a tree with n nodes has n − 1 edges.</li>
+<li><b>Degree of node</b> = number of children (leaf = 0). Degree of tree = max degree.</li>
+<li><b>Depth/level</b> of node = edges from root (root depth = 0). <b>Height</b> = edges on longest path from node to a leaf.</li>
+</ul>
+<h4>Types</h4>
+<ul>
+<li><b>General tree</b> — any number of children.</li>
+<li><b>Binary tree</b> — at most 2 children (0, 1, 2).
+<ul>
+<li><b>Full / proper / strict</b> — every node has 0 or 2 children (extended binary tree).</li>
+<li><b>Perfect</b> — all internal nodes have 2 children, all leaves at same level.</li>
+<li><b>Complete</b> — all levels filled except possibly last, filled left to right.</li>
+<li><b>Degenerate / skewed</b> — each node has one child (left-skewed, right-skewed).</li>
+<li><b>Balanced</b> — height difference of left and right subtrees ≤ 1.</li>
+</ul></li>
+<li><b>Binary Search Tree (BST)</b> — left child &lt; parent &lt; right child. Inorder traversal gives sorted order.</li>
+<li><b>AVL tree</b> — Adelson-Velsky &amp; Landis (1962); self-balancing BST; balance factor −1, 0, +1; rotations LL, RR, LR, RL.</li>
+<li><b>Red-Black tree</b> — Rudolf Bayer (1972); self-balancing BST. Rules: root is black; every node red or black; red node can't have red child; every path has same number of black nodes.</li>
+<li><b>B-tree</b> — Bayer &amp; McCreight (1970–72); self-balanced m-way search tree; node has multiple keys and more than two children; used in databases &amp; file systems. B+ tree stores data only in leaves.</li>
+</ul>
+<div class="fact">Max nodes at level l = 2<sup>l</sup>. Max nodes in binary tree of height h = 2<sup>h+1</sup> − 1 (levels 0–5 → 63). Min height with n nodes = ⌈log<sub>2</sub>(n+1)⌉ − 1. In a full binary tree, leaves = internal nodes + 1.</div>
+
+<h3 id="data-structures-algorithms-tree-traversal">Tree Traversal</h3>
+<ul>
+<li><b>BFS / level-order</b> — level by level; uses <b>queue</b>.</li>
+<li><b>DFS</b> — uses <b>stack</b>: <b>Preorder</b> (Root, Left, Right), <b>Inorder</b> (Left, Root, Right), <b>Postorder</b> (Left, Right, Root).</li>
+</ul>
+<div class="example">Tree: A has children B, C; B has D, E; C has F, G.<br>
+Preorder: <b>A B D E C F G</b> &nbsp; Inorder: <b>D B E A F C G</b> &nbsp; Postorder: <b>D E B F G C A</b> &nbsp; Level-order: <b>A B C D E F G</b><br>
+For a BST, inorder = keys sorted ascending. E.g. preorder 30, 20, 10, 15, 25, 23, 39, 35, 42 → inorder 10, 15, 20, 23, 25, 30, 35, 39, 42.</div>
+<p>Shortcut: for preorder mark a dot on the left of each node, inorder at the bottom, postorder on the right, then trace around the tree.</p>
+
+<h3 id="data-structures-algorithms-binary-heap">Binary Heap</h3>
+<ul>
+<li>Complete binary tree. <b>Max-heap</b>: parent ≥ children (root = maximum). <b>Min-heap</b>: parent ≤ children (root = minimum).</li>
+<li>Used in heap sort and priority queues. Insert/delete O(log n); get-min/max O(1).</li>
+</ul>
+
+<h3 id="data-structures-algorithms-graphs">Graphs</h3>
+<ul>
+<li>Non-linear structure of <b>vertices (nodes)</b> and <b>edges</b>; can contain cycles. Used to represent networks.</li>
+<li>Applications: Google Maps (shortest path), Google search (PageRank), WWW, social networks.</li>
+<li>Types: directed, undirected, weighted, unweighted, cyclic, acyclic (DAG), connected, disconnected, complete, bipartite.</li>
+<li><b>Bipartite</b> — nodes divided into two sets such that no edge joins nodes of the same set (students ↔ courses).</li>
+<li><b>Complete graph</b> — every pair connected: edges = n(n−1)/2.</li>
+<li><b>Degree</b> of a node = number of edges connected. Sum of degrees = 2 × edges. Size of graph = number of edges.</li>
+<li><b>Negative cycle</b> — loop whose total edge weight is negative.</li>
+</ul>
+<h4>Representation</h4>
+<ul><li><b>Adjacency matrix</b> — V×V matrix, 1 if edge exists; O(V²) space.</li><li><b>Adjacency list</b> — each vertex keeps list of neighbours; O(V+E) space.</li></ul>
+<h4>Graph traversal</h4>
+<ul><li><b>BFS</b> uses a queue (FIFO) — better when target is close to source; finds shortest path in unweighted graphs.</li><li><b>DFS</b> uses a stack / recursion — better when target is far from source.</li><li>Both O(V + E).</li></ul>
+
+<h3 id="data-structures-algorithms-graph-algorithms">Graph Algorithms</h3>
+<h4>Shortest path</h4>
+<table>
+<tr><th></th><th>Dijkstra</th><th>Bellman-Ford</th><th>Floyd-Warshall</th></tr>
+<tr><td>Weights</td><td>Non-negative only</td><td>+ve/−ve; detects negative cycles</td><td>+ve/−ve; no negative cycles</td></tr>
+<tr><td>Type</td><td>Single source; greedy</td><td>Single source; dynamic programming</td><td>All pairs; dynamic programming</td></tr>
+<tr><td>Uses</td><td>Priority queue (heap)</td><td>Edge relaxation V−1 times</td><td>2-D matrix</td></tr>
+<tr><td>Time</td><td>O(E log V)</td><td>O(V·E)</td><td>O(V³)</td></tr>
+<tr><td>Applications</td><td>Navigation systems</td><td>Currency conversion, routing (RIP)</td><td>Network routing</td></tr>
+</table>
+<h4>Minimum Spanning Tree (MST)</h4>
+<p>A spanning tree connects all vertices without cycles using V−1 edges; MST has minimum total edge weight.</p>
+<ul>
+<li><b>Kruskal's</b> — greedy; sort edges by weight and add the smallest that doesn't form a cycle; uses <b>Union-Find</b> (disjoint set). O(E log E). Good for sparse graphs.</li>
+<li><b>Prim's</b> — greedy; start from any vertex and add the minimum-weight edge to a new vertex; uses priority queue. O(V²) with matrix, O(E log V) with heap. Good for dense graphs.</li>
+<li>Used in LAN connections, TV networks, roads and rail tracks, travelling-salesman approximations.</li>
+</ul>
+
+<h3 id="data-structures-algorithms-hashing">Hashing</h3>
+<ul>
+<li>Converts data (key) into a fixed short value (hash) using a hash function; maps keys to values; goal: <b>O(1)</b> average search.</li>
+<li>Examples: password storage, transaction protection, blockchain verification, integrity checks, unique IDs, digital signatures, OTPs.</li>
+<li><b>Collision</b> — two different keys produce the same hash.</li>
+<li><b>Perfect hashing</b> — guarantees no collisions.</li>
+</ul>
+<h4>Collision resolution</h4>
+<ol>
+<li><b>Separate chaining (open hashing)</b> — each slot holds a linked list.</li>
+<li><b>Open addressing (closed hashing)</b> — all elements stored in the table itself:
+<ul><li>Linear probing — check next slot sequentially.</li><li>Quadratic probing — add 1², 2², 3²…</li><li>Double hashing — second hash function gives step size.</li></ul></li>
+</ol>
+<table>
+<tr><th>Hash table</th><th>Average</th><th>Worst</th></tr>
+<tr><td>Search / Insert / Delete</td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td>Space</td><td>O(n)</td><td>O(n)</td></tr>
+</table>
+<h4>Hashing algorithms</h4>
+<p><b>MD5</b> — 128-bit; <b>SHA-1</b> — 160-bit; <b>SHA-2</b> (SHA-256) — 256-bit; <b>SHA-3</b> — 224/256/384/512-bit.</p>
+<p><b>Set</b> data structure stores distinct elements — no duplicates.</p>
+
+<h3 id="data-structures-algorithms-algorithm-analysis">Algorithm Analysis</h3>
+<ul>
+<li>Algorithm word from <b>Muhammad ibn Musa al-Khwarizmi</b> (Persian mathematician, 9th century).</li>
+<li><b>Big-O (O)</b> — upper bound (worst case). <b>Omega (Ω)</b> — lower bound (best case). <b>Theta (Θ)</b> — tight bound (average).</li>
+<li>Growth order: O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n²) &lt; O(n³) &lt; O(2ⁿ) &lt; O(n!).</li>
+<li><b>Divide &amp; conquer</b>: divide into sub-problems → conquer (solve each) → merge/combine. E.g. merge sort, quick sort, binary search.</li>
+<li>Other paradigms: greedy (Kruskal, Prim, Dijkstra), dynamic programming (Floyd-Warshall, Bellman-Ford), backtracking (N-queens), brute force.</li>
+</ul>
+
+<h3 id="data-structures-algorithms-searching">Searching</h3>
+<table>
+<tr><th>Search</th><th>Best</th><th>Average</th><th>Worst</th><th>Requirement</th></tr>
+<tr><td>Linear (sequential)</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>None</td></tr>
+<tr><td>Binary</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td><td>Sorted data</td></tr>
+<tr><td>Ternary</td><td>O(1)</td><td>O(log₃ n)</td><td>O(log₃ n)</td><td>Sorted</td></tr>
+<tr><td>Jump</td><td>O(1)</td><td>O(√n)</td><td>O(√n)</td><td>Sorted</td></tr>
+<tr><td>Interpolation</td><td>O(1)</td><td>O(log log n)</td><td>O(n)</td><td>Sorted, uniform</td></tr>
+<tr><td>Exponential, Fibonacci</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td><td>Sorted</td></tr>
+<tr><td>Hash search</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>Hash table</td></tr>
+</table>
+<pre><code>int binarySearch(int a[], int n, int key) {
+    int lo = 0, hi = n - 1;
+    while (lo &lt;= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] == key) return mid;
+        else if (a[mid] &lt; key) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return -1;
+}</code></pre>
+
+<h3 id="data-structures-algorithms-sorting">Sorting</h3>
+<p>Arranging data in ascending/descending order (dictionary, contact list). <b>Internal sorting</b> — in main memory; <b>external sorting</b> — uses storage device (large data, e.g. external merge sort).</p>
+<table>
+<tr><th>Algorithm</th><th>Best</th><th>Average</th><th>Worst</th><th>Space</th><th>Stable</th><th>Technique</th></tr>
+<tr><td>Bubble</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Exchange</td></tr>
+<tr><td>Selection</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Selection</td></tr>
+<tr><td>Insertion</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Insertion</td></tr>
+<tr><td>Merge</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>Yes</td><td>Divide &amp; conquer</td></tr>
+<tr><td>Quick</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>No</td><td>Divide &amp; conquer</td></tr>
+<tr><td>Heap</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>No</td><td>Heap</td></tr>
+<tr><td>Shell</td><td>O(n log n)</td><td>~O(n<sup>1.25</sup>)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Gap insertion</td></tr>
+<tr><td>Counting</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n+k)</td><td>O(k)</td><td>Yes</td><td>Non-comparison</td></tr>
+<tr><td>Radix</td><td>O(nk)</td><td>O(nk)</td><td>O(nk)</td><td>O(n+k)</td><td>Yes</td><td>Non-comparison</td></tr>
+<tr><td>Bucket</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n²)</td><td>O(n)</td><td>Yes</td><td>Distribution</td></tr>
+</table>
+<div class="fact"><ul>
+<li>Fastest in practice (general): <b>Quick sort</b>. Simplest: <b>Bubble sort</b>.</li>
+<li>Best for nearly sorted input &amp; small arrays: <b>Insertion sort</b>.</li>
+<li>Minimum number of swaps / pays least attention to ordering: <b>Selection sort</b> (also good for small records).</li>
+<li>Uses recursion: <b>Quick &amp; Merge</b>. Best worst-case: <b>Merge</b> (and heap) — O(n log n).</li>
+<li>Selection sort works by "transform and conquer"/selection; quick &amp; merge by divide and conquer.</li>
+</ul></div>
+<pre><code>void bubbleSort(int a[], int n) {
+    for (int i = 0; i &lt; n - 1; i++)
+        for (int j = 0; j &lt; n - 1 - i; j++)
+            if (a[j] &gt; a[j + 1]) { int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; }
+}</code></pre>
+<h3 id="data-structures-algorithms-stack-queue-search-sort-in-python">Stack, Queue, Search & Sort in Python</h3>
+<h4>Stack using list</h4>
+<pre><code>stack = []
+stack.append(10)      # push
+stack.append(20)
+top = stack[-1]       # peek → 20
+x = stack.pop()       # pop → 20
+is_empty = len(stack) == 0</code></pre>
+<h4>Queue & deque</h4>
+<pre><code>queue = []
+queue.append(1)       # enqueue at rear
+queue.append(2)
+x = queue.pop(0)      # dequeue from front → 1
+
+from collections import deque
+dq = deque()
+dq.append(1); dq.appendleft(0)   # insert at both ends
+dq.pop(); dq.popleft()           # delete from both ends</code></pre>
+<h4>Linear & binary search</h4>
+<pre><code>def linear_search(a, key):
+    for i in range(len(a)):
+        if a[i] == key:
+            return i
+    return -1
+
+def binary_search(a, key):      # a must be sorted
+    lo, hi = 0, len(a) - 1
+    while lo &lt;= hi:
+        mid = (lo + hi) // 2
+        if a[mid] == key:
+            return mid
+        elif a[mid] &lt; key:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1</code></pre>
+<h4>Bubble, selection & insertion sort</h4>
+<pre><code>def bubble_sort(a):
+    n = len(a)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if a[j] &gt; a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+
+def selection_sort(a):
+    for i in range(len(a)):
+        m = i
+        for j in range(i + 1, len(a)):
+            if a[j] &lt; a[m]:
+                m = j
+        a[i], a[m] = a[m], a[i]
+
+def insertion_sort(a):
+    for i in range(1, len(a)):
+        key, j = a[i], i - 1
+        while j &gt;= 0 and a[j] &gt; key:
+            a[j + 1] = a[j]
+            j -= 1
+        a[j + 1] = key</code></pre>
+<div class="example">Bubble sort on [5, 1, 4, 2] — Pass 1: [1, 4, 2, 5]; Pass 2: [1, 2, 4, 5]; Pass 3: no swap. Number of comparisons in worst case = n(n−1)/2 = 6.</div>
+<h4>Hashing in Python</h4>
+<p>Python <code>dict</code> is a hash table (map ADT: key → value). Simple hash function: <code>h(key) = key % table_size</code>. Keys 15, 25, 7 with size 10 → slots 5, 5, 7 → 15 and 25 collide (resolve by chaining or probing).</p>
+</div><nav class="pager"><a class="pg prev" href="/problem-solving"><small>← Previous</small><b>🧭 Problem Solving</b></a><a class="pg next" href="/c-programming-complete"><small>Next →</small><b>🅲 C Programming (Complete)</b></a></nav></section>
+    </div>
+  </main>
+</div>
+
+<nav class="bottom" id="bottom">
+  <button id="bIndex"><span>📚</span>Chapters</button>
+  <button id="bBuy"><span>⬇️</span>PDF</button>
+  <button data-open-search><span>🔍</span>Search</button>
+  <button id="bTop"><span>⬆️</span>Top</button>
+</nav>
+
+<div class="overlay" id="overlay">
+  <div class="sbox">
+    <div class="srow"><span>🔍</span><input id="sq" type="search" placeholder="Topic ya keyword likho…" autocomplete="off"><button class="ibtn" id="sclose">✕</button></div>
+    <div class="sres" id="sres"></div>
+  </div>
+</div>
+
+<script id="meta" type="application/json">[{"id": "computer-fundamentals", "n": 1, "title": "Computer Fundamentals", "emoji": "🖥️", "hue": 47, "mins": 5, "tc": 10}, {"id": "number-system-codes", "n": 2, "title": "Number System & Codes", "emoji": "🔢", "hue": 94, "mins": 6, "tc": 10}, {"id": "boolean-algebra-digital-electronics", "n": 3, "title": "Boolean Algebra & Digital Electronics", "emoji": "💡", "hue": 141, "mins": 7, "tc": 7}, {"id": "computer-architecture-memory", "n": 4, "title": "Computer Architecture & Memory", "emoji": "🧠", "hue": 188, "mins": 6, "tc": 12}, {"id": "operating-system", "n": 5, "title": "Operating System", "emoji": "💻", "hue": 235, "mins": 11, "tc": 15}, {"id": "problem-solving", "n": 6, "title": "Problem Solving", "emoji": "🧭", "hue": 282, "mins": 2, "tc": 6}, {"id": "data-structures-algorithms", "n": 7, "title": "Data Structures & Algorithms", "emoji": "🌳", "hue": 329, "mins": 14, "tc": 15}, {"id": "c-programming-complete", "n": 8, "title": "C Programming (Complete)", "emoji": "🅲", "hue": 16, "mins": 11, "tc": 13}, {"id": "c-object-oriented-programming", "n": 9, "title": "C++ & Object-Oriented Programming", "emoji": "🧩", "hue": 63, "mins": 7, "tc": 13}, {"id": "java-basics", "n": 10, "title": "Java Basics", "emoji": "☕", "hue": 110, "mins": 2, "tc": 3}, {"id": "python-programming-pandas", "n": 11, "title": "Python Programming & Pandas", "emoji": "🐍", "hue": 157, "mins": 5, "tc": 8}, {"id": "understanding-data", "n": 12, "title": "Understanding Data", "emoji": "📊", "hue": 204, "mins": 2, "tc": 4}, {"id": "dbms-sql", "n": 13, "title": "DBMS & SQL", "emoji": "🗄️", "hue": 251, "mins": 15, "tc": 22}, {"id": "computer-networking", "n": 14, "title": "Computer Networking", "emoji": "🌐", "hue": 298, "mins": 12, "tc": 15}, {"id": "web-technology", "n": 15, "title": "Web Technology", "emoji": "🕸️", "hue": 345, "mins": 3, "tc": 4}, {"id": "internet-of-things-iot", "n": 16, "title": "Internet of Things (IoT)", "emoji": "📡", "hue": 32, "mins": 4, "tc": 7}, {"id": "cloud-computing", "n": 17, "title": "Cloud Computing", "emoji": "☁️", "hue": 79, "mins": 2, "tc": 5}, {"id": "cyber-security", "n": 18, "title": "Cyber Security", "emoji": "🛡️", "hue": 126, "mins": 3, "tc": 5}, {"id": "software-engineering", "n": 19, "title": "Software Engineering", "emoji": "🛠️", "hue": 173, "mins": 5, "tc": 6}, {"id": "theory-of-computation", "n": 20, "title": "Theory of Computation", "emoji": "⚙️", "hue": 220, "mins": 4, "tc": 11}, {"id": "artificial-intelligence-ml", "n": 21, "title": "Artificial Intelligence & ML", "emoji": "🤖", "hue": 267, "mins": 3, "tc": 4}, {"id": "multimedia", "n": 22, "title": "Multimedia", "emoji": "🎬", "hue": 314, "mins": 2, "tc": 6}, {"id": "society-law-ethics", "n": 23, "title": "Society, Law & Ethics", "emoji": "⚖️", "hue": 1, "mins": 2, "tc": 5}, {"id": "emerging-trends", "n": 24, "title": "Emerging Trends", "emoji": "🚀", "hue": 48, "mins": 2, "tc": 4}, {"id": "quick-revision-one-liners", "n": 25, "title": "Quick Revision: One-liners", "emoji": "⚡", "hue": 95, "mins": 2, "tc": 2}]</script>
+<script id="topics" type="application/json">[{"id": "data-structures-algorithms-introduction", "t": "Introduction", "a": false}, {"id": "data-structures-algorithms-array", "t": "Array", "a": false}, {"id": "data-structures-algorithms-stack", "t": "Stack", "a": false}, {"id": "data-structures-algorithms-queue", "t": "Queue", "a": false}, {"id": "data-structures-algorithms-linked-list", "t": "Linked List", "a": false}, {"id": "data-structures-algorithms-trees", "t": "Trees", "a": false}, {"id": "data-structures-algorithms-tree-traversal", "t": "Tree Traversal", "a": false}, {"id": "data-structures-algorithms-binary-heap", "t": "Binary Heap", "a": false}, {"id": "data-structures-algorithms-graphs", "t": "Graphs", "a": false}, {"id": "data-structures-algorithms-graph-algorithms", "t": "Graph Algorithms", "a": false}, {"id": "data-structures-algorithms-hashing", "t": "Hashing", "a": false}, {"id": "data-structures-algorithms-algorithm-analysis", "t": "Algorithm Analysis", "a": false}, {"id": "data-structures-algorithms-searching", "t": "Searching", "a": false}, {"id": "data-structures-algorithms-sorting", "t": "Sorting", "a": false}, {"id": "data-structures-algorithms-stack-queue-search-sort-in-python", "t": "Stack, Queue, Search & Sort in Python", "a": false}]</script>
+<script>
+(function(){
+  var META=JSON.parse(document.getElementById('meta').textContent);
+  var TOPICS=JSON.parse(document.getElementById('topics').textContent);
+  var CURRENT=document.body.getAttribute('data-chapter')||'';
+  var root=document.documentElement, body=document.body;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+  var done={}; try{done=JSON.parse(get('cs-done')||'{}')||{}}catch(e){done={}}
+
+  if(get('cs-theme')==='dark')root.setAttribute('data-theme','dark');
+  var themeBtn=document.getElementById('themeBtn');
+  function syncTheme(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncTheme();
+  themeBtn.onclick=function(){var d=root.getAttribute('data-theme')==='dark';d?root.removeAttribute('data-theme'):root.setAttribute('data-theme','dark');set('cs-theme',d?'light':'dark');syncTheme()};
+  var sizes=['15.5px','17px','19px'], si=+(get('cs-fs')||1); if(!(si>=0&&si<3))si=1;
+  if(get('cs-fs')!==null)root.style.setProperty('--fs',sizes[si]);
+  document.getElementById('fontBtn').onclick=function(){si=(si+1)%3;root.style.setProperty('--fs',sizes[si]);set('cs-fs',si)};
+
+  document.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
+
+  var side=document.getElementById('side');
+  var s1='<div class="side-prog"><div><b data-done-count>0</b> chapters done</div><div class="pbar2"><i data-done-bar></i></div></div>'+
+         '<button class="side-buy" id="sideBuy">\u2B07\uFE0F Download complete PDF</button><div class="side-h">Chapters</div>';
+  META.forEach(function(c){
+    s1+='<a class="side-ch" style="--h:'+c.hue+'" href="/'+c.id+'" data-side="'+c.id+'"><span class="e">'+c.emoji+
+        '</span><span>'+esc(c.title)+'</span><span class="tick">\u2713</span></a>';
+    if(c.id===CURRENT&&TOPICS.length){
+      s1+='<ul class="side-topics open" data-topics="'+c.id+'">'+TOPICS.map(function(t){
+        return '<li><a href="#'+t.id+'" data-t="'+t.id+'">'+esc(t.t)+'</a></li>'}).join('')+'</ul>';
+    }
+  });
+  side.innerHTML=s1;
+
+  (function(){
+    var VIEW_OFFSET=200;  // display-only head start
+    var el=document.getElementById('views'); if(!el||location.protocol==='file:')return;
+    var counted=false; try{counted=sessionStorage.getItem('cs-counted')==='1'}catch(e){}
+    fetch('/api/views'+(counted?'':'?hit=1'),{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){
+        if(!d||typeof d.views!=='number'||d.views<0)return;
+        try{sessionStorage.setItem('cs-counted','1')}catch(e){}
+        el.textContent='\uD83D\uDC40 '+(d.views+VIEW_OFFSET).toLocaleString('en-IN')+' views';
+        el.hidden=false;
+      })
+      .catch(function(){});
+  })();
+  
+
+  function syncDone(){
+    var k=0;
+    META.forEach(function(c){
+      var d=!!done[c.id];if(d)k++;
+      var sa=document.querySelector('[data-side="'+c.id+'"]');if(sa)sa.classList.toggle('is-done',d);
+      var cd=document.querySelector('[data-card="'+c.id+'"]');
+      if(cd){cd.classList.toggle('is-done',d);var num=cd.querySelector('.num');if(num)num.textContent=d?'\u2713':c.n}
+      var b=document.querySelector('[data-done="'+c.id+'"]');
+      if(b){b.classList.toggle('on',d);b.textContent=d?'\u2713 Done':'\u2610 Mark as done'}
+    });
+    document.querySelectorAll('[data-done-count]').forEach(function(e){e.textContent=k+'/'+META.length});
+    document.querySelectorAll('[data-done-bar]').forEach(function(e){e.style.width=(k/META.length*100)+'%'});
+  }
+  document.querySelectorAll('[data-done]').forEach(function(b){b.onclick=function(){
+    var id=b.getAttribute('data-done');if(done[id])delete done[id];else done[id]=1;
+    set('cs-done',JSON.stringify(done));syncDone()}});
+  syncDone();
+
+  var byId={};META.forEach(function(c){byId[c.id]=c});
+  var current=CURRENT||null;
+  if(current)set('cs-last',current);
+
+  function setActiveSide(cid){
+    document.querySelectorAll('.side-ch').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-side')===cid)});
+  }
+  setActiveSide(current);
+
+  // Links saved before the site moved to one page per chapter (#operating-system)
+  if(!current&&location.hash.length>1){
+    var h=decodeURIComponent(location.hash.slice(1));
+    if(byId[h]){location.replace('/'+h)}
+    else{
+      fetch('/search-index.json').then(function(r){return r.json()}).then(function(ix){
+        for(var i=0;i<ix.length;i++)if(ix[i].i===h){location.replace('/'+ix[i].c+'#'+h);return}
+      }).catch(function(){});
+    }
+  }
+
+  var cont=document.getElementById('continue');
+  if(cont){
+    var lc=byId[get('cs-last')];
+    if(lc){cont.href='/'+lc.id;document.getElementById('contTitle').textContent=lc.emoji+' '+lc.title;cont.classList.add('show')}
+  }
+
+  var prog=document.getElementById('progress'),lastAct;
+  function spy(){
+    var de=document.documentElement,p=de.scrollTop/((de.scrollHeight-de.clientHeight)||1);prog.style.width=(current?p*100:0)+'%';
+    if(!current)return;
+    var sec=document.getElementById(current);if(!sec)return;
+    var heads=sec.querySelectorAll('.content h3'),id=null;
+    for(var i=0;i<heads.length;i++){if(heads[i].getBoundingClientRect().top<170)id=heads[i].id;else break}
+    if(id===lastAct)return;lastAct=id;
+    document.querySelectorAll('.chip.active,.side-topics a.active').forEach(function(a){a.classList.remove('active')});
+    if(id){var chip=document.querySelector('.chip[href="#'+id+'"]');if(chip){chip.classList.add('active');var cw=chip.parentNode;cw.scrollTo({left:chip.offsetLeft-cw.offsetLeft-cw.clientWidth/2+chip.clientWidth/2,behavior:'smooth'})}
+      var sa=document.querySelector('.side-topics a[data-t="'+id+'"]');if(sa)sa.classList.add('active')}
+  }
+  window.addEventListener('scroll',spy,{passive:true});
+
+  var menuBtn=document.getElementById('menuBtn');
+  function mq(){menuBtn.style.display=window.innerWidth<=960?'':'none'} mq(); window.addEventListener('resize',mq);
+  menuBtn.onclick=document.getElementById('bIndex').onclick=function(){body.classList.toggle('nav-open')};
+  document.getElementById('scrim').onclick=function(){body.classList.remove('nav-open')};
+  document.getElementById('bTop').onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+
+  var idx=null,idxLoading=null;
+  function loadIdx(){
+    if(idx)return Promise.resolve(idx);
+    if(!idxLoading)idxLoading=fetch('/search-index.json').then(function(r){return r.json()})
+      .then(function(d){idx=d.map(function(o){return {id:o.i,t:o.t,cid:o.c,ct:o.ct,e:o.e,txt:o.x}});return idx})
+      .catch(function(){idx=[];return idx});
+    return idxLoading;
+  }
+  var ov=document.getElementById('overlay'),sq=document.getElementById('sq'),sres=document.getElementById('sres'),sel=0;
+  function openS(){ov.classList.add('open');body.classList.remove('nav-open');sq.value='';render('');
+    loadIdx().then(function(){if(sq.value)render(sq.value)});
+    setTimeout(function(){sq.focus()},30)}
+  function closeS(){ov.classList.remove('open')}
+  document.querySelectorAll('[data-open-search]').forEach(function(b){b.onclick=openS});
+  document.getElementById('sclose').onclick=closeS;
+  ov.addEventListener('click',function(e){if(e.target===ov)closeS()});
+  function hl(s,q){var i=s.toLowerCase().indexOf(q);if(i<0)return esc(s);return esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+q.length))+'</mark>'+esc(s.slice(i+q.length))}
+  function render(q){
+    q=q.trim().toLowerCase();sel=0;
+    if(!q){sres.innerHTML='<div class="quick">'+['Subnetting','OSI','Normalization','K-Map','Deadlock','Paging','Sorting','Pointers','Turing','IT Act'].map(function(w){return '<button>'+w+'</button>'}).join('')+'</div>';
+      sres.querySelectorAll('.quick button').forEach(function(b){b.onclick=function(){sq.value=b.textContent;render(b.textContent)}});return}
+    if(!idx){sres.innerHTML='<div class="sempty">Loading\u2026</div>';loadIdx().then(function(){render(q)});return}
+    var res=[];
+    idx.forEach(function(it){var score=0,snip='';
+      if(it.t.toLowerCase().indexOf(q)>-1)score=3;else if(it.ct.toLowerCase().indexOf(q)>-1)score=2;
+      var pz=it.txt.toLowerCase().indexOf(q);if(pz>-1){if(!score)score=1;var a=Math.max(0,pz-50);snip=(a?'\u2026':'')+it.txt.slice(a,pz+q.length+70)+'\u2026'}
+      if(score)res.push({it:it,s:score,snip:snip})});
+    res.sort(function(a,b){return b.s-a.s});
+    if(!res.length){sres.innerHTML='<div class="sempty">Kuch nahi mila \u2014 doosra word try karo.</div>';return}
+    sres.innerHTML=res.slice(0,40).map(function(r,i){
+      var href=(r.it.cid===CURRENT?'':'/'+r.it.cid)+'#'+r.it.id;
+      return '<a href="'+href+'"'+(i===0?' class="sel"':'')+'><b>'+hl(r.it.t,q)+'</b><small>'+r.it.e+' '+esc(r.it.ct)+'</small>'+(r.snip?'<small>'+hl(r.snip,q)+'</small>':'')+'</a>'}).join('');
+    sres.querySelectorAll('a').forEach(function(a){a.onclick=closeS});
+  }
+  sq.addEventListener('input',function(){render(sq.value)});
+  sq.addEventListener('keydown',function(e){var as=sres.querySelectorAll('a');if(!as.length)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();as[sel].classList.remove('sel');sel=(sel+(e.key==='ArrowDown'?1:as.length-1))%as.length;as[sel].classList.add('sel');as[sel].scrollIntoView({block:'nearest'})}
+    if(e.key==='Enter'){location.href=as[sel].getAttribute('href');closeS()}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeS();body.classList.remove('nav-open')}
+    if(e.key==='/'&&!ov.classList.contains('open')&&document.activeElement.tagName!=='INPUT'){e.preventDefault();openS()}});
+
+  var toastEl,toastT;
+  function toast(msg){
+    if(!toastEl){toastEl=document.createElement('div');toastEl.className='toast';document.body.appendChild(toastEl)}
+    toastEl.textContent=msg;toastEl.classList.add('show');
+    clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
+  }
+  function paid(){try{return localStorage.getItem('cs-pdf')==='1'}catch(e){return false}}
+  function markPaid(){try{localStorage.setItem('cs-pdf','1')}catch(e){}body.classList.add('paid');syncBuy()}
+  function syncBuy(){
+    var done=body.classList.contains('paid');
+    [document.getElementById('buyBtn'),document.getElementById('sideBuy'),document.getElementById('bBuy')]
+      .forEach(function(b){if(!b)return;b.disabled=false;
+        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':'\u2B07\uFE0F Download PDF';
+        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save complete PDF':'\u2B07\uFE0F Download complete PDF';
+      });
+  }
+  if(paid())body.classList.add('paid');
+
+  window.addEventListener('keydown',function(e){
+    if(!(e.ctrlKey||e.metaKey)||body.classList.contains('paid'))return;
+    var k=(e.key||'').toLowerCase();
+    if(k==='p'){e.preventDefault();e.stopPropagation();toast('Printing is locked \u2014 use Download PDF \uD83D\uDD12')}
+    else if(k==='s'){e.preventDefault();e.stopPropagation();toast('Saving the page is disabled \uD83D\uDD12')}
+  },true);
+  window.addEventListener('beforeprint',function(){
+    if(!body.classList.contains('paid'))toast('Printing is locked \u2014 use Download PDF \uD83D\uDD12');
+  });
+
+  var ON_COMPLETE=/\/complete/.test(location.pathname);
+  function savePdf(){
+    if(!ON_COMPLETE){location.href='/complete?print=1';return}
+    toast('Choose \u201CSave as PDF\u201D in the print dialog');
+    setTimeout(function(){window.print()},600);
+  }
+
+  function loadRzp(){
+    return new Promise(function(ok,fail){
+      if(window.Razorpay)return ok();
+      var sc=document.createElement('script');
+      sc.src='https://checkout.razorpay.com/v1/checkout.js';
+      sc.onload=function(){ok()};sc.onerror=function(){fail(new Error('checkout script'))};
+      document.head.appendChild(sc);
+    });
+  }
+
+  function buy(btn){
+    if(body.classList.contains('paid'))return savePdf();
+    if(btn)btn.disabled=true;
+    toast('Opening payment\u2026');
+    Promise.all([
+      fetch('/api/pay/order',{method:'POST',cache:'no-store'}).then(function(r){
+        if(!r.ok)throw new Error('order');return r.json()}),
+      loadRzp()
+    ]).then(function(out){
+      var o=out[0];
+      var rz=new Razorpay({
+        key:o.keyId,amount:o.amount,currency:o.currency,order_id:o.orderId,
+        name:'CS Notes \u2014 STET / BPSC TRE',
+        description:'Complete notes PDF',
+        theme:{color:'#4f46e5'},
+        handler:function(resp){
+          toast('Verifying payment\u2026');
+          fetch('/api/pay/verify',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(resp)}).then(function(r){return r.json()}).then(function(d){
+              if(d&&d.ok){markPaid();toast('Payment done \u2014 opening your PDF');setTimeout(savePdf,900)}
+              else{toast('Payment could not be verified. Contact us with your payment id.')}
+            }).catch(function(){toast('Payment could not be verified. Contact us with your payment id.')});
+        },
+        modal:{ondismiss:function(){syncBuy();toast('Payment cancelled')}}
+      });
+      rz.on('payment.failed',function(){syncBuy();toast('Payment failed \u2014 nothing was charged')});
+      rz.open();syncBuy();
+    }).catch(function(){syncBuy();toast('Payment is unavailable right now')});
+  }
+
+  if(ON_COMPLETE&&/[?&]print=1/.test(location.search)&&body.classList.contains('paid'))setTimeout(savePdf,400);
+
+  ['buyBtn','sideBuy','bBuy'].forEach(function(id){
+    var b=document.getElementById(id);if(b)b.onclick=function(){buy(b)};
+  });
+  syncBuy();
+
+  route();
+})();
+</script>
+</body>
+</html>

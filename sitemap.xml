@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bpsc-cs-notes.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/computer-fundamentals</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/number-system-codes</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/boolean-algebra-digital-electronics</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/computer-architecture-memory</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/operating-system</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/problem-solving</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/data-structures-algorithms</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/c-programming-complete</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/c-object-oriented-programming</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/java-basics</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/python-programming-pandas</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/understanding-data</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/dbms-sql</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/computer-networking</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/web-technology</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/internet-of-things-iot</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/cloud-computing</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/cyber-security</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/software-engineering</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/theory-of-computation</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/artificial-intelligence-ml</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/multimedia</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/society-law-ethics</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/emerging-trends</loc><priority>0.8</priority></url>
+  <url><loc>https://bpsc-cs-notes.vercel.app/quick-revision-one-liners</loc><priority>0.8</priority></url>
+</urlset>

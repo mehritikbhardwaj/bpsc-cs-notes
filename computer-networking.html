@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<title>Computer Networking Notes in Hindi | STET &amp; BPSC TRE CS</title>
+<meta name="description" content="Computer Networking ke complete notes Hindi mein — Introduction &amp; History, Evolution of Networking, Networking Models: OSI &amp; TCP/IP, IEEE 802 Standards,…">
+<link rel="canonical" href="https://bpsc-cs-notes.vercel.app/computer-networking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer Networking Notes in Hindi | STET &amp; BPSC TRE CS">
+<meta property="og:description" content="Computer Networking ke complete notes Hindi mein — Introduction &amp; History, Evolution of Networking, Networking Models: OSI &amp; TCP/IP, IEEE 802 Standards,…">
+<meta property="og:url" content="https://bpsc-cs-notes.vercel.app/computer-networking">
+<meta property="og:site_name" content="CS Notes — STET / BPSC TRE">
+<meta property="og:locale" content="hi_IN">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Computer Networking", "description": "Computer Networking ke complete notes Hindi mein — Introduction & History, Evolution of Networking, Networking Models: OSI & TCP/IP, IEEE 802 Standards,…", "inLanguage": "hi-IN", "mainEntityOfPage": "https://bpsc-cs-notes.vercel.app/computer-networking", "articleSection": "Computer Science", "about": ["Introduction & History", "Evolution of Networking", "Networking Models: OSI & TCP/IP", "IEEE 802 Standards", "IP Address & MAC Address", "Subnetting", "Ports & Protocols", "Types of Networks (by area)", "Transmission Modes", "Data Communication"], "isPartOf": {"@type": "Course", "name": "STET / BPSC TRE Computer Science Notes", "url": "https://bpsc-cs-notes.vercel.app"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "CS Notes", "item": "https://bpsc-cs-notes.vercel.app"}, {"@type": "ListItem", "position": 2, "name": "Computer Networking", "item": "https://bpsc-cs-notes.vercel.app/computer-networking"}]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f3ff;--paper:#ffffff;--ink:#1e1b3a;--muted:#6b6890;--line:#e7e4f7;
+  --brand:#4f46e5;--brand2:#7c3aed;--brand-soft:#eef0ff;
+  --fact:#fff7e0;--fact-ink:#8a5a00;--ex:#e8f8ef;--ex-ink:#1d7a45;--note:#ffecec;--note-ink:#b42318;--prac:#e8f1ff;--prac-ink:#1d4ed8;
+  --add:#9333ea;--add-soft:#f6edff;--code:#f4f3fb;--fs:17px;--side:290px;
+  --shadow:0 1px 2px rgba(30,27,58,.06),0 6px 20px rgba(30,27,58,.06);
+}
+[data-theme="dark"]{
+  --bg:#0f0e1a;--paper:#1a1830;--ink:#ecebff;--muted:#a3a0c7;--line:#2c2950;
+  --brand:#8b8cff;--brand2:#b28cff;--brand-soft:#24224a;
+  --fact:#2e2614;--fact-ink:#f3c766;--ex:#132a1f;--ex-ink:#6fd29b;--note:#331a1c;--note-ink:#ff8f86;--prac:#16244a;--prac-ink:#8fb4ff;
+  --add:#c99bff;--add-soft:#2a1d45;--code:#23213d;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:130px}
+body{margin:0;background:var(--bg);color:var(--ink);font:var(--fs)/1.7 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.brand,.card b,.pg b,.kicker,button{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+a{color:var(--brand)}
+code,pre{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.84em}
+button{font-size:14px}
+
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;height:60px;padding:0 14px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:17px;min-width:0}
+.logo{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:17px}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font-weight:600;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.sp{flex:1}
+.ibtn{height:40px;min-width:40px;padding:0 10px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ibtn:hover{border-color:var(--brand)}
+.searchbtn{min-width:220px;justify-content:flex-start;color:var(--muted);font-weight:600}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:0 3px 3px 0}
+
+.wrap{display:flex;max-width:1360px;margin:0 auto}
+aside{position:sticky;top:60px;height:calc(100vh - 60px);width:var(--side);flex:none;overflow-y:auto;padding:16px 12px 40px;border-right:1px solid var(--line)}
+.side-prog{margin:4px 6px 4px;padding:12px 14px;border-radius:16px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));font-size:13.5px;font-weight:600}
+.side-prog b{font:800 18px "Plus Jakarta Sans",system-ui,sans-serif}
+.pbar2{margin-top:8px;height:6px;border-radius:99px;background:rgba(255,255,255,.3);overflow:hidden}
+.pbar2 i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .4s}
+.buybtn{border:0;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px rgba(79,70,229,.3)}
+.buybtn:disabled{opacity:.6;cursor:progress}
+.side-buy{display:block;margin:10px 6px 0;padding:12px 14px;border-radius:14px;text-align:center;border:0;width:calc(100% - 12px);cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);z-index:99;max-width:min(92vw,340px);padding:11px 16px;border-radius:14px;background:#1b1830;color:#fff;font:600 13.5px "Plus Jakarta Sans",system-ui,sans-serif;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.views{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font:700 12.5px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
+.side-h{font:800 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 10px 8px}
+.side-ch{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14.5px;line-height:1.3}
+.side-ch:hover{background:var(--brand-soft)}
+.side-ch.active{background:var(--brand-soft);color:var(--brand)}
+.side-ch .e{width:30px;height:30px;flex:none;border-radius:9px;display:grid;place-items:center;background:hsl(var(--h) 80% 94%);font-size:15px}
+[data-theme="dark"] .side-ch .e{background:hsl(var(--h) 35% 22%)}
+.side-ch .tick{margin-left:auto;color:#16a34a;font-weight:800;display:none}
+.side-ch.is-done .tick{display:inline}
+.side-topics{margin:2px 0 8px 50px;padding:0;list-style:none;display:none}
+.side-topics.open{display:block}
+.side-topics a{display:block;padding:4px 8px;border-radius:8px;font-size:13.5px;color:var(--muted);text-decoration:none;line-height:1.35}
+.side-topics a:hover,.side-topics a.active{color:var(--brand);background:var(--brand-soft)}
+main{flex:1;min-width:0;padding:22px clamp(14px,3.5vw,44px) 110px}
+.view{max-width:860px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:26px 24px 22px;color:#fff;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 60%,#c026d3 120%);box-shadow:var(--shadow)}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero h1{margin:0;font-size:clamp(24px,5.5vw,32px);line-height:1.15;font-weight:800}
+.hero p{margin:4px 0 0;opacity:.9;font-size:15px;font-weight:600}
+.hero .bigsearch{position:relative;z-index:1;margin-top:18px;width:100%;display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:16px;border:0;background:#fff;color:#6b6890;font:600 15.5px "Nunito Sans",system-ui,sans-serif;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.stats{position:relative;z-index:1;display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,.16);border-radius:14px;padding:8px 14px;font-size:13px;line-height:1.3}
+.stat b{display:block;font:800 19px "Plus Jakarta Sans",system-ui,sans-serif}
+.pbar{position:relative;z-index:1;margin-top:14px;height:8px;border-radius:99px;background:rgba(255,255,255,.25);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .4s}
+.continue{display:none;margin-top:16px;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.continue.show{display:flex}
+.continue .e{font-size:26px}
+.continue small{display:block;color:var(--muted);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.continue b{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+.continue .go{margin-left:auto;font-size:22px;color:var(--brand)}
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;margin:28px 2px 12px}
+.sec-title h2{margin:0;font-size:20px;font-weight:800}
+.sec-title span{color:var(--muted);font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.card{position:relative;display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:20px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:hsl(var(--h) 70% 70%)}
+.card .e{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:hsl(var(--h) 85% 94%)}
+[data-theme="dark"] .card .e{background:hsl(var(--h) 35% 22%)}
+.card b{font-size:15.5px;line-height:1.3}
+.card small{color:var(--muted);font-size:12.5px;line-height:1.35}
+.card .num{position:absolute;top:14px;right:14px;font:800 12px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--muted)}
+.card.is-done .num{color:#fff;background:#16a34a;border-radius:99px;padding:2px 8px}
+
+.chapter{display:none}
+.chapter.show{display:block}
+.banner{display:flex;flex-wrap:wrap;align-items:center;gap:14px 16px;padding:22px;border-radius:24px;background:linear-gradient(135deg,hsl(var(--h) 85% 95%),hsl(calc(var(--h) + 40) 85% 93%));border:1px solid hsl(var(--h) 60% 86%)}
+[data-theme="dark"] .banner{background:linear-gradient(135deg,hsl(var(--h) 35% 18%),hsl(calc(var(--h) + 40) 35% 16%));border-color:hsl(var(--h) 30% 28%)}
+.b-emoji{width:62px;height:62px;flex:none;border-radius:18px;background:var(--paper);display:grid;place-items:center;font-size:32px;box-shadow:var(--shadow)}
+.b-text{flex:1;min-width:200px}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:hsl(var(--h) 55% 38%)}
+[data-theme="dark"] .kicker{color:hsl(var(--h) 70% 75%)}
+.banner h2{margin:2px 0 2px;font-size:clamp(22px,5vw,30px);line-height:1.15;font-weight:800}
+.b-meta{color:var(--muted);font-size:14px;font-weight:600}
+.done-btn{border:2px solid hsl(var(--h) 60% 60%);background:var(--paper);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:800;cursor:pointer}
+.done-btn.on{background:#16a34a;border-color:#16a34a;color:#fff}
+.chips-wrap{position:sticky;top:60px;z-index:5;margin:14px -4px 0;padding:10px 4px;background:var(--bg)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:7px 13px;border-radius:99px;background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font:700 13px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
+.chip:hover,.chip.active{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+.content{margin-top:6px}
+.content h3{position:relative;margin:30px 0 12px;padding:14px 16px 14px 18px;border-radius:16px;background:var(--paper);border:1px solid var(--line);font-size:19px;font-weight:800;line-height:1.3;box-shadow:var(--shadow)}
+.content h3::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:5px;border-radius:0 5px 5px 0;background:hsl(var(--h) 70% 55%)}
+.content h4{font-size:16.5px;font-weight:800;margin:22px 0 6px;color:hsl(var(--h) 55% 38%)}
+[data-theme="dark"] .content h4{color:hsl(var(--h) 70% 75%)}
+.content p,.content ul,.content ol{margin:8px 0 12px}
+.content ul,.content ol{padding-left:24px}
+.content li{margin:5px 0}
+.content li::marker{color:hsl(var(--h) 60% 50%)}
+.content b{font-weight:700}
+.tbl{overflow-x:auto;margin:12px 0 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:hsl(var(--h) 80% 96%);font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
+[data-theme="dark"] th{background:hsl(var(--h) 30% 20%)}
+tr:last-child td{border-bottom:0}
+pre{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:14px;overflow-x:auto;line-height:1.55}
+:not(pre)>code{background:var(--code);padding:1px 6px;border-radius:6px}
+.fact,.example,.note,.practice{position:relative;border-radius:16px;padding:38px 16px 12px;margin:16px 0}
+.fact::before,.example::before,.note::before,.practice::before{position:absolute;top:10px;left:16px;font:800 12px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.fact{background:var(--fact)}.fact::before{content:"💡 Exam fact";color:var(--fact-ink)}
+.example{background:var(--ex)}.example::before{content:"✍️ Example";color:var(--ex-ink)}
+.note{background:var(--note)}.note::before{content:"⚠️ Dhyan dein";color:var(--note-ink)}
+.practice{background:var(--prac)}.practice::before{content:"📝 Practice";color:var(--prac-ink)}
+.fact>ul{margin:0}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px}
+.pg{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:18px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.pg.next{text-align:right}
+.pg small{color:var(--muted);font-weight:700}
+.pg b{font-size:15px;line-height:1.3}
+.pg:hover{border-color:var(--brand)}
+
+.overlay{position:fixed;inset:0;z-index:60;display:none;background:rgba(15,14,26,.45);backdrop-filter:blur(3px)}
+.overlay.open{display:block}
+.sbox{position:absolute;left:50%;top:16px;transform:translateX(-50%);width:min(680px,calc(100% - 20px));max-height:calc(100% - 32px);display:flex;flex-direction:column;background:var(--paper);border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
+.srow{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.srow input::-webkit-search-cancel-button{display:none}
+.srow input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font:600 17px "Nunito Sans",system-ui,sans-serif;padding:6px 2px}
+.sres{overflow-y:auto;padding:8px}
+.sres a{display:block;padding:10px 12px;border-radius:14px;text-decoration:none;color:var(--ink)}
+.sres a:hover,.sres a.sel{background:var(--brand-soft)}
+.sres a b{display:block;font:700 15px "Plus Jakarta Sans",system-ui,sans-serif}
+.sres a small{display:block;color:var(--muted);font-size:13px;line-height:1.4}
+.sres mark{background:#fde68a;color:#1e1b3a;border-radius:4px;padding:0 2px}
+.sempty{padding:22px;text-align:center;color:var(--muted);font-size:14.5px}
+.quick{display:flex;flex-wrap:wrap;gap:8px;padding:6px 6px 12px}
+.quick button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:6px 12px;font-weight:700;cursor:pointer}
+
+.bottom{display:none}
+.scrim{display:none}
+@media (max-width:960px){
+  aside{position:fixed;left:0;top:0;height:100%;z-index:55;width:min(86vw,330px);background:var(--paper);transform:translateX(-102%);transition:transform .22s ease;box-shadow:8px 0 30px rgba(0,0,0,.18)}
+  body.nav-open aside{transform:none}
+  body.nav-open .scrim{display:block;position:fixed;inset:0;z-index:50;background:rgba(15,14,26,.4)}
+  .views{padding:5px 8px;font-size:11.5px;gap:3px}
+  .hide-m{display:none!important}
+  .bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:45;padding:6px;border-radius:22px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(30,27,58,.18)}
+  .bottom button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0;border-radius:16px;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer}
+  .bottom button span{font-size:20px;line-height:1.2}
+  .bottom button.on{color:var(--brand);background:var(--brand-soft)}
+  main{padding-top:16px}
+}
+@media (max-width:520px){
+  :root{--fs:16.5px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card{padding:14px;border-radius:18px}
+  .card b{font-size:14.5px}
+  .card .e{width:40px;height:40px;font-size:21px;border-radius:12px}
+  .hero{padding:22px 18px 20px;border-radius:22px}
+  .banner{padding:18px;border-radius:20px}
+  .b-emoji{width:52px;height:52px;font-size:27px;border-radius:15px}
+  .done-btn{width:100%}
+  .pager{grid-template-columns:1fr}
+  .pg.next{text-align:left}
+  .content h3{font-size:17.5px;padding:12px 14px 12px 16px}
+  table{font-size:14px}
+  th,td{padding:8px 10px}
+}
+@media print{
+  html,body{background:#fff!important;height:auto!important;overflow:visible!important}
+  body:not(.paid)>*{display:none!important}
+  body:not(.paid)::before{content:"\1F4D8\00a0 CS Notes \2014 STET / BPSC TRE";display:block;margin:60px 0 14px;font:800 24px system-ui,sans-serif;color:#111;text-align:center}
+  body:not(.paid)::after{content:"Printing and PDF export are turned off. Get the complete PDF from bpsc-cs-notes.vercel.app";display:block;max-width:420px;margin:0 auto;font:16px/1.6 system-ui,sans-serif;color:#444;text-align:center}
+  body.paid .top,body.paid aside,body.paid .bottom,body.paid .scrim,body.paid .ov,body.paid .chips-wrap,body.paid .pager,body.paid .done-btn,body.paid .toast{display:none!important}
+  body.paid main{padding:0}
+  body.paid .chapter{display:block!important;break-before:page}
+  body.paid .chapter:first-of-type{break-before:auto}
+}
+</style>
+</head>
+<body data-chapter="computer-networking">
+<header class="top">
+  <button class="ibtn" id="menuBtn" aria-label="Index" style="display:none">☰</button>
+  <a class="brand" href="/"><div class="logo">📘</div><span>CS Notes<small>STET · BPSC TRE</small></span></a>
+  <span class="sp"></span>
+  <button class="ibtn searchbtn hide-m" data-open-search>🔍 Search… <kbd style="margin-left:auto;font-size:11px;opacity:.7">/</kbd></button>
+  <span class="views" id="views" hidden></span>
+  <button class="ibtn buybtn hide-m" id="buyBtn">⬇️ Download PDF</button>
+  <button class="ibtn" id="fontBtn" aria-label="Text size" title="Text size">Aa</button>
+  <button class="ibtn" id="themeBtn" aria-label="Dark mode">🌙</button>
+  <div class="progress" id="progress"></div>
+</header>
+<div class="scrim" id="scrim"></div>
+<div class="wrap">
+  <aside id="side"></aside>
+  <main>
+    <div class="view" id="chapters">
+<section class="chapter show" id="computer-networking" style="--h:298">
+<header class="banner"><div class="b-emoji">🌐</div><div class="b-text"><div class="kicker">Chapter 14</div><h1>Computer Networking</h1>
+<div class="b-meta">15 topics · ~12 min read</div></div>
+<button class="done-btn" data-done="computer-networking">☐ Mark as done</button></header>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#computer-networking-introduction-history">Introduction &amp; History</a><a class="chip" href="#computer-networking-evolution-of-networking">Evolution of Networking</a><a class="chip" href="#computer-networking-networking-models-osi-tcp-ip">Networking Models: OSI &amp; TCP/IP</a><a class="chip" href="#computer-networking-ieee-802-standards">IEEE 802 Standards</a><a class="chip" href="#computer-networking-ip-address-mac-address">IP Address &amp; MAC Address</a><a class="chip" href="#computer-networking-subnetting">Subnetting</a><a class="chip" href="#computer-networking-ports-protocols">Ports &amp; Protocols</a><a class="chip" href="#computer-networking-types-of-networks-by-area">Types of Networks (by area)</a><a class="chip" href="#computer-networking-transmission-modes">Transmission Modes</a><a class="chip" href="#computer-networking-data-communication">Data Communication</a><a class="chip" href="#computer-networking-network-topology">Network Topology</a><a class="chip" href="#computer-networking-networking-devices">Networking Devices</a><a class="chip" href="#computer-networking-transmission-media-cables">Transmission Media (Cables)</a><a class="chip" href="#computer-networking-web-basics">Web Basics</a><a class="chip" href="#computer-networking-exam-facts">Exam Facts</a></div></div>
+<div class="content">
+
+
+<h3 id="computer-networking-introduction-history">Introduction & History</h3>
+<ul>
+<li><b>Computer networking</b>: interconnected computing devices that exchange data and share resources with each other.</li>
+<li><b>First network:</b> ARPANET (Advanced Research Projects Agency Network) — USA, Department of Defense, <b>1969</b>.</li>
+<li>TCP/IP was developed for ARPANET by <b>Vint Cerf &amp; Bob Kahn</b> (called "Fathers of the Internet").</li>
+<li>Before TCP/IP, ARPANET used <b>NCP</b> (Network Control Protocol).</li>
+<li>First e-mail was sent over ARPANET in <b>1971</b> by <b>Ray Tomlinson</b> (he also introduced the <code>@</code> sign in addresses).</li>
+<li><b>1 January 1983</b> — ARPANET switched to TCP/IP: the "official birthday of the Internet".</li>
+<li>First public internet service in India: <b>VSNL</b> (Videsh Sanchar Nigam Limited) on <b>15 August 1995</b>.</li>
+<li>WWW invented by <b>Tim Berners-Lee</b> (1989, CERN).</li>
+</ul>
+
+<h3 id="computer-networking-evolution-of-networking">Evolution of Networking</h3>
+<ul>
+<li><b>ARPANET</b> (1969) — first network, connected 4 university/research computers (UCLA, Stanford, UCSB, Utah).</li>
+<li><b>NSFNET</b> (1986) — National Science Foundation Network; connected universities and research centres at high speed; replaced ARPANET as the backbone (ARPANET shut down in 1990).</li>
+<li><b>Internet</b> — global network of networks formed by interconnecting ARPANET, NSFNET and private networks; opened to commercial use in the early 1990s.</li>
+</ul>
+
+<h3 id="computer-networking-networking-models-osi-tcp-ip">Networking Models: OSI & TCP/IP</h3>
+<p>A networking model is a set of guidelines and standards that define how data is transmitted and received over a network.</p>
+<ul>
+<li><b>TCP/IP model</b> (1970s–1982) — adopted as the standard protocol suite of ARPANET in 1983. Practical model actually used on the Internet.</li>
+<li><b>OSI model</b> (Open Systems Interconnection) — published by <b>ISO</b> (International Organization for Standardization) in <b>1984</b>. 7 layers. It is a <b>reference/conceptual model</b>, not practically implemented as such. Purpose: describe how data travels in a network.</li>
+</ul>
+<table>
+<tr><th>#</th><th>OSI Layer</th><th>Main job</th><th>PDU</th><th>Devices / Protocols</th></tr>
+<tr><td>7</td><td>Application</td><td>Network services to user applications</td><td>Data</td><td>Gateway; HTTP, FTP, SMTP, DNS, Telnet</td></tr>
+<tr><td>6</td><td>Presentation</td><td>Translation, encryption/decryption, compression</td><td>Data</td><td>ASCII, EBCDIC, JPEG, MPEG, GIF, PNG</td></tr>
+<tr><td>5</td><td>Session</td><td>Session management, synchronization, dialog control</td><td>Data</td><td>NetBIOS, RPC</td></tr>
+<tr><td>4</td><td>Transport</td><td>End-to-end delivery, reliability, flow & error control</td><td>Segment</td><td>Firewall; TCP, UDP</td></tr>
+<tr><td>3</td><td>Network</td><td>Logical addressing (IP), routing</td><td>Packet</td><td>Router, Layer-3 switch; IP, ICMP, ARP</td></tr>
+<tr><td>2</td><td>Data Link</td><td>Physical (MAC) addressing, framing, error detection</td><td>Frame</td><td>Switch, Bridge; Ethernet, PPP</td></tr>
+<tr><td>1</td><td>Physical</td><td>Transmits raw bits over the medium</td><td>Bit</td><td>Hub, Repeater, Modem, Cables</td></tr>
+</table>
+<div class="fact"><b>Trick (top→down):</b> <i>All People Seem To Need Data Processing</i>. Bottom→up: <i>Please Do Not Throw Sausage Pizza Away</i>. Layers 1–3 = hardware/"media" layers; 5–7 = software/"host" layers; Transport = "heart of OSI". PDU = Protocol Data Unit.</div>
+
+<h4>Layer details</h4>
+<ul>
+<li><b>Physical layer:</b> physical connection, topology, transmission mode (simplex/half/full duplex), bit synchronization, bit-rate control.</li>
+<li><b>Data Link layer:</b> MAC (Ethernet) addressing, error-free transfer of frames, flow control, error control. Node-to-node delivery. Two sub-layers: <b>LLC</b> (Logical Link Control — error/flow control) and <b>MAC</b> (Media Access Control — 48-bit physical address on NIC).</li>
+<li><b>Network layer:</b> routing &amp; forwarding of packets, internetworking, logical (IP) addressing, source-to-destination (host-to-host) delivery.</li>
+<li><b>Transport layer:</b> end-to-end / process-to-process delivery using <b>port numbers</b>, acknowledgement, segmentation. TCP = connection-oriented, UDP = connectionless. TLS/SSL also operate around here.</li>
+<li><b>Session layer:</b> session establishment &amp; management, synchronization (checkpoints), dialog &amp; token management.</li>
+<li><b>Presentation layer:</b> also called translation/syntax layer — translation, encryption, compression.</li>
+<li><b>Application layer:</b> also called desktop layer; closest to the end user. Network virtual terminal, file transfer (FTAM), mail services, directory services.</li>
+</ul>
+<div class="fact">A <b>firewall</b> can work at layers 3, 4 and 7 of OSI.</div>
+
+<h4>TCP/IP model</h4>
+<table>
+<tr><th>Original (4 layers)</th><th>Updated (5 layers)</th><th>OSI equivalent</th></tr>
+<tr><td>Application</td><td>Application</td><td>Application + Presentation + Session</td></tr>
+<tr><td>Transport (Host-to-Host)</td><td>Transport</td><td>Transport</td></tr>
+<tr><td>Internet</td><td>Network</td><td>Network</td></tr>
+<tr><td rowspan="2">Network Access (Link)</td><td>Data Link</td><td>Data Link</td></tr>
+<tr><td>Physical</td><td>Physical</td></tr>
+</table>
+<p>Session and Presentation layers are absent in TCP/IP (their work is done by the Application layer).</p>
+
+<h4>TCP vs UDP</h4>
+<table>
+<tr><th>TCP</th><th>UDP</th></tr>
+<tr><td>Connection-oriented (3-way handshake: SYN, SYN-ACK, ACK)</td><td>Connectionless</td></tr>
+<tr><td>Reliable, ordered, acknowledgement & retransmission</td><td>Unreliable, no acknowledgement</td></tr>
+<tr><td>Slower, header 20–60 bytes</td><td>Faster, header 8 bytes</td></tr>
+<tr><td>HTTP, FTP, SMTP, Telnet</td><td>DNS, DHCP, VoIP, video streaming, online gaming</td></tr>
+</table>
+<div class="fact">Checksum in TCP header = 16 bits. Port number size = 16 bits (0–65535). IP is also connectionless.</div>
+
+<h3 id="computer-networking-ieee-802-standards">IEEE 802 Standards</h3>
+<p><b>IEEE</b> = Institute of Electrical and Electronics Engineers. Purpose: foster technological innovation and excellence for the benefit of humanity.</p>
+<table>
+<tr><th>Standard</th><th>Topic</th><th>Standard</th><th>Topic</th></tr>
+<tr><td>802.1</td><td>LAN protocols / bridging</td><td>802.10</td><td>Network security</td></tr>
+<tr><td>802.2</td><td>Logical Link Control (LLC)</td><td>802.11</td><td>Wireless LAN (Wi-Fi)</td></tr>
+<tr><td>802.3</td><td>Ethernet (wired LAN)</td><td>802.12</td><td>Demand priority</td></tr>
+<tr><td>802.4</td><td>Token Bus</td><td>802.14</td><td>Cable modems</td></tr>
+<tr><td>802.5</td><td>Token Ring</td><td>802.15</td><td>Wireless PAN</td></tr>
+<tr><td>802.6</td><td>MAN</td><td>802.15.1</td><td>Bluetooth</td></tr>
+<tr><td>802.7</td><td>Broadband LAN</td><td>802.15.4</td><td>ZigBee (LR-WPAN)</td></tr>
+<tr><td>802.8</td><td>Fibre optic</td><td>802.15.5</td><td>Mesh network</td></tr>
+<tr><td>802.9</td><td>Integrated voice/data</td><td>802.16</td><td>WiMAX (Wireless MAN)</td></tr>
+</table>
+<p>WiMAX = Worldwide Interoperability for Microwave Access.</p>
+
+<h3 id="computer-networking-ip-address-mac-address">IP Address & MAC Address</h3>
+<table>
+<tr><th>Address</th><th>Size</th><th>Notation</th></tr>
+<tr><td>IPv4</td><td>32 bits (4 bytes)</td><td>Dotted decimal, e.g. 192.168.1.1</td></tr>
+<tr><td>IPv6</td><td>128 bits (16 bytes)</td><td>Hexadecimal, colon separated (8 groups)</td></tr>
+<tr><td>MAC</td><td>48 bits (6 bytes)</td><td>12 hex digits, e.g. 00:1A:3F:F1:4C:C6</td></tr>
+</table>
+<h4>IPv4 classes</h4>
+<table>
+<tr><th>Class</th><th>First octet range</th><th>Leading bits</th><th>Network/Host</th><th>Default mask</th><th>Use</th></tr>
+<tr><td>A</td><td>1 – 126 (127 = loopback)</td><td>0</td><td>N.H.H.H</td><td>255.0.0.0</td><td>Unicast, very large networks</td></tr>
+<tr><td>B</td><td>128 – 191</td><td>10</td><td>N.N.H.H</td><td>255.255.0.0</td><td>Unicast, medium</td></tr>
+<tr><td>C</td><td>192 – 223</td><td>110</td><td>N.N.N.H</td><td>255.255.255.0</td><td>Unicast, small</td></tr>
+<tr><td>D</td><td>224 – 239</td><td>1110</td><td>—</td><td>—</td><td>Multicasting</td></tr>
+<tr><td>E</td><td>240 – 255</td><td>1111</td><td>—</td><td>—</td><td>Reserved / research</td></tr>
+</table>
+<ul>
+<li><b>Loopback address:</b> 127.0.0.1 (range 127.0.0.0 – 127.255.255.255). <b>Broadcast:</b> 255.255.255.255.</li>
+<li><b>Private IP ranges</b> (reserved by IANA): 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. (100.64.0.0/10 is used for carrier-grade NAT.)</li>
+<li><b>Private IP</b> is assigned by the router to devices; <b>public IP</b> is assigned by the ISP to the router.</li>
+<li>IP addresses are managed globally by <b>IANA</b> (Internet Assigned Numbers Authority); in Asia-Pacific (incl. India) by <b>APNIC</b>.</li>
+<li>IPv6 developed by <b>IETF</b> (Internet Engineering Task Force). Internet was funded by DARPA (Defense Advanced Research Projects Agency).</li>
+<li><b>MAC address</b>: first 24 bits = OUI (Organizationally Unique Identifier — manufacturer), last 24 bits = NIC-specific. MAC/Ethernet concept developed at <b>Xerox PARC</b>.</li>
+<li><b>ARP</b> finds MAC address from IP address; <b>RARP</b> finds IP from MAC.</li>
+<li>How to change your IP: restart modem/router, use VPN, use a proxy server, contact your ISP.</li>
+<li>Logical address = IP address (virtual); Physical address = MAC address.</li>
+</ul>
+
+<h3 id="computer-networking-subnetting">Subnetting</h3>
+<p>A <b>subnet</b> is a network inside a network. Subnetting divides a large network into smaller ones — makes networks efficient and improves security.</p>
+<ul>
+<li>Number of hosts = 2<sup>h</sup> − 2 (h = host bits; network ID and broadcast ID excluded).</li>
+<li>Number of subnets = 2<sup>n</sup> (n = borrowed bits).</li>
+</ul>
+<div class="example"><b>Q.</b> How many hosts with mask 255.255.255.128? → last octet 10000000 → 7 host bits → 2<sup>7</sup> − 2 = <b>126</b>.<br>
+<b>Q.</b> Mask 255.255.255.252? → 2 host bits → 2<sup>2</sup> − 2 = <b>2</b> hosts.<br>
+<b>Q.</b> Host part of 192.168.10.51 with default mask (class C)? → network 192.168.10, host <b>51</b>.</div>
+
+<h3 id="computer-networking-ports-protocols">Ports & Protocols</h3>
+<p>A <b>port</b> identifies the sender/receiver process of a message. Ports are used at the transport layer (layer 4). Each host can have 65,535 ports per IP address.</p>
+<table>
+<tr><th>Protocol</th><th>Port</th><th>Protocol</th><th>Port</th></tr>
+<tr><td>FTP data / control</td><td>20 / 21</td><td>DHCP server / client</td><td>67 / 68</td></tr>
+<tr><td>SSH, SFTP</td><td>22</td><td>HTTP</td><td>80</td></tr>
+<tr><td>Telnet</td><td>23</td><td>POP3</td><td>110</td></tr>
+<tr><td>SMTP</td><td>25</td><td>IMAP</td><td>143</td></tr>
+<tr><td>DNS</td><td>53</td><td>IRC (Internet Relay Chat)</td><td>194</td></tr>
+<tr><td>HTTPS</td><td>443</td><td>MQTT / secure MQTT</td><td>1883 / 8883</td></tr>
+</table>
+<ul>
+<li><b>DNS</b> (Domain Name System): converts domain name → IP address.</li>
+<li><b>DHCP</b> (Dynamic Host Configuration Protocol): assigns IP addresses to hosts automatically.</li>
+<li><b>ICMP</b>: used by network devices to send error messages and operational info (e.g. <code>ping</code>).</li>
+<li><b>Gopher</b>: early protocol for distributing, searching and retrieving documents over the Internet.</li>
+<li><b>HTTPS</b> uses SSL/TLS for encryption.</li>
+</ul>
+<h4>E-mail protocols</h4>
+<ul>
+<li><b>SMTP</b> — send mail. <b>POP3</b> — download mail from server to local device (used by MS Outlook, Thunderbird, Apple Mail). <b>IMAP</b> — read mail on server without downloading, syncs across devices (webmail like Gmail).</li>
+<li><b>MIME</b> (Multipurpose Internet Mail Extensions) — sending attachments.</li>
+</ul>
+
+<h3 id="computer-networking-types-of-networks-by-area">Types of Networks (by area)</h3>
+<table>
+<tr><th>Type</th><th>Range / Features</th><th>Example</th></tr>
+<tr><td><b>PAN</b> (Personal)</td><td>~10 m; Bluetooth, infrared, hotspot</td><td>Wireless mouse, headphones, TV remote</td></tr>
+<tr><td><b>LAN</b> (Local)</td><td>~100 m – 2 km; private; high speed (10 Mbps – 10 Gbps); twisted pair/coax; hub/switch; IEEE 802.3 (wired), 802.11 (Wi-Fi)</td><td>Office, school lab</td></tr>
+<tr><td><b>CAN</b> (Campus)</td><td>1 – 5 km; group of interconnected LANs (corporate area network)</td><td>University campus</td></tr>
+<tr><td><b>MAN</b> (Metropolitan)</td><td>Covers a city; LAN+LAN; fibre optic; cable TV network</td><td>City network</td></tr>
+<tr><td><b>WAN</b> (Wide)</td><td>Countries/continents; satellite; router; less secure; firewall needed</td><td>Internet (largest WAN)</td></tr>
+<tr><td><b>SAN</b> (Storage)</td><td>High-speed network for storage; cloud computing</td><td>AWS, Azure, GCP, Oracle cloud</td></tr>
+</table>
+<ul>
+<li><b>Internet</b> — public, anyone can access. <b>Intranet</b> — private, only for employees. <b>Extranet</b> — private, shared with partners/suppliers.</li>
+</ul>
+
+<h3 id="computer-networking-transmission-modes">Transmission Modes</h3>
+<ul>
+<li><b>Simplex</b> — one direction only: keyboard→CPU, monitor output, radio/TV broadcasting, fire-alarm system, loudspeaker.</li>
+<li><b>Half duplex</b> — both directions, one at a time: walkie-talkie (push-to-talk), browsing (request/response).</li>
+<li><b>Full duplex</b> — both directions simultaneously: mobile phone, video conferencing, live chat.</li>
+</ul>
+
+<h3 id="computer-networking-data-communication">Data Communication</h3>
+<h4>Components</h4>
+<ul><li><b>Sender</b>, <b>Receiver</b>, <b>Message</b>, <b>Communication medium</b> (wired/wireless), <b>Protocol</b> (rules).</li></ul>
+<h4>Terms</h4>
+<ul>
+<li><b>Channel</b> — path through which data travels.</li>
+<li><b>Bandwidth</b> — range of frequencies a channel can carry = highest − lowest frequency; measured in <b>Hz</b> (KHz, MHz, GHz). Higher bandwidth → more data.</li>
+<li><b>Data transfer rate</b> — bits transferred per second: <b>bps</b>, Kbps (10<sup>3</sup>), Mbps (10<sup>6</sup>), Gbps (10<sup>9</sup>), Tbps (10<sup>12</sup>). (Mbps = megabits; MBps = megabytes; 1 byte = 8 bits.)</li>
+<li><b>Baud rate</b> — signal changes per second.</li>
+<li><b>Latency</b> — delay; <b>throughput</b> — actual data delivered per second.</li>
+</ul>
+<h4>Switching techniques</h4>
+<table><tr><th>Circuit switching</th><th>Packet switching</th></tr>
+<tr><td>Dedicated path set up before communication (call setup)</td><td>Message broken into packets; each packet may take a different route</td></tr>
+<tr><td>Path reserved for whole session; resources wasted when idle</td><td>No reserved path; efficient use of bandwidth</td></tr>
+<tr><td>Telephone network</td><td>Internet</td></tr></table>
+<p><b>Message switching</b> — whole message sent hop by hop (store-and-forward), no dedicated path.</p>
+<h4>More protocols</h4>
+<ul>
+<li><b>PPP</b> (Point-to-Point Protocol) — direct link between two nodes (dial-up, broadband to ISP); data-link layer; supports authentication.</li>
+<li><b>VoIP</b> (Voice over Internet Protocol) — voice calls over the Internet (WhatsApp call, Skype, Zoom).</li>
+<li><b>Telnet</b> — remote login (insecure, port 23); <b>SSH</b> is the secure replacement.</li>
+</ul>
+
+<h3 id="computer-networking-network-topology">Network Topology</h3>
+<p>Topology = physical or logical layout of a network.</p>
+<table>
+<tr><th>Topology</th><th>Description</th></tr>
+<tr><td><b>Bus</b></td><td>Single backbone cable with terminators at ends; multipoint; fault isolation difficult; performance degrades with more computers/heavy traffic. Uses CSMA/CD.</td></tr>
+<tr><td><b>Star</b></td><td>All nodes connect to a central hub/switch; common in LAN; hub failure stops network.</td></tr>
+<tr><td><b>Ring</b></td><td>Each node connects to two neighbours; token passing (Token Ring, FDDI); uni/bi-directional.</td></tr>
+<tr><td><b>Tree</b></td><td>Hierarchy of multiple star (hub) networks.</td></tr>
+<tr><td><b>Mesh</b></td><td>Point-to-point links between every node; very reliable, costly wiring. Links in full mesh = <b>n(n−1)/2</b> (n = 6 → 15).</td></tr>
+<tr><td><b>Hybrid</b></td><td>Combination of 2 or more topologies.</td></tr>
+</table>
+<ul>
+<li><b>CSMA/CD</b> — Carrier Sense Multiple Access with Collision <i>Detection</i> (Ethernet). <b>CSMA/CA</b> — Collision <i>Avoidance</i> (Wi-Fi).</li>
+<li><b>FDDI</b> — Fiber Distributed Data Interface (ring).</li>
+</ul>
+
+<h3 id="computer-networking-networking-devices">Networking Devices</h3>
+<ul>
+<li><b>Hub</b> — dumb device, broadcasts to all ports (layer 1).</li>
+<li><b>Repeater</b> — regenerates signal; "active hub" (layer 1).</li>
+<li><b>Bridge</b> — connects two segments of the same network (layer 2).</li>
+<li><b>Switch</b> — sends frames to the right port using MAC table (layer 2). A layer-2 switch is also called a <b>multiport bridge</b>.</li>
+<li><b>Router</b> — interconnecting device at layer 3; forwards packets between networks using a <b>routing table</b> (purpose: find most efficient path). Used in LAN &amp; WAN. Features: firewall, VPN, traffic monitoring. Wi-Fi frequency 2.4 GHz &amp; 5 GHz. Makers: Cisco, D-Link, TP-Link.</li>
+<li><b>Gateway</b> — connects two <i>different</i> networks / protocols (works up to layer 7).</li>
+<li><b>Modem</b> — MOdulator (digital → analog) + DEModulator (analog → digital).</li>
+<li><b>Firewall</b> — hardware + software security barrier.</li>
+<li><b>Dial-up</b> — uses telephone lines + modem (slowest). <b>DSL</b> (Digital Subscriber Line) — faster broadband via router.</li>
+</ul>
+
+<h3 id="computer-networking-transmission-media-cables">Transmission Media (Cables)</h3>
+<h4>Guided (wired)</h4>
+<ul>
+<li><b>Twisted pair</b> — STP (Shielded, used in factories), UTP (Unshielded, LAN). Connector <b>RJ-45</b> (8 pins, Ethernet); <b>RJ-11</b> (6 positions/4 or 2 wires, telephone).</li>
+<li><b>Coaxial</b> — TV cable; connector <b>BNC</b> (Bayonet Neill–Concelman).</li>
+<li><b>Optical fibre</b> — fastest; undersea cables, broadband. Connectors: SC (Subscriber Connector), ST (Straight Tip), LC (Lucent Connector), FC (Ferrule Connector). Works on <b>total internal reflection</b>.</li>
+</ul>
+<h4>Unguided (wireless)</h4>
+<ul>
+<li><b>Radio waves</b> — wireless mouse, FM, AM.</li>
+<li><b>Microwaves</b> — remote sensing, radar, mobile, satellite.</li>
+<li><b>Infrared</b> — short range: TV remote, thermal imaging, astronomy.</li>
+</ul>
+
+<h3 id="computer-networking-web-basics">Web Basics</h3>
+<ul>
+<li><b>Internet</b> = the network infrastructure; <b>WWW</b> = a service on the Internet (pages linked by hyperlinks, accessed by HTTP).</li>
+<li><b>Web page</b> — single HTML document. <b>Website</b> — collection of related web pages under one domain. <b>Home page</b> — first page of a website.</li>
+<li><b>Static</b> web page — same content for everyone; <b>dynamic</b> — generated at request time.</li>
+<li><b>Web browser</b> — software to view web pages (Chrome, Firefox, Edge, Safari). <b>Web server</b> — stores and serves pages (Apache, Nginx).</li>
+<li><b>Web hosting</b> — storing a website on a server connected to the Internet so others can access it.</li>
+<li><b>Domain name</b> — human-readable address (bpsc.bihar.gov.in); converted to IP by <b>DNS</b>. <b>URL</b> — complete address of a resource.</li>
+<li><b>Browser add-ons/plug-ins</b>, <b>cookies</b> (small text files stored by a site in the browser).</li>
+</ul>
+
+<h3 id="computer-networking-exam-facts">Exam Facts</h3>
+<div class="fact"><ul>
+<li>Protocol that sends a datagram to an application program: <b>UDP</b>.</li>
+<li>Dialogue &amp; token management: <b>Session layer</b>.</li>
+<li>Hardware for WAN: <b>Router</b>.</li>
+<li>Port address size in TCP/IP: <b>16 bits</b>. IPv6 length: <b>128 bits</b>.</li>
+<li>Device connecting two systems with different protocols: <b>Gateway</b>.</li>
+<li>Address identifying a process on a host: <b>Port</b>. Address of a node as defined by LAN/WAN: <b>Physical (MAC)</b>.</li>
+<li>Layer that lets users access the network: <b>Application</b>.</li>
+<li>Short-range waves between PC and peripherals: <b>Infrared</b>.</li>
+<li>Protocols for real-time video/gaming: <b>UDP</b>; real-time text chat: <b>IRC</b>.</li>
+<li>Packets to frames: <b>Data link layer</b>. Contention-based MAC protocol in Ethernet: <b>CSMA/CD</b>.</li>
+<li>Maximum length of an IPv4 datagram: <b>65,535 bytes</b> (2<sup>16</sup> − 1).</li>
+<li>First-octet higher-order bits for class D: <b>1110</b>.</li>
+<li>With Telnet/FTP you use the <b>Application layer</b> (highest layer).</li>
+</ul></div>
+</div><nav class="pager"><a class="pg prev" href="/dbms-sql"><small>← Previous</small><b>🗄️ DBMS &amp; SQL</b></a><a class="pg next" href="/web-technology"><small>Next →</small><b>🕸️ Web Technology</b></a></nav></section>
+    </div>
+  </main>
+</div>
+
+<nav class="bottom" id="bottom">
+  <button id="bIndex"><span>📚</span>Chapters</button>
+  <button id="bBuy"><span>⬇️</span>PDF</button>
+  <button data-open-search><span>🔍</span>Search</button>
+  <button id="bTop"><span>⬆️</span>Top</button>
+</nav>
+
+<div class="overlay" id="overlay">
+  <div class="sbox">
+    <div class="srow"><span>🔍</span><input id="sq" type="search" placeholder="Topic ya keyword likho…" autocomplete="off"><button class="ibtn" id="sclose">✕</button></div>
+    <div class="sres" id="sres"></div>
+  </div>
+</div>
+
+<script id="meta" type="application/json">[{"id": "computer-fundamentals", "n": 1, "title": "Computer Fundamentals", "emoji": "🖥️", "hue": 47, "mins": 5, "tc": 10}, {"id": "number-system-codes", "n": 2, "title": "Number System & Codes", "emoji": "🔢", "hue": 94, "mins": 6, "tc": 10}, {"id": "boolean-algebra-digital-electronics", "n": 3, "title": "Boolean Algebra & Digital Electronics", "emoji": "💡", "hue": 141, "mins": 7, "tc": 7}, {"id": "computer-architecture-memory", "n": 4, "title": "Computer Architecture & Memory", "emoji": "🧠", "hue": 188, "mins": 6, "tc": 12}, {"id": "operating-system", "n": 5, "title": "Operating System", "emoji": "💻", "hue": 235, "mins": 11, "tc": 15}, {"id": "problem-solving", "n": 6, "title": "Problem Solving", "emoji": "🧭", "hue": 282, "mins": 2, "tc": 6}, {"id": "data-structures-algorithms", "n": 7, "title": "Data Structures & Algorithms", "emoji": "🌳", "hue": 329, "mins": 14, "tc": 15}, {"id": "c-programming-complete", "n": 8, "title": "C Programming (Complete)", "emoji": "🅲", "hue": 16, "mins": 11, "tc": 13}, {"id": "c-object-oriented-programming", "n": 9, "title": "C++ & Object-Oriented Programming", "emoji": "🧩", "hue": 63, "mins": 7, "tc": 13}, {"id": "java-basics", "n": 10, "title": "Java Basics", "emoji": "☕", "hue": 110, "mins": 2, "tc": 3}, {"id": "python-programming-pandas", "n": 11, "title": "Python Programming & Pandas", "emoji": "🐍", "hue": 157, "mins": 5, "tc": 8}, {"id": "understanding-data", "n": 12, "title": "Understanding Data", "emoji": "📊", "hue": 204, "mins": 2, "tc": 4}, {"id": "dbms-sql", "n": 13, "title": "DBMS & SQL", "emoji": "🗄️", "hue": 251, "mins": 15, "tc": 22}, {"id": "computer-networking", "n": 14, "title": "Computer Networking", "emoji": "🌐", "hue": 298, "mins": 12, "tc": 15}, {"id": "web-technology", "n": 15, "title": "Web Technology", "emoji": "🕸️", "hue": 345, "mins": 3, "tc": 4}, {"id": "internet-of-things-iot", "n": 16, "title": "Internet of Things (IoT)", "emoji": "📡", "hue": 32, "mins": 4, "tc": 7}, {"id": "cloud-computing", "n": 17, "title": "Cloud Computing", "emoji": "☁️", "hue": 79, "mins": 2, "tc": 5}, {"id": "cyber-security", "n": 18, "title": "Cyber Security", "emoji": "🛡️", "hue": 126, "mins": 3, "tc": 5}, {"id": "software-engineering", "n": 19, "title": "Software Engineering", "emoji": "🛠️", "hue": 173, "mins": 5, "tc": 6}, {"id": "theory-of-computation", "n": 20, "title": "Theory of Computation", "emoji": "⚙️", "hue": 220, "mins": 4, "tc": 11}, {"id": "artificial-intelligence-ml", "n": 21, "title": "Artificial Intelligence & ML", "emoji": "🤖", "hue": 267, "mins": 3, "tc": 4}, {"id": "multimedia", "n": 22, "title": "Multimedia", "emoji": "🎬", "hue": 314, "mins": 2, "tc": 6}, {"id": "society-law-ethics", "n": 23, "title": "Society, Law & Ethics", "emoji": "⚖️", "hue": 1, "mins": 2, "tc": 5}, {"id": "emerging-trends", "n": 24, "title": "Emerging Trends", "emoji": "🚀", "hue": 48, "mins": 2, "tc": 4}, {"id": "quick-revision-one-liners", "n": 25, "title": "Quick Revision: One-liners", "emoji": "⚡", "hue": 95, "mins": 2, "tc": 2}]</script>
+<script id="topics" type="application/json">[{"id": "computer-networking-introduction-history", "t": "Introduction & History", "a": false}, {"id": "computer-networking-evolution-of-networking", "t": "Evolution of Networking", "a": false}, {"id": "computer-networking-networking-models-osi-tcp-ip", "t": "Networking Models: OSI & TCP/IP", "a": false}, {"id": "computer-networking-ieee-802-standards", "t": "IEEE 802 Standards", "a": false}, {"id": "computer-networking-ip-address-mac-address", "t": "IP Address & MAC Address", "a": false}, {"id": "computer-networking-subnetting", "t": "Subnetting", "a": false}, {"id": "computer-networking-ports-protocols", "t": "Ports & Protocols", "a": false}, {"id": "computer-networking-types-of-networks-by-area", "t": "Types of Networks (by area)", "a": false}, {"id": "computer-networking-transmission-modes", "t": "Transmission Modes", "a": false}, {"id": "computer-networking-data-communication", "t": "Data Communication", "a": false}, {"id": "computer-networking-network-topology", "t": "Network Topology", "a": false}, {"id": "computer-networking-networking-devices", "t": "Networking Devices", "a": false}, {"id": "computer-networking-transmission-media-cables", "t": "Transmission Media (Cables)", "a": false}, {"id": "computer-networking-web-basics", "t": "Web Basics", "a": false}, {"id": "computer-networking-exam-facts", "t": "Exam Facts", "a": false}]</script>
+<script>
+(function(){
+  var META=JSON.parse(document.getElementById('meta').textContent);
+  var TOPICS=JSON.parse(document.getElementById('topics').textContent);
+  var CURRENT=document.body.getAttribute('data-chapter')||'';
+  var root=document.documentElement, body=document.body;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+  var done={}; try{done=JSON.parse(get('cs-done')||'{}')||{}}catch(e){done={}}
+
+  if(get('cs-theme')==='dark')root.setAttribute('data-theme','dark');
+  var themeBtn=document.getElementById('themeBtn');
+  function syncTheme(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncTheme();
+  themeBtn.onclick=function(){var d=root.getAttribute('data-theme')==='dark';d?root.removeAttribute('data-theme'):root.setAttribute('data-theme','dark');set('cs-theme',d?'light':'dark');syncTheme()};
+  var sizes=['15.5px','17px','19px'], si=+(get('cs-fs')||1); if(!(si>=0&&si<3))si=1;
+  if(get('cs-fs')!==null)root.style.setProperty('--fs',sizes[si]);
+  document.getElementById('fontBtn').onclick=function(){si=(si+1)%3;root.style.setProperty('--fs',sizes[si]);set('cs-fs',si)};
+
+  document.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
+
+  var side=document.getElementById('side');
+  var s1='<div class="side-prog"><div><b data-done-count>0</b> chapters done</div><div class="pbar2"><i data-done-bar></i></div></div>'+
+         '<button class="side-buy" id="sideBuy">\u2B07\uFE0F Download complete PDF</button><div class="side-h">Chapters</div>';
+  META.forEach(function(c){
+    s1+='<a class="side-ch" style="--h:'+c.hue+'" href="/'+c.id+'" data-side="'+c.id+'"><span class="e">'+c.emoji+
+        '</span><span>'+esc(c.title)+'</span><span class="tick">\u2713</span></a>';
+    if(c.id===CURRENT&&TOPICS.length){
+      s1+='<ul class="side-topics open" data-topics="'+c.id+'">'+TOPICS.map(function(t){
+        return '<li><a href="#'+t.id+'" data-t="'+t.id+'">'+esc(t.t)+'</a></li>'}).join('')+'</ul>';
+    }
+  });
+  side.innerHTML=s1;
+
+  (function(){
+    var VIEW_OFFSET=200;  // display-only head start
+    var el=document.getElementById('views'); if(!el||location.protocol==='file:')return;
+    var counted=false; try{counted=sessionStorage.getItem('cs-counted')==='1'}catch(e){}
+    fetch('/api/views'+(counted?'':'?hit=1'),{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){
+        if(!d||typeof d.views!=='number'||d.views<0)return;
+        try{sessionStorage.setItem('cs-counted','1')}catch(e){}
+        el.textContent='\uD83D\uDC40 '+(d.views+VIEW_OFFSET).toLocaleString('en-IN')+' views';
+        el.hidden=false;
+      })
+      .catch(function(){});
+  })();
+  
+
+  function syncDone(){
+    var k=0;
+    META.forEach(function(c){
+      var d=!!done[c.id];if(d)k++;
+      var sa=document.querySelector('[data-side="'+c.id+'"]');if(sa)sa.classList.toggle('is-done',d);
+      var cd=document.querySelector('[data-card="'+c.id+'"]');
+      if(cd){cd.classList.toggle('is-done',d);var num=cd.querySelector('.num');if(num)num.textContent=d?'\u2713':c.n}
+      var b=document.querySelector('[data-done="'+c.id+'"]');
+      if(b){b.classList.toggle('on',d);b.textContent=d?'\u2713 Done':'\u2610 Mark as done'}
+    });
+    document.querySelectorAll('[data-done-count]').forEach(function(e){e.textContent=k+'/'+META.length});
+    document.querySelectorAll('[data-done-bar]').forEach(function(e){e.style.width=(k/META.length*100)+'%'});
+  }
+  document.querySelectorAll('[data-done]').forEach(function(b){b.onclick=function(){
+    var id=b.getAttribute('data-done');if(done[id])delete done[id];else done[id]=1;
+    set('cs-done',JSON.stringify(done));syncDone()}});
+  syncDone();
+
+  var byId={};META.forEach(function(c){byId[c.id]=c});
+  var current=CURRENT||null;
+  if(current)set('cs-last',current);
+
+  function setActiveSide(cid){
+    document.querySelectorAll('.side-ch').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-side')===cid)});
+  }
+  setActiveSide(current);
+
+  // Links saved before the site moved to one page per chapter (#operating-system)
+  if(!current&&location.hash.length>1){
+    var h=decodeURIComponent(location.hash.slice(1));
+    if(byId[h]){location.replace('/'+h)}
+    else{
+      fetch('/search-index.json').then(function(r){return r.json()}).then(function(ix){
+        for(var i=0;i<ix.length;i++)if(ix[i].i===h){location.replace('/'+ix[i].c+'#'+h);return}
+      }).catch(function(){});
+    }
+  }
+
+  var cont=document.getElementById('continue');
+  if(cont){
+    var lc=byId[get('cs-last')];
+    if(lc){cont.href='/'+lc.id;document.getElementById('contTitle').textContent=lc.emoji+' '+lc.title;cont.classList.add('show')}
+  }
+
+  var prog=document.getElementById('progress'),lastAct;
+  function spy(){
+    var de=document.documentElement,p=de.scrollTop/((de.scrollHeight-de.clientHeight)||1);prog.style.width=(current?p*100:0)+'%';
+    if(!current)return;
+    var sec=document.getElementById(current);if(!sec)return;
+    var heads=sec.querySelectorAll('.content h3'),id=null;
+    for(var i=0;i<heads.length;i++){if(heads[i].getBoundingClientRect().top<170)id=heads[i].id;else break}
+    if(id===lastAct)return;lastAct=id;
+    document.querySelectorAll('.chip.active,.side-topics a.active').forEach(function(a){a.classList.remove('active')});
+    if(id){var chip=document.querySelector('.chip[href="#'+id+'"]');if(chip){chip.classList.add('active');var cw=chip.parentNode;cw.scrollTo({left:chip.offsetLeft-cw.offsetLeft-cw.clientWidth/2+chip.clientWidth/2,behavior:'smooth'})}
+      var sa=document.querySelector('.side-topics a[data-t="'+id+'"]');if(sa)sa.classList.add('active')}
+  }
+  window.addEventListener('scroll',spy,{passive:true});
+
+  var menuBtn=document.getElementById('menuBtn');
+  function mq(){menuBtn.style.display=window.innerWidth<=960?'':'none'} mq(); window.addEventListener('resize',mq);
+  menuBtn.onclick=document.getElementById('bIndex').onclick=function(){body.classList.toggle('nav-open')};
+  document.getElementById('scrim').onclick=function(){body.classList.remove('nav-open')};
+  document.getElementById('bTop').onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+
+  var idx=null,idxLoading=null;
+  function loadIdx(){
+    if(idx)return Promise.resolve(idx);
+    if(!idxLoading)idxLoading=fetch('/search-index.json').then(function(r){return r.json()})
+      .then(function(d){idx=d.map(function(o){return {id:o.i,t:o.t,cid:o.c,ct:o.ct,e:o.e,txt:o.x}});return idx})
+      .catch(function(){idx=[];return idx});
+    return idxLoading;
+  }
+  var ov=document.getElementById('overlay'),sq=document.getElementById('sq'),sres=document.getElementById('sres'),sel=0;
+  function openS(){ov.classList.add('open');body.classList.remove('nav-open');sq.value='';render('');
+    loadIdx().then(function(){if(sq.value)render(sq.value)});
+    setTimeout(function(){sq.focus()},30)}
+  function closeS(){ov.classList.remove('open')}
+  document.querySelectorAll('[data-open-search]').forEach(function(b){b.onclick=openS});
+  document.getElementById('sclose').onclick=closeS;
+  ov.addEventListener('click',function(e){if(e.target===ov)closeS()});
+  function hl(s,q){var i=s.toLowerCase().indexOf(q);if(i<0)return esc(s);return esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+q.length))+'</mark>'+esc(s.slice(i+q.length))}
+  function render(q){
+    q=q.trim().toLowerCase();sel=0;
+    if(!q){sres.innerHTML='<div class="quick">'+['Subnetting','OSI','Normalization','K-Map','Deadlock','Paging','Sorting','Pointers','Turing','IT Act'].map(function(w){return '<button>'+w+'</button>'}).join('')+'</div>';
+      sres.querySelectorAll('.quick button').forEach(function(b){b.onclick=function(){sq.value=b.textContent;render(b.textContent)}});return}
+    if(!idx){sres.innerHTML='<div class="sempty">Loading\u2026</div>';loadIdx().then(function(){render(q)});return}
+    var res=[];
+    idx.forEach(function(it){var score=0,snip='';
+      if(it.t.toLowerCase().indexOf(q)>-1)score=3;else if(it.ct.toLowerCase().indexOf(q)>-1)score=2;
+      var pz=it.txt.toLowerCase().indexOf(q);if(pz>-1){if(!score)score=1;var a=Math.max(0,pz-50);snip=(a?'\u2026':'')+it.txt.slice(a,pz+q.length+70)+'\u2026'}
+      if(score)res.push({it:it,s:score,snip:snip})});
+    res.sort(function(a,b){return b.s-a.s});
+    if(!res.length){sres.innerHTML='<div class="sempty">Kuch nahi mila \u2014 doosra word try karo.</div>';return}
+    sres.innerHTML=res.slice(0,40).map(function(r,i){
+      var href=(r.it.cid===CURRENT?'':'/'+r.it.cid)+'#'+r.it.id;
+      return '<a href="'+href+'"'+(i===0?' class="sel"':'')+'><b>'+hl(r.it.t,q)+'</b><small>'+r.it.e+' '+esc(r.it.ct)+'</small>'+(r.snip?'<small>'+hl(r.snip,q)+'</small>':'')+'</a>'}).join('');
+    sres.querySelectorAll('a').forEach(function(a){a.onclick=closeS});
+  }
+  sq.addEventListener('input',function(){render(sq.value)});
+  sq.addEventListener('keydown',function(e){var as=sres.querySelectorAll('a');if(!as.length)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();as[sel].classList.remove('sel');sel=(sel+(e.key==='ArrowDown'?1:as.length-1))%as.length;as[sel].classList.add('sel');as[sel].scrollIntoView({block:'nearest'})}
+    if(e.key==='Enter'){location.href=as[sel].getAttribute('href');closeS()}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeS();body.classList.remove('nav-open')}
+    if(e.key==='/'&&!ov.classList.contains('open')&&document.activeElement.tagName!=='INPUT'){e.preventDefault();openS()}});
+
+  var toastEl,toastT;
+  function toast(msg){
+    if(!toastEl){toastEl=document.createElement('div');toastEl.className='toast';document.body.appendChild(toastEl)}
+    toastEl.textContent=msg;toastEl.classList.add('show');
+    clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
+  }
+  function paid(){try{return localStorage.getItem('cs-pdf')==='1'}catch(e){return false}}
+  function markPaid(){try{localStorage.setItem('cs-pdf','1')}catch(e){}body.classList.add('paid');syncBuy()}
+  function syncBuy(){
+    var done=body.classList.contains('paid');
+    [document.getElementById('buyBtn'),document.getElementById('sideBuy'),document.getElementById('bBuy')]
+      .forEach(function(b){if(!b)return;b.disabled=false;
+        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':'\u2B07\uFE0F Download PDF';
+        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save complete PDF':'\u2B07\uFE0F Download complete PDF';
+      });
+  }
+  if(paid())body.classList.add('paid');
+
+  window.addEventListener('keydown',function(e){
+    if(!(e.ctrlKey||e.metaKey)||body.classList.contains('paid'))return;
+    var k=(e.key||'').toLowerCase();
+    if(k==='p'){e.preventDefault();e.stopPropagation();toast('Printing is locked \u2014 use Download PDF \uD83D\uDD12')}
+    else if(k==='s'){e.preventDefault();e.stopPropagation();toast('Saving the page is disabled \uD83D\uDD12')}
+  },true);
+  window.addEventListener('beforeprint',function(){
+    if(!body.classList.contains('paid'))toast('Printing is locked \u2014 use Download PDF \uD83D\uDD12');
+  });
+
+  var ON_COMPLETE=/\/complete/.test(location.pathname);
+  function savePdf(){
+    if(!ON_COMPLETE){location.href='/complete?print=1';return}
+    toast('Choose \u201CSave as PDF\u201D in the print dialog');
+    setTimeout(function(){window.print()},600);
+  }
+
+  function loadRzp(){
+    return new Promise(function(ok,fail){
+      if(window.Razorpay)return ok();
+      var sc=document.createElement('script');
+      sc.src='https://checkout.razorpay.com/v1/checkout.js';
+      sc.onload=function(){ok()};sc.onerror=function(){fail(new Error('checkout script'))};
+      document.head.appendChild(sc);
+    });
+  }
+
+  function buy(btn){
+    if(body.classList.contains('paid'))return savePdf();
+    if(btn)btn.disabled=true;
+    toast('Opening payment\u2026');
+    Promise.all([
+      fetch('/api/pay/order',{method:'POST',cache:'no-store'}).then(function(r){
+        if(!r.ok)throw new Error('order');return r.json()}),
+      loadRzp()
+    ]).then(function(out){
+      var o=out[0];
+      var rz=new Razorpay({
+        key:o.keyId,amount:o.amount,currency:o.currency,order_id:o.orderId,
+        name:'CS Notes \u2014 STET / BPSC TRE',
+        description:'Complete notes PDF',
+        theme:{color:'#4f46e5'},
+        handler:function(resp){
+          toast('Verifying payment\u2026');
+          fetch('/api/pay/verify',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(resp)}).then(function(r){return r.json()}).then(function(d){
+              if(d&&d.ok){markPaid();toast('Payment done \u2014 opening your PDF');setTimeout(savePdf,900)}
+              else{toast('Payment could not be verified. Contact us with your payment id.')}
+            }).catch(function(){toast('Payment could not be verified. Contact us with your payment id.')});
+        },
+        modal:{ondismiss:function(){syncBuy();toast('Payment cancelled')}}
+      });
+      rz.on('payment.failed',function(){syncBuy();toast('Payment failed \u2014 nothing was charged')});
+      rz.open();syncBuy();
+    }).catch(function(){syncBuy();toast('Payment is unavailable right now')});
+  }
+
+  if(ON_COMPLETE&&/[?&]print=1/.test(location.search)&&body.classList.contains('paid'))setTimeout(savePdf,400);
+
+  ['buyBtn','sideBuy','bBuy'].forEach(function(id){
+    var b=document.getElementById(id);if(b)b.onclick=function(){buy(b)};
+  });
+  syncBuy();
+
+  route();
+})();
+</script>
+</body>
+</html>

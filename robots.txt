@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /complete
+
+Sitemap: https://bpsc-cs-notes.vercel.app/sitemap.xml
