@@ -1,4 +1,4 @@
-<section class="chapter" data-title="C Programming (Complete)" data-pages="345–419">
+<section class="chapter" data-title="C Programming (Complete)">
 <h2>C Programming (Complete)</h2>
 
 <h3>Introduction to C</h3>
@@ -191,7 +191,7 @@ typedef struct complex { float real, img; } Complex;</code></pre>
 <li>Array of structures: <code>struct employee facebook[100];</code></li>
 <li>Stored in contiguous memory. <code>(*ptr).code</code> ≡ <code>ptr-&gt;code</code>.</li>
 <li><b>typedef</b> creates an alias for a data type.</li>
-<li class="added"><b>Union</b> — like a structure but all members share the same memory; size = largest member.</li>
+<li><b>Union</b> — like a structure but all members share the same memory; size = largest member.</li>
 </ul>
 
 <h3>Ch 10: File I/O</h3>
@@ -229,7 +229,7 @@ while ((c = fgetc(ptr)) != EOF) { /* ... */ }</code></pre>
 </table>
 <p>If memory can't be allocated, a NULL pointer is returned.</p>
 
-<h3 class="added">Extra C Facts for Exams</h3>
+<h3>Extra C Facts for Exams</h3>
 <ul>
 <li>Size (typical 64-bit): char 1, short 2, int 4, float 4, double 8, long 8 bytes, pointer 8 bytes.</li>
 <li><code>sizeof</code> is an operator, not a function. Header for math: <code>&lt;math.h&gt;</code>; for strings: <code>&lt;string.h&gt;</code>; for DMA: <code>&lt;stdlib.h&gt;</code>.</li>

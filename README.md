@@ -1,7 +1,7 @@
 # STET / BPSC TRE – Computer Science Notes (Web)
 
-Clean typed version of the 419-page handwritten STET/TRE CS notes as a single web page
-with a full chapter/topic index, search, dark mode and mobile layout.
+STET / BPSC TRE Computer Science notes as a website
+— chapter-wise, searchable, mobile friendly.
 
 - `index.html` – the finished website (open it directly in a browser)
 - `src/chapters/*.html` – content of each chapter (edit these)

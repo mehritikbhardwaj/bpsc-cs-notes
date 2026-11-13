@@ -1,43 +1,60 @@
-import re, glob, html, sys
-src = sys.argv[1]; out = sys.argv[2]
+import re, glob, html, sys, json
+src, out, tplf = sys.argv[1], sys.argv[2], sys.argv[3]
 parts = [open(f, encoding='utf-8').read() for f in sorted(glob.glob(src + '/*.html'))]
 body = '\n'.join(parts)
+EMOJI = {'computer-networking':'🌐','internet-of-things-iot':'📡','dbms-sql':'🗄️','number-system-codes':'🔢',
+ 'computer-architecture-memory':'🧠','artificial-intelligence-ml':'🤖','multimedia':'🎬','data-structures-algorithms':'🌳',
+ 'boolean-algebra-digital-electronics':'💡','software-engineering':'🛠️','operating-system':'💻','theory-of-computation':'⚙️',
+ 'cloud-computing':'☁️','cyber-security':'🛡️','c-object-oriented-programming':'🧩','c-programming-complete':'🅲',
+ 'computer-fundamentals':'🖥️','python-programming-pandas':'🐍','web-technology':'🕸️','java-basics':'☕',
+ 'society-law-ethics':'⚖️','emerging-trends':'🚀','quick-revision-one-liners':'⚡'}
 def slug(s):
     s = re.sub(r'<[^>]+>', '', s); s = html.unescape(s).lower()
-    s = re.sub(r'[^a-z0-9]+', '-', s).strip('-'); return s[:60]
-toc_orig, toc_add, cards = [], [], []
+    return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:60]
 used = set()
 def uniq(s):
-    b = s; i = 2
+    b, i = s, 2
     while s in used: s = f'{b}-{i}'; i += 1
     used.add(s); return s
-n = 0
-def do_section(m):
-    global n
-    n += 1
-    attrs, inner = m.group(1), m.group(2)
+secs = re.findall(r'<section class="chapter"([^>]*)>(.*?)</section>', body, flags=re.S)
+ORDER = ['computer-fundamentals','number-system-codes','boolean-algebra-digital-electronics','computer-architecture-memory',
+ 'operating-system','data-structures-algorithms','c-programming-complete','c-object-oriented-programming','java-basics',
+ 'python-programming-pandas','dbms-sql','computer-networking','web-technology','internet-of-things-iot','cloud-computing',
+ 'cyber-security','software-engineering','theory-of-computation','artificial-intelligence-ml','multimedia',
+ 'society-law-ethics','emerging-trends','quick-revision-one-liners']
+secs.sort(key=lambda s: ORDER.index(slug(re.search(r'data-title="([^"]+)"', s[0]).group(1))))
+chapters = []
+for n, (attrs, inner) in enumerate(secs, 1):
     title = html.unescape(re.search(r'data-title="([^"]+)"', attrs).group(1))
-    pages = re.search(r'data-pages="([^"]+)"', attrs)
+    pm = re.search(r'data-pages="([^"]+)"', attrs)
     added = 'data-added' in attrs
     cid = uniq(slug(title))
-    subs = []
+    topics = []
     def do_h3(hm):
         a, t = hm.group(1), hm.group(2)
         sid = uniq(cid + '-' + slug(t))
-        subs.append((sid, re.sub(r'<[^>]+>', '', t), 'added' in a))
+        topics.append({'id': sid, 't': html.unescape(re.sub(r'<[^>]+>', '', t)), 'a': 'added' in a})
         return f'<h3 id="{sid}"{a}>{t}</h3>'
     inner = re.sub(r'<h3([^>]*)>(.*?)</h3>', do_h3, inner)
-    inner = re.sub(r'<h2>(.*?)</h2>', lambda h: f'<h2><span class="num">{n}</span>{h.group(1)}'
-                   + (f'<span class="src">Notes p. {pages.group(1)}</span>' if pages else '<span class="src new">Added chapter</span>') + '</h2>', inner, count=1)
-    li = ''.join(f'<li><a href="#{s}">{html.escape(t)}{" <i>+</i>" if a else ""}</a></li>' for s, t, a in subs)
-    entry = f'<li class="ch"><a class="chl" href="#{cid}"><span>{n}.</span> {html.escape(title)}</a><ul>{li}</ul></li>'
-    (toc_add if added else toc_orig).append(entry)
-    cards.append(f'<a class="card{" new" if added else ""}" href="#{cid}"><b>{n}. {html.escape(title)}</b><span>{len(subs)} topics · {"Notes p. "+pages.group(1) if pages else "Added"}</span></a>')
-    cls = 'chapter added-ch' if added else 'chapter'
-    return f'<section class="{cls}" id="{cid}">{inner}</section>'
-body = re.sub(r'<section class="chapter"([^>]*)>(.*?)</section>', do_section, body, flags=re.S)
-tpl = open(sys.argv[3], encoding='utf-8').read()
-tpl = tpl.replace('{{TOC_ORIG}}', ''.join(toc_orig)).replace('{{TOC_ADD}}', ''.join(toc_add))
-tpl = tpl.replace('{{CARDS}}', ''.join(cards)).replace('{{BODY}}', body).replace('{{COUNT}}', str(n))
+    inner = re.sub(r'<h2>.*?</h2>', '', inner, count=1, flags=re.S)
+    words = len(re.sub(r'<[^>]+>', ' ', inner).split())
+    chapters.append(dict(id=cid, n=n, title=title, pages=pm.group(1) if pm else '', added=added,
+                         emoji=EMOJI.get(cid, '📘'), hue=(n * 47) % 360, mins=max(2, round(words / 180)),
+                         topics=topics, inner=inner))
+html_out = []
+for i, c in enumerate(chapters):
+    prev = chapters[i-1] if i else None; nxt = chapters[i+1] if i + 1 < len(chapters) else None
+    chips = ''.join(f'<a class="chip" href="#{t["id"]}">{html.escape(t["t"])}</a>' for t in c['topics'])
+    pager = '<nav class="pager">' + (f'<a class="pg prev" href="#{prev["id"]}"><small>← Previous</small><b>{prev["emoji"]} {html.escape(prev["title"])}</b></a>' if prev else '<span></span>') \
+        + (f'<a class="pg next" href="#{nxt["id"]}"><small>Next →</small><b>{nxt["emoji"]} {html.escape(nxt["title"])}</b></a>' if nxt else '<a class="pg next" href="#home"><small>Home</small><b>All chapters</b></a>') + '</nav>'
+    html_out.append(f'''<section class="chapter" id="{c['id']}" style="--h:{c['hue']}">
+<header class="banner"><div class="b-emoji">{c['emoji']}</div><div class="b-text"><div class="kicker">Chapter {c['n']}</div><h2>{html.escape(c['title'])}</h2>
+<div class="b-meta">{len(c['topics'])} topics · ~{c['mins']} min read</div></div>
+<button class="done-btn" data-done="{c['id']}">☐ Mark as done</button></header>
+<div class="chips-wrap"><div class="chips">{chips}</div></div>
+<div class="content">{c['inner']}</div>{pager}</section>''')
+meta = [{k: c[k] for k in ('id','n','title','pages','added','emoji','hue','mins','topics')} for c in chapters]
+tpl = open(tplf, encoding='utf-8').read()
+tpl = tpl.replace('{{BODY}}', '\n'.join(html_out)).replace('{{META}}', json.dumps(meta, ensure_ascii=False).replace('</', '<\\/')).replace('{{COUNT}}', str(len(chapters)))
 open(out, 'w', encoding='utf-8').write(tpl)
-print('chapters', n, 'topics', len(used) - n, 'bytes', len(tpl))
+print('chapters', len(chapters), 'topics', sum(len(c['topics']) for c in chapters), 'bytes', len(tpl))

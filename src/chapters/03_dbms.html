@@ -1,4 +1,4 @@
-<section class="chapter" data-title="DBMS & SQL" data-pages="39–83">
+<section class="chapter" data-title="DBMS & SQL">
 <h2>DBMS &amp; SQL</h2>
 
 <h3>Basic Concepts of Database</h3>
@@ -67,7 +67,7 @@
 <li><b>Isolation</b> — concurrent transactions don't interfere; each behaves as if alone.</li>
 <li><b>Durability</b> — once committed, changes are permanently saved even after system failure.</li>
 </ul>
-<h4 class="added">Transaction states</h4>
+<h4>Transaction states</h4>
 <p>Active → Partially committed → Committed; or Active → Failed → Aborted (rollback). Concurrency problems: dirty read, lost update, unrepeatable read, phantom read. Solutions: locking (shared/exclusive, 2-Phase Locking), timestamp ordering.</p>
 
 <h3>ER Model</h3>
@@ -107,7 +107,7 @@
 <li>Relationship describes association among entities (diamond).</li>
 <li>Cardinality ratios: <b>one-to-one</b>, <b>one-to-many</b>, <b>many-to-one</b>, <b>many-to-many</b>. E.g. one student enrolled in exactly one course = one-to-one.</li>
 <li>High cardinality = many distinct values in a column; low cardinality = many repeated values.</li>
-<li class="added">Participation: <b>total</b> (double line — every entity must participate) or <b>partial</b> (single line).</li>
+<li>Participation: <b>total</b> (double line — every entity must participate) or <b>partial</b> (single line).</li>
 </ul>
 <h4>Specialization, Generalization, Aggregation</h4>
 <ul>
@@ -247,7 +247,7 @@ SELECT lastname, age FROM customer WHERE country &lt;&gt; 'UK' ORDER BY lastname
 <li><b>Locks</b> — maintain integrity/consistency in transactions; solve concurrency problems. Levels: row, page, table, database. Problem: locks can delay transactions (and cause deadlock).</li>
 <li><b>Trigger</b> — procedural code automatically executed in response to an event (INSERT, UPDATE, DELETE) on a table. Types: row-level and statement-level; BEFORE / AFTER.</li>
 <li><b>Pointers</b> in database allow fast access to data.</li>
-<li class="added"><b>Stored procedure</b> — saved, precompiled set of SQL statements that can be called by name.</li>
+<li><b>Stored procedure</b> — saved, precompiled set of SQL statements that can be called by name.</li>
 </ul>
 
 <h3>SQL Joins</h3>
