@@ -7,7 +7,7 @@ EMOJI = {'computer-networking':'🌐','internet-of-things-iot':'📡','dbms-sql'
  'boolean-algebra-digital-electronics':'💡','software-engineering':'🛠️','operating-system':'💻','theory-of-computation':'⚙️',
  'cloud-computing':'☁️','cyber-security':'🛡️','c-object-oriented-programming':'🧩','c-programming-complete':'🅲',
  'computer-fundamentals':'🖥️','python-programming-pandas':'🐍','web-technology':'🕸️','java-basics':'☕',
- 'society-law-ethics':'⚖️','emerging-trends':'🚀','quick-revision-one-liners':'⚡'}
+ 'society-law-ethics':'⚖️','emerging-trends':'🚀','quick-revision-one-liners':'⚡','problem-solving':'🧭','understanding-data':'📊'}
 def slug(s):
     s = re.sub(r'<[^>]+>', '', s); s = html.unescape(s).lower()
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:60]
@@ -18,8 +18,8 @@ def uniq(s):
     used.add(s); return s
 secs = re.findall(r'<section class="chapter"([^>]*)>(.*?)</section>', body, flags=re.S)
 ORDER = ['computer-fundamentals','number-system-codes','boolean-algebra-digital-electronics','computer-architecture-memory',
- 'operating-system','data-structures-algorithms','c-programming-complete','c-object-oriented-programming','java-basics',
- 'python-programming-pandas','dbms-sql','computer-networking','web-technology','internet-of-things-iot','cloud-computing',
+ 'operating-system','problem-solving','data-structures-algorithms','c-programming-complete','c-object-oriented-programming','java-basics',
+ 'python-programming-pandas','understanding-data','dbms-sql','computer-networking','web-technology','internet-of-things-iot','cloud-computing',
  'cyber-security','software-engineering','theory-of-computation','artificial-intelligence-ml','multimedia',
  'society-law-ethics','emerging-trends','quick-revision-one-liners']
 secs.sort(key=lambda s: ORDER.index(slug(re.search(r'data-title="([^"]+)"', s[0]).group(1))))

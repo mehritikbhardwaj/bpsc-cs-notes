@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#4f46e5">
 <title>Computer Science Notes – STET / BPSC TRE</title>
 <meta name="description" content="Computer Science notes for Bihar STET and BPSC TRE.">
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,6 +49,7 @@ aside{position:sticky;top:60px;height:calc(100vh - 60px);width:var(--side);flex:
 .side-prog b{font:800 18px "Plus Jakarta Sans",system-ui,sans-serif}
 .pbar2{margin-top:8px;height:6px;border-radius:99px;background:rgba(255,255,255,.3);overflow:hidden}
 .pbar2 i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .4s}
+.views{margin:10px 6px 0;padding:8px 12px;border-radius:12px;background:var(--brand-soft);color:var(--brand);font:700 12.5px "Plus Jakarta Sans",system-ui,sans-serif;text-align:center}
 .side-h{font:800 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 10px 8px}
 .side-ch{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14.5px;line-height:1.3}
 .side-ch:hover{background:var(--brand-soft)}
@@ -210,9 +212,9 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
     <div class="view" id="chapters">
 <section class="chapter" id="computer-fundamentals" style="--h:47">
 <header class="banner"><div class="b-emoji">🖥️</div><div class="b-text"><div class="kicker">Chapter 1</div><h2>Computer Fundamentals</h2>
-<div class="b-meta">7 topics · ~3 min read</div></div>
+<div class="b-meta">10 topics · ~5 min read</div></div>
 <button class="done-btn" data-done="computer-fundamentals">☐ Mark as done</button></header>
-<div class="chips-wrap"><div class="chips"><a class="chip" href="#computer-fundamentals-history-of-computing-devices">History of Computing Devices</a><a class="chip" href="#computer-fundamentals-generations-of-computers">Generations of Computers</a><a class="chip" href="#computer-fundamentals-classification-of-computers">Classification of Computers</a><a class="chip" href="#computer-fundamentals-input-output-devices">Input &amp; Output Devices</a><a class="chip" href="#computer-fundamentals-software">Software</a><a class="chip" href="#computer-fundamentals-ports-buses">Ports &amp; Buses</a><a class="chip" href="#computer-fundamentals-common-abbreviations">Common Abbreviations</a></div></div>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#computer-fundamentals-history-of-computing-devices">History of Computing Devices</a><a class="chip" href="#computer-fundamentals-generations-of-computers">Generations of Computers</a><a class="chip" href="#computer-fundamentals-classification-of-computers">Classification of Computers</a><a class="chip" href="#computer-fundamentals-input-output-devices">Input &amp; Output Devices</a><a class="chip" href="#computer-fundamentals-software">Software</a><a class="chip" href="#computer-fundamentals-ports-buses">Ports &amp; Buses</a><a class="chip" href="#computer-fundamentals-data-vs-information">Data vs Information</a><a class="chip" href="#computer-fundamentals-microprocessor-vs-microcontroller">Microprocessor vs Microcontroller</a><a class="chip" href="#computer-fundamentals-data-deletion-recovery-security">Data Deletion, Recovery &amp; Security</a><a class="chip" href="#computer-fundamentals-common-abbreviations">Common Abbreviations</a></div></div>
 <div class="content">
 
 
@@ -273,6 +275,36 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 <li>USB (Universal Serial Bus, 1996) — Type A, B, C; USB 2.0 (480 Mbps), 3.0 (5 Gbps), USB4 (40–80 Gbps).</li>
 <li>HDMI (High-Definition Multimedia Interface), VGA (Video Graphics Array), DVI, DisplayPort, Thunderbolt, Ethernet (RJ-45), PS/2 (old mouse/keyboard), serial (COM) and parallel (LPT) ports.</li>
 <li>Motherboard: CPU socket, RAM slots, chipset, PCIe slots, SATA ports, BIOS/UEFI chip, CMOS battery.</li>
+</ul>
+
+<h3 id="computer-fundamentals-data-vs-information">Data vs Information</h3>
+<table><tr><th>Data</th><th>Information</th></tr>
+<tr><td>Raw, unorganised facts and figures</td><td>Processed, organised, meaningful data</td></tr>
+<tr><td>Input to processing</td><td>Output of processing</td></tr>
+<tr><td>e.g. 72, 85, 91 (marks)</td><td>e.g. "Class average is 82.7"</td></tr></table>
+<p><b>Data processing cycle:</b> Input → Processing → Output → Storage. Computer = <b>GIGO</b> (Garbage In, Garbage Out).</p>
+
+<h3 id="computer-fundamentals-microprocessor-vs-microcontroller">Microprocessor vs Microcontroller</h3>
+<table><tr><th>Microprocessor</th><th>Microcontroller</th></tr>
+<tr><td>Only CPU on a chip; RAM, ROM, I/O are external</td><td>CPU + RAM + ROM + I/O ports + timers on one chip ("computer on a chip")</td></tr>
+<tr><td>General-purpose computers (PC, laptop)</td><td>Embedded systems (washing machine, microwave, remote, car ECU)</td></tr>
+<tr><td>Costly, more power, high speed</td><td>Cheap, low power</td></tr>
+<tr><td>Intel Core i5, AMD Ryzen</td><td>Intel 8051, ATmega328 (Arduino), PIC</td></tr></table>
+<ul>
+<li><b>Word size</b> — number of bits the CPU processes at one time (8, 16, 32, 64-bit). Larger word size = more data per operation and more addressable memory.</li>
+<li><b>Clock speed</b> — number of cycles per second; measured in Hz (MHz/GHz). 3 GHz = 3 billion cycles/second.</li>
+<li><b>Memory size</b> addressable = 2<sup>address bus width</sup> (16-bit address bus → 64 KB; 32-bit → 4 GB).</li>
+<li><b>Cores</b> — independent processing units on one chip; more cores = better multitasking.</li>
+</ul>
+
+<h3 id="computer-fundamentals-data-deletion-recovery-security">Data Deletion, Recovery & Security</h3>
+<ul>
+<li>Deleting a file usually removes only its <b>entry/pointer</b>; data stays on disk until overwritten. First it goes to the Recycle Bin (Windows) / Trash (macOS).</li>
+<li><b>Soft delete</b> — recoverable (Recycle Bin). <b>Permanent delete</b> (Shift + Delete) — bypasses Recycle Bin but data can still often be recovered by recovery software (Recuva, TestDisk) until overwritten.</li>
+<li><b>Data recovery</b> — retrieving deleted, lost or corrupted data from storage.</li>
+<li><b>Security concern</b> — sold/discarded devices can leak personal data. Safe methods: data shredding/wiping (overwrite several times), disk formatting with overwrite, physical destruction, full-disk encryption.</li>
+<li>Formatting: <b>quick format</b> (only clears file table) vs <b>full format</b> (scans and overwrites).</li>
+<li>Backups: full, incremental, differential; cloud backup.</li>
 </ul>
 
 <h3 id="computer-fundamentals-common-abbreviations">Common Abbreviations</h3>
@@ -413,6 +445,7 @@ Gray 1001 → <b>1110</b>; Gray 111101 → <b>101001</b></div>
 <ul>
 <li><b>ASCII</b> (American Standard Code for Information Interchange) — 7-bit, 128 characters (0–127); proposed by Bob Bemer (1961), approved 1963. <b>Extended ASCII</b> — 8-bit, 256 characters (128–255).</li>
 <li><b>EBCDIC</b> (Extended Binary Coded Decimal Interchange Code) — 8-bit, IBM mainframes.</li>
+<li><b>ISCII</b> (Indian Script Code for Information Interchange) — 8-bit code for Indian scripts (Devanagari, Bengali, Tamil, Telugu etc.); adopted by the Bureau of Indian Standards in 1991. First 128 codes same as ASCII; 128–255 used for Indian letters. Now largely replaced by Unicode.</li>
 <li><b>Unicode</b> — universal character encoding for all languages; initiated 1987 by Joe Becker (Xerox), Lee Collins and Mark Davis (Apple); maintained by the <b>Unicode Consortium</b> (founded 1991); first version 1991. Encodings: UTF-8 (8-bit units, 1–4 bytes), UTF-16, UTF-32.</li>
 </ul>
 <table>
@@ -876,12 +909,75 @@ Logical address 27 bits, physical 21 bits, page size 1 KB → pages 2<sup>17</su
 <li>Algorithms: <b>FCFS</b>, <b>SSTF</b> (Shortest Seek Time First), <b>SCAN</b> (elevator), <b>C-SCAN</b> (circular), <b>LOOK</b>, <b>C-LOOK</b>.</li>
 </ul>
 <div class="example">Requests 98, 183, 37, 122, 14, 124, 65, 67; head at 53.<br>FCFS total head movement = 45+85+146+85+108+110+59+2 = <b>640</b> cylinders. SSTF order 65, 67, 37, 14, 98, 122, 124, 183 → <b>236</b>.</div>
-</div><nav class="pager"><a class="pg prev" href="#computer-architecture-memory"><small>← Previous</small><b>🧠 Computer Architecture &amp; Memory</b></a><a class="pg next" href="#data-structures-algorithms"><small>Next →</small><b>🌳 Data Structures &amp; Algorithms</b></a></nav></section>
-<section class="chapter" id="data-structures-algorithms" style="--h:282">
-<header class="banner"><div class="b-emoji">🌳</div><div class="b-text"><div class="kicker">Chapter 6</div><h2>Data Structures &amp; Algorithms</h2>
-<div class="b-meta">14 topics · ~12 min read</div></div>
+</div><nav class="pager"><a class="pg prev" href="#computer-architecture-memory"><small>← Previous</small><b>🧠 Computer Architecture &amp; Memory</b></a><a class="pg next" href="#problem-solving"><small>Next →</small><b>🧭 Problem Solving</b></a></nav></section>
+<section class="chapter" id="problem-solving" style="--h:282">
+<header class="banner"><div class="b-emoji">🧭</div><div class="b-text"><div class="kicker">Chapter 6</div><h2>Problem Solving</h2>
+<div class="b-meta">6 topics · ~2 min read</div></div>
+<button class="done-btn" data-done="problem-solving">☐ Mark as done</button></header>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#problem-solving-problem-solving-cycle">Problem-Solving Cycle</a><a class="chip" href="#problem-solving-algorithm">Algorithm</a><a class="chip" href="#problem-solving-pseudocode">Pseudocode</a><a class="chip" href="#problem-solving-flow-of-control">Flow of Control</a><a class="chip" href="#problem-solving-verifying-comparing-algorithms">Verifying &amp; Comparing Algorithms</a><a class="chip" href="#problem-solving-decomposition">Decomposition</a></div></div>
+<div class="content">
+
+
+<h3 id="problem-solving-problem-solving-cycle">Problem-Solving Cycle</h3>
+<ol>
+<li><b>Analyse the problem</b> — understand inputs, outputs and requirements.</li>
+<li><b>Develop an algorithm</b> — step-by-step solution (flowchart / pseudocode).</li>
+<li><b>Coding</b> — convert algorithm into a program.</li>
+<li><b>Testing &amp; debugging</b> — run with test data, find and fix errors.</li>
+</ol>
+<p>Also called the steps: understand → plan → implement → test → maintain.</p>
+
+<h3 id="problem-solving-algorithm">Algorithm</h3>
+<ul>
+<li>Finite sequence of well-defined steps to solve a problem.</li>
+<li>Characteristics: <b>input</b> (zero or more), <b>output</b> (at least one), <b>definiteness</b> (each step clear), <b>finiteness</b> (ends after finite steps), <b>effectiveness</b> (each step basic and doable).</li>
+<li>Representation: natural language, <b>flowchart</b>, <b>pseudocode</b>.</li>
+</ul>
+<div class="example">Algorithm: largest of two numbers<br>1. Start<br>2. Input A, B<br>3. If A &gt; B then print A else print B<br>4. Stop</div>
+
+<h3 id="problem-solving-pseudocode">Pseudocode</h3>
+<ul>
+<li>Informal, English-like description of an algorithm using programming-style structure; not tied to any language; can't be executed.</li>
+<li>Common keywords: INPUT/READ, OUTPUT/PRINT, IF…THEN…ELSE, WHILE, FOR, COMPUTE, SET, INCREMENT.</li>
+</ul>
+<pre><code>INPUT marks
+IF marks &gt;= 33 THEN
+    PRINT "Pass"
+ELSE
+    PRINT "Fail"
+END IF</code></pre>
+<table><tr><th>Flowchart</th><th>Pseudocode</th></tr>
+<tr><td>Diagram with symbols</td><td>Structured text</td></tr>
+<tr><td>Easy to see the flow</td><td>Easy to write and convert to code</td></tr>
+<tr><td>Hard to modify for big problems</td><td>Easy to modify</td></tr></table>
+
+<h3 id="problem-solving-flow-of-control">Flow of Control</h3>
+<ul>
+<li><b>Sequence</b> — statements executed one after another.</li>
+<li><b>Selection</b> (decision) — choose a path based on a condition: if, if-else, switch.</li>
+<li><b>Iteration</b> (repetition/loop) — repeat steps: for, while, do-while.</li>
+</ul>
+<p>Any algorithm can be built from these three constructs (structured programming).</p>
+
+<h3 id="problem-solving-verifying-comparing-algorithms">Verifying & Comparing Algorithms</h3>
+<ul>
+<li><b>Verification</b> — dry run (trace by hand with sample inputs) to check the algorithm gives correct output.</li>
+<li><b>Comparison</b> — by time complexity (number of steps) and space complexity (memory). E.g. to check prime, testing divisors up to √n is faster than up to n−1.</li>
+</ul>
+
+<h3 id="problem-solving-decomposition">Decomposition</h3>
+<ul>
+<li>Breaking a complex problem into smaller, simpler sub-problems that are solved separately and then combined.</li>
+<li>Example: a railway reservation system → search trains, check seats, book ticket, payment, generate PNR.</li>
+<li>Related computational-thinking ideas: <b>pattern recognition</b>, <b>abstraction</b> (focus on what matters), <b>algorithm design</b>.</li>
+<li>In programming, decomposition is done using <b>functions/modules</b> (modular programming).</li>
+</ul>
+</div><nav class="pager"><a class="pg prev" href="#operating-system"><small>← Previous</small><b>💻 Operating System</b></a><a class="pg next" href="#data-structures-algorithms"><small>Next →</small><b>🌳 Data Structures &amp; Algorithms</b></a></nav></section>
+<section class="chapter" id="data-structures-algorithms" style="--h:329">
+<header class="banner"><div class="b-emoji">🌳</div><div class="b-text"><div class="kicker">Chapter 7</div><h2>Data Structures &amp; Algorithms</h2>
+<div class="b-meta">15 topics · ~14 min read</div></div>
 <button class="done-btn" data-done="data-structures-algorithms">☐ Mark as done</button></header>
-<div class="chips-wrap"><div class="chips"><a class="chip" href="#data-structures-algorithms-introduction">Introduction</a><a class="chip" href="#data-structures-algorithms-array">Array</a><a class="chip" href="#data-structures-algorithms-stack">Stack</a><a class="chip" href="#data-structures-algorithms-queue">Queue</a><a class="chip" href="#data-structures-algorithms-linked-list">Linked List</a><a class="chip" href="#data-structures-algorithms-trees">Trees</a><a class="chip" href="#data-structures-algorithms-tree-traversal">Tree Traversal</a><a class="chip" href="#data-structures-algorithms-binary-heap">Binary Heap</a><a class="chip" href="#data-structures-algorithms-graphs">Graphs</a><a class="chip" href="#data-structures-algorithms-graph-algorithms">Graph Algorithms</a><a class="chip" href="#data-structures-algorithms-hashing">Hashing</a><a class="chip" href="#data-structures-algorithms-algorithm-analysis">Algorithm Analysis</a><a class="chip" href="#data-structures-algorithms-searching">Searching</a><a class="chip" href="#data-structures-algorithms-sorting">Sorting</a></div></div>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#data-structures-algorithms-introduction">Introduction</a><a class="chip" href="#data-structures-algorithms-array">Array</a><a class="chip" href="#data-structures-algorithms-stack">Stack</a><a class="chip" href="#data-structures-algorithms-queue">Queue</a><a class="chip" href="#data-structures-algorithms-linked-list">Linked List</a><a class="chip" href="#data-structures-algorithms-trees">Trees</a><a class="chip" href="#data-structures-algorithms-tree-traversal">Tree Traversal</a><a class="chip" href="#data-structures-algorithms-binary-heap">Binary Heap</a><a class="chip" href="#data-structures-algorithms-graphs">Graphs</a><a class="chip" href="#data-structures-algorithms-graph-algorithms">Graph Algorithms</a><a class="chip" href="#data-structures-algorithms-hashing">Hashing</a><a class="chip" href="#data-structures-algorithms-algorithm-analysis">Algorithm Analysis</a><a class="chip" href="#data-structures-algorithms-searching">Searching</a><a class="chip" href="#data-structures-algorithms-sorting">Sorting</a><a class="chip" href="#data-structures-algorithms-stack-queue-search-sort-in-python">Stack, Queue, Search &amp; Sort in Python</a></div></div>
 <div class="content">
 
 
@@ -1132,9 +1228,71 @@ For a BST, inorder = keys sorted ascending. E.g. preorder 30, 20, 10, 15, 25, 23
         for (int j = 0; j &lt; n - 1 - i; j++)
             if (a[j] &gt; a[j + 1]) { int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; }
 }</code></pre>
-</div><nav class="pager"><a class="pg prev" href="#operating-system"><small>← Previous</small><b>💻 Operating System</b></a><a class="pg next" href="#c-programming-complete"><small>Next →</small><b>🅲 C Programming (Complete)</b></a></nav></section>
-<section class="chapter" id="c-programming-complete" style="--h:329">
-<header class="banner"><div class="b-emoji">🅲</div><div class="b-text"><div class="kicker">Chapter 7</div><h2>C Programming (Complete)</h2>
+<h3 id="data-structures-algorithms-stack-queue-search-sort-in-python">Stack, Queue, Search & Sort in Python</h3>
+<h4>Stack using list</h4>
+<pre><code>stack = []
+stack.append(10)      # push
+stack.append(20)
+top = stack[-1]       # peek → 20
+x = stack.pop()       # pop → 20
+is_empty = len(stack) == 0</code></pre>
+<h4>Queue & deque</h4>
+<pre><code>queue = []
+queue.append(1)       # enqueue at rear
+queue.append(2)
+x = queue.pop(0)      # dequeue from front → 1
+
+from collections import deque
+dq = deque()
+dq.append(1); dq.appendleft(0)   # insert at both ends
+dq.pop(); dq.popleft()           # delete from both ends</code></pre>
+<h4>Linear & binary search</h4>
+<pre><code>def linear_search(a, key):
+    for i in range(len(a)):
+        if a[i] == key:
+            return i
+    return -1
+
+def binary_search(a, key):      # a must be sorted
+    lo, hi = 0, len(a) - 1
+    while lo &lt;= hi:
+        mid = (lo + hi) // 2
+        if a[mid] == key:
+            return mid
+        elif a[mid] &lt; key:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1</code></pre>
+<h4>Bubble, selection & insertion sort</h4>
+<pre><code>def bubble_sort(a):
+    n = len(a)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if a[j] &gt; a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+
+def selection_sort(a):
+    for i in range(len(a)):
+        m = i
+        for j in range(i + 1, len(a)):
+            if a[j] &lt; a[m]:
+                m = j
+        a[i], a[m] = a[m], a[i]
+
+def insertion_sort(a):
+    for i in range(1, len(a)):
+        key, j = a[i], i - 1
+        while j &gt;= 0 and a[j] &gt; key:
+            a[j + 1] = a[j]
+            j -= 1
+        a[j + 1] = key</code></pre>
+<div class="example">Bubble sort on [5, 1, 4, 2] — Pass 1: [1, 4, 2, 5]; Pass 2: [1, 2, 4, 5]; Pass 3: no swap. Number of comparisons in worst case = n(n−1)/2 = 6.</div>
+<h4>Hashing in Python</h4>
+<p>Python <code>dict</code> is a hash table (map ADT: key → value). Simple hash function: <code>h(key) = key % table_size</code>. Keys 15, 25, 7 with size 10 → slots 5, 5, 7 → 15 and 25 collide (resolve by chaining or probing).</p>
+</div><nav class="pager"><a class="pg prev" href="#problem-solving"><small>← Previous</small><b>🧭 Problem Solving</b></a><a class="pg next" href="#c-programming-complete"><small>Next →</small><b>🅲 C Programming (Complete)</b></a></nav></section>
+<section class="chapter" id="c-programming-complete" style="--h:16">
+<header class="banner"><div class="b-emoji">🅲</div><div class="b-text"><div class="kicker">Chapter 8</div><h2>C Programming (Complete)</h2>
 <div class="b-meta">13 topics · ~11 min read</div></div>
 <button class="done-btn" data-done="c-programming-complete">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#c-programming-complete-introduction-to-c">Introduction to C</a><a class="chip" href="#c-programming-complete-ch-1-variables-constants-keywords">Ch 1: Variables, Constants &amp; Keywords</a><a class="chip" href="#c-programming-complete-ch-2-instructions-operators">Ch 2: Instructions &amp; Operators</a><a class="chip" href="#c-programming-complete-ch-3-conditional-instructions">Ch 3: Conditional Instructions</a><a class="chip" href="#c-programming-complete-ch-4-loop-control-instructions">Ch 4: Loop Control Instructions</a><a class="chip" href="#c-programming-complete-ch-5-functions-recursion">Ch 5: Functions &amp; Recursion</a><a class="chip" href="#c-programming-complete-ch-6-pointers">Ch 6: Pointers</a><a class="chip" href="#c-programming-complete-ch-7-arrays">Ch 7: Arrays</a><a class="chip" href="#c-programming-complete-ch-8-strings">Ch 8: Strings</a><a class="chip" href="#c-programming-complete-ch-9-structures">Ch 9: Structures</a><a class="chip" href="#c-programming-complete-ch-10-file-i-o">Ch 10: File I/O</a><a class="chip" href="#c-programming-complete-ch-11-dynamic-memory-allocation">Ch 11: Dynamic Memory Allocation</a><a class="chip" href="#c-programming-complete-extra-c-facts-for-exams">Extra C Facts for Exams</a></div></div>
@@ -1380,8 +1538,8 @@ while ((c = fgetc(ptr)) != EOF) { /* ... */ }</code></pre>
 <li>Command-line arguments: <code>int main(int argc, char *argv[])</code>.</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#data-structures-algorithms"><small>← Previous</small><b>🌳 Data Structures &amp; Algorithms</b></a><a class="pg next" href="#c-object-oriented-programming"><small>Next →</small><b>🧩 C++ &amp; Object-Oriented Programming</b></a></nav></section>
-<section class="chapter" id="c-object-oriented-programming" style="--h:16">
-<header class="banner"><div class="b-emoji">🧩</div><div class="b-text"><div class="kicker">Chapter 8</div><h2>C++ &amp; Object-Oriented Programming</h2>
+<section class="chapter" id="c-object-oriented-programming" style="--h:63">
+<header class="banner"><div class="b-emoji">🧩</div><div class="b-text"><div class="kicker">Chapter 9</div><h2>C++ &amp; Object-Oriented Programming</h2>
 <div class="b-meta">13 topics · ~7 min read</div></div>
 <button class="done-btn" data-done="c-object-oriented-programming">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#c-object-oriented-programming-c-introduction">C++ Introduction</a><a class="chip" href="#c-object-oriented-programming-data-types-modifiers-storage-classes">Data Types, Modifiers &amp; Storage Classes</a><a class="chip" href="#c-object-oriented-programming-operators">Operators</a><a class="chip" href="#c-object-oriented-programming-control-structures">Control Structures</a><a class="chip" href="#c-object-oriented-programming-structure-class">Structure &amp; Class</a><a class="chip" href="#c-object-oriented-programming-functions-in-c">Functions in C++</a><a class="chip" href="#c-object-oriented-programming-exception-handling">Exception Handling</a><a class="chip" href="#c-object-oriented-programming-types-of-errors">Types of Errors</a><a class="chip" href="#c-object-oriented-programming-c-vs-c">C vs C++</a><a class="chip" href="#c-object-oriented-programming-translators">Translators</a><a class="chip" href="#c-object-oriented-programming-algorithm-flowchart">Algorithm &amp; Flowchart</a><a class="chip" href="#c-object-oriented-programming-oop-concepts">OOP Concepts</a><a class="chip" href="#c-object-oriented-programming-generations-of-languages-timeline">Generations of Languages &amp; Timeline</a></div></div>
@@ -1568,8 +1726,8 @@ int main() {             // execution starts here
 </table>
 <p><b>Pointers in C++</b>: store memory addresses of other variables; declared with <code>*</code>; <code>*</code> also called dereference operator. Character encodings supported: UTF-8, UTF-16, UTF-32.</p>
 </div><nav class="pager"><a class="pg prev" href="#c-programming-complete"><small>← Previous</small><b>🅲 C Programming (Complete)</b></a><a class="pg next" href="#java-basics"><small>Next →</small><b>☕ Java Basics</b></a></nav></section>
-<section class="chapter" id="java-basics" style="--h:63">
-<header class="banner"><div class="b-emoji">☕</div><div class="b-text"><div class="kicker">Chapter 9</div><h2>Java Basics</h2>
+<section class="chapter" id="java-basics" style="--h:110">
+<header class="banner"><div class="b-emoji">☕</div><div class="b-text"><div class="kicker">Chapter 10</div><h2>Java Basics</h2>
 <div class="b-meta">3 topics · ~2 min read</div></div>
 <button class="done-btn" data-done="java-basics">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#java-basics-introduction">Introduction</a><a class="chip" href="#java-basics-data-types-keywords">Data Types &amp; Keywords</a><a class="chip" href="#java-basics-oop-in-java">OOP in Java</a></div></div>
@@ -1621,11 +1779,11 @@ int main() {             // execution starts here
 <li>Threads: extend <code>Thread</code> or implement <code>Runnable</code>.</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#c-object-oriented-programming"><small>← Previous</small><b>🧩 C++ &amp; Object-Oriented Programming</b></a><a class="pg next" href="#python-programming-pandas"><small>Next →</small><b>🐍 Python Programming &amp; Pandas</b></a></nav></section>
-<section class="chapter" id="python-programming-pandas" style="--h:110">
-<header class="banner"><div class="b-emoji">🐍</div><div class="b-text"><div class="kicker">Chapter 10</div><h2>Python Programming &amp; Pandas</h2>
-<div class="b-meta">6 topics · ~3 min read</div></div>
+<section class="chapter" id="python-programming-pandas" style="--h:157">
+<header class="banner"><div class="b-emoji">🐍</div><div class="b-text"><div class="kicker">Chapter 11</div><h2>Python Programming &amp; Pandas</h2>
+<div class="b-meta">8 topics · ~5 min read</div></div>
 <button class="done-btn" data-done="python-programming-pandas">☐ Mark as done</button></header>
-<div class="chips-wrap"><div class="chips"><a class="chip" href="#python-programming-pandas-python-basics">Python Basics</a><a class="chip" href="#python-programming-pandas-control-flow-functions">Control Flow &amp; Functions</a><a class="chip" href="#python-programming-pandas-strings-lists-tuples-dictionaries">Strings, Lists, Tuples, Dictionaries</a><a class="chip" href="#python-programming-pandas-exception-file-handling">Exception &amp; File Handling</a><a class="chip" href="#python-programming-pandas-python-mysql-connectivity">Python–MySQL Connectivity</a><a class="chip" href="#python-programming-pandas-data-handling-with-pandas">Data Handling with Pandas</a></div></div>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#python-programming-pandas-python-basics">Python Basics</a><a class="chip" href="#python-programming-pandas-tokens-variables-type-conversion">Tokens, Variables &amp; Type Conversion</a><a class="chip" href="#python-programming-pandas-control-flow-functions">Control Flow &amp; Functions</a><a class="chip" href="#python-programming-pandas-strings-lists-tuples-dictionaries">Strings, Lists, Tuples, Dictionaries</a><a class="chip" href="#python-programming-pandas-python-modules">Python Modules</a><a class="chip" href="#python-programming-pandas-exception-file-handling">Exception &amp; File Handling</a><a class="chip" href="#python-programming-pandas-python-mysql-connectivity">Python–MySQL Connectivity</a><a class="chip" href="#python-programming-pandas-data-handling-with-pandas">Data Handling with Pandas</a></div></div>
 <div class="content">
 
 
@@ -1653,6 +1811,19 @@ int main() {             // execution starts here
 <li>Arithmetic: <code>+ - * / // % **</code> — <code>/</code> true division (7/2 = 3.5), <code>//</code> floor division (7//2 = 3), <code>**</code> power (2**3 = 8).</li>
 <li>Relational: <code>== != &gt; &lt; &gt;= &lt;=</code>; logical: <code>and or not</code>; membership: <code>in, not in</code>; identity: <code>is, is not</code>.</li>
 <li>Precedence: <code>**</code> &gt; unary <code>-</code> &gt; <code>* / // %</code> &gt; <code>+ -</code> &gt; relational &gt; not &gt; and &gt; or. <code>**</code> is right-associative: 2**3**2 = 512.</li>
+</ul>
+
+<h3 id="python-programming-pandas-tokens-variables-type-conversion">Tokens, Variables & Type Conversion</h3>
+<ul>
+<li><b>Character set</b>: letters, digits, special symbols, whitespace, Unicode characters.</li>
+<li><b>Tokens</b> (smallest unit of a program): <b>keywords</b>, <b>identifiers</b> (names; start with letter/_ ; case-sensitive; no keyword), <b>literals</b> (fixed values: 10, 3.5, "hi", True, None), <b>operators</b>, <b>punctuators</b> (<code>( ) [ ] { } , : ; .</code>).</li>
+<li><b>l-value</b> — the object on the left of <code>=</code> (where value is stored); <b>r-value</b> — the expression on the right. In <code>x = 5 + 2</code>, x is l-value, 5 + 2 is r-value.</li>
+<li>Python is <b>dynamically typed</b>: <code>x = 5</code> then <code>x = "five"</code> is allowed. <code>type(x)</code> gives the type; <code>id(x)</code> gives the identity (memory address).</li>
+<li>Multiple assignment: <code>a = b = 10</code>; <code>a, b = 1, 2</code>; swap: <code>a, b = b, a</code>.</li>
+<li><b>Mutable</b> (can change in place): list, dict, set. <b>Immutable</b>: int, float, bool, str, tuple.</li>
+<li><b>Implicit conversion</b> (automatic): <code>5 + 2.0 = 7.0</code>. <b>Explicit</b> (type casting): <code>int("12")</code>, <code>float(3)</code>, <code>str(10)</code>, <code>list("abc")</code>.</li>
+<li><code>input()</code> always returns a <b>string</b>; <code>print(a, b, sep="-", end="")</code>.</li>
+<li>Errors: syntax error, logical error, runtime error (exception).</li>
 </ul>
 
 <h3 id="python-programming-pandas-control-flow-functions">Control Flow & Functions</h3>
@@ -1688,6 +1859,31 @@ square = lambda x: x * x</code></pre>
 <li>Dict methods: <code>keys(), values(), items(), get(), update(), pop()</code>.</li>
 <li>List comprehension: <code>[x*x for x in range(5) if x % 2 == 0]</code> → [0, 4, 16].</li>
 </ul>
+
+<h3 id="python-programming-pandas-python-modules">Python Modules</h3>
+<pre><code>import math
+math.pi, math.e          # 3.14159…, 2.71828…
+math.sqrt(16)            # 4.0
+math.ceil(4.2)           # 5
+math.floor(4.8)          # 4
+math.pow(2, 3)           # 8.0
+math.fabs(-7)            # 7.0
+math.sin(0), math.cos(0) # 0.0, 1.0
+
+import random
+random.random()          # float in [0.0, 1.0)
+random.randint(1, 6)     # 1 to 6, both included
+random.randrange(1, 10, 2)  # 1,3,5,7,9 (stop excluded)
+
+import statistics
+statistics.mean([2, 4, 6])     # 4
+statistics.median([1, 3, 5, 7])  # 4.0
+statistics.mode([1, 2, 2, 3])  # 2
+
+from math import sqrt   # import one name
+import math as m        # alias</code></pre>
+<ul><li>Module = a .py file with functions/variables. Package = folder of modules. Library = collection of packages.</li>
+<li>Built-in functions (no import): <code>len, max, min, sum, abs, round, type, range, sorted, input, print</code>.</li></ul>
 
 <h3 id="python-programming-pandas-exception-file-handling">Exception & File Handling</h3>
 <pre><code>try:
@@ -1734,12 +1930,63 @@ df.to_csv("out.csv", index=False); pd.read_csv("out.csv")</code></pre>
 <li><b>Matplotlib</b> (pyplot) for plotting: <code>plt.plot(), bar(), hist(), pie(), scatter(), show(), savefig()</code>.</li>
 <li><b>NumPy</b> — n-dimensional arrays (<code>ndarray</code>), fast vectorised math.</li>
 </ul>
-</div><nav class="pager"><a class="pg prev" href="#java-basics"><small>← Previous</small><b>☕ Java Basics</b></a><a class="pg next" href="#dbms-sql"><small>Next →</small><b>🗄️ DBMS &amp; SQL</b></a></nav></section>
-<section class="chapter" id="dbms-sql" style="--h:157">
-<header class="banner"><div class="b-emoji">🗄️</div><div class="b-text"><div class="kicker">Chapter 11</div><h2>DBMS &amp; SQL</h2>
-<div class="b-meta">19 topics · ~12 min read</div></div>
+</div><nav class="pager"><a class="pg prev" href="#java-basics"><small>← Previous</small><b>☕ Java Basics</b></a><a class="pg next" href="#understanding-data"><small>Next →</small><b>📊 Understanding Data</b></a></nav></section>
+<section class="chapter" id="understanding-data" style="--h:204">
+<header class="banner"><div class="b-emoji">📊</div><div class="b-text"><div class="kicker">Chapter 12</div><h2>Understanding Data</h2>
+<div class="b-meta">4 topics · ~2 min read</div></div>
+<button class="done-btn" data-done="understanding-data">☐ Mark as done</button></header>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#understanding-data-data-its-types">Data &amp; Its Types</a><a class="chip" href="#understanding-data-data-collection-storage-processing">Data Collection, Storage &amp; Processing</a><a class="chip" href="#understanding-data-statistical-techniques">Statistical Techniques</a><a class="chip" href="#understanding-data-data-interpretation-visualization">Data Interpretation &amp; Visualization</a></div></div>
+<div class="content">
+
+
+<h3 id="understanding-data-data-its-types">Data & Its Types</h3>
+<ul>
+<li><b>Data</b> — raw facts; processed data = information. Data helps in decision making (e.g. weather forecasting, sales analysis, exam results).</li>
+<li><b>Structured</b> — organised in rows/columns (tables, spreadsheets). <b>Unstructured</b> — no fixed format (images, video, audio, emails, social media posts). <b>Semi-structured</b> — partly organised (JSON, XML, HTML).</li>
+<li><b>Qualitative</b> (categorical — gender, city) vs <b>quantitative</b> (numerical — marks, height). Quantitative: <b>discrete</b> (countable — students) and <b>continuous</b> (measurable — weight).</li>
+</ul>
+
+<h3 id="understanding-data-data-collection-storage-processing">Data Collection, Storage & Processing</h3>
+<ul>
+<li><b>Collection</b> — surveys, forms, sensors, transactions, web/app logs, interviews. Primary data (collected first-hand) vs secondary data (already collected by others, e.g. census reports).</li>
+<li><b>Storage</b> — files, spreadsheets, databases, data warehouses, cloud. Devices: HDD, SSD, pen drive, cloud.</li>
+<li><b>Processing</b> — input → process (sort, filter, calculate, summarise) → output. Manual, mechanical, electronic.</li>
+<li>Data must be accurate, complete, consistent and up-to-date. Errors: missing values, duplicates, outliers → data cleaning.</li>
+</ul>
+
+<h3 id="understanding-data-statistical-techniques">Statistical Techniques</h3>
+<ul>
+<li><b>Mean</b> = sum of values ÷ number of values.</li>
+<li><b>Median</b> = middle value after sorting (even count → average of two middle values).</li>
+<li><b>Mode</b> = most frequent value.</li>
+<li><b>Range</b> = maximum − minimum.</li>
+<li><b>Variance</b> (σ²) = average of squared differences from the mean = Σ(x − x̄)² ÷ n.</li>
+<li><b>Standard deviation</b> (σ) = √variance — how spread out the values are. Small SD → values close to mean.</li>
+</ul>
+<div class="example">Data: 2, 4, 4, 4, 5, 5, 7, 9 (n = 8)<br>
+Mean = 40 ÷ 8 = <b>5</b> · Median = (4 + 5) ÷ 2 = <b>4.5</b> · Mode = <b>4</b> · Range = 9 − 2 = <b>7</b><br>
+Squared deviations: 9, 1, 1, 1, 0, 0, 4, 16 → sum 32 → Variance = 32 ÷ 8 = <b>4</b> → SD = <b>2</b><br>
+(Sample variance uses n − 1: 32 ÷ 7 ≈ 4.57.)</div>
+<p>Mean, median, mode = measures of <b>central tendency</b>; range, variance, SD = measures of <b>dispersion (variability)</b>.</p>
+
+<h3 id="understanding-data-data-interpretation-visualization">Data Interpretation & Visualization</h3>
+<table><tr><th>Chart</th><th>Best for</th></tr>
+<tr><td>Line chart</td><td>Trend over time (temperature by month)</td></tr>
+<tr><td>Bar chart</td><td>Comparing categories (marks by subject)</td></tr>
+<tr><td>Histogram</td><td>Frequency distribution of continuous data (ranges)</td></tr>
+<tr><td>Pie chart</td><td>Parts of a whole (percentage share)</td></tr>
+<tr><td>Scatter plot</td><td>Relationship between two variables</td></tr>
+<tr><td>Box plot</td><td>Spread, median, quartiles, outliers</td></tr></table>
+<ul>
+<li>Tools: MS Excel, Google Sheets, Tableau, Power BI, Python (Pandas, Matplotlib, Seaborn).</li>
+<li>Python: <code>import matplotlib.pyplot as plt</code> → <code>plt.plot(x, y)</code>, <code>plt.bar()</code>, <code>plt.hist()</code>, <code>plt.pie()</code>, <code>plt.title()</code>, <code>plt.xlabel()</code>, <code>plt.legend()</code>, <code>plt.show()</code>.</li>
+</ul>
+</div><nav class="pager"><a class="pg prev" href="#python-programming-pandas"><small>← Previous</small><b>🐍 Python Programming &amp; Pandas</b></a><a class="pg next" href="#dbms-sql"><small>Next →</small><b>🗄️ DBMS &amp; SQL</b></a></nav></section>
+<section class="chapter" id="dbms-sql" style="--h:251">
+<header class="banner"><div class="b-emoji">🗄️</div><div class="b-text"><div class="kicker">Chapter 13</div><h2>DBMS &amp; SQL</h2>
+<div class="b-meta">22 topics · ~15 min read</div></div>
 <button class="done-btn" data-done="dbms-sql">☐ Mark as done</button></header>
-<div class="chips-wrap"><div class="chips"><a class="chip" href="#dbms-sql-basic-concepts-of-database">Basic Concepts of Database</a><a class="chip" href="#dbms-sql-components-of-dbms-users">Components of DBMS &amp; Users</a><a class="chip" href="#dbms-sql-database-architecture-tiers">Database Architecture (Tiers)</a><a class="chip" href="#dbms-sql-three-schema-architecture-ansi-sparc">Three-Schema Architecture (ANSI/SPARC)</a><a class="chip" href="#dbms-sql-schema-vs-instance">Schema vs Instance</a><a class="chip" href="#dbms-sql-relational-model-terms">Relational Model Terms</a><a class="chip" href="#dbms-sql-acid-properties-transactions">ACID Properties (Transactions)</a><a class="chip" href="#dbms-sql-er-model">ER Model</a><a class="chip" href="#dbms-sql-database-keys">Database Keys</a><a class="chip" href="#dbms-sql-normalization">Normalization</a><a class="chip" href="#dbms-sql-codd-s-12-rules">Codd&#x27;s 12 Rules</a><a class="chip" href="#dbms-sql-sql-history-basics">SQL – History &amp; Basics</a><a class="chip" href="#dbms-sql-sql-command-categories">SQL Command Categories</a><a class="chip" href="#dbms-sql-query-clause-order-operators">Query Clause Order &amp; Operators</a><a class="chip" href="#dbms-sql-sql-functions">SQL Functions</a><a class="chip" href="#dbms-sql-constraints">Constraints</a><a class="chip" href="#dbms-sql-views-cursors-locks-triggers">Views, Cursors, Locks, Triggers</a><a class="chip" href="#dbms-sql-sql-joins">SQL Joins</a><a class="chip" href="#dbms-sql-postgresql-nosql-pl-sql">PostgreSQL, NoSQL, PL/SQL</a></div></div>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#dbms-sql-basic-concepts-of-database">Basic Concepts of Database</a><a class="chip" href="#dbms-sql-file-system-vs-dbms">File System vs DBMS</a><a class="chip" href="#dbms-sql-components-of-dbms-users">Components of DBMS &amp; Users</a><a class="chip" href="#dbms-sql-database-architecture-tiers">Database Architecture (Tiers)</a><a class="chip" href="#dbms-sql-three-schema-architecture-ansi-sparc">Three-Schema Architecture (ANSI/SPARC)</a><a class="chip" href="#dbms-sql-schema-vs-instance">Schema vs Instance</a><a class="chip" href="#dbms-sql-relational-model-terms">Relational Model Terms</a><a class="chip" href="#dbms-sql-relational-algebra">Relational Algebra</a><a class="chip" href="#dbms-sql-acid-properties-transactions">ACID Properties (Transactions)</a><a class="chip" href="#dbms-sql-er-model">ER Model</a><a class="chip" href="#dbms-sql-database-keys">Database Keys</a><a class="chip" href="#dbms-sql-normalization">Normalization</a><a class="chip" href="#dbms-sql-codd-s-12-rules">Codd&#x27;s 12 Rules</a><a class="chip" href="#dbms-sql-sql-history-basics">SQL – History &amp; Basics</a><a class="chip" href="#dbms-sql-sql-command-categories">SQL Command Categories</a><a class="chip" href="#dbms-sql-query-clause-order-operators">Query Clause Order &amp; Operators</a><a class="chip" href="#dbms-sql-sql-functions">SQL Functions</a><a class="chip" href="#dbms-sql-sql-math-text-date-functions">SQL Math, Text &amp; Date Functions</a><a class="chip" href="#dbms-sql-constraints">Constraints</a><a class="chip" href="#dbms-sql-views-cursors-locks-triggers">Views, Cursors, Locks, Triggers</a><a class="chip" href="#dbms-sql-sql-joins">SQL Joins</a><a class="chip" href="#dbms-sql-postgresql-nosql-pl-sql">PostgreSQL, NoSQL, PL/SQL</a></div></div>
 <div class="content">
 
 
@@ -1761,6 +2008,16 @@ df.to_csv("out.csv", index=False); pd.read_csv("out.csv")</code></pre>
 <tr><th>RDBMS (SQL)</th><th>NoSQL</th></tr>
 <tr><td>MySQL, MS SQL Server, SQLite, PostgreSQL, Oracle, MS Access, IBM DB2, MariaDB, Sybase, FoxPro</td><td>MongoDB (document), Cassandra (column), Redis (key-value), Neo4j (graph), CouchDB, Couchbase, HBase, Amazon DynamoDB, Firebase, Google Bigtable, Elasticsearch</td></tr>
 </table>
+
+<h3 id="dbms-sql-file-system-vs-dbms">File System vs DBMS</h3>
+<p>Before databases, data was kept in separate files (file system). Its limitations led to DBMS.</p>
+<table><tr><th>File System</th><th>DBMS</th></tr>
+<tr><td>Data redundancy (same data in many files)</td><td>Controlled / minimal redundancy</td></tr>
+<tr><td>Data inconsistency</td><td>Consistency maintained</td></tr>
+<tr><td>Data isolation — hard to access data spread across files</td><td>Easy access using queries (SQL)</td></tr>
+<tr><td>Data dependence — program depends on file format</td><td>Data independence</td></tr>
+<tr><td>Poor security, no concurrent access control</td><td>Security, multi-user access, backup &amp; recovery</td></tr>
+<tr><td>Controlled data sharing difficult</td><td>Easy data sharing</td></tr></table>
 
 <h3 id="dbms-sql-components-of-dbms-users">Components of DBMS & Users</h3>
 <ul>
@@ -1801,6 +2058,19 @@ df.to_csv("out.csv", index=False); pd.read_csv("out.csv")</code></pre>
 <tr><td>Degree</td><td>Number of attributes (columns)</td></tr>
 <tr><td>Domain</td><td>Set of allowed values of an attribute</td></tr>
 </table>
+
+<h3 id="dbms-sql-relational-algebra">Relational Algebra</h3>
+<p>Procedural query language — set of operations that take relations (tables) as input and produce a relation as output. Basis of SQL.</p>
+<table><tr><th>Operation</th><th>Symbol</th><th>Meaning</th><th>SQL equivalent</th></tr>
+<tr><td>Selection</td><td>σ (sigma)</td><td>Selects <b>rows</b> satisfying a condition: σ<sub>marks&gt;60</sub>(Student)</td><td>WHERE</td></tr>
+<tr><td>Projection</td><td>π (pi)</td><td>Selects <b>columns</b>, removes duplicates: π<sub>name</sub>(Student)</td><td>SELECT col</td></tr>
+<tr><td>Union</td><td>∪</td><td>Rows in A or B (duplicates removed); both must be union-compatible (same degree &amp; domains)</td><td>UNION</td></tr>
+<tr><td>Set difference</td><td>−</td><td>Rows in A but not in B</td><td>EXCEPT / MINUS</td></tr>
+<tr><td>Intersection</td><td>∩</td><td>Rows in both A and B</td><td>INTERSECT</td></tr>
+<tr><td>Cartesian product</td><td>×</td><td>Every row of A with every row of B</td><td>CROSS JOIN</td></tr>
+<tr><td>Rename</td><td>ρ (rho)</td><td>Renames relation/attributes</td><td>AS</td></tr>
+<tr><td>Join</td><td>⋈</td><td>Cartesian product + selection on matching attributes</td><td>JOIN</td></tr></table>
+<div class="fact">Cartesian product of A (degree 3, cardinality 4) and B (degree 2, cardinality 5) → degree <b>3 + 2 = 5</b>, cardinality <b>4 × 5 = 20</b>.</div>
 
 <h3 id="dbms-sql-acid-properties-transactions">ACID Properties (Transactions)</h3>
 <ul>
@@ -1975,6 +2245,27 @@ SELECT lastname, age FROM customer WHERE country &lt;&gt; 'UK' ORDER BY lastname
 </table>
 <p>Negative second argument rounds to the left of the decimal point. (SQL Server has a 3rd argument: non-zero means truncate instead of round.)</p>
 
+<h3 id="dbms-sql-sql-math-text-date-functions">SQL Math, Text & Date Functions</h3>
+<table><tr><th>Type</th><th>Function</th><th>Example → Result</th></tr>
+<tr><td rowspan="3">Math</td><td>POWER(x, y) / POW</td><td>POWER(2, 3) → 8</td></tr>
+<tr><td>MOD(x, y)</td><td>MOD(11, 4) → 3</td></tr>
+<tr><td>ROUND(x, d)</td><td>ROUND(15.193, 1) → 15.2</td></tr>
+<tr><td rowspan="8">Text</td><td>UPPER()/UCASE(), LOWER()/LCASE()</td><td>UPPER('bihar') → BIHAR</td></tr>
+<tr><td>LENGTH()</td><td>LENGTH('Patna') → 5</td></tr>
+<tr><td>LEFT(s, n), RIGHT(s, n)</td><td>LEFT('Computer', 3) → Com; RIGHT('Computer', 3) → ter</td></tr>
+<tr><td>MID(s, pos, n) / SUBSTR</td><td>MID('Computer', 4, 3) → put</td></tr>
+<tr><td>INSTR(s, sub)</td><td>INSTR('Computer', 'put') → 4</td></tr>
+<tr><td>LTRIM, RTRIM, TRIM</td><td>TRIM('  hi  ') → 'hi'</td></tr>
+<tr><td>CONCAT(a, b)</td><td>CONCAT('Data', 'base') → Database</td></tr>
+<tr><td>CHAR() / ASCII()</td><td>ASCII('A') → 65</td></tr>
+<tr><td rowspan="5">Date</td><td>NOW()</td><td>Current date and time</td></tr>
+<tr><td>CURDATE() / SYSDATE()</td><td>Current date</td></tr>
+<tr><td>DATE(), MONTH(), YEAR(), DAY()</td><td>MONTH('2026-11-13') → 11; YEAR(...) → 2026</td></tr>
+<tr><td>DAYNAME(), MONTHNAME()</td><td>DAYNAME('2026-11-13') → Friday; MONTHNAME → November</td></tr>
+<tr><td>DATEDIFF(d1, d2)</td><td>Days between two dates</td></tr></table>
+<ul><li>Single-row (scalar) functions work on each row; multiple-row (aggregate) functions work on a group of rows.</li>
+<li>COUNT(*) counts all rows including NULLs; COUNT(column) ignores NULLs.</li></ul>
+
 <h3 id="dbms-sql-constraints">Constraints</h3>
 <p>Rules applied to columns to limit the type of data that can go into a table (integrity constraints).</p>
 <ul>
@@ -2016,12 +2307,12 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li><b>PL/SQL</b> — Procedural Language extension to SQL by <b>Oracle</b>; block-structured; supports variables, data types, control structures, procedures, functions, triggers and packages.</li>
 <li><b>RAID</b> = Redundant Array of Independent (Inexpensive) Disks.</li>
 </ul>
-</div><nav class="pager"><a class="pg prev" href="#python-programming-pandas"><small>← Previous</small><b>🐍 Python Programming &amp; Pandas</b></a><a class="pg next" href="#computer-networking"><small>Next →</small><b>🌐 Computer Networking</b></a></nav></section>
-<section class="chapter" id="computer-networking" style="--h:204">
-<header class="banner"><div class="b-emoji">🌐</div><div class="b-text"><div class="kicker">Chapter 12</div><h2>Computer Networking</h2>
-<div class="b-meta">12 topics · ~10 min read</div></div>
+</div><nav class="pager"><a class="pg prev" href="#understanding-data"><small>← Previous</small><b>📊 Understanding Data</b></a><a class="pg next" href="#computer-networking"><small>Next →</small><b>🌐 Computer Networking</b></a></nav></section>
+<section class="chapter" id="computer-networking" style="--h:298">
+<header class="banner"><div class="b-emoji">🌐</div><div class="b-text"><div class="kicker">Chapter 14</div><h2>Computer Networking</h2>
+<div class="b-meta">15 topics · ~12 min read</div></div>
 <button class="done-btn" data-done="computer-networking">☐ Mark as done</button></header>
-<div class="chips-wrap"><div class="chips"><a class="chip" href="#computer-networking-introduction-history">Introduction &amp; History</a><a class="chip" href="#computer-networking-networking-models-osi-tcp-ip">Networking Models: OSI &amp; TCP/IP</a><a class="chip" href="#computer-networking-ieee-802-standards">IEEE 802 Standards</a><a class="chip" href="#computer-networking-ip-address-mac-address">IP Address &amp; MAC Address</a><a class="chip" href="#computer-networking-subnetting">Subnetting</a><a class="chip" href="#computer-networking-ports-protocols">Ports &amp; Protocols</a><a class="chip" href="#computer-networking-types-of-networks-by-area">Types of Networks (by area)</a><a class="chip" href="#computer-networking-transmission-modes">Transmission Modes</a><a class="chip" href="#computer-networking-network-topology">Network Topology</a><a class="chip" href="#computer-networking-networking-devices">Networking Devices</a><a class="chip" href="#computer-networking-transmission-media-cables">Transmission Media (Cables)</a><a class="chip" href="#computer-networking-exam-facts">Exam Facts</a></div></div>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#computer-networking-introduction-history">Introduction &amp; History</a><a class="chip" href="#computer-networking-evolution-of-networking">Evolution of Networking</a><a class="chip" href="#computer-networking-networking-models-osi-tcp-ip">Networking Models: OSI &amp; TCP/IP</a><a class="chip" href="#computer-networking-ieee-802-standards">IEEE 802 Standards</a><a class="chip" href="#computer-networking-ip-address-mac-address">IP Address &amp; MAC Address</a><a class="chip" href="#computer-networking-subnetting">Subnetting</a><a class="chip" href="#computer-networking-ports-protocols">Ports &amp; Protocols</a><a class="chip" href="#computer-networking-types-of-networks-by-area">Types of Networks (by area)</a><a class="chip" href="#computer-networking-transmission-modes">Transmission Modes</a><a class="chip" href="#computer-networking-data-communication">Data Communication</a><a class="chip" href="#computer-networking-network-topology">Network Topology</a><a class="chip" href="#computer-networking-networking-devices">Networking Devices</a><a class="chip" href="#computer-networking-transmission-media-cables">Transmission Media (Cables)</a><a class="chip" href="#computer-networking-web-basics">Web Basics</a><a class="chip" href="#computer-networking-exam-facts">Exam Facts</a></div></div>
 <div class="content">
 
 
@@ -2035,6 +2326,13 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li><b>1 January 1983</b> — ARPANET switched to TCP/IP: the "official birthday of the Internet".</li>
 <li>First public internet service in India: <b>VSNL</b> (Videsh Sanchar Nigam Limited) on <b>15 August 1995</b>.</li>
 <li>WWW invented by <b>Tim Berners-Lee</b> (1989, CERN).</li>
+</ul>
+
+<h3 id="computer-networking-evolution-of-networking">Evolution of Networking</h3>
+<ul>
+<li><b>ARPANET</b> (1969) — first network, connected 4 university/research computers (UCLA, Stanford, UCSB, Utah).</li>
+<li><b>NSFNET</b> (1986) — National Science Foundation Network; connected universities and research centres at high speed; replaced ARPANET as the backbone (ARPANET shut down in 1990).</li>
+<li><b>Internet</b> — global network of networks formed by interconnecting ARPANET, NSFNET and private networks; opened to commercial use in the early 1990s.</li>
 </ul>
 
 <h3 id="computer-networking-networking-models-osi-tcp-ip">Networking Models: OSI & TCP/IP</h3>
@@ -2187,6 +2485,30 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li><b>Full duplex</b> — both directions simultaneously: mobile phone, video conferencing, live chat.</li>
 </ul>
 
+<h3 id="computer-networking-data-communication">Data Communication</h3>
+<h4>Components</h4>
+<ul><li><b>Sender</b>, <b>Receiver</b>, <b>Message</b>, <b>Communication medium</b> (wired/wireless), <b>Protocol</b> (rules).</li></ul>
+<h4>Terms</h4>
+<ul>
+<li><b>Channel</b> — path through which data travels.</li>
+<li><b>Bandwidth</b> — range of frequencies a channel can carry = highest − lowest frequency; measured in <b>Hz</b> (KHz, MHz, GHz). Higher bandwidth → more data.</li>
+<li><b>Data transfer rate</b> — bits transferred per second: <b>bps</b>, Kbps (10<sup>3</sup>), Mbps (10<sup>6</sup>), Gbps (10<sup>9</sup>), Tbps (10<sup>12</sup>). (Mbps = megabits; MBps = megabytes; 1 byte = 8 bits.)</li>
+<li><b>Baud rate</b> — signal changes per second.</li>
+<li><b>Latency</b> — delay; <b>throughput</b> — actual data delivered per second.</li>
+</ul>
+<h4>Switching techniques</h4>
+<table><tr><th>Circuit switching</th><th>Packet switching</th></tr>
+<tr><td>Dedicated path set up before communication (call setup)</td><td>Message broken into packets; each packet may take a different route</td></tr>
+<tr><td>Path reserved for whole session; resources wasted when idle</td><td>No reserved path; efficient use of bandwidth</td></tr>
+<tr><td>Telephone network</td><td>Internet</td></tr></table>
+<p><b>Message switching</b> — whole message sent hop by hop (store-and-forward), no dedicated path.</p>
+<h4>More protocols</h4>
+<ul>
+<li><b>PPP</b> (Point-to-Point Protocol) — direct link between two nodes (dial-up, broadband to ISP); data-link layer; supports authentication.</li>
+<li><b>VoIP</b> (Voice over Internet Protocol) — voice calls over the Internet (WhatsApp call, Skype, Zoom).</li>
+<li><b>Telnet</b> — remote login (insecure, port 23); <b>SSH</b> is the secure replacement.</li>
+</ul>
+
 <h3 id="computer-networking-network-topology">Network Topology</h3>
 <p>Topology = physical or logical layout of a network.</p>
 <table>
@@ -2230,6 +2552,17 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li><b>Infrared</b> — short range: TV remote, thermal imaging, astronomy.</li>
 </ul>
 
+<h3 id="computer-networking-web-basics">Web Basics</h3>
+<ul>
+<li><b>Internet</b> = the network infrastructure; <b>WWW</b> = a service on the Internet (pages linked by hyperlinks, accessed by HTTP).</li>
+<li><b>Web page</b> — single HTML document. <b>Website</b> — collection of related web pages under one domain. <b>Home page</b> — first page of a website.</li>
+<li><b>Static</b> web page — same content for everyone; <b>dynamic</b> — generated at request time.</li>
+<li><b>Web browser</b> — software to view web pages (Chrome, Firefox, Edge, Safari). <b>Web server</b> — stores and serves pages (Apache, Nginx).</li>
+<li><b>Web hosting</b> — storing a website on a server connected to the Internet so others can access it.</li>
+<li><b>Domain name</b> — human-readable address (bpsc.bihar.gov.in); converted to IP by <b>DNS</b>. <b>URL</b> — complete address of a resource.</li>
+<li><b>Browser add-ons/plug-ins</b>, <b>cookies</b> (small text files stored by a site in the browser).</li>
+</ul>
+
 <h3 id="computer-networking-exam-facts">Exam Facts</h3>
 <div class="fact"><ul>
 <li>Protocol that sends a datagram to an application program: <b>UDP</b>.</li>
@@ -2247,8 +2580,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>With Telnet/FTP you use the <b>Application layer</b> (highest layer).</li>
 </ul></div>
 </div><nav class="pager"><a class="pg prev" href="#dbms-sql"><small>← Previous</small><b>🗄️ DBMS &amp; SQL</b></a><a class="pg next" href="#web-technology"><small>Next →</small><b>🕸️ Web Technology</b></a></nav></section>
-<section class="chapter" id="web-technology" style="--h:251">
-<header class="banner"><div class="b-emoji">🕸️</div><div class="b-text"><div class="kicker">Chapter 13</div><h2>Web Technology</h2>
+<section class="chapter" id="web-technology" style="--h:345">
+<header class="banner"><div class="b-emoji">🕸️</div><div class="b-text"><div class="kicker">Chapter 15</div><h2>Web Technology</h2>
 <div class="b-meta">4 topics · ~3 min read</div></div>
 <button class="done-btn" data-done="web-technology">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#web-technology-www-internet-basics">WWW &amp; Internet Basics</a><a class="chip" href="#web-technology-html">HTML</a><a class="chip" href="#web-technology-css">CSS</a><a class="chip" href="#web-technology-javascript">JavaScript</a></div></div>
@@ -2313,8 +2646,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Node.js — runs JavaScript on servers (Ryan Dahl, 2009). JSON — JavaScript Object Notation (data format).</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#computer-networking"><small>← Previous</small><b>🌐 Computer Networking</b></a><a class="pg next" href="#internet-of-things-iot"><small>Next →</small><b>📡 Internet of Things (IoT)</b></a></nav></section>
-<section class="chapter" id="internet-of-things-iot" style="--h:298">
-<header class="banner"><div class="b-emoji">📡</div><div class="b-text"><div class="kicker">Chapter 14</div><h2>Internet of Things (IoT)</h2>
+<section class="chapter" id="internet-of-things-iot" style="--h:32">
+<header class="banner"><div class="b-emoji">📡</div><div class="b-text"><div class="kicker">Chapter 16</div><h2>Internet of Things (IoT)</h2>
 <div class="b-meta">7 topics · ~4 min read</div></div>
 <button class="done-btn" data-done="internet-of-things-iot">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#internet-of-things-iot-internet-iot-basics">Internet &amp; IoT Basics</a><a class="chip" href="#internet-of-things-iot-types-of-iot">Types of IoT</a><a class="chip" href="#internet-of-things-iot-components-of-iot">Components of IoT</a><a class="chip" href="#internet-of-things-iot-iot-gateway">IoT Gateway</a><a class="chip" href="#internet-of-things-iot-iot-networks">IoT Networks</a><a class="chip" href="#internet-of-things-iot-iot-protocols">IoT Protocols</a><a class="chip" href="#internet-of-things-iot-arduino">Arduino</a></div></div>
@@ -2406,8 +2739,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Other IoT boards: <b>Raspberry Pi</b> (a full single-board computer running Linux), NodeMCU / ESP8266, ESP32 (built-in Wi-Fi).</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#web-technology"><small>← Previous</small><b>🕸️ Web Technology</b></a><a class="pg next" href="#cloud-computing"><small>Next →</small><b>☁️ Cloud Computing</b></a></nav></section>
-<section class="chapter" id="cloud-computing" style="--h:345">
-<header class="banner"><div class="b-emoji">☁️</div><div class="b-text"><div class="kicker">Chapter 15</div><h2>Cloud Computing</h2>
+<section class="chapter" id="cloud-computing" style="--h:79">
+<header class="banner"><div class="b-emoji">☁️</div><div class="b-text"><div class="kicker">Chapter 17</div><h2>Cloud Computing</h2>
 <div class="b-meta">5 topics · ~2 min read</div></div>
 <button class="done-btn" data-done="cloud-computing">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#cloud-computing-basics">Basics</a><a class="chip" href="#cloud-computing-architecture">Architecture</a><a class="chip" href="#cloud-computing-service-models">Service Models</a><a class="chip" href="#cloud-computing-deployment-models">Deployment Models</a><a class="chip" href="#cloud-computing-key-terms">Key Terms</a></div></div>
@@ -2459,11 +2792,11 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <h4>Indian cloud facts</h4>
 <p>MeghRaj — Government of India's cloud initiative (GI Cloud). DigiLocker — government cloud document wallet.</p>
 </div><nav class="pager"><a class="pg prev" href="#internet-of-things-iot"><small>← Previous</small><b>📡 Internet of Things (IoT)</b></a><a class="pg next" href="#cyber-security"><small>Next →</small><b>🛡️ Cyber Security</b></a></nav></section>
-<section class="chapter" id="cyber-security" style="--h:32">
-<header class="banner"><div class="b-emoji">🛡️</div><div class="b-text"><div class="kicker">Chapter 16</div><h2>Cyber Security</h2>
-<div class="b-meta">4 topics · ~3 min read</div></div>
+<section class="chapter" id="cyber-security" style="--h:126">
+<header class="banner"><div class="b-emoji">🛡️</div><div class="b-text"><div class="kicker">Chapter 18</div><h2>Cyber Security</h2>
+<div class="b-meta">5 topics · ~3 min read</div></div>
 <button class="done-btn" data-done="cyber-security">☐ Mark as done</button></header>
-<div class="chips-wrap"><div class="chips"><a class="chip" href="#cyber-security-computer-virus">Computer Virus</a><a class="chip" href="#cyber-security-malware-types">Malware Types</a><a class="chip" href="#cyber-security-cyber-attacks-frauds">Cyber Attacks &amp; Frauds</a><a class="chip" href="#cyber-security-cyber-security-tools-practices">Cyber Security Tools &amp; Practices</a></div></div>
+<div class="chips-wrap"><div class="chips"><a class="chip" href="#cyber-security-computer-virus">Computer Virus</a><a class="chip" href="#cyber-security-malware-types">Malware Types</a><a class="chip" href="#cyber-security-cyber-attacks-frauds">Cyber Attacks &amp; Frauds</a><a class="chip" href="#cyber-security-network-security-threats">Network Security Threats</a><a class="chip" href="#cyber-security-cyber-security-tools-practices">Cyber Security Tools &amp; Practices</a></div></div>
 <div class="content">
 
 
@@ -2511,6 +2844,24 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li><b>Social engineering</b> — manipulating people into revealing information.</li>
 </ul>
 
+<h3 id="cyber-security-network-security-threats">Network Security Threats</h3>
+<ul>
+<li><b>Denial of Service (DoS)</b> — flooding a server/network with requests so real users can't use it. <b>DDoS</b> — attack from many compromised computers (botnet).</li>
+<li><b>Intrusion</b> — unauthorised access to a computer or network. Detected by <b>IDS</b> (Intrusion Detection System), blocked by IPS.</li>
+<li><b>Snooping</b> — secretly accessing/monitoring someone's data or network traffic (often later analysed); e.g. packet sniffers.</li>
+<li><b>Eavesdropping</b> — intercepting a <i>live</i> private communication in real time (calls, chats, unencrypted Wi-Fi).</li>
+<li><b>Cookies</b> — small text files a website stores in your browser (login, preferences). First-party vs third-party (tracking) cookies; risk: tracking and privacy leaks.</li>
+<li><b>Adware</b> — software that shows unwanted ads; may track browsing. <b>Spam</b> — unwanted bulk messages.</li>
+</ul>
+<h4>HTTP vs HTTPS</h4>
+<table><tr><th>HTTP</th><th>HTTPS</th></tr>
+<tr><td>HyperText Transfer Protocol</td><td>HTTP Secure (HTTP over SSL/TLS)</td></tr>
+<tr><td>Data sent as plain text</td><td>Data encrypted</td></tr>
+<tr><td>Port 80</td><td>Port 443</td></tr>
+<tr><td>No certificate</td><td>Needs SSL/TLS certificate; padlock 🔒 in browser</td></tr></table>
+<h4>Firewall</h4>
+<p>Hardware or software that monitors and filters incoming/outgoing network traffic based on rules; barrier between a trusted network and the Internet. Types: packet-filtering, stateful inspection, proxy (application-level) firewall.</p>
+
 <h3 id="cyber-security-cyber-security-tools-practices">Cyber Security Tools & Practices</h3>
 <ul>
 <li>Firewalls, antivirus, anti-malware, encryption tools, VPN, strong passwords, two-factor authentication (2FA), intrusion detection systems (IDS), regular updates/patches, backups.</li>
@@ -2520,8 +2871,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <h4>Indian cyber bodies</h4>
 <p><b>CERT-In</b> — Indian Computer Emergency Response Team (2004). <b>I4C</b> — Indian Cyber Crime Coordination Centre. Cybercrime helpline <b>1930</b>; portal cybercrime.gov.in. See also the <a href="#society-law-ethics">IT Act 2000</a> chapter.</p>
 </div><nav class="pager"><a class="pg prev" href="#cloud-computing"><small>← Previous</small><b>☁️ Cloud Computing</b></a><a class="pg next" href="#software-engineering"><small>Next →</small><b>🛠️ Software Engineering</b></a></nav></section>
-<section class="chapter" id="software-engineering" style="--h:79">
-<header class="banner"><div class="b-emoji">🛠️</div><div class="b-text"><div class="kicker">Chapter 17</div><h2>Software Engineering</h2>
+<section class="chapter" id="software-engineering" style="--h:173">
+<header class="banner"><div class="b-emoji">🛠️</div><div class="b-text"><div class="kicker">Chapter 19</div><h2>Software Engineering</h2>
 <div class="b-meta">6 topics · ~5 min read</div></div>
 <button class="done-btn" data-done="software-engineering">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#software-engineering-sdlc-software-development-life-cycle">SDLC (Software Development Life Cycle)</a><a class="chip" href="#software-engineering-sdlc-models">SDLC Models</a><a class="chip" href="#software-engineering-case-tools">CASE Tools</a><a class="chip" href="#software-engineering-quality-cohesion-coupling">Quality, Cohesion &amp; Coupling</a><a class="chip" href="#software-engineering-software-maintenance-4-types">Software Maintenance (4 types)</a><a class="chip" href="#software-engineering-software-testing">Software Testing</a></div></div>
@@ -2617,8 +2968,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Error → fault/defect/bug → failure.</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#cyber-security"><small>← Previous</small><b>🛡️ Cyber Security</b></a><a class="pg next" href="#theory-of-computation"><small>Next →</small><b>⚙️ Theory of Computation</b></a></nav></section>
-<section class="chapter" id="theory-of-computation" style="--h:126">
-<header class="banner"><div class="b-emoji">⚙️</div><div class="b-text"><div class="kicker">Chapter 18</div><h2>Theory of Computation</h2>
+<section class="chapter" id="theory-of-computation" style="--h:220">
+<header class="banner"><div class="b-emoji">⚙️</div><div class="b-text"><div class="kicker">Chapter 20</div><h2>Theory of Computation</h2>
 <div class="b-meta">11 topics · ~4 min read</div></div>
 <button class="done-btn" data-done="theory-of-computation">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#theory-of-computation-introduction">Introduction</a><a class="chip" href="#theory-of-computation-automata-basics">Automata Basics</a><a class="chip" href="#theory-of-computation-chomsky-hierarchy">Chomsky Hierarchy</a><a class="chip" href="#theory-of-computation-finite-automata-dfa-nfa">Finite Automata (DFA &amp; NFA)</a><a class="chip" href="#theory-of-computation-moore-mealy-machines">Moore &amp; Mealy Machines</a><a class="chip" href="#theory-of-computation-pushdown-automata-pda">Pushdown Automata (PDA)</a><a class="chip" href="#theory-of-computation-linear-bounded-automata-lba">Linear Bounded Automata (LBA)</a><a class="chip" href="#theory-of-computation-turing-machine">Turing Machine</a><a class="chip" href="#theory-of-computation-regular-expressions-closure-properties">Regular Expressions &amp; Closure Properties</a><a class="chip" href="#theory-of-computation-myhill-nerode-theorem-pumping-lemma">Myhill–Nerode Theorem &amp; Pumping Lemma</a><a class="chip" href="#theory-of-computation-compiler-phases-toc-application">Compiler Phases (TOC application)</a></div></div>
@@ -2730,8 +3081,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 </ol>
 <p>Symbol table and error handler work with all phases. Front end = phases 1–4; back end = 5–6.</p>
 </div><nav class="pager"><a class="pg prev" href="#software-engineering"><small>← Previous</small><b>🛠️ Software Engineering</b></a><a class="pg next" href="#artificial-intelligence-ml"><small>Next →</small><b>🤖 Artificial Intelligence &amp; ML</b></a></nav></section>
-<section class="chapter" id="artificial-intelligence-ml" style="--h:173">
-<header class="banner"><div class="b-emoji">🤖</div><div class="b-text"><div class="kicker">Chapter 19</div><h2>Artificial Intelligence &amp; ML</h2>
+<section class="chapter" id="artificial-intelligence-ml" style="--h:267">
+<header class="banner"><div class="b-emoji">🤖</div><div class="b-text"><div class="kicker">Chapter 21</div><h2>Artificial Intelligence &amp; ML</h2>
 <div class="b-meta">4 topics · ~3 min read</div></div>
 <button class="done-btn" data-done="artificial-intelligence-ml">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#artificial-intelligence-ml-artificial-intelligence">Artificial Intelligence</a><a class="chip" href="#artificial-intelligence-ml-chatbots-virtual-assistants">Chatbots &amp; Virtual Assistants</a><a class="chip" href="#artificial-intelligence-ml-machine-learning">Machine Learning</a><a class="chip" href="#artificial-intelligence-ml-deep-learning">Deep Learning</a></div></div>
@@ -2797,8 +3148,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Types: CNN (images), RNN/LSTM (sequences), Transformers (language — basis of GPT), GAN (generating images).</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#theory-of-computation"><small>← Previous</small><b>⚙️ Theory of Computation</b></a><a class="pg next" href="#multimedia"><small>Next →</small><b>🎬 Multimedia</b></a></nav></section>
-<section class="chapter" id="multimedia" style="--h:220">
-<header class="banner"><div class="b-emoji">🎬</div><div class="b-text"><div class="kicker">Chapter 20</div><h2>Multimedia</h2>
+<section class="chapter" id="multimedia" style="--h:314">
+<header class="banner"><div class="b-emoji">🎬</div><div class="b-text"><div class="kicker">Chapter 22</div><h2>Multimedia</h2>
 <div class="b-meta">6 topics · ~2 min read</div></div>
 <button class="done-btn" data-done="multimedia">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#multimedia-what-is-multimedia">What is Multimedia</a><a class="chip" href="#multimedia-warping-morphing-image-types">Warping, Morphing &amp; Image Types</a><a class="chip" href="#multimedia-multimedia-authoring">Multimedia Authoring</a><a class="chip" href="#multimedia-file-formats">File Formats</a><a class="chip" href="#multimedia-compression">Compression</a><a class="chip" href="#multimedia-animation-colour-basics">Animation &amp; Colour Basics</a></div></div>
@@ -2862,8 +3213,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Colour models: <b>RGB</b> (additive — screens), <b>CMYK</b> (subtractive — printing). Resolution measured in PPI (screen) / DPI (print).</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#artificial-intelligence-ml"><small>← Previous</small><b>🤖 Artificial Intelligence &amp; ML</b></a><a class="pg next" href="#society-law-ethics"><small>Next →</small><b>⚖️ Society, Law &amp; Ethics</b></a></nav></section>
-<section class="chapter" id="society-law-ethics" style="--h:267">
-<header class="banner"><div class="b-emoji">⚖️</div><div class="b-text"><div class="kicker">Chapter 21</div><h2>Society, Law &amp; Ethics</h2>
+<section class="chapter" id="society-law-ethics" style="--h:1">
+<header class="banner"><div class="b-emoji">⚖️</div><div class="b-text"><div class="kicker">Chapter 23</div><h2>Society, Law &amp; Ethics</h2>
 <div class="b-meta">5 topics · ~2 min read</div></div>
 <button class="done-btn" data-done="society-law-ethics">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#society-law-ethics-digital-footprint-netiquette">Digital Footprint &amp; Netiquette</a><a class="chip" href="#society-law-ethics-intellectual-property-rights-ipr">Intellectual Property Rights (IPR)</a><a class="chip" href="#society-law-ethics-cyber-crime-it-act-2000">Cyber Crime &amp; IT Act 2000</a><a class="chip" href="#society-law-ethics-e-waste-health">E-waste &amp; Health</a><a class="chip" href="#society-law-ethics-digital-india-e-governance">Digital India &amp; E-Governance</a></div></div>
@@ -2910,8 +3261,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li>Gender &amp; disability issues in computing: accessibility (screen readers, Braille keyboards), bridging the digital divide.</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#multimedia"><small>← Previous</small><b>🎬 Multimedia</b></a><a class="pg next" href="#emerging-trends"><small>Next →</small><b>🚀 Emerging Trends</b></a></nav></section>
-<section class="chapter" id="emerging-trends" style="--h:314">
-<header class="banner"><div class="b-emoji">🚀</div><div class="b-text"><div class="kicker">Chapter 22</div><h2>Emerging Trends</h2>
+<section class="chapter" id="emerging-trends" style="--h:48">
+<header class="banner"><div class="b-emoji">🚀</div><div class="b-text"><div class="kicker">Chapter 24</div><h2>Emerging Trends</h2>
 <div class="b-meta">4 topics · ~2 min read</div></div>
 <button class="done-btn" data-done="emerging-trends">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#emerging-trends-big-data-data-science">Big Data &amp; Data Science</a><a class="chip" href="#emerging-trends-blockchain">Blockchain</a><a class="chip" href="#emerging-trends-ar-vr-mr">AR, VR, MR</a><a class="chip" href="#emerging-trends-other-trends">Other Trends</a></div></div>
@@ -2948,8 +3299,8 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 <li><b>Smart cities</b>, <b>wearables</b>, <b>NLP</b> (machine translation — Bhashini mission in India).</li>
 </ul>
 </div><nav class="pager"><a class="pg prev" href="#society-law-ethics"><small>← Previous</small><b>⚖️ Society, Law &amp; Ethics</b></a><a class="pg next" href="#quick-revision-one-liners"><small>Next →</small><b>⚡ Quick Revision: One-liners</b></a></nav></section>
-<section class="chapter" id="quick-revision-one-liners" style="--h:1">
-<header class="banner"><div class="b-emoji">⚡</div><div class="b-text"><div class="kicker">Chapter 23</div><h2>Quick Revision: One-liners</h2>
+<section class="chapter" id="quick-revision-one-liners" style="--h:95">
+<header class="banner"><div class="b-emoji">⚡</div><div class="b-text"><div class="kicker">Chapter 25</div><h2>Quick Revision: One-liners</h2>
 <div class="b-meta">2 topics · ~2 min read</div></div>
 <button class="done-btn" data-done="quick-revision-one-liners">☐ Mark as done</button></header>
 <div class="chips-wrap"><div class="chips"><a class="chip" href="#quick-revision-one-liners-fathers-firsts">Fathers &amp; Firsts</a><a class="chip" href="#quick-revision-one-liners-numbers-to-remember">Numbers to Remember</a></div></div>
@@ -3002,7 +3353,7 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
   </div>
 </div>
 
-<script id="meta" type="application/json">[{"id": "computer-fundamentals", "n": 1, "title": "Computer Fundamentals", "pages": "", "added": false, "emoji": "🖥️", "hue": 47, "mins": 3, "topics": [{"id": "computer-fundamentals-history-of-computing-devices", "t": "History of Computing Devices", "a": false}, {"id": "computer-fundamentals-generations-of-computers", "t": "Generations of Computers", "a": false}, {"id": "computer-fundamentals-classification-of-computers", "t": "Classification of Computers", "a": false}, {"id": "computer-fundamentals-input-output-devices", "t": "Input & Output Devices", "a": false}, {"id": "computer-fundamentals-software", "t": "Software", "a": false}, {"id": "computer-fundamentals-ports-buses", "t": "Ports & Buses", "a": false}, {"id": "computer-fundamentals-common-abbreviations", "t": "Common Abbreviations", "a": false}]}, {"id": "number-system-codes", "n": 2, "title": "Number System & Codes", "pages": "", "added": false, "emoji": "🔢", "hue": 94, "mins": 6, "topics": [{"id": "number-system-codes-types-of-number-systems", "t": "Types of Number Systems", "a": false}, {"id": "number-system-codes-conversions", "t": "Conversions", "a": false}, {"id": "number-system-codes-binary-arithmetic", "t": "Binary Arithmetic", "a": false}, {"id": "number-system-codes-binary-fractions", "t": "Binary Fractions", "a": false}, {"id": "number-system-codes-complements", "t": "Complements", "a": false}, {"id": "number-system-codes-signed-numbers-sign-bit", "t": "Signed Numbers (sign bit)", "a": false}, {"id": "number-system-codes-bcd-binary-coded-decimal-8421-code", "t": "BCD (Binary Coded Decimal) – 8421 code", "a": false}, {"id": "number-system-codes-excess-3-code-xs-3", "t": "Excess-3 Code (XS-3)", "a": false}, {"id": "number-system-codes-gray-code", "t": "Gray Code", "a": false}, {"id": "number-system-codes-character-encoding-ascii-ebcdic-unicode", "t": "Character Encoding: ASCII, EBCDIC, Unicode", "a": false}]}, {"id": "boolean-algebra-digital-electronics", "n": 3, "title": "Boolean Algebra & Digital Electronics", "pages": "", "added": false, "emoji": "💡", "hue": 141, "mins": 7, "topics": [{"id": "boolean-algebra-digital-electronics-boolean-algebra-basics", "t": "Boolean Algebra Basics", "a": false}, {"id": "boolean-algebra-digital-electronics-logic-gates", "t": "Logic Gates", "a": false}, {"id": "boolean-algebra-digital-electronics-laws-of-boolean-algebra", "t": "Laws of Boolean Algebra", "a": false}, {"id": "boolean-algebra-digital-electronics-sop-pos-minterms-maxterms", "t": "SOP, POS, Minterms & Maxterms", "a": false}, {"id": "boolean-algebra-digital-electronics-karnaugh-map-k-map", "t": "Karnaugh Map (K-Map)", "a": false}, {"id": "boolean-algebra-digital-electronics-combinational-circuits", "t": "Combinational Circuits", "a": false}, {"id": "boolean-algebra-digital-electronics-sequential-circuits-flip-flops", "t": "Sequential Circuits & Flip-Flops", "a": false}]}, {"id": "computer-architecture-memory", "n": 4, "title": "Computer Architecture & Memory", "pages": "", "added": false, "emoji": "🧠", "hue": 188, "mins": 6, "topics": [{"id": "computer-architecture-memory-computer-organization-cpu", "t": "Computer Organization & CPU", "a": false}, {"id": "computer-architecture-memory-cpu-architecture-types", "t": "CPU Architecture Types", "a": false}, {"id": "computer-architecture-memory-microprocessor", "t": "Microprocessor", "a": false}, {"id": "computer-architecture-memory-memory-hierarchy", "t": "Memory Hierarchy", "a": false}, {"id": "computer-architecture-memory-ram", "t": "RAM", "a": false}, {"id": "computer-architecture-memory-rom", "t": "ROM", "a": false}, {"id": "computer-architecture-memory-cache-memory", "t": "Cache Memory", "a": false}, {"id": "computer-architecture-memory-registers", "t": "Registers", "a": false}, {"id": "computer-architecture-memory-virtual-buffer-flash-memory", "t": "Virtual, Buffer & Flash Memory", "a": false}, {"id": "computer-architecture-memory-memory-units", "t": "Memory Units", "a": false}, {"id": "computer-architecture-memory-simm-vs-dimm", "t": "SIMM vs DIMM", "a": false}, {"id": "computer-architecture-memory-secondary-storage-devices", "t": "Secondary Storage Devices", "a": false}]}, {"id": "operating-system", "n": 5, "title": "Operating System", "pages": "", "added": false, "emoji": "💻", "hue": 235, "mins": 11, "topics": [{"id": "operating-system-introduction", "t": "Introduction", "a": false}, {"id": "operating-system-types-of-os", "t": "Types of OS", "a": false}, {"id": "operating-system-popular-os-facts", "t": "Popular OS Facts", "a": false}, {"id": "operating-system-kernel-shell", "t": "Kernel & Shell", "a": false}, {"id": "operating-system-process-process-states", "t": "Process & Process States", "a": false}, {"id": "operating-system-threads", "t": "Threads", "a": false}, {"id": "operating-system-cpu-scheduling", "t": "CPU Scheduling", "a": false}, {"id": "operating-system-deadlock", "t": "Deadlock", "a": false}, {"id": "operating-system-interrupts", "t": "Interrupts", "a": false}, {"id": "operating-system-file-systems", "t": "File Systems", "a": false}, {"id": "operating-system-memory-management", "t": "Memory Management", "a": false}, {"id": "operating-system-paging-segmentation", "t": "Paging & Segmentation", "a": false}, {"id": "operating-system-page-replacement-algorithms", "t": "Page Replacement Algorithms", "a": false}, {"id": "operating-system-process-synchronization-semaphores", "t": "Process Synchronization & Semaphores", "a": false}, {"id": "operating-system-disk-scheduling", "t": "Disk Scheduling", "a": false}]}, {"id": "data-structures-algorithms", "n": 6, "title": "Data Structures & Algorithms", "pages": "", "added": false, "emoji": "🌳", "hue": 282, "mins": 12, "topics": [{"id": "data-structures-algorithms-introduction", "t": "Introduction", "a": false}, {"id": "data-structures-algorithms-array", "t": "Array", "a": false}, {"id": "data-structures-algorithms-stack", "t": "Stack", "a": false}, {"id": "data-structures-algorithms-queue", "t": "Queue", "a": false}, {"id": "data-structures-algorithms-linked-list", "t": "Linked List", "a": false}, {"id": "data-structures-algorithms-trees", "t": "Trees", "a": false}, {"id": "data-structures-algorithms-tree-traversal", "t": "Tree Traversal", "a": false}, {"id": "data-structures-algorithms-binary-heap", "t": "Binary Heap", "a": false}, {"id": "data-structures-algorithms-graphs", "t": "Graphs", "a": false}, {"id": "data-structures-algorithms-graph-algorithms", "t": "Graph Algorithms", "a": false}, {"id": "data-structures-algorithms-hashing", "t": "Hashing", "a": false}, {"id": "data-structures-algorithms-algorithm-analysis", "t": "Algorithm Analysis", "a": false}, {"id": "data-structures-algorithms-searching", "t": "Searching", "a": false}, {"id": "data-structures-algorithms-sorting", "t": "Sorting", "a": false}]}, {"id": "c-programming-complete", "n": 7, "title": "C Programming (Complete)", "pages": "", "added": false, "emoji": "🅲", "hue": 329, "mins": 11, "topics": [{"id": "c-programming-complete-introduction-to-c", "t": "Introduction to C", "a": false}, {"id": "c-programming-complete-ch-1-variables-constants-keywords", "t": "Ch 1: Variables, Constants & Keywords", "a": false}, {"id": "c-programming-complete-ch-2-instructions-operators", "t": "Ch 2: Instructions & Operators", "a": false}, {"id": "c-programming-complete-ch-3-conditional-instructions", "t": "Ch 3: Conditional Instructions", "a": false}, {"id": "c-programming-complete-ch-4-loop-control-instructions", "t": "Ch 4: Loop Control Instructions", "a": false}, {"id": "c-programming-complete-ch-5-functions-recursion", "t": "Ch 5: Functions & Recursion", "a": false}, {"id": "c-programming-complete-ch-6-pointers", "t": "Ch 6: Pointers", "a": false}, {"id": "c-programming-complete-ch-7-arrays", "t": "Ch 7: Arrays", "a": false}, {"id": "c-programming-complete-ch-8-strings", "t": "Ch 8: Strings", "a": false}, {"id": "c-programming-complete-ch-9-structures", "t": "Ch 9: Structures", "a": false}, {"id": "c-programming-complete-ch-10-file-i-o", "t": "Ch 10: File I/O", "a": false}, {"id": "c-programming-complete-ch-11-dynamic-memory-allocation", "t": "Ch 11: Dynamic Memory Allocation", "a": false}, {"id": "c-programming-complete-extra-c-facts-for-exams", "t": "Extra C Facts for Exams", "a": false}]}, {"id": "c-object-oriented-programming", "n": 8, "title": "C++ & Object-Oriented Programming", "pages": "", "added": false, "emoji": "🧩", "hue": 16, "mins": 7, "topics": [{"id": "c-object-oriented-programming-c-introduction", "t": "C++ Introduction", "a": false}, {"id": "c-object-oriented-programming-data-types-modifiers-storage-classes", "t": "Data Types, Modifiers & Storage Classes", "a": false}, {"id": "c-object-oriented-programming-operators", "t": "Operators", "a": false}, {"id": "c-object-oriented-programming-control-structures", "t": "Control Structures", "a": false}, {"id": "c-object-oriented-programming-structure-class", "t": "Structure & Class", "a": false}, {"id": "c-object-oriented-programming-functions-in-c", "t": "Functions in C++", "a": false}, {"id": "c-object-oriented-programming-exception-handling", "t": "Exception Handling", "a": false}, {"id": "c-object-oriented-programming-types-of-errors", "t": "Types of Errors", "a": false}, {"id": "c-object-oriented-programming-c-vs-c", "t": "C vs C++", "a": false}, {"id": "c-object-oriented-programming-translators", "t": "Translators", "a": false}, {"id": "c-object-oriented-programming-algorithm-flowchart", "t": "Algorithm & Flowchart", "a": false}, {"id": "c-object-oriented-programming-oop-concepts", "t": "OOP Concepts", "a": false}, {"id": "c-object-oriented-programming-generations-of-languages-timeline", "t": "Generations of Languages & Timeline", "a": false}]}, {"id": "java-basics", "n": 9, "title": "Java Basics", "pages": "", "added": false, "emoji": "☕", "hue": 63, "mins": 2, "topics": [{"id": "java-basics-introduction", "t": "Introduction", "a": false}, {"id": "java-basics-data-types-keywords", "t": "Data Types & Keywords", "a": false}, {"id": "java-basics-oop-in-java", "t": "OOP in Java", "a": false}]}, {"id": "python-programming-pandas", "n": 10, "title": "Python Programming & Pandas", "pages": "", "added": false, "emoji": "🐍", "hue": 110, "mins": 3, "topics": [{"id": "python-programming-pandas-python-basics", "t": "Python Basics", "a": false}, {"id": "python-programming-pandas-control-flow-functions", "t": "Control Flow & Functions", "a": false}, {"id": "python-programming-pandas-strings-lists-tuples-dictionaries", "t": "Strings, Lists, Tuples, Dictionaries", "a": false}, {"id": "python-programming-pandas-exception-file-handling", "t": "Exception & File Handling", "a": false}, {"id": "python-programming-pandas-python-mysql-connectivity", "t": "Python–MySQL Connectivity", "a": false}, {"id": "python-programming-pandas-data-handling-with-pandas", "t": "Data Handling with Pandas", "a": false}]}, {"id": "dbms-sql", "n": 11, "title": "DBMS & SQL", "pages": "", "added": false, "emoji": "🗄️", "hue": 157, "mins": 12, "topics": [{"id": "dbms-sql-basic-concepts-of-database", "t": "Basic Concepts of Database", "a": false}, {"id": "dbms-sql-components-of-dbms-users", "t": "Components of DBMS & Users", "a": false}, {"id": "dbms-sql-database-architecture-tiers", "t": "Database Architecture (Tiers)", "a": false}, {"id": "dbms-sql-three-schema-architecture-ansi-sparc", "t": "Three-Schema Architecture (ANSI/SPARC)", "a": false}, {"id": "dbms-sql-schema-vs-instance", "t": "Schema vs Instance", "a": false}, {"id": "dbms-sql-relational-model-terms", "t": "Relational Model Terms", "a": false}, {"id": "dbms-sql-acid-properties-transactions", "t": "ACID Properties (Transactions)", "a": false}, {"id": "dbms-sql-er-model", "t": "ER Model", "a": false}, {"id": "dbms-sql-database-keys", "t": "Database Keys", "a": false}, {"id": "dbms-sql-normalization", "t": "Normalization", "a": false}, {"id": "dbms-sql-codd-s-12-rules", "t": "Codd's 12 Rules", "a": false}, {"id": "dbms-sql-sql-history-basics", "t": "SQL – History & Basics", "a": false}, {"id": "dbms-sql-sql-command-categories", "t": "SQL Command Categories", "a": false}, {"id": "dbms-sql-query-clause-order-operators", "t": "Query Clause Order & Operators", "a": false}, {"id": "dbms-sql-sql-functions", "t": "SQL Functions", "a": false}, {"id": "dbms-sql-constraints", "t": "Constraints", "a": false}, {"id": "dbms-sql-views-cursors-locks-triggers", "t": "Views, Cursors, Locks, Triggers", "a": false}, {"id": "dbms-sql-sql-joins", "t": "SQL Joins", "a": false}, {"id": "dbms-sql-postgresql-nosql-pl-sql", "t": "PostgreSQL, NoSQL, PL/SQL", "a": false}]}, {"id": "computer-networking", "n": 12, "title": "Computer Networking", "pages": "", "added": false, "emoji": "🌐", "hue": 204, "mins": 10, "topics": [{"id": "computer-networking-introduction-history", "t": "Introduction & History", "a": false}, {"id": "computer-networking-networking-models-osi-tcp-ip", "t": "Networking Models: OSI & TCP/IP", "a": false}, {"id": "computer-networking-ieee-802-standards", "t": "IEEE 802 Standards", "a": false}, {"id": "computer-networking-ip-address-mac-address", "t": "IP Address & MAC Address", "a": false}, {"id": "computer-networking-subnetting", "t": "Subnetting", "a": false}, {"id": "computer-networking-ports-protocols", "t": "Ports & Protocols", "a": false}, {"id": "computer-networking-types-of-networks-by-area", "t": "Types of Networks (by area)", "a": false}, {"id": "computer-networking-transmission-modes", "t": "Transmission Modes", "a": false}, {"id": "computer-networking-network-topology", "t": "Network Topology", "a": false}, {"id": "computer-networking-networking-devices", "t": "Networking Devices", "a": false}, {"id": "computer-networking-transmission-media-cables", "t": "Transmission Media (Cables)", "a": false}, {"id": "computer-networking-exam-facts", "t": "Exam Facts", "a": false}]}, {"id": "web-technology", "n": 13, "title": "Web Technology", "pages": "", "added": false, "emoji": "🕸️", "hue": 251, "mins": 3, "topics": [{"id": "web-technology-www-internet-basics", "t": "WWW & Internet Basics", "a": false}, {"id": "web-technology-html", "t": "HTML", "a": false}, {"id": "web-technology-css", "t": "CSS", "a": false}, {"id": "web-technology-javascript", "t": "JavaScript", "a": false}]}, {"id": "internet-of-things-iot", "n": 14, "title": "Internet of Things (IoT)", "pages": "", "added": false, "emoji": "📡", "hue": 298, "mins": 4, "topics": [{"id": "internet-of-things-iot-internet-iot-basics", "t": "Internet & IoT Basics", "a": false}, {"id": "internet-of-things-iot-types-of-iot", "t": "Types of IoT", "a": false}, {"id": "internet-of-things-iot-components-of-iot", "t": "Components of IoT", "a": false}, {"id": "internet-of-things-iot-iot-gateway", "t": "IoT Gateway", "a": false}, {"id": "internet-of-things-iot-iot-networks", "t": "IoT Networks", "a": false}, {"id": "internet-of-things-iot-iot-protocols", "t": "IoT Protocols", "a": false}, {"id": "internet-of-things-iot-arduino", "t": "Arduino", "a": false}]}, {"id": "cloud-computing", "n": 15, "title": "Cloud Computing", "pages": "", "added": false, "emoji": "☁️", "hue": 345, "mins": 2, "topics": [{"id": "cloud-computing-basics", "t": "Basics", "a": false}, {"id": "cloud-computing-architecture", "t": "Architecture", "a": false}, {"id": "cloud-computing-service-models", "t": "Service Models", "a": false}, {"id": "cloud-computing-deployment-models", "t": "Deployment Models", "a": false}, {"id": "cloud-computing-key-terms", "t": "Key Terms", "a": false}]}, {"id": "cyber-security", "n": 16, "title": "Cyber Security", "pages": "", "added": false, "emoji": "🛡️", "hue": 32, "mins": 3, "topics": [{"id": "cyber-security-computer-virus", "t": "Computer Virus", "a": false}, {"id": "cyber-security-malware-types", "t": "Malware Types", "a": false}, {"id": "cyber-security-cyber-attacks-frauds", "t": "Cyber Attacks & Frauds", "a": false}, {"id": "cyber-security-cyber-security-tools-practices", "t": "Cyber Security Tools & Practices", "a": false}]}, {"id": "software-engineering", "n": 17, "title": "Software Engineering", "pages": "", "added": false, "emoji": "🛠️", "hue": 79, "mins": 5, "topics": [{"id": "software-engineering-sdlc-software-development-life-cycle", "t": "SDLC (Software Development Life Cycle)", "a": false}, {"id": "software-engineering-sdlc-models", "t": "SDLC Models", "a": false}, {"id": "software-engineering-case-tools", "t": "CASE Tools", "a": false}, {"id": "software-engineering-quality-cohesion-coupling", "t": "Quality, Cohesion & Coupling", "a": false}, {"id": "software-engineering-software-maintenance-4-types", "t": "Software Maintenance (4 types)", "a": false}, {"id": "software-engineering-software-testing", "t": "Software Testing", "a": false}]}, {"id": "theory-of-computation", "n": 18, "title": "Theory of Computation", "pages": "", "added": false, "emoji": "⚙️", "hue": 126, "mins": 4, "topics": [{"id": "theory-of-computation-introduction", "t": "Introduction", "a": false}, {"id": "theory-of-computation-automata-basics", "t": "Automata Basics", "a": false}, {"id": "theory-of-computation-chomsky-hierarchy", "t": "Chomsky Hierarchy", "a": false}, {"id": "theory-of-computation-finite-automata-dfa-nfa", "t": "Finite Automata (DFA & NFA)", "a": false}, {"id": "theory-of-computation-moore-mealy-machines", "t": "Moore & Mealy Machines", "a": false}, {"id": "theory-of-computation-pushdown-automata-pda", "t": "Pushdown Automata (PDA)", "a": false}, {"id": "theory-of-computation-linear-bounded-automata-lba", "t": "Linear Bounded Automata (LBA)", "a": false}, {"id": "theory-of-computation-turing-machine", "t": "Turing Machine", "a": false}, {"id": "theory-of-computation-regular-expressions-closure-properties", "t": "Regular Expressions & Closure Properties", "a": false}, {"id": "theory-of-computation-myhill-nerode-theorem-pumping-lemma", "t": "Myhill–Nerode Theorem & Pumping Lemma", "a": false}, {"id": "theory-of-computation-compiler-phases-toc-application", "t": "Compiler Phases (TOC application)", "a": false}]}, {"id": "artificial-intelligence-ml", "n": 19, "title": "Artificial Intelligence & ML", "pages": "", "added": false, "emoji": "🤖", "hue": 173, "mins": 3, "topics": [{"id": "artificial-intelligence-ml-artificial-intelligence", "t": "Artificial Intelligence", "a": false}, {"id": "artificial-intelligence-ml-chatbots-virtual-assistants", "t": "Chatbots & Virtual Assistants", "a": false}, {"id": "artificial-intelligence-ml-machine-learning", "t": "Machine Learning", "a": false}, {"id": "artificial-intelligence-ml-deep-learning", "t": "Deep Learning", "a": false}]}, {"id": "multimedia", "n": 20, "title": "Multimedia", "pages": "", "added": false, "emoji": "🎬", "hue": 220, "mins": 2, "topics": [{"id": "multimedia-what-is-multimedia", "t": "What is Multimedia", "a": false}, {"id": "multimedia-warping-morphing-image-types", "t": "Warping, Morphing & Image Types", "a": false}, {"id": "multimedia-multimedia-authoring", "t": "Multimedia Authoring", "a": false}, {"id": "multimedia-file-formats", "t": "File Formats", "a": false}, {"id": "multimedia-compression", "t": "Compression", "a": false}, {"id": "multimedia-animation-colour-basics", "t": "Animation & Colour Basics", "a": false}]}, {"id": "society-law-ethics", "n": 21, "title": "Society, Law & Ethics", "pages": "", "added": false, "emoji": "⚖️", "hue": 267, "mins": 2, "topics": [{"id": "society-law-ethics-digital-footprint-netiquette", "t": "Digital Footprint & Netiquette", "a": false}, {"id": "society-law-ethics-intellectual-property-rights-ipr", "t": "Intellectual Property Rights (IPR)", "a": false}, {"id": "society-law-ethics-cyber-crime-it-act-2000", "t": "Cyber Crime & IT Act 2000", "a": false}, {"id": "society-law-ethics-e-waste-health", "t": "E-waste & Health", "a": false}, {"id": "society-law-ethics-digital-india-e-governance", "t": "Digital India & E-Governance", "a": false}]}, {"id": "emerging-trends", "n": 22, "title": "Emerging Trends", "pages": "", "added": false, "emoji": "🚀", "hue": 314, "mins": 2, "topics": [{"id": "emerging-trends-big-data-data-science", "t": "Big Data & Data Science", "a": false}, {"id": "emerging-trends-blockchain", "t": "Blockchain", "a": false}, {"id": "emerging-trends-ar-vr-mr", "t": "AR, VR, MR", "a": false}, {"id": "emerging-trends-other-trends", "t": "Other Trends", "a": false}]}, {"id": "quick-revision-one-liners", "n": 23, "title": "Quick Revision: One-liners", "pages": "", "added": false, "emoji": "⚡", "hue": 1, "mins": 2, "topics": [{"id": "quick-revision-one-liners-fathers-firsts", "t": "Fathers & Firsts", "a": false}, {"id": "quick-revision-one-liners-numbers-to-remember", "t": "Numbers to Remember", "a": false}]}]</script>
+<script id="meta" type="application/json">[{"id": "computer-fundamentals", "n": 1, "title": "Computer Fundamentals", "pages": "", "added": false, "emoji": "🖥️", "hue": 47, "mins": 5, "topics": [{"id": "computer-fundamentals-history-of-computing-devices", "t": "History of Computing Devices", "a": false}, {"id": "computer-fundamentals-generations-of-computers", "t": "Generations of Computers", "a": false}, {"id": "computer-fundamentals-classification-of-computers", "t": "Classification of Computers", "a": false}, {"id": "computer-fundamentals-input-output-devices", "t": "Input & Output Devices", "a": false}, {"id": "computer-fundamentals-software", "t": "Software", "a": false}, {"id": "computer-fundamentals-ports-buses", "t": "Ports & Buses", "a": false}, {"id": "computer-fundamentals-data-vs-information", "t": "Data vs Information", "a": false}, {"id": "computer-fundamentals-microprocessor-vs-microcontroller", "t": "Microprocessor vs Microcontroller", "a": false}, {"id": "computer-fundamentals-data-deletion-recovery-security", "t": "Data Deletion, Recovery & Security", "a": false}, {"id": "computer-fundamentals-common-abbreviations", "t": "Common Abbreviations", "a": false}]}, {"id": "number-system-codes", "n": 2, "title": "Number System & Codes", "pages": "", "added": false, "emoji": "🔢", "hue": 94, "mins": 6, "topics": [{"id": "number-system-codes-types-of-number-systems", "t": "Types of Number Systems", "a": false}, {"id": "number-system-codes-conversions", "t": "Conversions", "a": false}, {"id": "number-system-codes-binary-arithmetic", "t": "Binary Arithmetic", "a": false}, {"id": "number-system-codes-binary-fractions", "t": "Binary Fractions", "a": false}, {"id": "number-system-codes-complements", "t": "Complements", "a": false}, {"id": "number-system-codes-signed-numbers-sign-bit", "t": "Signed Numbers (sign bit)", "a": false}, {"id": "number-system-codes-bcd-binary-coded-decimal-8421-code", "t": "BCD (Binary Coded Decimal) – 8421 code", "a": false}, {"id": "number-system-codes-excess-3-code-xs-3", "t": "Excess-3 Code (XS-3)", "a": false}, {"id": "number-system-codes-gray-code", "t": "Gray Code", "a": false}, {"id": "number-system-codes-character-encoding-ascii-ebcdic-unicode", "t": "Character Encoding: ASCII, EBCDIC, Unicode", "a": false}]}, {"id": "boolean-algebra-digital-electronics", "n": 3, "title": "Boolean Algebra & Digital Electronics", "pages": "", "added": false, "emoji": "💡", "hue": 141, "mins": 7, "topics": [{"id": "boolean-algebra-digital-electronics-boolean-algebra-basics", "t": "Boolean Algebra Basics", "a": false}, {"id": "boolean-algebra-digital-electronics-logic-gates", "t": "Logic Gates", "a": false}, {"id": "boolean-algebra-digital-electronics-laws-of-boolean-algebra", "t": "Laws of Boolean Algebra", "a": false}, {"id": "boolean-algebra-digital-electronics-sop-pos-minterms-maxterms", "t": "SOP, POS, Minterms & Maxterms", "a": false}, {"id": "boolean-algebra-digital-electronics-karnaugh-map-k-map", "t": "Karnaugh Map (K-Map)", "a": false}, {"id": "boolean-algebra-digital-electronics-combinational-circuits", "t": "Combinational Circuits", "a": false}, {"id": "boolean-algebra-digital-electronics-sequential-circuits-flip-flops", "t": "Sequential Circuits & Flip-Flops", "a": false}]}, {"id": "computer-architecture-memory", "n": 4, "title": "Computer Architecture & Memory", "pages": "", "added": false, "emoji": "🧠", "hue": 188, "mins": 6, "topics": [{"id": "computer-architecture-memory-computer-organization-cpu", "t": "Computer Organization & CPU", "a": false}, {"id": "computer-architecture-memory-cpu-architecture-types", "t": "CPU Architecture Types", "a": false}, {"id": "computer-architecture-memory-microprocessor", "t": "Microprocessor", "a": false}, {"id": "computer-architecture-memory-memory-hierarchy", "t": "Memory Hierarchy", "a": false}, {"id": "computer-architecture-memory-ram", "t": "RAM", "a": false}, {"id": "computer-architecture-memory-rom", "t": "ROM", "a": false}, {"id": "computer-architecture-memory-cache-memory", "t": "Cache Memory", "a": false}, {"id": "computer-architecture-memory-registers", "t": "Registers", "a": false}, {"id": "computer-architecture-memory-virtual-buffer-flash-memory", "t": "Virtual, Buffer & Flash Memory", "a": false}, {"id": "computer-architecture-memory-memory-units", "t": "Memory Units", "a": false}, {"id": "computer-architecture-memory-simm-vs-dimm", "t": "SIMM vs DIMM", "a": false}, {"id": "computer-architecture-memory-secondary-storage-devices", "t": "Secondary Storage Devices", "a": false}]}, {"id": "operating-system", "n": 5, "title": "Operating System", "pages": "", "added": false, "emoji": "💻", "hue": 235, "mins": 11, "topics": [{"id": "operating-system-introduction", "t": "Introduction", "a": false}, {"id": "operating-system-types-of-os", "t": "Types of OS", "a": false}, {"id": "operating-system-popular-os-facts", "t": "Popular OS Facts", "a": false}, {"id": "operating-system-kernel-shell", "t": "Kernel & Shell", "a": false}, {"id": "operating-system-process-process-states", "t": "Process & Process States", "a": false}, {"id": "operating-system-threads", "t": "Threads", "a": false}, {"id": "operating-system-cpu-scheduling", "t": "CPU Scheduling", "a": false}, {"id": "operating-system-deadlock", "t": "Deadlock", "a": false}, {"id": "operating-system-interrupts", "t": "Interrupts", "a": false}, {"id": "operating-system-file-systems", "t": "File Systems", "a": false}, {"id": "operating-system-memory-management", "t": "Memory Management", "a": false}, {"id": "operating-system-paging-segmentation", "t": "Paging & Segmentation", "a": false}, {"id": "operating-system-page-replacement-algorithms", "t": "Page Replacement Algorithms", "a": false}, {"id": "operating-system-process-synchronization-semaphores", "t": "Process Synchronization & Semaphores", "a": false}, {"id": "operating-system-disk-scheduling", "t": "Disk Scheduling", "a": false}]}, {"id": "problem-solving", "n": 6, "title": "Problem Solving", "pages": "", "added": false, "emoji": "🧭", "hue": 282, "mins": 2, "topics": [{"id": "problem-solving-problem-solving-cycle", "t": "Problem-Solving Cycle", "a": false}, {"id": "problem-solving-algorithm", "t": "Algorithm", "a": false}, {"id": "problem-solving-pseudocode", "t": "Pseudocode", "a": false}, {"id": "problem-solving-flow-of-control", "t": "Flow of Control", "a": false}, {"id": "problem-solving-verifying-comparing-algorithms", "t": "Verifying & Comparing Algorithms", "a": false}, {"id": "problem-solving-decomposition", "t": "Decomposition", "a": false}]}, {"id": "data-structures-algorithms", "n": 7, "title": "Data Structures & Algorithms", "pages": "", "added": false, "emoji": "🌳", "hue": 329, "mins": 14, "topics": [{"id": "data-structures-algorithms-introduction", "t": "Introduction", "a": false}, {"id": "data-structures-algorithms-array", "t": "Array", "a": false}, {"id": "data-structures-algorithms-stack", "t": "Stack", "a": false}, {"id": "data-structures-algorithms-queue", "t": "Queue", "a": false}, {"id": "data-structures-algorithms-linked-list", "t": "Linked List", "a": false}, {"id": "data-structures-algorithms-trees", "t": "Trees", "a": false}, {"id": "data-structures-algorithms-tree-traversal", "t": "Tree Traversal", "a": false}, {"id": "data-structures-algorithms-binary-heap", "t": "Binary Heap", "a": false}, {"id": "data-structures-algorithms-graphs", "t": "Graphs", "a": false}, {"id": "data-structures-algorithms-graph-algorithms", "t": "Graph Algorithms", "a": false}, {"id": "data-structures-algorithms-hashing", "t": "Hashing", "a": false}, {"id": "data-structures-algorithms-algorithm-analysis", "t": "Algorithm Analysis", "a": false}, {"id": "data-structures-algorithms-searching", "t": "Searching", "a": false}, {"id": "data-structures-algorithms-sorting", "t": "Sorting", "a": false}, {"id": "data-structures-algorithms-stack-queue-search-sort-in-python", "t": "Stack, Queue, Search & Sort in Python", "a": false}]}, {"id": "c-programming-complete", "n": 8, "title": "C Programming (Complete)", "pages": "", "added": false, "emoji": "🅲", "hue": 16, "mins": 11, "topics": [{"id": "c-programming-complete-introduction-to-c", "t": "Introduction to C", "a": false}, {"id": "c-programming-complete-ch-1-variables-constants-keywords", "t": "Ch 1: Variables, Constants & Keywords", "a": false}, {"id": "c-programming-complete-ch-2-instructions-operators", "t": "Ch 2: Instructions & Operators", "a": false}, {"id": "c-programming-complete-ch-3-conditional-instructions", "t": "Ch 3: Conditional Instructions", "a": false}, {"id": "c-programming-complete-ch-4-loop-control-instructions", "t": "Ch 4: Loop Control Instructions", "a": false}, {"id": "c-programming-complete-ch-5-functions-recursion", "t": "Ch 5: Functions & Recursion", "a": false}, {"id": "c-programming-complete-ch-6-pointers", "t": "Ch 6: Pointers", "a": false}, {"id": "c-programming-complete-ch-7-arrays", "t": "Ch 7: Arrays", "a": false}, {"id": "c-programming-complete-ch-8-strings", "t": "Ch 8: Strings", "a": false}, {"id": "c-programming-complete-ch-9-structures", "t": "Ch 9: Structures", "a": false}, {"id": "c-programming-complete-ch-10-file-i-o", "t": "Ch 10: File I/O", "a": false}, {"id": "c-programming-complete-ch-11-dynamic-memory-allocation", "t": "Ch 11: Dynamic Memory Allocation", "a": false}, {"id": "c-programming-complete-extra-c-facts-for-exams", "t": "Extra C Facts for Exams", "a": false}]}, {"id": "c-object-oriented-programming", "n": 9, "title": "C++ & Object-Oriented Programming", "pages": "", "added": false, "emoji": "🧩", "hue": 63, "mins": 7, "topics": [{"id": "c-object-oriented-programming-c-introduction", "t": "C++ Introduction", "a": false}, {"id": "c-object-oriented-programming-data-types-modifiers-storage-classes", "t": "Data Types, Modifiers & Storage Classes", "a": false}, {"id": "c-object-oriented-programming-operators", "t": "Operators", "a": false}, {"id": "c-object-oriented-programming-control-structures", "t": "Control Structures", "a": false}, {"id": "c-object-oriented-programming-structure-class", "t": "Structure & Class", "a": false}, {"id": "c-object-oriented-programming-functions-in-c", "t": "Functions in C++", "a": false}, {"id": "c-object-oriented-programming-exception-handling", "t": "Exception Handling", "a": false}, {"id": "c-object-oriented-programming-types-of-errors", "t": "Types of Errors", "a": false}, {"id": "c-object-oriented-programming-c-vs-c", "t": "C vs C++", "a": false}, {"id": "c-object-oriented-programming-translators", "t": "Translators", "a": false}, {"id": "c-object-oriented-programming-algorithm-flowchart", "t": "Algorithm & Flowchart", "a": false}, {"id": "c-object-oriented-programming-oop-concepts", "t": "OOP Concepts", "a": false}, {"id": "c-object-oriented-programming-generations-of-languages-timeline", "t": "Generations of Languages & Timeline", "a": false}]}, {"id": "java-basics", "n": 10, "title": "Java Basics", "pages": "", "added": false, "emoji": "☕", "hue": 110, "mins": 2, "topics": [{"id": "java-basics-introduction", "t": "Introduction", "a": false}, {"id": "java-basics-data-types-keywords", "t": "Data Types & Keywords", "a": false}, {"id": "java-basics-oop-in-java", "t": "OOP in Java", "a": false}]}, {"id": "python-programming-pandas", "n": 11, "title": "Python Programming & Pandas", "pages": "", "added": false, "emoji": "🐍", "hue": 157, "mins": 5, "topics": [{"id": "python-programming-pandas-python-basics", "t": "Python Basics", "a": false}, {"id": "python-programming-pandas-tokens-variables-type-conversion", "t": "Tokens, Variables & Type Conversion", "a": false}, {"id": "python-programming-pandas-control-flow-functions", "t": "Control Flow & Functions", "a": false}, {"id": "python-programming-pandas-strings-lists-tuples-dictionaries", "t": "Strings, Lists, Tuples, Dictionaries", "a": false}, {"id": "python-programming-pandas-python-modules", "t": "Python Modules", "a": false}, {"id": "python-programming-pandas-exception-file-handling", "t": "Exception & File Handling", "a": false}, {"id": "python-programming-pandas-python-mysql-connectivity", "t": "Python–MySQL Connectivity", "a": false}, {"id": "python-programming-pandas-data-handling-with-pandas", "t": "Data Handling with Pandas", "a": false}]}, {"id": "understanding-data", "n": 12, "title": "Understanding Data", "pages": "", "added": false, "emoji": "📊", "hue": 204, "mins": 2, "topics": [{"id": "understanding-data-data-its-types", "t": "Data & Its Types", "a": false}, {"id": "understanding-data-data-collection-storage-processing", "t": "Data Collection, Storage & Processing", "a": false}, {"id": "understanding-data-statistical-techniques", "t": "Statistical Techniques", "a": false}, {"id": "understanding-data-data-interpretation-visualization", "t": "Data Interpretation & Visualization", "a": false}]}, {"id": "dbms-sql", "n": 13, "title": "DBMS & SQL", "pages": "", "added": false, "emoji": "🗄️", "hue": 251, "mins": 15, "topics": [{"id": "dbms-sql-basic-concepts-of-database", "t": "Basic Concepts of Database", "a": false}, {"id": "dbms-sql-file-system-vs-dbms", "t": "File System vs DBMS", "a": false}, {"id": "dbms-sql-components-of-dbms-users", "t": "Components of DBMS & Users", "a": false}, {"id": "dbms-sql-database-architecture-tiers", "t": "Database Architecture (Tiers)", "a": false}, {"id": "dbms-sql-three-schema-architecture-ansi-sparc", "t": "Three-Schema Architecture (ANSI/SPARC)", "a": false}, {"id": "dbms-sql-schema-vs-instance", "t": "Schema vs Instance", "a": false}, {"id": "dbms-sql-relational-model-terms", "t": "Relational Model Terms", "a": false}, {"id": "dbms-sql-relational-algebra", "t": "Relational Algebra", "a": false}, {"id": "dbms-sql-acid-properties-transactions", "t": "ACID Properties (Transactions)", "a": false}, {"id": "dbms-sql-er-model", "t": "ER Model", "a": false}, {"id": "dbms-sql-database-keys", "t": "Database Keys", "a": false}, {"id": "dbms-sql-normalization", "t": "Normalization", "a": false}, {"id": "dbms-sql-codd-s-12-rules", "t": "Codd's 12 Rules", "a": false}, {"id": "dbms-sql-sql-history-basics", "t": "SQL – History & Basics", "a": false}, {"id": "dbms-sql-sql-command-categories", "t": "SQL Command Categories", "a": false}, {"id": "dbms-sql-query-clause-order-operators", "t": "Query Clause Order & Operators", "a": false}, {"id": "dbms-sql-sql-functions", "t": "SQL Functions", "a": false}, {"id": "dbms-sql-sql-math-text-date-functions", "t": "SQL Math, Text & Date Functions", "a": false}, {"id": "dbms-sql-constraints", "t": "Constraints", "a": false}, {"id": "dbms-sql-views-cursors-locks-triggers", "t": "Views, Cursors, Locks, Triggers", "a": false}, {"id": "dbms-sql-sql-joins", "t": "SQL Joins", "a": false}, {"id": "dbms-sql-postgresql-nosql-pl-sql", "t": "PostgreSQL, NoSQL, PL/SQL", "a": false}]}, {"id": "computer-networking", "n": 14, "title": "Computer Networking", "pages": "", "added": false, "emoji": "🌐", "hue": 298, "mins": 12, "topics": [{"id": "computer-networking-introduction-history", "t": "Introduction & History", "a": false}, {"id": "computer-networking-evolution-of-networking", "t": "Evolution of Networking", "a": false}, {"id": "computer-networking-networking-models-osi-tcp-ip", "t": "Networking Models: OSI & TCP/IP", "a": false}, {"id": "computer-networking-ieee-802-standards", "t": "IEEE 802 Standards", "a": false}, {"id": "computer-networking-ip-address-mac-address", "t": "IP Address & MAC Address", "a": false}, {"id": "computer-networking-subnetting", "t": "Subnetting", "a": false}, {"id": "computer-networking-ports-protocols", "t": "Ports & Protocols", "a": false}, {"id": "computer-networking-types-of-networks-by-area", "t": "Types of Networks (by area)", "a": false}, {"id": "computer-networking-transmission-modes", "t": "Transmission Modes", "a": false}, {"id": "computer-networking-data-communication", "t": "Data Communication", "a": false}, {"id": "computer-networking-network-topology", "t": "Network Topology", "a": false}, {"id": "computer-networking-networking-devices", "t": "Networking Devices", "a": false}, {"id": "computer-networking-transmission-media-cables", "t": "Transmission Media (Cables)", "a": false}, {"id": "computer-networking-web-basics", "t": "Web Basics", "a": false}, {"id": "computer-networking-exam-facts", "t": "Exam Facts", "a": false}]}, {"id": "web-technology", "n": 15, "title": "Web Technology", "pages": "", "added": false, "emoji": "🕸️", "hue": 345, "mins": 3, "topics": [{"id": "web-technology-www-internet-basics", "t": "WWW & Internet Basics", "a": false}, {"id": "web-technology-html", "t": "HTML", "a": false}, {"id": "web-technology-css", "t": "CSS", "a": false}, {"id": "web-technology-javascript", "t": "JavaScript", "a": false}]}, {"id": "internet-of-things-iot", "n": 16, "title": "Internet of Things (IoT)", "pages": "", "added": false, "emoji": "📡", "hue": 32, "mins": 4, "topics": [{"id": "internet-of-things-iot-internet-iot-basics", "t": "Internet & IoT Basics", "a": false}, {"id": "internet-of-things-iot-types-of-iot", "t": "Types of IoT", "a": false}, {"id": "internet-of-things-iot-components-of-iot", "t": "Components of IoT", "a": false}, {"id": "internet-of-things-iot-iot-gateway", "t": "IoT Gateway", "a": false}, {"id": "internet-of-things-iot-iot-networks", "t": "IoT Networks", "a": false}, {"id": "internet-of-things-iot-iot-protocols", "t": "IoT Protocols", "a": false}, {"id": "internet-of-things-iot-arduino", "t": "Arduino", "a": false}]}, {"id": "cloud-computing", "n": 17, "title": "Cloud Computing", "pages": "", "added": false, "emoji": "☁️", "hue": 79, "mins": 2, "topics": [{"id": "cloud-computing-basics", "t": "Basics", "a": false}, {"id": "cloud-computing-architecture", "t": "Architecture", "a": false}, {"id": "cloud-computing-service-models", "t": "Service Models", "a": false}, {"id": "cloud-computing-deployment-models", "t": "Deployment Models", "a": false}, {"id": "cloud-computing-key-terms", "t": "Key Terms", "a": false}]}, {"id": "cyber-security", "n": 18, "title": "Cyber Security", "pages": "", "added": false, "emoji": "🛡️", "hue": 126, "mins": 3, "topics": [{"id": "cyber-security-computer-virus", "t": "Computer Virus", "a": false}, {"id": "cyber-security-malware-types", "t": "Malware Types", "a": false}, {"id": "cyber-security-cyber-attacks-frauds", "t": "Cyber Attacks & Frauds", "a": false}, {"id": "cyber-security-network-security-threats", "t": "Network Security Threats", "a": false}, {"id": "cyber-security-cyber-security-tools-practices", "t": "Cyber Security Tools & Practices", "a": false}]}, {"id": "software-engineering", "n": 19, "title": "Software Engineering", "pages": "", "added": false, "emoji": "🛠️", "hue": 173, "mins": 5, "topics": [{"id": "software-engineering-sdlc-software-development-life-cycle", "t": "SDLC (Software Development Life Cycle)", "a": false}, {"id": "software-engineering-sdlc-models", "t": "SDLC Models", "a": false}, {"id": "software-engineering-case-tools", "t": "CASE Tools", "a": false}, {"id": "software-engineering-quality-cohesion-coupling", "t": "Quality, Cohesion & Coupling", "a": false}, {"id": "software-engineering-software-maintenance-4-types", "t": "Software Maintenance (4 types)", "a": false}, {"id": "software-engineering-software-testing", "t": "Software Testing", "a": false}]}, {"id": "theory-of-computation", "n": 20, "title": "Theory of Computation", "pages": "", "added": false, "emoji": "⚙️", "hue": 220, "mins": 4, "topics": [{"id": "theory-of-computation-introduction", "t": "Introduction", "a": false}, {"id": "theory-of-computation-automata-basics", "t": "Automata Basics", "a": false}, {"id": "theory-of-computation-chomsky-hierarchy", "t": "Chomsky Hierarchy", "a": false}, {"id": "theory-of-computation-finite-automata-dfa-nfa", "t": "Finite Automata (DFA & NFA)", "a": false}, {"id": "theory-of-computation-moore-mealy-machines", "t": "Moore & Mealy Machines", "a": false}, {"id": "theory-of-computation-pushdown-automata-pda", "t": "Pushdown Automata (PDA)", "a": false}, {"id": "theory-of-computation-linear-bounded-automata-lba", "t": "Linear Bounded Automata (LBA)", "a": false}, {"id": "theory-of-computation-turing-machine", "t": "Turing Machine", "a": false}, {"id": "theory-of-computation-regular-expressions-closure-properties", "t": "Regular Expressions & Closure Properties", "a": false}, {"id": "theory-of-computation-myhill-nerode-theorem-pumping-lemma", "t": "Myhill–Nerode Theorem & Pumping Lemma", "a": false}, {"id": "theory-of-computation-compiler-phases-toc-application", "t": "Compiler Phases (TOC application)", "a": false}]}, {"id": "artificial-intelligence-ml", "n": 21, "title": "Artificial Intelligence & ML", "pages": "", "added": false, "emoji": "🤖", "hue": 267, "mins": 3, "topics": [{"id": "artificial-intelligence-ml-artificial-intelligence", "t": "Artificial Intelligence", "a": false}, {"id": "artificial-intelligence-ml-chatbots-virtual-assistants", "t": "Chatbots & Virtual Assistants", "a": false}, {"id": "artificial-intelligence-ml-machine-learning", "t": "Machine Learning", "a": false}, {"id": "artificial-intelligence-ml-deep-learning", "t": "Deep Learning", "a": false}]}, {"id": "multimedia", "n": 22, "title": "Multimedia", "pages": "", "added": false, "emoji": "🎬", "hue": 314, "mins": 2, "topics": [{"id": "multimedia-what-is-multimedia", "t": "What is Multimedia", "a": false}, {"id": "multimedia-warping-morphing-image-types", "t": "Warping, Morphing & Image Types", "a": false}, {"id": "multimedia-multimedia-authoring", "t": "Multimedia Authoring", "a": false}, {"id": "multimedia-file-formats", "t": "File Formats", "a": false}, {"id": "multimedia-compression", "t": "Compression", "a": false}, {"id": "multimedia-animation-colour-basics", "t": "Animation & Colour Basics", "a": false}]}, {"id": "society-law-ethics", "n": 23, "title": "Society, Law & Ethics", "pages": "", "added": false, "emoji": "⚖️", "hue": 1, "mins": 2, "topics": [{"id": "society-law-ethics-digital-footprint-netiquette", "t": "Digital Footprint & Netiquette", "a": false}, {"id": "society-law-ethics-intellectual-property-rights-ipr", "t": "Intellectual Property Rights (IPR)", "a": false}, {"id": "society-law-ethics-cyber-crime-it-act-2000", "t": "Cyber Crime & IT Act 2000", "a": false}, {"id": "society-law-ethics-e-waste-health", "t": "E-waste & Health", "a": false}, {"id": "society-law-ethics-digital-india-e-governance", "t": "Digital India & E-Governance", "a": false}]}, {"id": "emerging-trends", "n": 24, "title": "Emerging Trends", "pages": "", "added": false, "emoji": "🚀", "hue": 48, "mins": 2, "topics": [{"id": "emerging-trends-big-data-data-science", "t": "Big Data & Data Science", "a": false}, {"id": "emerging-trends-blockchain", "t": "Blockchain", "a": false}, {"id": "emerging-trends-ar-vr-mr", "t": "AR, VR, MR", "a": false}, {"id": "emerging-trends-other-trends", "t": "Other Trends", "a": false}]}, {"id": "quick-revision-one-liners", "n": 25, "title": "Quick Revision: One-liners", "pages": "", "added": false, "emoji": "⚡", "hue": 95, "mins": 2, "topics": [{"id": "quick-revision-one-liners-fathers-firsts", "t": "Fathers & Firsts", "a": false}, {"id": "quick-revision-one-liners-numbers-to-remember", "t": "Numbers to Remember", "a": false}]}]</script>
 <script>
 (function(){
   var META=JSON.parse(document.getElementById('meta').textContent);
@@ -3024,13 +3375,27 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
   document.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
 
   var side=document.getElementById('side');
-  var s1='<div class="side-prog"><div><b id="doneCount">0</b> chapters done</div><div class="pbar2"><i id="doneBar"></i></div></div><div class="side-h">Chapters</div>',n1=0;
+  var s1='<div class="side-prog"><div><b id="doneCount">0</b> chapters done</div><div class="pbar2"><i id="doneBar"></i></div></div><div class="views" id="views" hidden></div><div class="side-h">Chapters</div>',n1=0;
   META.forEach(function(c){
     var card='<a class="card" style="--h:'+c.hue+'" href="#'+c.id+'" data-card="'+c.id+'"><span class="num">'+c.n+'</span><span class="e">'+c.emoji+'</span><b>'+esc(c.title)+'</b><small>'+c.topics.length+' topics · ~'+c.mins+' min</small></a>';
     var sl='<a class="side-ch" style="--h:'+c.hue+'" href="#'+c.id+'" data-side="'+c.id+'"><span class="e">'+c.emoji+'</span><span>'+esc(c.title)+'</span><span class="tick">✓</span></a><ul class="side-topics" data-topics="'+c.id+'">'+c.topics.map(function(t){return '<li><a href="#'+t.id+'" data-t="'+t.id+'">'+esc(t.t)+'</a></li>'}).join('')+'</ul>';
     s1+=sl;n1++;
   });
   side.innerHTML=s1;
+
+  (function(){
+    var el=document.getElementById('views'); if(!el||location.protocol==='file:')return;
+    var counted=false; try{counted=sessionStorage.getItem('cs-counted')==='1'}catch(e){}
+    fetch('/api/views'+(counted?'':'?hit=1'),{cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){
+        if(!d||typeof d.views!=='number'||d.views<1)return;
+        try{sessionStorage.setItem('cs-counted','1')}catch(e){}
+        el.textContent='\uD83D\uDC40 '+d.views.toLocaleString('en-IN')+' views';
+        el.hidden=false;
+      })
+      .catch(function(){});
+  })();
   
 
   function syncDone(){

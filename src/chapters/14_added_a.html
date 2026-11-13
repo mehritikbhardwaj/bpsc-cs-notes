@@ -60,6 +60,36 @@
 <li>Motherboard: CPU socket, RAM slots, chipset, PCIe slots, SATA ports, BIOS/UEFI chip, CMOS battery.</li>
 </ul>
 
+<h3>Data vs Information</h3>
+<table><tr><th>Data</th><th>Information</th></tr>
+<tr><td>Raw, unorganised facts and figures</td><td>Processed, organised, meaningful data</td></tr>
+<tr><td>Input to processing</td><td>Output of processing</td></tr>
+<tr><td>e.g. 72, 85, 91 (marks)</td><td>e.g. "Class average is 82.7"</td></tr></table>
+<p><b>Data processing cycle:</b> Input → Processing → Output → Storage. Computer = <b>GIGO</b> (Garbage In, Garbage Out).</p>
+
+<h3>Microprocessor vs Microcontroller</h3>
+<table><tr><th>Microprocessor</th><th>Microcontroller</th></tr>
+<tr><td>Only CPU on a chip; RAM, ROM, I/O are external</td><td>CPU + RAM + ROM + I/O ports + timers on one chip ("computer on a chip")</td></tr>
+<tr><td>General-purpose computers (PC, laptop)</td><td>Embedded systems (washing machine, microwave, remote, car ECU)</td></tr>
+<tr><td>Costly, more power, high speed</td><td>Cheap, low power</td></tr>
+<tr><td>Intel Core i5, AMD Ryzen</td><td>Intel 8051, ATmega328 (Arduino), PIC</td></tr></table>
+<ul>
+<li><b>Word size</b> — number of bits the CPU processes at one time (8, 16, 32, 64-bit). Larger word size = more data per operation and more addressable memory.</li>
+<li><b>Clock speed</b> — number of cycles per second; measured in Hz (MHz/GHz). 3 GHz = 3 billion cycles/second.</li>
+<li><b>Memory size</b> addressable = 2<sup>address bus width</sup> (16-bit address bus → 64 KB; 32-bit → 4 GB).</li>
+<li><b>Cores</b> — independent processing units on one chip; more cores = better multitasking.</li>
+</ul>
+
+<h3>Data Deletion, Recovery & Security</h3>
+<ul>
+<li>Deleting a file usually removes only its <b>entry/pointer</b>; data stays on disk until overwritten. First it goes to the Recycle Bin (Windows) / Trash (macOS).</li>
+<li><b>Soft delete</b> — recoverable (Recycle Bin). <b>Permanent delete</b> (Shift + Delete) — bypasses Recycle Bin but data can still often be recovered by recovery software (Recuva, TestDisk) until overwritten.</li>
+<li><b>Data recovery</b> — retrieving deleted, lost or corrupted data from storage.</li>
+<li><b>Security concern</b> — sold/discarded devices can leak personal data. Safe methods: data shredding/wiping (overwrite several times), disk formatting with overwrite, physical destruction, full-disk encryption.</li>
+<li>Formatting: <b>quick format</b> (only clears file table) vs <b>full format</b> (scans and overwrites).</li>
+<li>Backups: full, incremental, differential; cloud backup.</li>
+</ul>
+
 <h3>Common Abbreviations</h3>
 <table>
 <tr><td>ALU</td><td>Arithmetic Logic Unit</td><td>BIOS</td><td>Basic Input Output System</td></tr>
@@ -100,6 +130,19 @@
 <li>Precedence: <code>**</code> &gt; unary <code>-</code> &gt; <code>* / // %</code> &gt; <code>+ -</code> &gt; relational &gt; not &gt; and &gt; or. <code>**</code> is right-associative: 2**3**2 = 512.</li>
 </ul>
 
+<h3>Tokens, Variables & Type Conversion</h3>
+<ul>
+<li><b>Character set</b>: letters, digits, special symbols, whitespace, Unicode characters.</li>
+<li><b>Tokens</b> (smallest unit of a program): <b>keywords</b>, <b>identifiers</b> (names; start with letter/_ ; case-sensitive; no keyword), <b>literals</b> (fixed values: 10, 3.5, "hi", True, None), <b>operators</b>, <b>punctuators</b> (<code>( ) [ ] { } , : ; .</code>).</li>
+<li><b>l-value</b> — the object on the left of <code>=</code> (where value is stored); <b>r-value</b> — the expression on the right. In <code>x = 5 + 2</code>, x is l-value, 5 + 2 is r-value.</li>
+<li>Python is <b>dynamically typed</b>: <code>x = 5</code> then <code>x = "five"</code> is allowed. <code>type(x)</code> gives the type; <code>id(x)</code> gives the identity (memory address).</li>
+<li>Multiple assignment: <code>a = b = 10</code>; <code>a, b = 1, 2</code>; swap: <code>a, b = b, a</code>.</li>
+<li><b>Mutable</b> (can change in place): list, dict, set. <b>Immutable</b>: int, float, bool, str, tuple.</li>
+<li><b>Implicit conversion</b> (automatic): <code>5 + 2.0 = 7.0</code>. <b>Explicit</b> (type casting): <code>int("12")</code>, <code>float(3)</code>, <code>str(10)</code>, <code>list("abc")</code>.</li>
+<li><code>input()</code> always returns a <b>string</b>; <code>print(a, b, sep="-", end="")</code>.</li>
+<li>Errors: syntax error, logical error, runtime error (exception).</li>
+</ul>
+
 <h3>Control Flow & Functions</h3>
 <pre><code>marks = int(input("Enter marks: "))
 if marks &gt;= 60:
@@ -133,6 +176,31 @@ square = lambda x: x * x</code></pre>
 <li>Dict methods: <code>keys(), values(), items(), get(), update(), pop()</code>.</li>
 <li>List comprehension: <code>[x*x for x in range(5) if x % 2 == 0]</code> → [0, 4, 16].</li>
 </ul>
+
+<h3>Python Modules</h3>
+<pre><code>import math
+math.pi, math.e          # 3.14159…, 2.71828…
+math.sqrt(16)            # 4.0
+math.ceil(4.2)           # 5
+math.floor(4.8)          # 4
+math.pow(2, 3)           # 8.0
+math.fabs(-7)            # 7.0
+math.sin(0), math.cos(0) # 0.0, 1.0
+
+import random
+random.random()          # float in [0.0, 1.0)
+random.randint(1, 6)     # 1 to 6, both included
+random.randrange(1, 10, 2)  # 1,3,5,7,9 (stop excluded)
+
+import statistics
+statistics.mean([2, 4, 6])     # 4
+statistics.median([1, 3, 5, 7])  # 4.0
+statistics.mode([1, 2, 2, 3])  # 2
+
+from math import sqrt   # import one name
+import math as m        # alias</code></pre>
+<ul><li>Module = a .py file with functions/variables. Package = folder of modules. Library = collection of packages.</li>
+<li>Built-in functions (no import): <code>len, max, min, sum, abs, round, type, range, sorted, input, print</code>.</li></ul>
 
 <h3>Exception & File Handling</h3>
 <pre><code>try:

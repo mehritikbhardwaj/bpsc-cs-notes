@@ -248,4 +248,66 @@ For a BST, inorder = keys sorted ascending. E.g. preorder 30, 20, 10, 15, 25, 23
         for (int j = 0; j &lt; n - 1 - i; j++)
             if (a[j] &gt; a[j + 1]) { int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; }
 }</code></pre>
+<h3>Stack, Queue, Search & Sort in Python</h3>
+<h4>Stack using list</h4>
+<pre><code>stack = []
+stack.append(10)      # push
+stack.append(20)
+top = stack[-1]       # peek → 20
+x = stack.pop()       # pop → 20
+is_empty = len(stack) == 0</code></pre>
+<h4>Queue & deque</h4>
+<pre><code>queue = []
+queue.append(1)       # enqueue at rear
+queue.append(2)
+x = queue.pop(0)      # dequeue from front → 1
+
+from collections import deque
+dq = deque()
+dq.append(1); dq.appendleft(0)   # insert at both ends
+dq.pop(); dq.popleft()           # delete from both ends</code></pre>
+<h4>Linear & binary search</h4>
+<pre><code>def linear_search(a, key):
+    for i in range(len(a)):
+        if a[i] == key:
+            return i
+    return -1
+
+def binary_search(a, key):      # a must be sorted
+    lo, hi = 0, len(a) - 1
+    while lo &lt;= hi:
+        mid = (lo + hi) // 2
+        if a[mid] == key:
+            return mid
+        elif a[mid] &lt; key:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1</code></pre>
+<h4>Bubble, selection & insertion sort</h4>
+<pre><code>def bubble_sort(a):
+    n = len(a)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if a[j] &gt; a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+
+def selection_sort(a):
+    for i in range(len(a)):
+        m = i
+        for j in range(i + 1, len(a)):
+            if a[j] &lt; a[m]:
+                m = j
+        a[i], a[m] = a[m], a[i]
+
+def insertion_sort(a):
+    for i in range(1, len(a)):
+        key, j = a[i], i - 1
+        while j &gt;= 0 and a[j] &gt; key:
+            a[j + 1] = a[j]
+            j -= 1
+        a[j + 1] = key</code></pre>
+<div class="example">Bubble sort on [5, 1, 4, 2] — Pass 1: [1, 4, 2, 5]; Pass 2: [1, 2, 4, 5]; Pass 3: no swap. Number of comparisons in worst case = n(n−1)/2 = 6.</div>
+<h4>Hashing in Python</h4>
+<p>Python <code>dict</code> is a hash table (map ADT: key → value). Simple hash function: <code>h(key) = key % table_size</code>. Keys 15, 25, 7 with size 10 → slots 5, 5, 7 → 15 and 25 collide (resolve by chaining or probing).</p>
 </section>

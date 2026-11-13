@@ -1,0 +1,105 @@
+<section class="chapter" data-title="Problem Solving">
+<h2>Problem Solving</h2>
+
+<h3>Problem-Solving Cycle</h3>
+<ol>
+<li><b>Analyse the problem</b> — understand inputs, outputs and requirements.</li>
+<li><b>Develop an algorithm</b> — step-by-step solution (flowchart / pseudocode).</li>
+<li><b>Coding</b> — convert algorithm into a program.</li>
+<li><b>Testing &amp; debugging</b> — run with test data, find and fix errors.</li>
+</ol>
+<p>Also called the steps: understand → plan → implement → test → maintain.</p>
+
+<h3>Algorithm</h3>
+<ul>
+<li>Finite sequence of well-defined steps to solve a problem.</li>
+<li>Characteristics: <b>input</b> (zero or more), <b>output</b> (at least one), <b>definiteness</b> (each step clear), <b>finiteness</b> (ends after finite steps), <b>effectiveness</b> (each step basic and doable).</li>
+<li>Representation: natural language, <b>flowchart</b>, <b>pseudocode</b>.</li>
+</ul>
+<div class="example">Algorithm: largest of two numbers<br>1. Start<br>2. Input A, B<br>3. If A &gt; B then print A else print B<br>4. Stop</div>
+
+<h3>Pseudocode</h3>
+<ul>
+<li>Informal, English-like description of an algorithm using programming-style structure; not tied to any language; can't be executed.</li>
+<li>Common keywords: INPUT/READ, OUTPUT/PRINT, IF…THEN…ELSE, WHILE, FOR, COMPUTE, SET, INCREMENT.</li>
+</ul>
+<pre><code>INPUT marks
+IF marks &gt;= 33 THEN
+    PRINT "Pass"
+ELSE
+    PRINT "Fail"
+END IF</code></pre>
+<table><tr><th>Flowchart</th><th>Pseudocode</th></tr>
+<tr><td>Diagram with symbols</td><td>Structured text</td></tr>
+<tr><td>Easy to see the flow</td><td>Easy to write and convert to code</td></tr>
+<tr><td>Hard to modify for big problems</td><td>Easy to modify</td></tr></table>
+
+<h3>Flow of Control</h3>
+<ul>
+<li><b>Sequence</b> — statements executed one after another.</li>
+<li><b>Selection</b> (decision) — choose a path based on a condition: if, if-else, switch.</li>
+<li><b>Iteration</b> (repetition/loop) — repeat steps: for, while, do-while.</li>
+</ul>
+<p>Any algorithm can be built from these three constructs (structured programming).</p>
+
+<h3>Verifying & Comparing Algorithms</h3>
+<ul>
+<li><b>Verification</b> — dry run (trace by hand with sample inputs) to check the algorithm gives correct output.</li>
+<li><b>Comparison</b> — by time complexity (number of steps) and space complexity (memory). E.g. to check prime, testing divisors up to √n is faster than up to n−1.</li>
+</ul>
+
+<h3>Decomposition</h3>
+<ul>
+<li>Breaking a complex problem into smaller, simpler sub-problems that are solved separately and then combined.</li>
+<li>Example: a railway reservation system → search trains, check seats, book ticket, payment, generate PNR.</li>
+<li>Related computational-thinking ideas: <b>pattern recognition</b>, <b>abstraction</b> (focus on what matters), <b>algorithm design</b>.</li>
+<li>In programming, decomposition is done using <b>functions/modules</b> (modular programming).</li>
+</ul>
+</section>
+
+<section class="chapter" data-title="Understanding Data">
+<h2>Understanding Data</h2>
+
+<h3>Data & Its Types</h3>
+<ul>
+<li><b>Data</b> — raw facts; processed data = information. Data helps in decision making (e.g. weather forecasting, sales analysis, exam results).</li>
+<li><b>Structured</b> — organised in rows/columns (tables, spreadsheets). <b>Unstructured</b> — no fixed format (images, video, audio, emails, social media posts). <b>Semi-structured</b> — partly organised (JSON, XML, HTML).</li>
+<li><b>Qualitative</b> (categorical — gender, city) vs <b>quantitative</b> (numerical — marks, height). Quantitative: <b>discrete</b> (countable — students) and <b>continuous</b> (measurable — weight).</li>
+</ul>
+
+<h3>Data Collection, Storage & Processing</h3>
+<ul>
+<li><b>Collection</b> — surveys, forms, sensors, transactions, web/app logs, interviews. Primary data (collected first-hand) vs secondary data (already collected by others, e.g. census reports).</li>
+<li><b>Storage</b> — files, spreadsheets, databases, data warehouses, cloud. Devices: HDD, SSD, pen drive, cloud.</li>
+<li><b>Processing</b> — input → process (sort, filter, calculate, summarise) → output. Manual, mechanical, electronic.</li>
+<li>Data must be accurate, complete, consistent and up-to-date. Errors: missing values, duplicates, outliers → data cleaning.</li>
+</ul>
+
+<h3>Statistical Techniques</h3>
+<ul>
+<li><b>Mean</b> = sum of values ÷ number of values.</li>
+<li><b>Median</b> = middle value after sorting (even count → average of two middle values).</li>
+<li><b>Mode</b> = most frequent value.</li>
+<li><b>Range</b> = maximum − minimum.</li>
+<li><b>Variance</b> (σ²) = average of squared differences from the mean = Σ(x − x̄)² ÷ n.</li>
+<li><b>Standard deviation</b> (σ) = √variance — how spread out the values are. Small SD → values close to mean.</li>
+</ul>
+<div class="example">Data: 2, 4, 4, 4, 5, 5, 7, 9 (n = 8)<br>
+Mean = 40 ÷ 8 = <b>5</b> · Median = (4 + 5) ÷ 2 = <b>4.5</b> · Mode = <b>4</b> · Range = 9 − 2 = <b>7</b><br>
+Squared deviations: 9, 1, 1, 1, 0, 0, 4, 16 → sum 32 → Variance = 32 ÷ 8 = <b>4</b> → SD = <b>2</b><br>
+(Sample variance uses n − 1: 32 ÷ 7 ≈ 4.57.)</div>
+<p>Mean, median, mode = measures of <b>central tendency</b>; range, variance, SD = measures of <b>dispersion (variability)</b>.</p>
+
+<h3>Data Interpretation & Visualization</h3>
+<table><tr><th>Chart</th><th>Best for</th></tr>
+<tr><td>Line chart</td><td>Trend over time (temperature by month)</td></tr>
+<tr><td>Bar chart</td><td>Comparing categories (marks by subject)</td></tr>
+<tr><td>Histogram</td><td>Frequency distribution of continuous data (ranges)</td></tr>
+<tr><td>Pie chart</td><td>Parts of a whole (percentage share)</td></tr>
+<tr><td>Scatter plot</td><td>Relationship between two variables</td></tr>
+<tr><td>Box plot</td><td>Spread, median, quartiles, outliers</td></tr></table>
+<ul>
+<li>Tools: MS Excel, Google Sheets, Tableau, Power BI, Python (Pandas, Matplotlib, Seaborn).</li>
+<li>Python: <code>import matplotlib.pyplot as plt</code> → <code>plt.plot(x, y)</code>, <code>plt.bar()</code>, <code>plt.hist()</code>, <code>plt.pie()</code>, <code>plt.title()</code>, <code>plt.xlabel()</code>, <code>plt.legend()</code>, <code>plt.show()</code>.</li>
+</ul>
+</section>

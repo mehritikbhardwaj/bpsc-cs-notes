@@ -20,6 +20,16 @@
 <tr><td>MySQL, MS SQL Server, SQLite, PostgreSQL, Oracle, MS Access, IBM DB2, MariaDB, Sybase, FoxPro</td><td>MongoDB (document), Cassandra (column), Redis (key-value), Neo4j (graph), CouchDB, Couchbase, HBase, Amazon DynamoDB, Firebase, Google Bigtable, Elasticsearch</td></tr>
 </table>
 
+<h3>File System vs DBMS</h3>
+<p>Before databases, data was kept in separate files (file system). Its limitations led to DBMS.</p>
+<table><tr><th>File System</th><th>DBMS</th></tr>
+<tr><td>Data redundancy (same data in many files)</td><td>Controlled / minimal redundancy</td></tr>
+<tr><td>Data inconsistency</td><td>Consistency maintained</td></tr>
+<tr><td>Data isolation — hard to access data spread across files</td><td>Easy access using queries (SQL)</td></tr>
+<tr><td>Data dependence — program depends on file format</td><td>Data independence</td></tr>
+<tr><td>Poor security, no concurrent access control</td><td>Security, multi-user access, backup &amp; recovery</td></tr>
+<tr><td>Controlled data sharing difficult</td><td>Easy data sharing</td></tr></table>
+
 <h3>Components of DBMS & Users</h3>
 <ul>
 <li><b>Hardware</b> — hard disk, monitor etc. <b>Software</b> — DBMS itself, gives interface. <b>Data</b> — collection of information. <b>Procedures</b> — rules/instructions. <b>Database languages</b> — DDL, DML, DCL. <b>Data manager</b> — manages operations.</li>
@@ -59,6 +69,19 @@
 <tr><td>Degree</td><td>Number of attributes (columns)</td></tr>
 <tr><td>Domain</td><td>Set of allowed values of an attribute</td></tr>
 </table>
+
+<h3>Relational Algebra</h3>
+<p>Procedural query language — set of operations that take relations (tables) as input and produce a relation as output. Basis of SQL.</p>
+<table><tr><th>Operation</th><th>Symbol</th><th>Meaning</th><th>SQL equivalent</th></tr>
+<tr><td>Selection</td><td>σ (sigma)</td><td>Selects <b>rows</b> satisfying a condition: σ<sub>marks&gt;60</sub>(Student)</td><td>WHERE</td></tr>
+<tr><td>Projection</td><td>π (pi)</td><td>Selects <b>columns</b>, removes duplicates: π<sub>name</sub>(Student)</td><td>SELECT col</td></tr>
+<tr><td>Union</td><td>∪</td><td>Rows in A or B (duplicates removed); both must be union-compatible (same degree &amp; domains)</td><td>UNION</td></tr>
+<tr><td>Set difference</td><td>−</td><td>Rows in A but not in B</td><td>EXCEPT / MINUS</td></tr>
+<tr><td>Intersection</td><td>∩</td><td>Rows in both A and B</td><td>INTERSECT</td></tr>
+<tr><td>Cartesian product</td><td>×</td><td>Every row of A with every row of B</td><td>CROSS JOIN</td></tr>
+<tr><td>Rename</td><td>ρ (rho)</td><td>Renames relation/attributes</td><td>AS</td></tr>
+<tr><td>Join</td><td>⋈</td><td>Cartesian product + selection on matching attributes</td><td>JOIN</td></tr></table>
+<div class="fact">Cartesian product of A (degree 3, cardinality 4) and B (degree 2, cardinality 5) → degree <b>3 + 2 = 5</b>, cardinality <b>4 × 5 = 20</b>.</div>
 
 <h3>ACID Properties (Transactions)</h3>
 <ul>
@@ -232,6 +255,27 @@ SELECT lastname, age FROM customer WHERE country &lt;&gt; 'UK' ORDER BY lastname
 <tr><td>ROUND(−23.456, 2)</td><td>−23.46</td></tr>
 </table>
 <p>Negative second argument rounds to the left of the decimal point. (SQL Server has a 3rd argument: non-zero means truncate instead of round.)</p>
+
+<h3>SQL Math, Text & Date Functions</h3>
+<table><tr><th>Type</th><th>Function</th><th>Example → Result</th></tr>
+<tr><td rowspan="3">Math</td><td>POWER(x, y) / POW</td><td>POWER(2, 3) → 8</td></tr>
+<tr><td>MOD(x, y)</td><td>MOD(11, 4) → 3</td></tr>
+<tr><td>ROUND(x, d)</td><td>ROUND(15.193, 1) → 15.2</td></tr>
+<tr><td rowspan="8">Text</td><td>UPPER()/UCASE(), LOWER()/LCASE()</td><td>UPPER('bihar') → BIHAR</td></tr>
+<tr><td>LENGTH()</td><td>LENGTH('Patna') → 5</td></tr>
+<tr><td>LEFT(s, n), RIGHT(s, n)</td><td>LEFT('Computer', 3) → Com; RIGHT('Computer', 3) → ter</td></tr>
+<tr><td>MID(s, pos, n) / SUBSTR</td><td>MID('Computer', 4, 3) → put</td></tr>
+<tr><td>INSTR(s, sub)</td><td>INSTR('Computer', 'put') → 4</td></tr>
+<tr><td>LTRIM, RTRIM, TRIM</td><td>TRIM('  hi  ') → 'hi'</td></tr>
+<tr><td>CONCAT(a, b)</td><td>CONCAT('Data', 'base') → Database</td></tr>
+<tr><td>CHAR() / ASCII()</td><td>ASCII('A') → 65</td></tr>
+<tr><td rowspan="5">Date</td><td>NOW()</td><td>Current date and time</td></tr>
+<tr><td>CURDATE() / SYSDATE()</td><td>Current date</td></tr>
+<tr><td>DATE(), MONTH(), YEAR(), DAY()</td><td>MONTH('2026-11-13') → 11; YEAR(...) → 2026</td></tr>
+<tr><td>DAYNAME(), MONTHNAME()</td><td>DAYNAME('2026-11-13') → Friday; MONTHNAME → November</td></tr>
+<tr><td>DATEDIFF(d1, d2)</td><td>Days between two dates</td></tr></table>
+<ul><li>Single-row (scalar) functions work on each row; multiple-row (aggregate) functions work on a group of rows.</li>
+<li>COUNT(*) counts all rows including NULLs; COUNT(column) ignores NULLs.</li></ul>
 
 <h3>Constraints</h3>
 <p>Rules applied to columns to limit the type of data that can go into a table (integrity constraints).</p>
