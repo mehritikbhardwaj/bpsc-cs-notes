@@ -213,7 +213,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
   <span class="sp"></span>
   <button class="ibtn searchbtn hide-m" data-open-search>🔍 Search… <kbd style="margin-left:auto;font-size:11px;opacity:.7">/</kbd></button>
   <span class="views" id="views" hidden></span>
-  <button class="ibtn buybtn hide-m" id="buyBtn">⬇️ PDF ₹139</button>
+  <button class="ibtn buybtn hide-m" id="buyBtn">⬇️ Download PDF</button>
   <button class="ibtn" id="fontBtn" aria-label="Text size" title="Text size">Aa</button>
   <button class="ibtn" id="themeBtn" aria-label="Dark mode">🌙</button>
   <div class="progress" id="progress"></div>
@@ -264,7 +264,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
   document.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
 
   var side=document.getElementById('side');
-  var s1='<div class="side-prog"><div><b id="doneCount">0</b> chapters done</div><div class="pbar2"><i id="doneBar"></i></div></div><button class="side-buy" id="sideBuy">\u2B07\uFE0F Download complete PDF \u2014 \u20B9139</button><div class="side-h">Chapters</div>',n1=0;
+  var s1='<div class="side-prog"><div><b id="doneCount">0</b> chapters done</div><div class="pbar2"><i id="doneBar"></i></div></div><button class="side-buy" id="sideBuy">\u2B07\uFE0F Download complete PDF</button><div class="side-h">Chapters</div>',n1=0;
   META.forEach(function(c){
     var card='<a class="card" style="--h:'+c.hue+'" href="#'+c.id+'" data-card="'+c.id+'"><span class="num">'+c.n+'</span><span class="e">'+c.emoji+'</span><b>'+esc(c.title)+'</b><small>'+c.topics.length+' topics · ~'+c.mins+' min</small></a>';
     var sl='<a class="side-ch" style="--h:'+c.hue+'" href="#'+c.id+'" data-side="'+c.id+'"><span class="e">'+c.emoji+'</span><span>'+esc(c.title)+'</span><span class="tick">✓</span></a><ul class="side-topics" data-topics="'+c.id+'">'+c.topics.map(function(t){return '<li><a href="#'+t.id+'" data-t="'+t.id+'">'+esc(t.t)+'</a></li>'}).join('')+'</ul>';
@@ -384,8 +384,8 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
     var done=body.classList.contains('paid');
     [document.getElementById('buyBtn'),document.getElementById('sideBuy'),document.getElementById('bBuy')]
       .forEach(function(b){if(!b)return;b.disabled=false;
-        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':'\u2B07\uFE0F PDF \u20B9139';
-        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save complete PDF':'\u2B07\uFE0F Download complete PDF \u2014 \u20B9139';
+        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':'\u2B07\uFE0F Download PDF';
+        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save complete PDF':'\u2B07\uFE0F Download complete PDF';
       });
   }
   if(paid())body.classList.add('paid');
@@ -393,11 +393,11 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
   window.addEventListener('keydown',function(e){
     if(!(e.ctrlKey||e.metaKey)||body.classList.contains('paid'))return;
     var k=(e.key||'').toLowerCase();
-    if(k==='p'){e.preventDefault();e.stopPropagation();toast('Printing is locked \u2014 get the PDF for \u20B9139 \uD83D\uDD12')}
+    if(k==='p'){e.preventDefault();e.stopPropagation();toast('Printing is locked \u2014 use Download PDF \uD83D\uDD12')}
     else if(k==='s'){e.preventDefault();e.stopPropagation();toast('Saving the page is disabled \uD83D\uDD12')}
   },true);
   window.addEventListener('beforeprint',function(){
-    if(!body.classList.contains('paid'))toast('Printing is locked \u2014 get the PDF for \u20B9139 \uD83D\uDD12');
+    if(!body.classList.contains('paid'))toast('Printing is locked \u2014 use Download PDF \uD83D\uDD12');
   });
 
   function savePdf(){
