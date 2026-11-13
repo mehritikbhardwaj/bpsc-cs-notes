@@ -1,0 +1,242 @@
+<section class="chapter" data-title="C Programming (Complete)" data-pages="345–419">
+<h2>C Programming (Complete)</h2>
+
+<h3>Introduction to C</h3>
+<ul>
+<li>Programming = a medium to communicate with computers (like Hindi/English between people) to deliver instructions.</li>
+<li><b>C</b> is one of the oldest and finest programming languages, developed by <b>Dennis Ritchie</b> at AT&amp;T's <b>Bell Labs</b>, USA, in <b>1972</b>. Middle-level, procedural, structured.</li>
+<li>Uses: major parts of Windows, Linux and other OS kernels; device drivers (tablets, printers); embedded systems (microwave, cameras) where speed and limited memory matter; games and other latency-sensitive software.</li>
+</ul>
+
+<h3>Ch 1: Variables, Constants & Keywords</h3>
+<ul>
+<li><b>Variable</b> — a container that stores a value; value can change. E.g. <code>a = 3; b = 4.7; c = 'A';</code></li>
+<li>Rules for naming: first character must be a letter or underscore; no commas or blanks; no special symbol other than <code>_</code>; names are case-sensitive; can't be a keyword. Use meaningful names.</li>
+<li><b>Constant</b> — entity whose value doesn't change. Types: integer (−1, 6, 7, 9), real (−322.1, 2.5, 7.0), character ('a', '$', '@' — enclosed in single quotes).</li>
+<li><b>Keywords</b> — 32 reserved words in C (C89): auto, break, case, char, const, continue, default, do, double, else, enum, extern, float, for, goto, if, int, long, register, return, short, signed, sizeof, static, struct, switch, typedef, union, unsigned, void, volatile, while.</li>
+</ul>
+<pre><code>#include &lt;stdio.h&gt;
+int main() {
+    printf("Hello, I am learning C");
+    return 0;
+}   // file: first.c</code></pre>
+<h4>Basic structure & rules</h4>
+<ul>
+<li>Every program's execution starts from <code>main()</code>; every statement ends with a semicolon; instructions are case-sensitive and executed in the order written.</li>
+<li>Comments: single-line <code>// ...</code>, multi-line <code>/* ... */</code>; not executed.</li>
+</ul>
+<h4>Compilation & execution</h4>
+<p><code>first.c</code> → C compiler (gcc) → <code>first.exe</code> / <code>a.out</code>. The compiler converts the C program into machine language after checking it. Stages: preprocessing → compilation → assembly → linking.</p>
+<h4>Library functions, format specifiers & input</h4>
+<ul>
+<li><code>printf("This is %d", i);</code> — <code>%d</code> int, <code>%f</code> float, <code>%c</code> char, <code>%s</code> string, <code>%lf</code> double, <code>%u</code> address/unsigned, <code>%p</code> pointer.</li>
+<li><code>scanf("%d", &amp;i);</code> — <code>&amp;</code> is the "address of" operator: value is stored at the address of i.</li>
+<li>Types of variables: <code>int a = 3; float b = 7.7; char c = 'B';</code></li>
+</ul>
+<div class="practice"><b>Practice set 1</b>: area of a rectangle (hard-coded &amp; user input); area of a circle and volume of a cylinder; Celsius → Fahrenheit; simple interest.</div>
+
+<h3>Ch 2: Instructions & Operators</h3>
+<p>Types of instructions: <b>type declaration</b>, <b>arithmetic</b>, <b>control</b> instructions.</p>
+<ul>
+<li><code>int a; float b;</code> &nbsp; <code>int i = 10; int j = i, a = 2;</code> &nbsp; <code>float b = a + 3; float a = 1.1;</code> → error (a used before definition).</li>
+<li><code>int a, b, c, d; a = b = c = d = 30;</code> → all 30.</li>
+<li>Arithmetic: <code>+ − * / %</code>. <code>%</code> (modular division) returns the remainder; can't be applied on float; sign of result = sign of numerator (−5 % 2 = −1, 5 % −2 = 1).</li>
+<li>No operator is assumed: <code>int i = ab</code> is invalid, use <code>a*b</code>.</li>
+<li>No exponent operator in C; use <code>pow(x, y)</code> from <code>&lt;math.h&gt;</code>.</li>
+</ul>
+<h4>Type conversion</h4>
+<table>
+<tr><th>Operation</th><th>Result</th></tr>
+<tr><td>int and int</td><td>int (5/2 = 2; 2/5 = 0)</td></tr>
+<tr><td>int and float</td><td>float (5.0/2 = 2.5; 2.0/5 = 0.4)</td></tr>
+<tr><td>float and float</td><td>float</td></tr>
+</table>
+<p><code>int a = 3.5;</code> → a = 3 (float demoted). <code>float a = 8;</code> → 8.0 (promoted). <code>int k = 3.0/9;</code> → 0.333 can't be stored in int → k = 0.</p>
+<h4>Operator precedence & associativity</h4>
+<p>In C, BODMAS doesn't apply directly; precedence and associativity decide. Priority: 1st <code>* / %</code>, 2nd <code>+ −</code>, 3rd <code>=</code>. Operators of equal priority: associativity — <code>* /</code> left to right. <code>x*y/z</code> = <code>(x*y)/z</code>; <code>x/y*z</code> = <code>(x/y)*z</code>. 3x − 8y must be written <code>3*x - 8*y</code>.</p>
+<div class="practice"><b>Practice set 2</b>: which is invalid — <code>int a; b = a;</code> / <code>int v = 3^3;</code> / <code>char dt = '21 Dec 2020';</code> (last is invalid); data type of 3.0/8 − 2 (double); check divisibility by 97; evaluate 3*x/y − z + k step by step.</div>
+
+<h3>Ch 3: Conditional Instructions</h3>
+<p>Decision-making: <b>if-else</b> and <b>switch</b>.</p>
+<pre><code>int a = 23;
+if (a &gt; 18) {
+    printf("You can drive\n");
+} else {
+    printf("You cannot drive\n");
+}</code></pre>
+<ul>
+<li>else block is optional. Any non-zero value is true; 0 is false.</li>
+<li>Relational operators: <code>== &gt;= &gt; &lt; &lt;= !=</code>. <code>=</code> is assignment, <code>==</code> is equality check.</li>
+<li>Logical operators: <code>&amp;&amp;</code> (AND — true if both true), <code>||</code> (OR — true if at least one true), <code>!</code> (NOT — inverts). <code>!(3==3)</code> → false.</li>
+<li><b>else if</b> ladder reduces indentation; last else runs only if all conditions fail.</li>
+</ul>
+<h4>Operator precedence (high → low)</h4>
+<p><code>!</code> → <code>* / %</code> → <code>+ −</code> → <code>&lt; &gt; &lt;= &gt;=</code> → <code>== !=</code> → <code>&amp;&amp;</code> → <code>||</code> → <code>=</code></p>
+<h4>Conditional (ternary) operator</h4>
+<p><code>condition ? expression_if_true : expression_if_false;</code></p>
+<h4>switch</h4>
+<pre><code>switch (marks / 10) {
+    case 10: case 9: printf("A"); break;
+    case 8: printf("B"); break;
+    case 7: printf("C"); break;
+    default: printf("F");
+}</code></pre>
+<ul><li>Cases can be in any order; char values allowed (evaluated as integers); switch can be nested (rare). Without break, execution "falls through" to later cases.</li></ul>
+<div class="practice"><b>Practice set 3</b>: pass/fail with 40% total and 33% each in 3 subjects; income tax slabs (2.5–5L 5%, 5–10L 20%, &gt;10L 30%); leap year; lowercase check; greatest of four numbers.</div>
+
+<h3>Ch 4: Loop Control Instructions</h3>
+<p>Loops repeat a set of instructions. Types: <b>while</b>, <b>do-while</b>, <b>for</b>.</p>
+<pre><code>int i = 0;
+while (i &lt; 10) {             // entry controlled
+    printf("%d\n", i); i++;
+}
+do {                         // exit controlled: runs at least once
+    printf("%d\n", i); i--;
+} while (i &gt; 0);
+for (int j = 0; j &lt; 3; j++) // initialize; test; increment
+    printf("%d\n", j);</code></pre>
+<ul>
+<li>If the condition never becomes false → infinite loop.</li>
+<li><code>i++</code> / <code>i--</code> (post: use then change), <code>++i</code> / <code>--i</code> (pre: change then use). <code>+++</code> does not exist. Compound assignment: <code>+= -= *= /= %=</code>.</li>
+<li>Decrementing loop: <code>for (i = 5; i; i--)</code> runs until i becomes 0.</li>
+<li><b>break</b> — exits the loop immediately. <b>continue</b> — skips the rest of the current iteration.</li>
+</ul>
+<div class="practice"><b>Practice set 4</b>: multiplication table (normal and reverse); sum of first n natural numbers; factorial using for loop; prime check; sum of numbers in table of 8. <b>Project 1</b>: number guessing game (random number, "higher/lower", count guesses).</div>
+
+<h3>Ch 5: Functions & Recursion</h3>
+<pre><code>#include &lt;stdio.h&gt;
+void display();              // prototype (declaration)
+int main() {
+    display();               // function call
+    return 0;
+}
+void display() {             // definition
+    printf("Hi I am display");
+}</code></pre>
+<ul>
+<li>A function is a block of code that performs a particular task; reusable any number of times.</li>
+<li><b>Prototype</b> tells the compiler about the function in advance; <b>call</b> transfers control to the function body; <b>definition</b> contains the instructions. While the function runs, main is suspended.</li>
+<li>Types: <b>library functions</b> (printf, scanf, sqrt) and <b>user-defined</b>.</li>
+<li>Why functions: avoid rewriting code, keep track of logic, test independently.</li>
+<li><b>Parameters</b> — placeholders in the definition; <b>arguments</b> — actual values passed. A function returns only one value at a time.</li>
+<li>Changing a parameter inside the function doesn't change the caller's variable (a copy is passed — call by value).</li>
+</ul>
+<h4>Recursion</h4>
+<pre><code>int factorial(int x) {
+    if (x == 0 || x == 1) return 1;   // base condition
+    return x * factorial(x - 1);
+}
+// factorial(5) = 5 * 4 * 3 * 2 * 1 = 120</code></pre>
+<p>A function without a base condition recurses forever → memory (stack overflow) error.</p>
+<div class="practice"><b>Practice set 5</b>: average of three numbers; Celsius→Fahrenheit function; force of attraction F = mg; nth Fibonacci using recursion; sum of first n natural numbers recursively; star pattern.</div>
+
+<h3>Ch 6: Pointers</h3>
+<ul>
+<li>A <b>pointer</b> is a variable that stores the <b>address</b> of another variable.</li>
+<li><code>&amp;</code> (address-of) gives the address; <code>*</code> (value-at / dereference) gives the value at an address. Format specifier for address: <code>%u</code> or <code>%p</code>.</li>
+</ul>
+<pre><code>int i = 72;
+int *j = &amp;i;     // j stores address of i
+printf("%d", *j); // 72
+int **k = &amp;j;    // pointer to pointer</code></pre>
+<h4>Call by value vs call by reference</h4>
+<pre><code>void swap(int *x, int *y) {   // call by reference
+    int temp = *x; *x = *y; *y = temp;
+}
+int a = 3, b = 4;
+swap(&amp;a, &amp;b);                // now a = 4, b = 3</code></pre>
+<p>Call by value sends copies (originals unchanged); call by reference sends addresses (function can modify originals).</p>
+
+<h3>Ch 7: Arrays</h3>
+<ul>
+<li>Collection of similar elements; one variable holds multiple values. Index starts at 0.</li>
+<li><code>int marks[90]; char name[20]; float percentage[90];</code> &nbsp; <code>int cgpa[3] = {9, 8, 8};</code></li>
+<li>Stored in contiguous memory: <code>int arr[3]</code> reserves 3 × 4 = 12 bytes.</li>
+<li><b>Pointer arithmetic</b>: incrementing a pointer moves it to the next element of its type (int* +4 bytes, char* +1, float* +4). Allowed: add/subtract an integer, subtract two pointers, compare pointers.</li>
+<li><code>int *ptr = &amp;arr[0];</code> then <code>*(ptr + 2)</code> = arr[2]; <code>*(s + 3)</code> refers to the 4th element.</li>
+<li>Passing to functions: <code>void printArray(int *i, int n)</code> or <code>void printArray(int i[], int n)</code>.</li>
+<li>2-D: <code>int arr[3][2] = {{1,4},{7,9},{11,22}};</code> stored row-wise in contiguous memory.</li>
+</ul>
+
+<h3>Ch 8: Strings</h3>
+<ul>
+<li>A string is a 1-D character array terminated by the null character <code>'\0'</code>.</li>
+<li><code>char s[] = {'H','A','R','R','Y','\0'};</code> or <code>char s[] = "HARRY";</code> (null added automatically).</li>
+<li>Print: <code>printf("%s", s);</code>; input: <code>scanf("%s", s);</code> (no &amp;; stops at space). <code>gets()</code>/<code>puts()</code> read/print multi-word strings (<code>fgets</code> is the safe modern choice).</li>
+<li><code>char *ptr = "Harry";</code> — pointer string can be re-pointed; array string can't be reassigned after declaration.</li>
+</ul>
+<table>
+<tr><th>Function (&lt;string.h&gt;)</th><th>Use</th></tr>
+<tr><td>strlen(s)</td><td>Length excluding '\0'</td></tr>
+<tr><td>strcpy(target, source)</td><td>Copy source into target</td></tr>
+<tr><td>strcat(s1, s2)</td><td>Concatenate s2 onto s1</td></tr>
+<tr><td>strcmp(s1, s2)</td><td>0 if equal; negative if s1 &lt; s2; positive if s1 &gt; s2 (ASCII)</td></tr>
+<tr><td>strrev(s), strupr, strlwr</td><td>Reverse / uppercase / lowercase (non-standard)</td></tr>
+</table>
+
+<h3>Ch 9: Structures</h3>
+<pre><code>struct employee {
+    int code;
+    float salary;
+    char name[10];
+};                        // semicolon is important
+struct employee e1;
+e1.code = 100;
+strcpy(e1.name, "Harry");
+struct employee *ptr = &amp;e1;
+printf("%d", ptr-&gt;code);  // arrow operator
+typedef struct complex { float real, img; } Complex;</code></pre>
+<ul>
+<li>Arrays hold similar data; structures hold dissimilar data. Keep data organised.</li>
+<li>Array of structures: <code>struct employee facebook[100];</code></li>
+<li>Stored in contiguous memory. <code>(*ptr).code</code> ≡ <code>ptr-&gt;code</code>.</li>
+<li><b>typedef</b> creates an alias for a data type.</li>
+<li class="added"><b>Union</b> — like a structure but all members share the same memory; size = largest member.</li>
+</ul>
+
+<h3>Ch 10: File I/O</h3>
+<ul>
+<li>RAM is volatile, so files are used to persist data. A <code>FILE</code> pointer is needed to communicate with a file.</li>
+</ul>
+<pre><code>FILE *ptr;
+ptr = fopen("Harry.txt", "r");
+int num;
+fscanf(ptr, "%d", &amp;num);
+fclose(ptr);
+ptr = fopen("Harry.txt", "w");
+fprintf(ptr, "%d", 432);
+fclose(ptr);
+char c = fgetc(ptr);       // read a character
+fputc('c', ptr);          // write a character
+while ((c = fgetc(ptr)) != EOF) { /* ... */ }</code></pre>
+<table>
+<tr><th>Mode</th><th>Meaning</th></tr>
+<tr><td>"r" / "rb"</td><td>Read (text / binary); returns NULL if file doesn't exist</td></tr>
+<tr><td>"w" / "wb"</td><td>Write; overwrites if exists, creates otherwise</td></tr>
+<tr><td>"a"</td><td>Append; creates if it doesn't exist</td></tr>
+<tr><td>"r+", "w+", "a+"</td><td>Read + write variants</td></tr>
+</table>
+<p>File types: text (.txt, .c) and binary (.jpg, .dat). <code>EOF</code> = end of file. <b>Project 2</b>: Snake–Water–Gun game.</p>
+
+<h3>Ch 11: Dynamic Memory Allocation</h3>
+<p>Allocating memory at run time using functions in <code>&lt;stdlib.h&gt;</code>.</p>
+<table>
+<tr><th>Function</th><th>Use</th></tr>
+<tr><td>malloc(size)</td><td>Allocates a block of bytes; returns <code>void*</code>; memory has garbage values. <code>ptr = (int*) malloc(30 * sizeof(int));</code></td></tr>
+<tr><td>calloc(n, size)</td><td>Continuous allocation; initialises each block to 0. <code>ptr = (float*) calloc(30, sizeof(float));</code></td></tr>
+<tr><td>realloc(ptr, newsize)</td><td>Resizes previously allocated memory</td></tr>
+<tr><td>free(ptr)</td><td>Releases memory (malloc/calloc memory is not freed automatically)</td></tr>
+</table>
+<p>If memory can't be allocated, a NULL pointer is returned.</p>
+
+<h3 class="added">Extra C Facts for Exams</h3>
+<ul>
+<li>Size (typical 64-bit): char 1, short 2, int 4, float 4, double 8, long 8 bytes, pointer 8 bytes.</li>
+<li><code>sizeof</code> is an operator, not a function. Header for math: <code>&lt;math.h&gt;</code>; for strings: <code>&lt;string.h&gt;</code>; for DMA: <code>&lt;stdlib.h&gt;</code>.</li>
+<li>Preprocessor directives start with <code>#</code>: <code>#include</code>, <code>#define PI 3.14</code> (macro), <code>#ifdef</code>.</li>
+<li>Storage classes in C: auto, register, static, extern.</li>
+<li><code>enum</code> creates named integer constants. <code>const</code> makes a variable read-only.</li>
+<li>Dangling pointer (points to freed memory), NULL pointer (points to nothing), void pointer (generic), wild pointer (uninitialised).</li>
+<li>Command-line arguments: <code>int main(int argc, char *argv[])</code>.</li>
+</ul>
+</section>

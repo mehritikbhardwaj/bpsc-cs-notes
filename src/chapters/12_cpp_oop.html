@@ -1,0 +1,183 @@
+<section class="chapter" data-title="C++ & Object-Oriented Programming" data-pages="320–340">
+<h2>C++ &amp; Object-Oriented Programming</h2>
+
+<h3>C++ Introduction</h3>
+<ul>
+<li>High-level, general-purpose language; designed by <b>Bjarne Stroustrup</b> at <b>Bell Laboratories</b>; started 1979, named C++ in 1983, first commercial release 1985.</li>
+<li>Earlier called "<b>C with Classes</b>". Supports procedural + object-oriented (multi-paradigm) — called a <b>partial / semi object-oriented</b> language (because <code>main()</code> and global functions exist outside classes).</li>
+<li>Compiled language; case-sensitive; files saved with extension <code>.cpp</code>.</li>
+<li>Used in: video games, embedded systems, IoT devices, operating systems, browsers, databases.</li>
+<li>Compilers/IDEs: Turbo C++, Code::Blocks, Dev-C++, Borland C++, Microsoft Visual C++, GCC/G++ (GNU Compiler Collection), Clang.</li>
+<li><b>IDE</b> (Integrated Development Environment) = source-code editor + build automation tools + debugger + compiler/interpreter.</li>
+</ul>
+<pre><code>#include &lt;iostream&gt;      // header file (library)
+using namespace std;     // namespace std
+int main() {             // execution starts here
+    cout &lt;&lt; "Hello World"; // display output
+    return 0;            // return to OS
+}
+// single-line comment     /* multi-line comment */</code></pre>
+<ul>
+<li><b>iostream</b> — basic input/output services. <b>Namespace</b> — avoids name collisions.</li>
+<li><b>cin</b> — object of input stream (istream), used with <code>&gt;&gt;</code> (extraction). <b>cout</b> — object of output stream (ostream), used with <code>&lt;&lt;</code> (insertion).</li>
+<li><b>main()</b> — starting point; controls execution; return value used by runtime.</li>
+</ul>
+
+<h3>Data Types, Modifiers & Storage Classes</h3>
+<ul>
+<li>Data types: int, float, double, char, bool, void, wchar_t.</li>
+<li>Modifiers: <b>short</b> (range less, 2 bytes), <b>long</b> (range more, 4/8 bytes), <b>unsigned</b> (only positive), <b>signed</b> (both).</li>
+<li>Storage classes (5): <b>auto</b> (default for locals), <b>register</b> (stored in CPU register), <b>static</b> (initialised once, keeps value till end of program), <b>extern</b> (visible to all files), <b>mutable</b> (member of a const object can be changed).</li>
+<li>C++ has <b>95 keywords</b> (C++20; older references: 63 or 84). C has 32 keywords (C89).</li>
+<li>Keywords are reserved words with predefined meaning; can't be used as identifiers/variable names (gives syntax/compile error).</li>
+</ul>
+
+<h3>Operators</h3>
+<ul>
+<li>Arithmetic, relational, logical, bitwise (&amp; | ^ ~ &lt;&lt; &gt;&gt;), assignment, misc.</li>
+<li>Misc operators: <code>sizeof</code>, conditional (<code>?:</code>, ternary), comma, dot (<code>.</code>) and arrow (<code>-&gt;</code>), casting, address-of (<code>&amp;</code>), pointer/dereference (<code>*</code>), scope resolution (<code>::</code>), <code>new</code>/<code>delete</code>.</li>
+<li><code>&amp;</code> returns the memory address of a variable; <code>*</code> is the dereference operator; <code>new</code> = dynamic memory allocation.</li>
+<li>Empty string = string with zero characters (""). Sequence of characters in double quotes = string literal.</li>
+</ul>
+
+<h3>Control Structures</h3>
+<ul>
+<li><b>for loop</b> — entry-controlled; used when number of iterations is known.</li>
+<li><b>while loop</b> — entry-controlled; used when iterations are not known in advance.</li>
+<li><b>do-while</b> — exit-controlled; body executes <b>at least once</b>.</li>
+<li>Loop control: <b>break</b> (exit loop), <b>continue</b> (skip current iteration), <b>goto</b> (jump to a label).</li>
+</ul>
+
+<h3>Structure & Class</h3>
+<ul>
+<li><b>Structure</b> (<code>struct</code>) — collection of variables of different types under one name; members <b>public by default</b>.</li>
+<li><b>Class</b> (<code>class</code>) — building block of OOP; members <b>private by default</b>.</li>
+<li>Access specifiers: <b>public</b> (accessible everywhere), <b>private</b> (only within class), <b>protected</b> (class + derived classes).</li>
+</ul>
+<pre><code>class Student {
+  private:
+    int roll;
+  public:
+    Student(int r) { roll = r; }        // constructor
+    void show() { cout &lt;&lt; roll; }
+    ~Student() { }                      // destructor
+};</code></pre>
+
+<h3>Functions in C++</h3>
+<ul>
+<li>Types: standard library (predefined) and user-defined.</li>
+<li><b>Function overloading</b> — same name, different parameters (compile-time polymorphism): <code>int test(); int test(int a); float test(double a);</code></li>
+<li><b>Inline function</b> — <code>inline</code> keyword; compiler copies function code at the call location, making execution faster for small functions.</li>
+<li><b>Recursion</b> — function calling itself.</li>
+<li><b>Friend function</b>, <b>virtual function</b> (runtime polymorphism), <b>constructor</b> (same name as class, no return type), <b>destructor</b> (<code>~</code>).</li>
+</ul>
+
+<h3>Exception Handling</h3>
+<ul>
+<li>Handles run-time errors. Keywords: <b>try</b> (code to test), <b>throw</b> (raise exception when problem detected), <b>catch</b> (handle it). Java/Python add <b>finally</b> (always executes).</li>
+</ul>
+<pre><code>try {
+    if (b == 0) throw "Divide by zero";
+    cout &lt;&lt; a / b;
+} catch (const char* msg) { cout &lt;&lt; msg; }</code></pre>
+
+<h3>Types of Errors</h3>
+<ol>
+<li><b>Syntax / compile-time errors</b> — violating language grammar (missing <code>;</code>, brackets); detected by compiler.</li>
+<li><b>Logical / semantic errors</b> — program runs but gives wrong output due to wrong logic.</li>
+<li><b>Runtime errors / exceptions</b> — occur during execution (divide by zero, invalid memory access, file not found).</li>
+<li><b>Interface errors</b> — mismatch between software and APIs/hardware interface.</li>
+<li class="added"><b>Linker errors</b> — e.g. undefined reference / missing main().</li>
+</ol>
+
+<h3>C vs C++</h3>
+<table>
+<tr><th>C</th><th>C++</th></tr>
+<tr><td>Procedural, function-driven</td><td>Object-oriented (+ procedural)</td></tr>
+<tr><td>Case-sensitive, compiler required</td><td>Case-sensitive, compiler required</td></tr>
+<tr><td>malloc()/calloc() &amp; free()</td><td>new &amp; delete operators</td></tr>
+<tr><td>No inheritance, overloading, information hiding</td><td>Supports inheritance, overloading, encapsulation</td></tr>
+<tr><td>printf/scanf; .c files</td><td>cin/cout; .cpp files</td></tr>
+<tr><td>32 keywords</td><td>95 keywords</td></tr>
+</table>
+
+<h3>Translators</h3>
+<ul>
+<li><b>Assembler</b> — assembly code → machine code.</li>
+<li><b>Compiler</b> — whole high-level program → machine/object code at once; faster execution; shows all errors after compilation (C, C++). Source code → object code.</li>
+<li><b>Interpreter</b> — translates and executes line by line; slower; stops at first error (Python, BASIC). First interpreter ~1952.</li>
+<li><b>Linker</b> joins object files; <b>loader</b> loads program into memory.</li>
+</ul>
+
+<h3>Algorithm & Flowchart</h3>
+<ul>
+<li>Algorithm — step-by-step procedure; from al-Khwarizmi (Persian, 9th century).</li>
+<li>First computer algorithm: <b>Note G</b> by <b>Ada Lovelace</b> (1843) to calculate Bernoulli numbers on Babbage's Analytical Engine — she is the first computer programmer.</li>
+<li><b>Flowchart</b> — by Frank &amp; Lillian Gilbreth (1921, "flow process chart", presented to ASME). Herman Goldstine &amp; John von Neumann used flowcharts for programs (1947).</li>
+<li>Types: macro (major steps), mini, micro (detailed) flowcharts.</li>
+</ul>
+<table>
+<tr><th>Symbol</th><th>Use</th></tr>
+<tr><td>Oval / terminator</td><td>Start / End</td></tr>
+<tr><td>Parallelogram</td><td>Input / Output</td></tr>
+<tr><td>Rectangle</td><td>Process</td></tr>
+<tr><td>Diamond</td><td>Decision</td></tr>
+<tr><td>Arrow</td><td>Flow line</td></tr>
+<tr><td>Rectangle with double side lines</td><td>Subroutine / predefined process</td></tr>
+<tr><td>Circle</td><td>Connector</td></tr>
+<tr><td>Hexagon</td><td>Preparation (loop setup)</td></tr>
+<tr><td>Wavy-bottom rectangle</td><td>Document</td></tr>
+</table>
+
+<h3>OOP Concepts</h3>
+<ul>
+<li>OOP binds data and functions together into objects — simple, reusable pieces of code. Concept by <b>Alan Kay</b> (1960s, coined the term).</li>
+<li>First OOP language: <b>Simula</b> (1967, Ole-Johan Dahl &amp; Kristen Nygaard). First pure OOP language: <b>Smalltalk</b> (1972).</li>
+<li>OOP languages: Java, Python, C++, C#, JavaScript, PHP, Go (partly), Ruby, Visual Basic .NET, Swift, Kotlin, Smalltalk.</li>
+<li>Semi-OOP: C++. Often called 100% OOP: Java (but primitives exist — Smalltalk is truly pure).</li>
+<li>Benefits: reusability, less redundancy, easy maintenance, security, design benefits, productivity, easy troubleshooting, flexibility, problem solving.</li>
+</ul>
+<h4>Pillars of OOP</h4>
+<ul>
+<li><b>Class</b> — blueprint / group of similar objects.</li>
+<li><b>Object</b> — instance of a class with state (attributes) and behaviour (methods); a physical entity (car, pen, chair).</li>
+<li><b>Encapsulation</b> — wrapping data and methods into one unit (data hiding).</li>
+<li><b>Abstraction</b> — showing only essential information, hiding details.</li>
+<li><b>Inheritance</b> — one class inherits attributes and methods of another. Types: single, multiple, multilevel, hierarchical, hybrid.</li>
+<li><b>Polymorphism</b> — "many forms": compile-time (overloading) and run-time (overriding/virtual functions).</li>
+<li><b>Data hiding</b> — protecting data from unauthorised access outside the class.</li>
+</ul>
+
+<h3>Generations of Languages & Timeline</h3>
+<table>
+<tr><th>Generation</th><th>Languages</th></tr>
+<tr><td>1GL</td><td>Machine language (binary)</td></tr>
+<tr><td>2GL</td><td>Assembly language (mnemonics)</td></tr>
+<tr><td>3GL</td><td>C, C++, Java, FORTRAN, COBOL, BASIC, Pascal</td></tr>
+<tr><td>4GL</td><td>SQL, Python, Ruby, Perl, MATLAB (database/query)</td></tr>
+<tr><td>5GL</td><td>Prolog, Mercury, OPS5, LISP (AI / constraint-based)</td></tr>
+</table>
+<table>
+<tr><th>Year</th><th>Language</th><th>Developer / note</th></tr>
+<tr><td>1843</td><td>Analytical Engine algorithm</td><td>Ada Lovelace</td></tr>
+<tr><td>1957</td><td>FORTRAN</td><td>John Backus (IBM) — first high-level language, scientific</td></tr>
+<tr><td>1958</td><td>ALGOL</td><td>Algorithmic Language (committee)</td></tr>
+<tr><td>1958/1960</td><td>LISP</td><td>John McCarthy — list processing</td></tr>
+<tr><td>1959</td><td>COBOL</td><td>Common Business-Oriented Language (Grace Hopper's influence)</td></tr>
+<tr><td>1964</td><td>BASIC</td><td>Beginner's All-purpose Symbolic Instruction Code — Kemeny &amp; Kurtz</td></tr>
+<tr><td>1970</td><td>Pascal</td><td>Niklaus Wirth</td></tr>
+<tr><td>1972</td><td>C</td><td>Dennis Ritchie, Bell Labs — "mother of programming languages", middle-level</td></tr>
+<tr><td>1972</td><td>Prolog</td><td>Alain Colmerauer &amp; Robert Kowalski — programming in logic</td></tr>
+<tr><td>1983/85</td><td>C++</td><td>Bjarne Stroustrup, Bell Labs</td></tr>
+<tr><td>1991</td><td>Python</td><td>Guido van Rossum</td></tr>
+<tr><td>1991</td><td>Visual Basic</td><td>Microsoft — updated BASIC</td></tr>
+<tr><td>1995</td><td>Java</td><td>James Gosling, Mike Sheridan, Patrick Naughton — Sun Microsystems</td></tr>
+<tr><td>1995</td><td>PHP</td><td>Rasmus Lerdorf — Hypertext Preprocessor</td></tr>
+<tr><td>1995</td><td>JavaScript</td><td>Brendan Eich (Netscape)</td></tr>
+<tr><td>2000</td><td>C#</td><td>Microsoft (Anders Hejlsberg)</td></tr>
+<tr><td>2009</td><td>Go</td><td>Google</td></tr>
+<tr><td>2011</td><td>Kotlin</td><td>JetBrains</td></tr>
+<tr><td>2014</td><td>Swift</td><td>Apple</td></tr>
+</table>
+<p><b>Pointers in C++</b>: store memory addresses of other variables; declared with <code>*</code>; <code>*</code> also called dereference operator. Character encodings supported: UTF-8, UTF-16, UTF-32.</p>
+</section>

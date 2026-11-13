@@ -1,0 +1,251 @@
+<section class="chapter" data-title="Data Structures & Algorithms" data-pages="144–194">
+<h2>Data Structures &amp; Algorithms</h2>
+
+<h3>Introduction</h3>
+<ul>
+<li>A data structure is a way of organising and storing data in a computer so it can be accessed and used efficiently. Fundamental building blocks of programming.</li>
+<li>Notable contributors: Donald Knuth ("The Art of Computer Programming"), Edsger W. Dijkstra, John von Neumann, Alan Turing.</li>
+<li>Operations: searching, sorting, insertion, deletion, updation, traversal.</li>
+</ul>
+<h4>Classification</h4>
+<ul>
+<li><b>Primitive</b> (simple, predefined): integer (0, 42, −11), float (0.0, 4.2), char ('a'), boolean (0/1), pointer (memory address).</li>
+<li><b>Non-primitive</b> (complex, user-defined):
+<ul><li><b>Linear</b>: array, linked list, stack, queue.</li>
+<li><b>Non-linear</b>: tree, graph.</li></ul></li>
+<li><b>Static</b> (fixed size): array. <b>Dynamic</b>: linked list, stack, queue (when implemented with linked list).</li>
+</ul>
+<table>
+<tr><th>Data type (C/Java typical)</th><th>Size</th></tr>
+<tr><td>char / byte</td><td>1 byte</td></tr>
+<tr><td>short</td><td>2 bytes</td></tr>
+<tr><td>int, float</td><td>4 bytes</td></tr>
+<tr><td>long (Java), double</td><td>8 bytes</td></tr>
+<tr><td>boolean</td><td>1 bit (logically; JVM uses 1 byte)</td></tr>
+</table>
+
+<h3>Array</h3>
+<ul>
+<li>Collection of similar elements in <b>contiguous</b> memory; random access by index; index starts at 0.</li>
+<li>C: <code>int arr[3] = {1,2,3};</code> &nbsp; Java: <code>int[] arr = new int[5];</code>, multi-dimensional <code>int[][] a;</code></li>
+<li>Advantages: easy to store many elements of the same type, fast access, used heavily in caching. Disadvantage: fixed size → memory wasted if fewer elements inserted; insertion/deletion costly.</li>
+<li>Size of <code>int arr[15]</code> (4-byte int) = 4 × 15 = <b>60 bytes</b>.</li>
+</ul>
+<h4>Address calculation</h4>
+<p>1-D: <code>Addr(A[i]) = B + W × (i − LB)</code><br>
+2-D row-major: <code>Addr(A[i][j]) = B + W × [(i − Lr) × N + (j − Lc)]</code> (N = number of columns)<br>
+2-D column-major: <code>Addr(A[i][j]) = B + W × [(j − Lc) × M + (i − Lr)]</code> (M = number of rows)<br>
+Number of elements in A[L1:U1, L2:U2] = (U1 − L1 + 1) × (U2 − L2 + 1).</p>
+<div class="example">int A[10][20], base 1000, W = 4. A[2][3] row-major = 1000 + 4(2×20 + 3) = <b>1172</b>; column-major = 1000 + 4(3×10 + 2) = <b>1128</b>.<br>
+A[−3:5, 6:11] holds 9 × 6 = <b>54</b> elements.</div>
+
+<h3>Stack</h3>
+<ul>
+<li>Linear structure following <b>LIFO</b> (Last In First Out) — like a pile of plates. Only one end (top) is open.</li>
+<li>Operations: <b>push</b> (add on top), <b>pop</b> (remove top), <b>peek/top</b> (read top without removing), <b>isEmpty</b>, <b>isFull</b>.</li>
+<li>Pop on empty stack → <b>underflow</b>; push on full stack → <b>overflow</b>.</li>
+<li>Applications: function calls (call stack), recursion, undo/redo, expression evaluation &amp; conversion, parenthesis matching, browser back button, stock span problem, DFS.</li>
+<li>Disadvantage: no random access; too many items can cause stack overflow.</li>
+</ul>
+<h4>Expression notations</h4>
+<table>
+<tr><th>Notation</th><th>Form</th><th>Example</th></tr>
+<tr><td>Infix</td><td>operand operator operand</td><td>a + b</td></tr>
+<tr><td>Prefix (Polish)</td><td>operator first</td><td>+ a b</td></tr>
+<tr><td>Postfix (Reverse Polish)</td><td>operator last</td><td>a b +</td></tr>
+</table>
+<p>Precedence (high → low): <code>() [] {}</code> → <code>^</code> (right to left) → <code>* / %</code> (left to right) → <code>+ −</code> (left to right).</p>
+<div class="example">A + B * C → postfix <b>ABC*+</b>, prefix <b>+A*BC</b><br>
+A * B + C → postfix <b>AB*C+</b>, prefix <b>+*ABC</b><br>
+(A + B) * (C − D) → postfix <b>AB+CD−*</b>, prefix <b>*+AB−CD</b><br>
+(A + B) * C − (D − E) ^ F → postfix <b>AB+C*DE−F^−</b><br>
+Evaluate: 5 + 1 × 6 = 11; (5 + 1) × 6 = 36; 2^2^3 = 2^8 = 256 (right associative).</div>
+<p><b>Postfix evaluation using stack:</b> scan left→right; push operands; on operator pop two, apply, push result.</p>
+
+<h3>Queue</h3>
+<ul>
+<li>Linear ordered list following <b>FIFO</b> (First In First Out). Two ends: <b>rear</b> (insertion) and <b>front</b> (deletion).</li>
+<li>Operations: <b>enqueue</b> (add), <b>dequeue</b> (remove), peek, isEmpty, isFull.</li>
+<li>Implemented using arrays (static) or linked list (dynamic); also via stacks.</li>
+<li>Applications: CPU scheduling, printer spooling, handling website traffic (request queue), routers (packet queue), traffic management, BFS, radix sort.</li>
+</ul>
+<h4>Types of queue</h4>
+<ol>
+<li><b>Linear / simple queue</b> — insert at rear, delete from front.</li>
+<li><b>Circular queue (ring buffer)</b> — last position connected to first; avoids wasted space.</li>
+<li><b>Priority queue</b> — served by priority; same priority → FIFO. Implemented with heap.</li>
+<li><b>Deque</b> (double-ended) — insert/delete at both ends (palindrome checker). Types: <i>input-restricted</i> (insert at one end, delete at both) and <i>output-restricted</i> (delete at one end, insert at both).</li>
+</ol>
+<div class="fact">Empty queue: front = rear = −1. One element: front = rear. Full (linear, size N): rear = N − 1. Circular full: (rear + 1) % N == front.</div>
+
+<h3>Linked List</h3>
+<ul>
+<li>Collection of <b>nodes</b>; each node = data + pointer (address) to next node. Elements stored anywhere in memory (not contiguous). Head points to first node; last node points to NULL.</li>
+<li>Dynamic size; memory allocated at <b>run time</b> (array: compile time). Access is <b>sequential</b> (array: random). Easy insertion/deletion; no memory pre-allocation.</li>
+<li>Types: <b>Singly</b> (one direction; hash tables), <b>Doubly</b> (prev + next; undo/redo, browser history), <b>Circular</b> (last node points to first; round-robin CPU scheduling), <b>Circular doubly</b>.</li>
+<li><b>Sentinel node</b> — dummy node that holds no data, simplifies boundary cases.</li>
+</ul>
+<pre><code>struct Node { int data; struct Node *next; };</code></pre>
+<table>
+<tr><th>Operation</th><th>Average</th><th>Worst</th></tr>
+<tr><td>Search</td><td>O(n)</td><td>O(n)</td></tr>
+<tr><td>Insertion (at known position)</td><td>O(1)</td><td>O(1)</td></tr>
+<tr><td>Deletion (at known position)</td><td>O(1)</td><td>O(1)</td></tr>
+</table>
+
+<h3>Trees</h3>
+<p>Non-linear hierarchical structure with no closed loops (cycles).</p>
+<h4>Terminology</h4>
+<ul>
+<li><b>Root</b> — top node. <b>Parent / child</b>. <b>Siblings</b> — same parent. <b>Leaf / external / terminal node</b> — no child. <b>Internal node</b> — at least one child. <b>Edge</b> — link; a tree with n nodes has n − 1 edges.</li>
+<li><b>Degree of node</b> = number of children (leaf = 0). Degree of tree = max degree.</li>
+<li><b>Depth/level</b> of node = edges from root (root depth = 0). <b>Height</b> = edges on longest path from node to a leaf.</li>
+</ul>
+<h4>Types</h4>
+<ul>
+<li><b>General tree</b> — any number of children.</li>
+<li><b>Binary tree</b> — at most 2 children (0, 1, 2).
+<ul>
+<li><b>Full / proper / strict</b> — every node has 0 or 2 children (extended binary tree).</li>
+<li><b>Perfect</b> — all internal nodes have 2 children, all leaves at same level.</li>
+<li><b>Complete</b> — all levels filled except possibly last, filled left to right.</li>
+<li><b>Degenerate / skewed</b> — each node has one child (left-skewed, right-skewed).</li>
+<li><b>Balanced</b> — height difference of left and right subtrees ≤ 1.</li>
+</ul></li>
+<li><b>Binary Search Tree (BST)</b> — left child &lt; parent &lt; right child. Inorder traversal gives sorted order.</li>
+<li><b>AVL tree</b> — Adelson-Velsky &amp; Landis (1962); self-balancing BST; balance factor −1, 0, +1; rotations LL, RR, LR, RL.</li>
+<li><b>Red-Black tree</b> — Rudolf Bayer (1972); self-balancing BST. Rules: root is black; every node red or black; red node can't have red child; every path has same number of black nodes.</li>
+<li><b>B-tree</b> — Bayer &amp; McCreight (1970–72); self-balanced m-way search tree; node has multiple keys and more than two children; used in databases &amp; file systems. B+ tree stores data only in leaves.</li>
+</ul>
+<div class="fact">Max nodes at level l = 2<sup>l</sup>. Max nodes in binary tree of height h = 2<sup>h+1</sup> − 1 (levels 0–5 → 63). Min height with n nodes = ⌈log<sub>2</sub>(n+1)⌉ − 1. In a full binary tree, leaves = internal nodes + 1.</div>
+
+<h3>Tree Traversal</h3>
+<ul>
+<li><b>BFS / level-order</b> — level by level; uses <b>queue</b>.</li>
+<li><b>DFS</b> — uses <b>stack</b>: <b>Preorder</b> (Root, Left, Right), <b>Inorder</b> (Left, Root, Right), <b>Postorder</b> (Left, Right, Root).</li>
+</ul>
+<div class="example">Tree: A has children B, C; B has D, E; C has F, G.<br>
+Preorder: <b>A B D E C F G</b> &nbsp; Inorder: <b>D B E A F C G</b> &nbsp; Postorder: <b>D E B F G C A</b> &nbsp; Level-order: <b>A B C D E F G</b><br>
+For a BST, inorder = keys sorted ascending. E.g. preorder 30, 20, 10, 15, 25, 23, 39, 35, 42 → inorder 10, 15, 20, 23, 25, 30, 35, 39, 42.</div>
+<p>Shortcut: for preorder mark a dot on the left of each node, inorder at the bottom, postorder on the right, then trace around the tree.</p>
+
+<h3>Binary Heap</h3>
+<ul>
+<li>Complete binary tree. <b>Max-heap</b>: parent ≥ children (root = maximum). <b>Min-heap</b>: parent ≤ children (root = minimum).</li>
+<li>Used in heap sort and priority queues. Insert/delete O(log n); get-min/max O(1).</li>
+</ul>
+
+<h3>Graphs</h3>
+<ul>
+<li>Non-linear structure of <b>vertices (nodes)</b> and <b>edges</b>; can contain cycles. Used to represent networks.</li>
+<li>Applications: Google Maps (shortest path), Google search (PageRank), WWW, social networks.</li>
+<li>Types: directed, undirected, weighted, unweighted, cyclic, acyclic (DAG), connected, disconnected, complete, bipartite.</li>
+<li><b>Bipartite</b> — nodes divided into two sets such that no edge joins nodes of the same set (students ↔ courses).</li>
+<li><b>Complete graph</b> — every pair connected: edges = n(n−1)/2.</li>
+<li><b>Degree</b> of a node = number of edges connected. Sum of degrees = 2 × edges. Size of graph = number of edges.</li>
+<li><b>Negative cycle</b> — loop whose total edge weight is negative.</li>
+</ul>
+<h4>Representation</h4>
+<ul><li><b>Adjacency matrix</b> — V×V matrix, 1 if edge exists; O(V²) space.</li><li><b>Adjacency list</b> — each vertex keeps list of neighbours; O(V+E) space.</li></ul>
+<h4>Graph traversal</h4>
+<ul><li><b>BFS</b> uses a queue (FIFO) — better when target is close to source; finds shortest path in unweighted graphs.</li><li><b>DFS</b> uses a stack / recursion — better when target is far from source.</li><li>Both O(V + E).</li></ul>
+
+<h3>Graph Algorithms</h3>
+<h4>Shortest path</h4>
+<table>
+<tr><th></th><th>Dijkstra</th><th>Bellman-Ford</th><th>Floyd-Warshall</th></tr>
+<tr><td>Weights</td><td>Non-negative only</td><td>+ve/−ve; detects negative cycles</td><td>+ve/−ve; no negative cycles</td></tr>
+<tr><td>Type</td><td>Single source; greedy</td><td>Single source; dynamic programming</td><td>All pairs; dynamic programming</td></tr>
+<tr><td>Uses</td><td>Priority queue (heap)</td><td>Edge relaxation V−1 times</td><td>2-D matrix</td></tr>
+<tr><td>Time</td><td>O(E log V)</td><td>O(V·E)</td><td>O(V³)</td></tr>
+<tr><td>Applications</td><td>Navigation systems</td><td>Currency conversion, routing (RIP)</td><td>Network routing</td></tr>
+</table>
+<h4>Minimum Spanning Tree (MST)</h4>
+<p>A spanning tree connects all vertices without cycles using V−1 edges; MST has minimum total edge weight.</p>
+<ul>
+<li><b>Kruskal's</b> — greedy; sort edges by weight and add the smallest that doesn't form a cycle; uses <b>Union-Find</b> (disjoint set). O(E log E). Good for sparse graphs.</li>
+<li><b>Prim's</b> — greedy; start from any vertex and add the minimum-weight edge to a new vertex; uses priority queue. O(V²) with matrix, O(E log V) with heap. Good for dense graphs.</li>
+<li>Used in LAN connections, TV networks, roads and rail tracks, travelling-salesman approximations.</li>
+</ul>
+
+<h3>Hashing</h3>
+<ul>
+<li>Converts data (key) into a fixed short value (hash) using a hash function; maps keys to values; goal: <b>O(1)</b> average search.</li>
+<li>Examples: password storage, transaction protection, blockchain verification, integrity checks, unique IDs, digital signatures, OTPs.</li>
+<li><b>Collision</b> — two different keys produce the same hash.</li>
+<li><b>Perfect hashing</b> — guarantees no collisions.</li>
+</ul>
+<h4>Collision resolution</h4>
+<ol>
+<li><b>Separate chaining (open hashing)</b> — each slot holds a linked list.</li>
+<li><b>Open addressing (closed hashing)</b> — all elements stored in the table itself:
+<ul><li>Linear probing — check next slot sequentially.</li><li>Quadratic probing — add 1², 2², 3²…</li><li>Double hashing — second hash function gives step size.</li></ul></li>
+</ol>
+<table>
+<tr><th>Hash table</th><th>Average</th><th>Worst</th></tr>
+<tr><td>Search / Insert / Delete</td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td>Space</td><td>O(n)</td><td>O(n)</td></tr>
+</table>
+<h4>Hashing algorithms</h4>
+<p><b>MD5</b> — 128-bit; <b>SHA-1</b> — 160-bit; <b>SHA-2</b> (SHA-256) — 256-bit; <b>SHA-3</b> — 224/256/384/512-bit.</p>
+<p><b>Set</b> data structure stores distinct elements — no duplicates.</p>
+
+<h3>Algorithm Analysis</h3>
+<ul>
+<li>Algorithm word from <b>Muhammad ibn Musa al-Khwarizmi</b> (Persian mathematician, 9th century).</li>
+<li><b>Big-O (O)</b> — upper bound (worst case). <b>Omega (Ω)</b> — lower bound (best case). <b>Theta (Θ)</b> — tight bound (average).</li>
+<li>Growth order: O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n²) &lt; O(n³) &lt; O(2ⁿ) &lt; O(n!).</li>
+<li><b>Divide &amp; conquer</b>: divide into sub-problems → conquer (solve each) → merge/combine. E.g. merge sort, quick sort, binary search.</li>
+<li>Other paradigms: greedy (Kruskal, Prim, Dijkstra), dynamic programming (Floyd-Warshall, Bellman-Ford), backtracking (N-queens), brute force.</li>
+</ul>
+
+<h3>Searching</h3>
+<table>
+<tr><th>Search</th><th>Best</th><th>Average</th><th>Worst</th><th>Requirement</th></tr>
+<tr><td>Linear (sequential)</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>None</td></tr>
+<tr><td>Binary</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td><td>Sorted data</td></tr>
+<tr><td>Ternary</td><td>O(1)</td><td>O(log₃ n)</td><td>O(log₃ n)</td><td>Sorted</td></tr>
+<tr><td>Jump</td><td>O(1)</td><td>O(√n)</td><td>O(√n)</td><td>Sorted</td></tr>
+<tr><td>Interpolation</td><td>O(1)</td><td>O(log log n)</td><td>O(n)</td><td>Sorted, uniform</td></tr>
+<tr><td>Exponential, Fibonacci</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td><td>Sorted</td></tr>
+<tr><td>Hash search</td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>Hash table</td></tr>
+</table>
+<pre><code>int binarySearch(int a[], int n, int key) {
+    int lo = 0, hi = n - 1;
+    while (lo &lt;= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] == key) return mid;
+        else if (a[mid] &lt; key) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return -1;
+}</code></pre>
+
+<h3>Sorting</h3>
+<p>Arranging data in ascending/descending order (dictionary, contact list). <b>Internal sorting</b> — in main memory; <b>external sorting</b> — uses storage device (large data, e.g. external merge sort).</p>
+<table>
+<tr><th>Algorithm</th><th>Best</th><th>Average</th><th>Worst</th><th>Space</th><th>Stable</th><th>Technique</th></tr>
+<tr><td>Bubble</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Exchange</td></tr>
+<tr><td>Selection</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Selection</td></tr>
+<tr><td>Insertion</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Insertion</td></tr>
+<tr><td>Merge</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>Yes</td><td>Divide &amp; conquer</td></tr>
+<tr><td>Quick</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>No</td><td>Divide &amp; conquer</td></tr>
+<tr><td>Heap</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>No</td><td>Heap</td></tr>
+<tr><td>Shell</td><td>O(n log n)</td><td>~O(n<sup>1.25</sup>)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Gap insertion</td></tr>
+<tr><td>Counting</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n+k)</td><td>O(k)</td><td>Yes</td><td>Non-comparison</td></tr>
+<tr><td>Radix</td><td>O(nk)</td><td>O(nk)</td><td>O(nk)</td><td>O(n+k)</td><td>Yes</td><td>Non-comparison</td></tr>
+<tr><td>Bucket</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n²)</td><td>O(n)</td><td>Yes</td><td>Distribution</td></tr>
+</table>
+<div class="fact"><ul>
+<li>Fastest in practice (general): <b>Quick sort</b>. Simplest: <b>Bubble sort</b>.</li>
+<li>Best for nearly sorted input &amp; small arrays: <b>Insertion sort</b>.</li>
+<li>Minimum number of swaps / pays least attention to ordering: <b>Selection sort</b> (also good for small records).</li>
+<li>Uses recursion: <b>Quick &amp; Merge</b>. Best worst-case: <b>Merge</b> (and heap) — O(n log n).</li>
+<li>Selection sort works by "transform and conquer"/selection; quick &amp; merge by divide and conquer.</li>
+</ul></div>
+<pre><code>void bubbleSort(int a[], int n) {
+    for (int i = 0; i &lt; n - 1; i++)
+        for (int j = 0; j &lt; n - 1 - i; j++)
+            if (a[j] &gt; a[j + 1]) { int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; }
+}</code></pre>
+</section>

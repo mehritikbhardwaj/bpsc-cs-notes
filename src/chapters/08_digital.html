@@ -1,0 +1,115 @@
+<section class="chapter" data-title="Boolean Algebra & Digital Electronics" data-pages="195–219, 304–307">
+<h2>Boolean Algebra &amp; Digital Electronics</h2>
+
+<h3>Boolean Algebra Basics</h3>
+<ul>
+<li>Used to analyse and simplify digital (logic) circuits; based on mathematical logic with only two values: <b>true (1)</b> and <b>false (0)</b>.</li>
+<li>Founded by <b>George Boole</b> in <b>1854</b> ("The Laws of Thought").</li>
+<li>1 = yes / on / high; 0 = no / off / low. Also used in set theory and statistics.</li>
+<li>Three basic operations: <b>AND (conjunction, ·)</b>, <b>OR (disjunction, +)</b>, <b>NOT (negation, ′ or ¯)</b>.</li>
+<li>Reducing a Boolean expression reduces the number of logic gates needed.</li>
+</ul>
+
+<h3>Logic Gates</h3>
+<ul>
+<li><b>Basic gates</b>: AND, OR, NOT. <b>Universal gates</b>: NAND, NOR (any circuit can be built from them alone). <b>Exclusive gates</b>: XOR, XNOR. Total common gates = 7.</li>
+</ul>
+<table>
+<tr><th>A</th><th>B</th><th>AND (A·B)</th><th>OR (A+B)</th><th>NAND</th><th>NOR</th><th>XOR (A⊕B)</th><th>XNOR</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</table>
+<ul>
+<li><b>NOT</b> (inverter): single input, output = A′. The bubble on a gate symbol means inversion.</li>
+<li><b>NAND</b> = AND + NOT: Q = (A·B)′. <b>NOR</b> = OR + NOT: Q = (A+B)′; used in Apollo Guidance Computer.</li>
+<li><b>XOR</b> (exclusive OR, EX-OR): output 1 when inputs differ. Used in half/full adders, subtractors, parity, error detection, encryption.</li>
+<li><b>XNOR</b> (equivalence gate): output 1 when inputs are equal. Used in comparators, data multiplexing/synchronisation.</li>
+</ul>
+<h4>Truth table</h4>
+<p>Shows the relation between inputs and outputs. Number of rows = <b>2<sup>n</sup></b> (n = variables). 3 variables → 8 rows.</p>
+
+<h3>Laws of Boolean Algebra</h3>
+<table>
+<tr><th>Law</th><th>OR form</th><th>AND form</th></tr>
+<tr><td>Commutative</td><td>A + B = B + A</td><td>A · B = B · A</td></tr>
+<tr><td>Associative</td><td>A + (B + C) = (A + B) + C</td><td>A · (B · C) = (A · B) · C</td></tr>
+<tr><td>Distributive</td><td>A + B·C = (A + B)(A + C)</td><td>A(B + C) = AB + AC</td></tr>
+<tr><td>Identity</td><td>A + 0 = A</td><td>A · 1 = A</td></tr>
+<tr><td>Annulment (null)</td><td>A + 1 = 1</td><td>A · 0 = 0</td></tr>
+<tr><td>Idempotent</td><td>A + A = A</td><td>A · A = A</td></tr>
+<tr><td>Complement</td><td>A + A′ = 1</td><td>A · A′ = 0</td></tr>
+<tr><td>Involution (double complement)</td><td colspan="2">(A′)′ = A</td></tr>
+<tr><td>Absorption</td><td>A + A·B = A; A + A′B = A + B</td><td>A(A + B) = A</td></tr>
+<tr><td>De Morgan's</td><td>(A + B)′ = A′ · B′</td><td>(A · B)′ = A′ + B′</td></tr>
+</table>
+<ul>
+<li><b>De Morgan's theorems</b> (Augustus De Morgan): NAND = bubbled OR; NOR = bubbled AND. Used to simplify expressions and implement circuits with NAND/NOR.</li>
+<li><b>Duality theorem</b>: swap AND ↔ OR and 0 ↔ 1 — the dual of a valid identity is also valid. E.g. dual of A + 0 = A is A · 1 = A.</li>
+</ul>
+
+<h3>SOP, POS, Minterms & Maxterms</h3>
+<ul>
+<li><b>SOP</b> — Sum of Products (sum of minterms): e.g. AB + BC + AC. Uses the 1s of the truth table.</li>
+<li><b>POS</b> — Product of Sums (product of maxterms): e.g. (A + B)(A + C). Uses the 0s.</li>
+<li><b>Minterm</b> — AND term containing every variable; variable = 1 written as A, 0 as A′. Written Σm(…).</li>
+<li><b>Maxterm</b> — OR term containing every variable; variable = 0 written as A, 1 as A′. Written ΠM(…).</li>
+<li><b>Canonical form</b> — every term contains all variables, e.g. F = ABC + AB′C + A′BC (standard SOP).</li>
+</ul>
+<div class="example">Truth table F = 1 for rows 001, 010, 011, 101 → F = Σm(1, 2, 3, 5) = A′B′C + A′BC′ + A′BC + AB′C. The 0-rows give ΠM(0, 4, 6, 7).<br>
+F = A′B + AB′ + AB → Σm(1, 2, 3).<br>
+POS (A + B)(A + B′): maxterm 00 → 0 and 01 → 1 → ΠM(0, 1).</div>
+
+<h3>Karnaugh Map (K-Map)</h3>
+<ul>
+<li>Graphical method for simplifying Boolean expressions step by step. Proposed by Veitch (1952), modified by <b>Maurice Karnaugh</b> (Bell Labs, 1953) — also called Veitch diagram / K-map. A K-map is a 2-D truth table.</li>
+<li>Cells = 2<sup>n</sup>: 2 variables → 4, 3 → 8, 4 → 16. Cells are ordered in <b>Gray code</b> (00, 01, 11, 10) so neighbours differ by one bit.</li>
+<li>SOP: group 1s (minterms). POS: group 0s (maxterms).</li>
+<li>Grouping rules: groups of 1, 2, 4, 8, 16 (powers of 2); rectangles only, no diagonals; make groups as large as possible; groups may overlap and wrap around edges; every 1 must be covered.</li>
+<li>In a group, the variable that changes is eliminated; the constant ones remain.</li>
+</ul>
+<div class="example"><b>Worked examples</b> (verified):<br>
+F(A,B) = A′B′ + A′B + AB′ = Σm(0,1,2) → <b>A′ + B′</b><br>
+F(A,B,C) = Σm(1,2,3,5,6,7) → <b>B + C</b><br>
+F(A,B,C) = Σm(1,3,5,7) → <b>C</b><br>
+F(A,B,C) = Σm(0,1,2,5) → <b>A′C′ + B′C</b><br>
+F(A,B,C,D) = Σm(3,7,11,12,13,14,15) → <b>AB + CD</b><br>
+F(A,B,C,D) = Σm(0,2,8,10) → four corners → <b>B′D′</b><br>
+F(A,B,C,D) = Σm(0,1,4,5,8,9,12,13) → <b>C′</b></div>
+<h4>Don't-care conditions</h4>
+<p>Input combinations that never occur; shown as "X" (or d). They can be treated as 0 or 1 — whichever makes bigger groups and a simpler result.</p>
+<div class="example">F(A,B,C) = Σm(0,1,3,5) + d(2,4) → <b>A′ + B′</b></div>
+
+<h3>Combinational Circuits</h3>
+<ul>
+<li><b>Half adder</b> — adds two single bits; outputs Sum = A ⊕ B, Carry = A · B. Made of 1 XOR + 1 AND gate.</li>
+<li><b>Full adder</b> — adds three bits (A, B, Carry-in); Sum = A ⊕ B ⊕ C<sub>in</sub>, C<sub>out</sub> = AB + C<sub>in</sub>(A ⊕ B). Made of 2 half adders + 1 OR gate.</li>
+<li><b>Half / full subtractor</b> — Difference = A ⊕ B, Borrow = A′B (half).</li>
+<li><b>Encoder</b> — 2<sup>n</sup> input lines → n output lines (e.g. 8-to-3 octal-to-binary); built with OR gates. Priority encoder handles multiple inputs.</li>
+<li><b>Decoder</b> — n inputs → 2<sup>n</sup> output lines (e.g. 3-to-8); built with AND gates.</li>
+<li><b>Multiplexer (MUX)</b> — many inputs → one output, chosen by select lines (2<sup>n</sup> inputs need n select lines) — "data selector".</li>
+<li><b>Demultiplexer (DEMUX)</b> — one input → many outputs.</li>
+</ul>
+<div class="note">Note: the handwritten notes describe encoder/decoder as analog↔digital converters. That is <b>ADC/DAC</b>. In digital electronics an encoder/decoder converts between codes as described above.</div>
+
+<h3>Sequential Circuits & Flip-Flops</h3>
+<ul>
+<li>Output depends on present input <b>and</b> past state (memory). Flip-flop = 1-bit memory element; register = group of flip-flops.</li>
+<li><b>SR (Set-Reset)</b> — S = R = 1 is not allowed (forbidden/invalid state, race condition). Used in counters, registers.</li>
+<li><b>JK (Jack Kilby)</b> — improvement over SR; J = K = 1 → <b>toggle</b>; no invalid state. Master-slave JK avoids race-around.</li>
+<li><b>T (Toggle)</b> — T = 0 no change, T = 1 toggle; output frequency is half the input → used in counters and frequency dividers, parity checkers.</li>
+<li><b>D (Data / Delay)</b> — output follows input on each clock pulse (Q = D); used to build registers &amp; shift registers.</li>
+</ul>
+<table>
+<tr><th>J</th><th>K</th><th>Q(next)</th></tr>
+<tr><td>0</td><td>0</td><td>No change</td></tr>
+<tr><td>0</td><td>1</td><td>0 (reset)</td></tr>
+<tr><td>1</td><td>0</td><td>1 (set)</td></tr>
+<tr><td>1</td><td>1</td><td>Toggle</td></tr>
+</table>
+<h4>Shift registers (4 types)</h4>
+<p>SISO (Serial In Serial Out), SIPO (Serial In Parallel Out), PISO (Parallel In Serial Out), PIPO (Parallel In Parallel Out).</p>
+<h4 class="added">Counters</h4>
+<p><b>Asynchronous (ripple)</b> — flip-flops clocked by previous output; <b>synchronous</b> — common clock. A mod-N counter has N states; n flip-flops give up to 2<sup>n</sup> states.</p>
+</section>

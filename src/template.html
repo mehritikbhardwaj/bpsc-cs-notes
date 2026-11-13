@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STET / BPSC TRE Computer Science – Complete Notes</title>
+<meta name="description" content="Clean typed Computer Science notes for Bihar STET and BPSC TRE with full topic index.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f5;--paper:#ffffff;--ink:#1d2129;--muted:#5d6472;--line:#e4e4df;
+  --accent:#1f5fbf;--accent-soft:#e8f0fc;--fact:#fff8e6;--fact-line:#f0c75e;
+  --ex:#eef8f1;--ex-line:#5dae7a;--note:#fdeeee;--note-line:#d97070;
+  --add:#7a4fd1;--add-soft:#f1ebfd;--code:#f3f4f6;--side:268px;
+}
+[data-theme="dark"]{
+  --bg:#14161a;--paper:#1b1e24;--ink:#e6e8ec;--muted:#9aa1ad;--line:#2c3038;
+  --accent:#7fb0ff;--accent-soft:#1e2a3d;--fact:#2b2617;--fact-line:#a78a3a;
+  --ex:#17271d;--ex-line:#4f9a69;--note:#2e1c1c;--note-line:#b55c5c;
+  --add:#b69cf5;--add-soft:#261f38;--code:#23272f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,"Noto Sans Devanagari",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+code,pre{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em}
+/* top bar */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:10px 18px;background:var(--paper);border-bottom:1px solid var(--line)}
+.top h1{font-size:16px;margin:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top h1 small{color:var(--muted);font-weight:500}
+.top .sp{flex:1}
+.btn{white-space:nowrap;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;font-size:14px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+#menuBtn{display:none}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--accent);width:0}
+/* layout */
+.wrap{display:flex}
+aside{position:sticky;top:53px;height:calc(100vh - 53px);width:var(--side);flex:none;overflow-y:auto;padding:14px 10px 40px 14px;border-right:1px solid var(--line);background:var(--paper)}
+.search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px;margin-bottom:10px}
+.toc-h{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 6px 6px;font-weight:600}
+aside ul{list-style:none;margin:0;padding:0}
+aside li.ch>a.chl{display:block;padding:5px 8px;border-radius:6px;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}
+aside li.ch>a.chl span{color:var(--muted);font-weight:500}
+aside li.ch ul{display:none;margin:2px 0 6px 14px;border-left:1px solid var(--line)}
+aside li.ch.open ul,aside.searching li.ch ul{display:block}
+aside li.ch ul a{display:block;padding:3px 10px;font-size:13px;color:var(--muted);text-decoration:none}
+aside li.ch ul a i{color:var(--add);font-style:normal;font-weight:700}
+aside a:hover{background:var(--accent-soft);color:var(--accent)!important}
+aside a.active{color:var(--accent)!important;background:var(--accent-soft)}
+aside .hide{display:none!important}
+main{flex:1;min-width:0;padding:28px clamp(16px,4vw,56px) 80px;max-width:980px}
+/* hero */
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-bottom:22px}
+.hero h2{margin:0 0 6px;font-size:28px;line-height:1.2}
+.hero p{margin:6px 0;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:13px}
+.legend span{padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+.legend .l-add{color:var(--add);background:var(--add-soft);border-color:transparent}
+.legend .l-fact{background:var(--fact)}
+.legend .l-ex{background:var(--ex)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:0 0 30px}
+.card{display:flex;flex-direction:column;gap:2px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--accent)}
+.card span{font-size:12.5px;color:var(--muted)}
+.card.new{border-left:3px solid var(--add)}
+/* chapters */
+section.chapter{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:6px 28px 22px;margin-bottom:26px}
+section.added-ch{border-top:3px solid var(--add)}
+h2{font-size:24px;margin:22px 0 8px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;line-height:1.25}
+h2 .num{background:var(--accent);color:#fff;border-radius:8px;font-size:15px;padding:2px 9px}
+[data-theme="dark"] h2 .num{color:#10141a}
+h2 .src{font-size:12px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+h2 .src.new{color:var(--add);background:var(--add-soft);border-color:transparent}
+h3{font-size:19px;margin:28px 0 8px;padding-top:14px;border-top:1px dashed var(--line)}
+h4{font-size:16px;margin:18px 0 6px}
+.added::after,li.added::before{content:"Added";font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--add);background:var(--add-soft);border-radius:5px;padding:1px 6px;margin-left:8px;vertical-align:middle}
+li.added::after{content:none}
+li.added::before{margin:0 6px 0 0}
+ul,ol{padding-left:22px}
+li{margin:3px 0}
+table{border-collapse:collapse;width:100%;margin:10px 0 14px;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft)}
+pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;line-height:1.5}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:4px}
+.fact,.example,.note,.practice{border-left:4px solid;border-radius:8px;padding:10px 14px;margin:12px 0}
+.fact{background:var(--fact);border-color:var(--fact-line)}
+.example{background:var(--ex);border-color:var(--ex-line)}
+.note{background:var(--note);border-color:var(--note-line)}
+.practice{background:var(--accent-soft);border-color:var(--accent)}
+.fact ul{margin:0}
+mark{background:#ffe066;color:#000;border-radius:3px}
+#toTop{position:fixed;right:18px;bottom:18px;z-index:20;display:none}
+footer{color:var(--muted);font-size:13px;text-align:center;margin-top:30px}
+.scrim{display:none}
+@media (max-width:900px){
+  #menuBtn{display:inline-block}
+  #expand{display:none}
+  aside{position:fixed;left:0;top:53px;z-index:25;transform:translateX(-100%);transition:transform .2s;box-shadow:4px 0 20px rgba(0,0,0,.15);width:min(86vw,320px)}
+  body.nav-open aside{transform:none}
+  body.nav-open .scrim{display:block;position:fixed;inset:53px 0 0 0;background:rgba(0,0,0,.3);z-index:24}
+  section.chapter{padding:4px 16px 18px}
+  .hero{padding:20px}
+}
+@media print{
+  .top,aside,#toTop,.cards{display:none!important}
+  main{max-width:none;padding:0}
+  section.chapter{break-before:page;border:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="btn" id="menuBtn" aria-label="Open index">☰ Index</button>
+  <h1>CS Notes <small>· STET / BPSC TRE</small></h1>
+  <span class="sp"></span>
+  <button class="btn" id="expand">Expand all</button>
+  <button class="btn" id="theme" aria-label="Toggle dark mode">🌙</button>
+  <div class="progress" id="progress"></div>
+</header>
+<div class="scrim" id="scrim"></div>
+<div class="wrap">
+<aside id="side">
+  <input class="search" id="q" type="search" placeholder="Search topics… (e.g. subnet, K-map)">
+  <div class="toc-h">From your notes</div>
+  <ul id="toc1">{{TOC_ORIG}}</ul>
+  <div class="toc-h">Added (missing from notes)</div>
+  <ul id="toc2">{{TOC_ADD}}</ul>
+</aside>
+<main id="main">
+  <div class="hero">
+    <h2>Computer Science – Complete Notes</h2>
+    <p>Clean typed version of the 419-page handwritten STET / TRE notes, organised into {{COUNT}} chapters with a full topic index. Syllabus topics missing from the notes have been added.</p>
+    <p>Use the index (left / ☰) or the search box to jump to any topic.</p>
+    <div class="legend"><span class="l-add">Added = not in handwritten notes</span><span class="l-fact">Exam facts</span><span class="l-ex">Worked examples</span></div>
+  </div>
+  <div class="cards">{{CARDS}}</div>
+  {{BODY}}
+  <footer>Typed &amp; organised from handwritten STET/TRE notes. Facts verified where possible; always cross-check with the official BPSC syllabus.</footer>
+</main>
+</div>
+<button class="btn" id="toTop" aria-label="Back to top">↑ Top</button>
+<script>
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+  var t=store('cs-theme'); if(t==='dark'){root.setAttribute('data-theme','dark');}
+  var themeBtn=document.getElementById('theme');
+  function syncTheme(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncTheme();
+  themeBtn.onclick=function(){var d=root.getAttribute('data-theme')==='dark';if(d)root.removeAttribute('data-theme');else root.setAttribute('data-theme','dark');store('cs-theme',d?'light':'dark');syncTheme()};
+
+  var side=document.getElementById('side');
+  document.getElementById('menuBtn').onclick=function(){document.body.classList.toggle('nav-open')};
+  document.getElementById('scrim').onclick=function(){document.body.classList.remove('nav-open')};
+  side.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a)return;
+    if(a.classList.contains('chl')){a.parentNode.classList.add('open')}
+    if(window.innerWidth<=900)document.body.classList.remove('nav-open');
+  });
+  var expanded=false;
+  document.getElementById('expand').onclick=function(){
+    expanded=!expanded; this.textContent=expanded?'Collapse all':'Expand all';
+    side.querySelectorAll('li.ch').forEach(function(li){li.classList.toggle('open',expanded)});
+  };
+
+  // search: filter index
+  var q=document.getElementById('q');
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    side.classList.toggle('searching',!!v);
+    side.querySelectorAll('li.ch').forEach(function(ch){
+      var chHit=ch.querySelector('.chl').textContent.toLowerCase().indexOf(v)>-1, any=false;
+      ch.querySelectorAll('ul li').forEach(function(li){
+        var hit=!v||chHit||li.textContent.toLowerCase().indexOf(v)>-1;
+        li.classList.toggle('hide',!hit); if(hit)any=true;
+      });
+      ch.classList.toggle('hide',!!v&&!any&&!chHit);
+    });
+  });
+  q.addEventListener('keydown',function(e){
+    if(e.key!=='Enter')return;
+    var first=side.querySelector('li.ch:not(.hide) ul li:not(.hide) a')||side.querySelector('li.ch:not(.hide) a');
+    if(first){location.hash=first.getAttribute('href')}
+  });
+
+  // scroll spy + progress
+  var heads=[].slice.call(document.querySelectorAll('main h3[id], main section[id]'));
+  var links={}; side.querySelectorAll('a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+  var prog=document.getElementById('progress'), top=document.getElementById('toTop'), cur=null;
+  function onScroll(){
+    var h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    prog.style.width=(p*100)+'%'; top.style.display=h.scrollTop>600?'block':'none';
+    var id=null;
+    for(var i=0;i<heads.length;i++){ if(heads[i].getBoundingClientRect().top<120) id=heads[i].id; else break; }
+    if(id!==cur){
+      if(cur&&links[cur])links[cur].classList.remove('active');
+      cur=id;
+      if(id&&links[id]){links[id].classList.add('active');var ch=links[id].closest('li.ch');if(ch&&!expanded){side.querySelectorAll('li.ch.open').forEach(function(o){if(o!==ch)o.classList.remove('open')});ch.classList.add('open')}}
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  top.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+})();
+</script>
+</body>
+</html>

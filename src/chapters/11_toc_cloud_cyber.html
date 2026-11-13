@@ -1,0 +1,214 @@
+<section class="chapter" data-title="Theory of Computation" data-pages="286–303">
+<h2>Theory of Computation (TOC)</h2>
+
+<h3>Introduction</h3>
+<ul>
+<li>Branch of theoretical computer science that studies how problems can be solved using algorithms / abstract machines.</li>
+<li>3 theories: <b>Computability theory</b> (what can and can't be computed), <b>Complexity theory</b> (what makes problems computationally hard or easy), <b>Automata theory</b> (abstract machines and the problems they solve).</li>
+<li>Concepts: finite automata, regular expressions, context-free grammars, Turing machines, decidability, halting problem, pumping lemma.</li>
+<li>Applications: cryptography, algorithm analysis, quantum computation, logic, compiler design, string/pattern matching, AI.</li>
+<li><b>Alan Turing</b> — father of theoretical computer science &amp; AI; invented the Turing machine (1936). His teacher <b>Alonzo Church</b> developed <b>lambda calculus</b> (λ-calculus).</li>
+<li><b>Church–Turing thesis</b>: anything that can be computed by a step-by-step procedure can be computed by a Turing machine.</li>
+</ul>
+
+<h3>Automata Basics</h3>
+<ul>
+<li><b>Automaton</b> = abstract machine. <b>Symbol</b> = character. <b>Alphabet (Σ)</b> = finite set of symbols. <b>String/word</b> = finite sequence of symbols. <b>Language</b> = set of strings.</li>
+<li>Machines (weakest → strongest): <b>Finite Automata</b> → <b>Pushdown Automata</b> → <b>Linear Bounded Automata</b> → <b>Turing Machine</b>.</li>
+</ul>
+
+<h3>Chomsky Hierarchy</h3>
+<p>By linguist <b>Noam Chomsky</b> (1956) — classifies grammars/languages into 4 types.</p>
+<table>
+<tr><th>Type</th><th>Grammar</th><th>Language</th><th>Machine</th></tr>
+<tr><td>0</td><td>Unrestricted</td><td>Recursively enumerable</td><td>Turing Machine</td></tr>
+<tr><td>1</td><td>Context-sensitive</td><td>Context-sensitive</td><td>Linear Bounded Automaton</td></tr>
+<tr><td>2</td><td>Context-free</td><td>Context-free</td><td>Pushdown Automaton</td></tr>
+<tr><td>3</td><td>Regular</td><td>Regular</td><td>Finite Automaton (DFA/NFA)</td></tr>
+</table>
+<p>Type 3 ⊂ Type 2 ⊂ Type 1 ⊂ Type 0.</p>
+
+<h3>Finite Automata (DFA & NFA)</h3>
+<ul>
+<li>Concept by <b>Warren McCulloch &amp; Walter Pitts</b> (1943, neurophysiologists studying the brain). Recognises regular languages (Type 3) — e.g. phone numbers, patterns. Used in text processing, compilers (lexical analysis), network protocols.</li>
+<li>Formally a 5-tuple (Q, Σ, δ, q<sub>0</sub>, F).</li>
+</ul>
+<table>
+<tr><th>DFA (Deterministic)</th><th>NFA (Non-deterministic)</th></tr>
+<tr><td>Exactly one transition per symbol</td><td>Zero, one or many transitions per symbol</td></tr>
+<tr><td>No ε (empty-string) transitions</td><td>Can have ε-transitions</td></tr>
+<tr><td>Needs more space/states</td><td>Needs less space</td></tr>
+<tr><td>Harder to construct</td><td>Easier to construct</td></tr>
+<tr><td>Every DFA is an NFA</td><td>Every NFA can be converted to a DFA (subset construction)</td></tr>
+</table>
+<p>DFA and NFA have equal power. A machine without output = acceptor.</p>
+
+<h3>Moore & Mealy Machines</h3>
+<ul>
+<li>Finite automata <b>with output</b> (transducers); 6-tuples (Q, Σ, Δ, δ, λ, q<sub>0</sub>) — no final states.</li>
+<li><b>Moore machine</b> — output depends only on the <b>present state</b>.</li>
+<li><b>Mealy machine</b> — output depends on the <b>present state and current input</b>. Generally needs fewer states.</li>
+</ul>
+
+<h3>Pushdown Automata (PDA)</h3>
+<ul>
+<li>Finite automaton + <b>stack</b> (extra memory, LIFO). Recognises <b>context-free languages</b> (Type 2), e.g. aⁿbⁿ, balanced brackets. Used in parsers.</li>
+<li>Components: input tape, finite control, stack (push/pop).</li>
+<li>DPDA is less powerful than NPDA.</li>
+</ul>
+
+<h3>Linear Bounded Automata (LBA)</h3>
+<ul>
+<li>Turing machine with tape limited to the input size (between left and right end markers). Recognises context-sensitive languages (Type 1).</li>
+<li>Introduced by John Myhill (1960); Peter Landweber and S.-Y. Kuroda showed equivalence with CSL.</li>
+<li>More powerful than PDA, less powerful than TM.</li>
+</ul>
+
+<h3>Turing Machine</h3>
+<ul>
+<li>Invented by <b>Alan Turing</b> in <b>1936</b> — mathematical model of a general-purpose computer; most powerful model; accepts recursively enumerable languages (Type 0).</li>
+<li>Has an infinite tape divided into cells, a read/write head moving left/right, finite control (states). Reads one symbol at a time; can modify its own input ("writing machine").</li>
+<li>7-tuple (Q, Σ, Γ, δ, q<sub>0</sub>, B, F). Accept state = successful; reject state = unsuccessful.</li>
+<li><b>Halting problem</b> — whether a TM will halt on an input or run forever — is <b>undecidable</b> (proved by Turing).</li>
+<li>Variations (all equal in power): multi-track, two-way infinite tape, multi-tape, multi-head, multi-dimensional, non-deterministic TM, universal TM.</li>
+</ul>
+
+<h3>Regular Expressions & Closure Properties</h3>
+<ul>
+<li><b>Kleene star (Σ*)</b> — zero or more repetitions; <i>includes</i> null (ε). E.g. meow* → meo, meow, meoww…</li>
+<li><b>Kleene plus (Σ⁺)</b> — one or more repetitions; <i>excludes</i> null.</li>
+<li><b>Closure property</b>: applying an operation to languages of a class yields a language of the same class.</li>
+</ul>
+<table>
+<tr><th>Operation</th><th>Regular</th><th>CFL</th><th>CSL</th><th>Rec. enumerable</th></tr>
+<tr><td>Union</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Concatenation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Kleene star</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Intersection</td><td>✓</td><td>✗</td><td>✓</td><td>✓</td></tr>
+<tr><td>Complement</td><td>✓</td><td>✗</td><td>✓</td><td>✗</td></tr>
+<tr><td>Reversal</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+</table>
+<p>Regular languages are also closed under homomorphism and difference.</p>
+
+<h3>Myhill–Nerode Theorem & Pumping Lemma</h3>
+<ul>
+<li><b>Myhill–Nerode theorem</b> (1958): necessary and sufficient condition for a language to be regular; used to prove regularity and to <b>minimise DFA</b> states.</li>
+<li><b>Pumping lemma</b>: "pumping" = generating many strings by repeating a part; "lemma" = intermediate theorem. Two versions — for regular languages and for context-free languages. Used to prove a language is <b>not</b> regular / not context-free (e.g. aⁿbⁿ is not regular).</li>
+</ul>
+<h3 class="added">Compiler Phases (TOC application)</h3>
+<ol>
+<li>Lexical analysis (scanner — tokens; uses finite automata)</li>
+<li>Syntax analysis (parser — parse tree; uses CFG/PDA)</li>
+<li>Semantic analysis (type checking)</li>
+<li>Intermediate code generation (e.g. three-address code)</li>
+<li>Code optimization</li>
+<li>Code generation (target machine code)</li>
+</ol>
+<p>Symbol table and error handler work with all phases. Front end = phases 1–4; back end = 5–6.</p>
+</section>
+
+<section class="chapter" data-title="Cloud Computing" data-pages="308–313">
+<h2>Cloud Computing</h2>
+
+<h3>Basics</h3>
+<ul>
+<li>Storing and accessing data and programs on remote servers over the Internet instead of your own computer.</li>
+<li>Concept credited to <b>J. C. R. Licklider</b> (American computer scientist, 1960s, "Intergalactic Computer Network"). Term popularised ~1996–2006 (Amazon EC2, 2006).</li>
+<li>Primary use: data storage. Characteristics: on-demand self-service, broad network access, resource pooling, rapid elasticity, measured (pay-as-you-go) service. Cloud services have a one-to-many relationship with users.</li>
+</ul>
+
+<h3>Architecture</h3>
+<ol>
+<li><b>Front end</b> — client side: <b>thick (fat) client</b> (powerful computer running a full OS; most logic local, e.g. MS Outlook, Word) and <b>thin client</b> (lightweight device relying on server, e.g. Gmail, Office 365 web, online games, search engines).</li>
+<li><b>Back-end platform</b> — servers, storage; core of cloud; also called cloud engine / SAN storage.</li>
+<li><b>Cloud-based delivery &amp; network</b> — Internet, intranet, intercloud.</li>
+</ol>
+
+<h3>Service Models</h3>
+<table>
+<tr><th>Model</th><th>Provides</th><th>Examples</th></tr>
+<tr><td><b>IaaS</b> — Infrastructure as a Service</td><td>Hardware, VMs, network, storage</td><td>AWS EC2, Google Compute Engine, Azure VMs, DigitalOcean, IBM Cloud, Alibaba Cloud, Linode, Rackspace</td></tr>
+<tr><td><b>PaaS</b> — Platform as a Service</td><td>Runtime environment for apps/websites</td><td>Google App Engine, AWS Elastic Beanstalk, Azure App Service, Heroku, Red Hat OpenShift, Force.com</td></tr>
+<tr><td><b>SaaS</b> — Software as a Service</td><td>Ready-to-use applications</td><td>Google Workspace, Microsoft 365, Zoom, Salesforce, Dropbox, Netflix</td></tr>
+</table>
+<p>Others: BaaS (Backend as a Service — Firebase), FaaS/serverless (AWS Lambda), XaaS (Anything as a Service).</p>
+
+<h3>Deployment Models</h3>
+<ul>
+<li><b>Public cloud</b> — shared resources, anyone can use (AWS, Azure, Google Cloud).</li>
+<li><b>Private cloud</b> — dedicated to one organization (IBM, Dell, VMware, Oracle, Cisco).</li>
+<li><b>Hybrid cloud</b> — public + private (Netflix, Hulu, Uber, Airbnb rely on hybrid/multi-cloud).</li>
+<li><b>Community cloud</b> — shared by organizations with common concerns.</li>
+</ul>
+
+<h3>Key Terms</h3>
+<ul>
+<li><b>Virtualization</b> — creating virtual versions of servers, storage, networks, OS; backbone of cloud computing. <b>Hypervisor</b> (VMM): Type 1 bare-metal (VMware ESXi, Hyper-V), Type 2 hosted (VirtualBox).</li>
+<li><b>Cloud migration</b> — moving apps, data and IT resources to the cloud.</li>
+<li><b>Cloud bursting</b> — app runs in private cloud and "bursts" to public cloud during demand spikes. (Notes describe it as failure due to a spike in demand.)</li>
+<li><b>Cloud Cube Model</b> — by the <b>Jericho Forum</b>; for cloud security; 4 dimensions: internal/external, proprietary/open, perimeterised/de-perimeterised, insourced/outsourced.</li>
+<li>Phases of cloud computing (3): strategy, planning, deployment.</li>
+<li><b>Hadoop</b> — open-source framework (Apache) to store and process big data across a cluster of computers (HDFS + MapReduce); key for big-data analytics.</li>
+<li><b>AWS Well-Architected — 6 pillars</b>: operational excellence, security, reliability, performance efficiency, cost optimization, sustainability.</li>
+<li>Rackspace — cloud service provider company.</li>
+</ul>
+<h4 class="added">Indian cloud facts</h4>
+<p>MeghRaj — Government of India's cloud initiative (GI Cloud). DigiLocker — government cloud document wallet.</p>
+</section>
+
+<section class="chapter" data-title="Cyber Security" data-pages="314–319">
+<h2>Cyber Security</h2>
+
+<h3>Computer Virus</h3>
+<ul>
+<li>VIRUS = <b>Vital Information Resources Under Siege</b>. A program that copies itself and infects a computer without the owner's permission.</li>
+<li>First computer virus: <b>Creeper</b> (Bob Thomas, 1971). First PC (boot-sector) virus: <b>Brain</b> (1986, Basit &amp; Amjad Farooq Alvi, Pakistan). First virus for microcomputers: <b>Elk Cloner</b> (1982).</li>
+<li><b>ILOVEYOU</b> (Love Bug) — 2000; spread through e-mail; Onel de Guzman (Philippines).</li>
+<li><b>Code Red</b> — worm, July 2001; attacked Microsoft IIS web servers.</li>
+<li>Pattern used to identify a virus = <b>virus signature</b>.</li>
+</ul>
+<h4>Antivirus software</h4>
+<p>Avira, McAfee, AVG, Quick Heal (India), Kaspersky, Avast, Panda, Norton (Symantec), Bitdefender, Windows Defender.</p>
+
+<h3>Malware Types</h3>
+<table>
+<tr><th>Malware</th><th>Description</th></tr>
+<tr><td>Virus</td><td>Attaches to files; needs a host program to spread</td></tr>
+<tr><td>Worm</td><td>Self-replicating; spreads to other computers over networks without a host</td></tr>
+<tr><td>Trojan horse</td><td>Pretends to be useful but is malicious</td></tr>
+<tr><td>Macro virus</td><td>Spreads through application macros (Word/Excel)</td></tr>
+<tr><td>Retrovirus</td><td>Attacks/deletes antivirus software</td></tr>
+<tr><td>Time / logic bomb</td><td>Triggers on a particular date/time or condition</td></tr>
+<tr><td>Ransomware</td><td>Encrypts/locks data and demands ransom. First: <b>AIDS Trojan</b> (1989, Joseph L. Popp). E.g. WannaCry (2017), CryptoLocker, CryptoWall, Locky, TeslaCrypt</td></tr>
+<tr><td>Spyware / keylogger</td><td>Secretly monitors activity / records keystrokes</td></tr>
+<tr><td>Adware</td><td>Shows unwanted ads</td></tr>
+<tr><td>Rootkit</td><td>Hides deep in OS to give attacker admin access</td></tr>
+<tr><td>Trapdoor / backdoor</td><td>Hidden entry left by the designer/attacker</td></tr>
+<tr><td>Botnet</td><td>Network of infected "zombie" computers controlled remotely</td></tr>
+</table>
+
+<h3>Cyber Attacks & Frauds</h3>
+<ul>
+<li><b>Phishing</b> — fraudulent e-mails/links/websites to steal sensitive info (passwords, card numbers).</li>
+<li><b>Smishing</b> — SMS phishing. <b>Vishing</b> — voice phishing via calls / VoIP.</li>
+<li><b>Pharming</b> — malicious code redirects users from a legitimate site to a fake one (DNS poisoning) — "phishing + farming".</li>
+<li><b>Spoofing</b> — faking identity: IP, DNS, e-mail, caller ID, website.</li>
+<li><b>Sniffing</b> — capturing network packets (tapping).</li>
+<li><b>Spooling</b> — Simultaneous Peripheral Operations On-Line (e.g. print queue) — not an attack, but often asked alongside.</li>
+<li><b>Spam</b> — unsolicited bulk e-mail (junk).</li>
+<li><b>Hacker</b> — person who gains illegal access to a system (black hat); ethical hacker = white hat; grey hat in between.</li>
+<li><b>Skimming</b> — device copies the magnetic stripe of a credit/debit card at ATM, petrol pump or point of sale.</li>
+<li><b>DoS / DDoS</b> — flooding a server to make it unavailable.</li>
+<li><b>Man-in-the-middle</b>, <b>SQL injection</b>, <b>cross-site scripting (XSS)</b>, <b>brute force</b>, <b>zero-day</b> attacks.</li>
+<li><b>Social engineering</b> — manipulating people into revealing information.</li>
+</ul>
+
+<h3>Cyber Security Tools & Practices</h3>
+<ul>
+<li>Firewalls, antivirus, anti-malware, encryption tools, VPN, strong passwords, two-factor authentication (2FA), intrusion detection systems (IDS), regular updates/patches, backups.</li>
+<li><b>CIA triad</b>: Confidentiality, Integrity, Availability.</li>
+<li><b>Encryption</b>: symmetric (same key — AES, DES) and asymmetric (public/private keys — RSA). <b>Digital signature</b> ensures authenticity &amp; non-repudiation.</li>
+</ul>
+<h4 class="added">Indian cyber bodies</h4>
+<p><b>CERT-In</b> — Indian Computer Emergency Response Team (2004). <b>I4C</b> — Indian Cyber Crime Coordination Centre. Cybercrime helpline <b>1930</b>; portal cybercrime.gov.in. See also the <a href="#society-law-ethics">IT Act 2000</a> chapter.</p>
+</section>

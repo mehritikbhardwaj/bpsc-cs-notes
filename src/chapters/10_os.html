@@ -1,0 +1,186 @@
+<section class="chapter" data-title="Operating System" data-pages="238–285">
+<h2>Operating System</h2>
+
+<h3>Introduction</h3>
+<ul>
+<li>OS = system software; interface between user &amp; hardware and between application software &amp; hardware. Layers: User → Application → OS → Hardware.</li>
+<li>First OS: <b>GM-NAA I/O</b> (General Motors, 1956) for the IBM 704.</li>
+<li>Father of the PC OS: <b>Gary Kildall</b> — CP/M (Control Program for Microcomputers), 1974.</li>
+<li>Latest (2025–26): iOS 26, macOS 26 Tahoe, Android 16, Windows 11.</li>
+</ul>
+<h4>Functions of OS</h4>
+<p>Process management, memory management, file management, device (I/O) management, security, job accounting, secondary storage management, networking, error detection, coordination between software and users.</p>
+
+<h3>Types of OS</h3>
+<ul>
+<li><b>Single-user single-task</b>: MS-DOS, Palm OS.</li>
+<li><b>Single-user multi-tasking</b>: Windows, macOS.</li>
+<li><b>Multi-user multi-tasking</b>: Unix, Linux, Windows Server, mainframes.</li>
+<li><b>Batch OS</b>: jobs with similar needs grouped (IBM early systems).</li>
+<li><b>Time-sharing</b>: CPU time divided among users (Multics, Unix).</li>
+<li><b>Real-time OS (RTOS)</b> / embedded: fixed time constraints — hard RTOS (missile, pacemaker) and soft RTOS (multimedia). E.g. fax machines, printers, scanners, routers, robots; VxWorks, FreeRTOS.</li>
+<li><b>Distributed OS</b>, <b>Network OS</b> (Windows Server, Novell NetWare).</li>
+<li><b>Open-source OS</b>: Linux (Debian, Fedora, CentOS, Ubuntu, Red Hat, Kali), Android, OpenSolaris, FreeBSD.</li>
+<li><b>Mobile OS</b>: Android (Google), iOS (Apple), Symbian (Nokia), Windows Phone (Microsoft), BlackBerry OS, Bada / Tizen (Samsung), HarmonyOS (Huawei).</li>
+</ul>
+<h4>OS interface</h4>
+<p><b>CUI/CLI</b> (Character/Command-line User Interface — keyboard, e.g. MS-DOS) and <b>GUI</b> (Graphical — mouse + keyboard, e.g. Windows). First GUI: Xerox Alto (1973).</p>
+
+<h3>Popular OS Facts</h3>
+<table>
+<tr><th>OS</th><th>Facts</th></tr>
+<tr><td>Unix</td><td>1969, Ken Thompson &amp; Dennis Ritchie, Bell Labs; written in C</td></tr>
+<tr><td>MS-DOS</td><td>Microsoft's first OS (1981). Tim Paterson wrote QDOS (Quick and Dirty OS, 1980) → renamed 86-DOS → bought by Microsoft → MS-DOS 1.0</td></tr>
+<tr><td>Windows</td><td>Windows 1.0 (1985). Versions: 1.0, 2.0, 3.x, 95, 98, ME (Millennium Edition), NT, 2000, XP (eXPerience), Vista, 7, 8, 8.1, 10, 11. Windows 11 announced 24 June 2021, released 5 Oct 2021 (new Start menu, Android apps, widgets, Teams, snap layouts)</td></tr>
+<tr><td>Linux</td><td>Linus Torvalds, 17 Sept 1991; open source, free, virus-resistant</td></tr>
+<tr><td>Android</td><td>Founded by Andy Rubin; first release 23 Sept 2008; first named version Cupcake (1.5)</td></tr>
+<tr><td>macOS</td><td>Apple; earlier Mac OS (1984)</td></tr>
+<tr><td>Symbian</td><td>1998, Nokia</td></tr>
+</table>
+<div class="fact">Client/server OS: Windows 2000. "My Computer" first in Windows 95. Windows 8 had no Start button. Windows 3.1 didn't support networking. Long time no use → Hibernate; short time no use → Sleep. File manager: Windows Explorer. OS with small (8.3) file names: MS-DOS. OS generations: 4.</div>
+
+<h3>Kernel & Shell</h3>
+<ul>
+<li><b>Kernel</b> — core of OS; establishes communication between software and hardware; manages CPU, memory, devices. Types: monolithic (Linux), microkernel (Minix, QNX), hybrid (Windows NT, macOS XNU).</li>
+<li><b>Shell</b> — command interpreter; takes commands from the user and gives them to the OS; interface between user and kernel (bash, sh, zsh, cmd, PowerShell). User → Shell → Kernel → Hardware.</li>
+<li><b>System call</b> — way a program requests a service from the kernel (fork, exec, read, write).</li>
+</ul>
+
+<h3>Process & Process States</h3>
+<ul><li>Program in execution = process. Represented by a <b>PCB</b> (Process Control Block): PID, state, program counter, registers, priority, memory info.</li></ul>
+<p>States: <b>New → Ready → Running → Waiting (Blocked) → Terminated</b> (plus Suspended-ready / Suspended-blocked).</p>
+<ul>
+<li><b>New</b> — process being created (program in hard disk).</li>
+<li><b>Ready</b> — loaded in RAM, waiting for CPU (ready queue, FIFO). Brought by <b>long-term scheduler</b>.</li>
+<li><b>Running</b> — executing on CPU (uniprocessor/multiprocessor). Chosen by <b>short-term scheduler</b>; the <b>dispatcher</b> gives CPU to it.</li>
+<li><b>Waiting/Blocked</b> — waiting for I/O or an event; also when a higher-priority process takes CPU or time quantum ends.</li>
+<li><b>Terminated</b> — finished; resources de-allocated.</li>
+<li><b>Suspended</b> — swapped out to secondary memory when RAM is full; done by <b>medium-term scheduler</b> (swap-in / swap-out).</li>
+</ul>
+<table>
+<tr><th>Scheduler</th><th>Role</th></tr>
+<tr><td>Long-term (job)</td><td>Hard disk → RAM (ready queue); controls degree of multiprogramming</td></tr>
+<tr><td>Short-term (CPU)</td><td>Selects a ready process for CPU; most frequent</td></tr>
+<tr><td>Medium-term</td><td>Swapping (suspend/resume)</td></tr>
+</table>
+<p><b>Non-preemptive</b>: Ready → Running → (finishes/waits). <b>Preemptive</b>: Running → Ready possible (CPU taken away).</p>
+<p><b>Context switch</b>: saving the state of one process and loading another.</p>
+
+<h3>Threads</h3>
+<ul>
+<li>Smallest unit of execution within a process; a process can have many threads. Called a <b>lightweight process</b>.</li>
+<li>Example: MS Word (process) → threads: spell-checker, auto-save, text styling.</li>
+<li>Threads share code, data and files of the process but have their own stack, registers and PC. User-level and kernel-level threads.</li>
+</ul>
+
+<h3>CPU Scheduling</h3>
+<p><b>Criteria</b> — maximize: CPU utilization, throughput. Minimize: turnaround time, waiting time, response time.</p>
+<ul>
+<li><b>Turnaround time (TAT)</b> = Completion time − Arrival time.</li>
+<li><b>Waiting time (WT)</b> = TAT − Burst time.</li>
+<li><b>Response time</b> = time CPU is first given − Arrival time.</li>
+</ul>
+<table>
+<tr><th>Algorithm</th><th>Type</th><th>Key point</th><th>Starvation?</th></tr>
+<tr><td><b>FCFS</b> (First Come First Serve)</td><td>Non-preemptive</td><td>Simplest; FIFO queue; suffers <b>convoy effect</b> (short processes wait for a long one)</td><td>No</td></tr>
+<tr><td><b>SJF</b> (Shortest Job First)</td><td>Non-preemptive (preemptive version = <b>SRTF</b>)</td><td>Optimal — minimum average waiting time; burst time can't be known in advance; tie broken by FCFS</td><td>Yes</td></tr>
+<tr><td><b>Priority</b></td><td>Both</td><td>Highest priority first; tie → FCFS. Problem: starvation; solution: <b>aging</b> (gradually raise priority of waiting processes)</td><td>Yes</td></tr>
+<tr><td><b>Round Robin</b></td><td>Preemptive</td><td>Each process gets a <b>time quantum</b>; circular ready queue; designed for time-sharing; best response time; performance depends on quantum size</td><td>No</td></tr>
+<tr><td>Multilevel queue / feedback</td><td>Both</td><td>Separate queues by type/priority</td><td>Possible</td></tr>
+</table>
+<div class="example"><b>Worked example</b> — P1 (AT 0, BT 4), P2 (AT 1, BT 3), P3 (AT 2, BT 1), P4 (AT 3, BT 2)<br>
+<b>FCFS</b>: Gantt P1 0–4 | P2 4–7 | P3 7–8 | P4 8–10. TAT = 4, 6, 6, 7 → avg <b>5.75</b>; WT = 0, 3, 5, 5 → avg <b>3.25</b>.<br>
+<b>SJF (non-preemptive)</b>: P1 0–4 | P3 4–5 | P4 5–7 | P2 7–10. TAT = 4, 9, 3, 4 → avg <b>5.0</b>; WT = 0, 6, 2, 2 → avg <b>2.5</b>.<br>
+<b>Round Robin (q = 2)</b>: P1 0–2 | P2 2–4 | P3 4–5 | P1 5–7 | P4 7–9 | P2 9–10. TAT = 7, 9, 3, 6 → avg <b>6.25</b>; WT = 3, 6, 2, 4 → avg <b>3.75</b>.</div>
+
+<h3>Deadlock</h3>
+<p>A set of processes is blocked forever because each holds a resource and waits for a resource held by another (infinite waiting). System model: request → use → release.</p>
+<h4>Necessary conditions (Coffman) — all 4 must hold</h4>
+<ol>
+<li><b>Mutual exclusion</b> — at least one resource is non-shareable.</li>
+<li><b>Hold and wait</b> — process holds a resource and waits for others.</li>
+<li><b>No preemption</b> — resources can't be forcibly taken.</li>
+<li><b>Circular wait</b> — P1 → P2 → P3 → P1 chain of waiting.</li>
+</ol>
+<h4>Handling</h4>
+<ul>
+<li><b>Prevention</b> — break one of the 4 conditions. <b>Avoidance</b> — <b>Banker's algorithm</b> (Edsger Dijkstra): safety algorithm + resource-request algorithm; checks the system stays in a <i>safe state</i>, like a bank never lending money it can't recover. <b>Detection &amp; recovery</b> — wait-for graph, kill/rollback processes. <b>Ignore</b> — Ostrich algorithm (Windows/Linux).</li>
+<li><b>Starvation</b> — a process waits indefinitely; <b>livelock</b> — processes keep changing state without progress.</li>
+</ul>
+
+<h3>Interrupts</h3>
+<ul>
+<li>Signal that temporarily halts the CPU's current activity to attend to something more urgent. Handled by an <b>ISR</b> (Interrupt Service Routine); state saved on stack. Time taken to respond = <b>interrupt latency</b>.</li>
+<li><b>Hardware interrupts</b>: <i>maskable</i> (can be disabled/ignored by CPU) and <i>non-maskable</i> (can't be ignored — power failure, highest priority).</li>
+<li><b>Software interrupts</b>: normal (caused by instructions) and <b>exceptions</b> (e.g. divide by zero).</li>
+<li>8085 hardware interrupts (5): <b>TRAP</b> (non-maskable, highest), RST 7.5, RST 6.5, RST 5.5, INTR (lowest; maskable). Software interrupts RST 0 – RST 7.</li>
+</ul>
+
+<h3>File Systems</h3>
+<p>Methods and data structures an OS uses to keep track of files on a disk/partition.</p>
+<table>
+<tr><th>File system</th><th>Used by</th></tr>
+<tr><td>FAT12 (1980), FAT16 (1984, 2 GB limit), FAT32 (1996, max file 4 GB)</td><td>MS-DOS, Windows 95/98, USB drives, memory cards</td></tr>
+<tr><td>exFAT (Extended FAT)</td><td>SD cards, USB drives, large flash storage</td></tr>
+<tr><td>NTFS (New Technology File System, 1993)</td><td>Windows NT/2000/XP/Vista/7/8/10/11 — journaling, compression, encryption, security</td></tr>
+<tr><td>HFS, HFS+, APFS</td><td>Apple macOS (APFS also iOS)</td></tr>
+<tr><td>EXT2/3/4 (Extended File System)</td><td>Linux (Debian, Ubuntu), Android</td></tr>
+<tr><td>XFS</td><td>High-performance; Red Hat Enterprise Linux</td></tr>
+<tr><td>Btrfs (B-tree FS)</td><td>Linux, Fedora</td></tr>
+<tr><td>ZFS (Zettabyte FS)</td><td>Oracle Solaris</td></tr>
+</table>
+
+<h3>Memory Management</h3>
+<ul>
+<li>CPU generates a <b>logical (virtual) address</b>; main memory uses a <b>physical address</b>. Translation is done by the <b>MMU</b> (Memory Management Unit) under OS control.</li>
+<li><b>Contiguous allocation</b> — process stored in one continuous block. Problem: <b>external fragmentation</b> (total free space is enough but not contiguous).
+<ul><li><b>Static (fixed) partitioning</b> — memory pre-divided into fixed-size partitions; causes <b>internal fragmentation</b> (unused space inside a partition).</li><li><b>Dynamic (variable) partitioning</b> — partitions created as per process size; no internal fragmentation.</li></ul></li>
+<li><b>Non-contiguous allocation</b> — process spread across memory: <b>paging</b> and <b>segmentation</b>.</li>
+<li><b>Compaction</b> — collects all free memory into one large block to solve external fragmentation.</li>
+</ul>
+<h4>Placement algorithms</h4>
+<ul>
+<li><b>First fit</b> — first hole large enough; fast; external fragmentation.</li>
+<li><b>Next fit</b> — like first fit but starts from where it last left off.</li>
+<li><b>Best fit</b> — smallest hole that fits; slow; leaves tiny unusable holes.</li>
+<li><b>Worst fit</b> — largest hole; leaves big remaining holes.</li>
+</ul>
+<div class="example">Partitions 20 KB, 10 KB, 15 KB, 25 KB, 30 KB; process needs 18 KB.<br>First fit → 20 KB (2 KB left). Best fit → 20 KB (2 KB left). Worst fit → 30 KB (12 KB left).</div>
+
+<h3>Paging & Segmentation</h3>
+<ul>
+<li><b>Paging</b>: logical memory divided into fixed-size <b>pages</b>; physical memory into <b>frames</b> of the same size (page size = frame size). Page table maps pages to frames. Removes external fragmentation (may cause small internal fragmentation). Important for virtual memory.</li>
+<li>Logical address = page number (p) + offset (d); physical address = frame number (f) + offset (d).</li>
+<li><b>Page fault</b> — CPU requests a page not present in RAM. <b>Thrashing</b> — CPU spends more time swapping pages than executing (too many page faults) → low CPU utilization.</li>
+<li><b>TLB</b> (Translation Look-aside Buffer) — small fast cache of page-table entries (TLB hit / miss); uses locality of reference.</li>
+<li><b>Segmentation</b> — memory divided into variable-size logical units (code, data, stack) — user's view. Segment table holds <b>base</b> (starting physical address) and <b>limit</b> (length). Suffers external fragmentation.</li>
+</ul>
+<div class="example">Logical address 13 bits, physical 12 bits, page size 1 KB (2<sup>10</sup>) → offset 10 bits. Pages = 2<sup>13−10</sup> = <b>8</b>; frames = 2<sup>12−10</sup> = <b>4</b>.<br>
+Logical address 27 bits, physical 21 bits, page size 1 KB → pages 2<sup>17</sup> = 128 K; frames 2<sup>11</sup> = 2048.</div>
+
+<h3>Page Replacement Algorithms</h3>
+<p>Decide which page to swap out of RAM to make space, aiming to reduce page faults.</p>
+<ol>
+<li><b>FIFO</b> — remove oldest page; suffers <b>Belady's anomaly</b> (more frames can cause <i>more</i> page faults — seen in FIFO).</li>
+<li><b>Optimal</b> — replace the page not used for the longest time in future; fewest faults; not implementable in practice (benchmark).</li>
+<li><b>LRU</b> — replace the least recently used page.</li>
+</ol>
+<div class="example">Reference string 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2 with 3 frames → page faults: FIFO = <b>10</b>, LRU = <b>9</b>, Optimal = <b>7</b>.</div>
+
+<h3>Process Synchronization & Semaphores</h3>
+<ul>
+<li><b>Critical section</b> — code accessing shared resources. <b>Race condition</b> — output depends on order of execution.</li>
+<li>Requirements: mutual exclusion, progress, bounded waiting.</li>
+<li><b>Semaphore</b> (Dijkstra) — integer variable/abstract data type used to control access to shared resources by multiple processes; synchronization primitive. Two atomic operations: <b>wait()</b> / P (decrements; blocks if ≤ 0) and <b>signal()</b> / V (increments, wakes a process).</li>
+<li>Types: <b>binary semaphore (mutex lock)</b> — 0/1; <b>counting semaphore</b> — controls access to a resource with many instances.</li>
+<li>Classic problems: bounded-buffer (producer–consumer), readers–writers, dining philosophers, sleeping barber.</li>
+</ul>
+
+<h3>Disk Scheduling</h3>
+<ul>
+<li><b>Seek time</b> — time to move head to the track. <b>Rotational latency</b> — time for sector to rotate under head. <b>Transfer time</b>.</li>
+<li><b>Disk access time</b> = seek time + rotational latency + transfer time.</li>
+<li>Algorithms: <b>FCFS</b>, <b>SSTF</b> (Shortest Seek Time First), <b>SCAN</b> (elevator), <b>C-SCAN</b> (circular), <b>LOOK</b>, <b>C-LOOK</b>.</li>
+</ul>
+<div class="example">Requests 98, 183, 37, 122, 14, 124, 65, 67; head at 53.<br>FCFS total head movement = 45+85+146+85+108+110+59+2 = <b>640</b> cylinders. SSTF order 65, 67, 37, 14, 98, 122, 124, 183 → <b>236</b>.</div>
+</section>

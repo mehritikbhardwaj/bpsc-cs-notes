@@ -1,0 +1,88 @@
+<section class="chapter" data-title="Internet of Things (IoT)" data-pages="26–38">
+<h2>Internet of Things (IoT)</h2>
+
+<h3>Internet & IoT Basics</h3>
+<ul>
+<li><b>Internet</b> = network of networks; a superset of the World Wide Web. Father of Internet: Vint Cerf. Owner of Internet: none.</li>
+<li><b>IoT</b> = a network of interrelated devices ("things") with sensors, software and connectivity that collect and exchange data. A "thing" can be a person with a heart-monitor implant, a farm animal with a biochip transponder, or a car with built-in sensors.</li>
+<li>Term IoT coined by <b>Kevin Ashton</b> in <b>1999</b>.</li>
+<li>First IoT device: a <b>toaster</b> connected to the internet by <b>John Romkey</b> (1990). (Earlier, a Coca-Cola vending machine at Carnegie Mellon was networked in 1982.)</li>
+</ul>
+
+<h3>Types of IoT</h3>
+<ol>
+<li><b>Consumer IoT</b> — home appliances, voice assistants, smart lights.</li>
+<li><b>Commercial IoT</b> — healthcare, transport, smart pacemakers, monitoring systems.</li>
+<li><b>Military IoT (IoMT)</b> — surveillance robots, human-wearable biometrics.</li>
+<li><b>Industrial IoT (IIoT)</b> — manufacturing &amp; energy, digital control systems, smart agriculture, industrial big data.</li>
+<li><b>Infrastructure IoT</b> — smart cities, infrastructure sensors, management systems.</li>
+</ol>
+
+<h3>Components of IoT</h3>
+<ol>
+<li><b>Things / devices</b> — sensors &amp; actuators collect data and give it to the gateway.</li>
+<li><b>Gateway</b> — pre-processing of data, security.</li>
+<li><b>Cloud</b> — data uploaded to servers.</li>
+<li><b>Analytics</b> — algorithms / machine learning applied.</li>
+<li><b>User interface</b> — monitor/control the data.</li>
+</ol>
+<ul>
+<li><b>Sensor</b> — physical device that monitors and collects data from the environment (temperature, humidity, pressure, camera/optical sensors).</li>
+<li><b>Actuator</b> — converts energy/signal into motion (action).</li>
+<li><b>Transducer</b> — converts energy from one form to another (sensors and actuators are both transducers). Example: microphone.</li>
+</ul>
+
+<h3>IoT Gateway</h3>
+<p>Hardware device or software program that establishes communication between sensors and the cloud.</p>
+<ul><li>Communication bridge, extra security, data aggregation, pre-processing &amp; filtering, local storage/cache, edge computing, managing devices, device diagnostics, protocol translation.</li></ul>
+
+<h3>IoT Networks</h3>
+<h4>Low-power short-range networks (5)</h4>
+<ul>
+<li><b>Bluetooth</b> — named after King Harald "Bluetooth"; IEEE 802.15.1; range ~10 m (30 ft); 2.4 GHz. <b>BLE</b> (Bluetooth Low Energy / Bluetooth 4.0 "Smart") — developed by Nokia (Wibree, 2006).</li>
+<li><b>NFC</b> (Near Field Communication) — very short range (~4 cm); contactless payments.</li>
+<li><b>Wi-Fi</b> (IEEE 802.11) — 802.11a (5 GHz), b (2.4), g (2.4), n (2.4 &amp; 5, Wi-Fi 4), ac (5, Wi-Fi 5), ax (2.4/5/6, Wi-Fi 6/6E), be (Wi-Fi 7).</li>
+<li><b>Z-Wave</b> — low-energy radio, home automation, mesh network, low-frequency bands.</li>
+<li><b>ZigBee</b> (IEEE 802.15.4) — low-cost, low-power personal area network; created by ZigBee Alliance; used by smart bulbs, plugs, sensors.</li>
+</ul>
+<h4>Low-power wide-area networks (LPWAN)</h4>
+<ul>
+<li><b>4G LTE IoT</b> — Long Term Evolution; speed ~20–30 Mbps (practical).</li>
+<li><b>5G IoT</b> — up to 20 Gbps peak; Qualcomm played a major role.</li>
+<li><b>Cat-0 / Cat-1</b> — LTE categories with lower throughput and long battery life.</li>
+<li><b>LoRaWAN</b> — Long Range WAN; used for monitoring energy in buildings, smart lighting.</li>
+<li><b>NB-IoT</b> (Narrowband IoT) and <b>LTE-M (Cat-M1)</b>.</li>
+<li><b>Sigfox</b> — French global network operator (2010); cheap, reliable, low-power.</li>
+</ul>
+
+<h3>IoT Protocols</h3>
+<ul>
+<li><b>MQTT</b> (Message Queuing Telemetry Transport) — developed by IBM; machine-to-machine; publish–subscribe; lighter than HTTP; default port 1883 (secure 8883). Stages: connection, authentication, communication, termination.</li>
+<li><b>CoAP</b> (Constrained Application Protocol) — application layer, by IETF, client–server, binary format, for low-power devices.</li>
+<li><b>DDS</b> (Data Distribution Service) — interoperable middleware protocol by OMG (Object Management Group); real-time data.</li>
+<li><b>AMQP</b> (Advanced Message Queuing Protocol) — by JPMorgan Chase; guaranteed message delivery; scalability.</li>
+<li><b>HTTP</b> — also used.</li>
+</ul>
+<h4>IoT protocols by layer</h4>
+<table>
+<tr><th>Layer</th><th>Protocols</th></tr>
+<tr><td>Physical</td><td>BLE, Ethernet, LTE, NFC, RFID, Wi-Fi, Z-Wave, ZigBee, Power-line communication</td></tr>
+<tr><td>Data link</td><td>IEEE 802.15.4 (LR-WPAN), LPWAN</td></tr>
+<tr><td>Network</td><td>IPv4/IPv6, 6LoWPAN (IPv6 over Low-Power Wireless PAN)</td></tr>
+<tr><td>Transport</td><td>TCP, UDP</td></tr>
+<tr><td>Application</td><td>MQTT, CoAP, AMQP, DDS</td></tr>
+</table>
+<h4>Popular IoT platforms</h4>
+<p>AWS IoT, Microsoft Azure IoT, Oracle, Google Cloud, Salesforce, Cisco, IBM Watson, Particle, ThingWorx.</p>
+<h4>7 elements of open IoT architecture</h4>
+<p>Configuration &amp; monitoring, cloud data storage, scheduler, request definition, request presentation, service delivery &amp; utility manager, sensor middleware (X-GSN).</p>
+
+<h3>Arduino</h3>
+<ul>
+<li>Open-source prototyping platform based on easy-to-use hardware &amp; software.</li>
+<li>Circuit board with a microcontroller + Arduino IDE.</li>
+<li>Programmed in a simplified version of C/C++.</li>
+<li><b>Arduino Uno</b> is the most popular board; "Uno" means "one" in Italian.</li>
+<li class="added">Other IoT boards: <b>Raspberry Pi</b> (a full single-board computer running Linux), NodeMCU / ESP8266, ESP32 (built-in Wi-Fi).</li>
+</ul>
+</section>

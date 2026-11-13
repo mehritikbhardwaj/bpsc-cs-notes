@@ -1,0 +1,133 @@
+<section class="chapter" data-title="Number System & Codes" data-pages="84–110">
+<h2>Number System &amp; Codes</h2>
+
+<h3>Types of Number Systems</h3>
+<table>
+<tr><th>System</th><th>Base (radix)</th><th>Digits</th></tr>
+<tr><td>Binary</td><td>2</td><td>0, 1</td></tr>
+<tr><td>Octal</td><td>8</td><td>0 – 7</td></tr>
+<tr><td>Decimal</td><td>10</td><td>0 – 9</td></tr>
+<tr><td>Hexadecimal</td><td>16</td><td>0 – 9, A(10) B(11) C(12) D(13) E(14) F(15)</td></tr>
+</table>
+<div class="fact">A digit must be smaller than the base: (589)<sub>8</sub> is <b>invalid</b> because 8 and 9 are not octal digits.</div>
+
+<h3>Conversions</h3>
+<h4>Any base → Decimal (multiply by place value)</h4>
+<div class="example">(11110)<sub>2</sub> = 1×16 + 1×8 + 1×4 + 1×2 + 0×1 = <b>30</b><br>
+(125)<sub>8</sub> = 1×64 + 2×8 + 5 = <b>85</b><br>
+(5AD)<sub>16</sub> = 5×256 + 10×16 + 13 = <b>1453</b><br>
+(7F)<sub>16</sub> = 7×16 + 15 = <b>127</b></div>
+<h4>Decimal → any base (repeated division, read remainders bottom→top)</h4>
+<div class="example">(25)<sub>10</sub> → 25/2=12 r1, 12/2=6 r0, 6/2=3 r0, 3/2=1 r1, 1/2=0 r1 → <b>11001</b><br>
+(156)<sub>10</sub> = (10011100)<sub>2</sub> = (234)<sub>8</sub> = (9C)<sub>16</sub></div>
+<h4>Octal ↔ Binary (3 bits per digit) — use 4-2-1</h4>
+<div class="example">(537)<sub>8</sub> → 5=101, 3=011, 7=111 → <b>101011111</b><br>
+(632)<sub>8</sub> → 110 011 010<br>
+(1010111100)<sub>2</sub> → make groups of 3 from the right: 001 010 111 100 → <b>(1274)<sub>8</sub></b><br>
+(10101110)<sub>2</sub> → 010 101 110 → <b>(256)<sub>8</sub></b></div>
+<h4>Hexadecimal ↔ Binary (4 bits per digit) — use 8-4-2-1</h4>
+<div class="example">(5AD)<sub>16</sub> → 0101 1010 1101<br>
+(1010110011001)<sub>2</sub> → 0001 0101 1001 1001 → <b>(1599)<sub>16</sub></b></div>
+<h4>Octal ↔ Hex: go through binary.</h4>
+
+<h3>Binary Arithmetic</h3>
+<table>
+<tr><th>A + B</th><th>Sum</th><th>Carry</th></tr>
+<tr><td>0 + 0</td><td>0</td><td>0</td></tr>
+<tr><td>0 + 1</td><td>1</td><td>0</td></tr>
+<tr><td>1 + 0</td><td>1</td><td>0</td></tr>
+<tr><td>1 + 1</td><td>0</td><td>1</td></tr>
+<tr><td>1 + 1 + 1</td><td>1</td><td>1</td></tr>
+</table>
+<p>Subtraction rules: 0−0=0, 1−0=1, 1−1=0, 0−1=1 with borrow 1.</p>
+<div class="example">1010 − 101 = 101 (10 − 5 = 5) &nbsp;|&nbsp; 1100 − 0111 = 0101 (12 − 7 = 5)</div>
+
+<h3>Binary Fractions</h3>
+<p>Place values after the point: 2<sup>−1</sup>=0.5, 2<sup>−2</sup>=0.25, 2<sup>−3</sup>=0.125, 2<sup>−4</sup>=0.0625, 2<sup>−5</sup>=0.03125.</p>
+<div class="example">(0.1011)<sub>2</sub> = 0.5 + 0 + 0.125 + 0.0625 = <b>0.6875</b><br>
+(101.101)<sub>2</sub> = 5 + 0.5 + 0.125 = <b>5.625</b><br>
+(0.11)<sub>2</sub> = 0.75</div>
+<p><b>Decimal fraction → binary:</b> multiply the fraction by 2 repeatedly; collect the whole-number parts <i>top to bottom</i>.</p>
+<div class="example">0.375 × 2 = 0.75 → 0; 0.75 × 2 = 1.5 → 1; 0.5 × 2 = 1.0 → 1 → <b>(0.011)<sub>2</sub></b><br>
+0.15 → 0.3(0), 0.6(0), 1.2(1), 0.4(0), 0.8(0), 1.6(1)… → 0.001001… (repeating)</div>
+
+<h3>Complements</h3>
+<p>Used in digital computers to simplify subtraction and for logical manipulation. For base r: <b>(r−1)'s complement</b> and <b>r's complement</b> = (r−1)'s + 1.</p>
+<table>
+<tr><th>Base</th><th>(r−1)'s</th><th>r's</th></tr>
+<tr><td>2</td><td>1's complement: invert every bit</td><td>2's = 1's + 1</td></tr>
+<tr><td>8</td><td>7's: subtract each digit from 7</td><td>8's = 7's + 1</td></tr>
+<tr><td>10</td><td>9's: subtract each digit from 9</td><td>10's = 9's + 1</td></tr>
+<tr><td>16</td><td>15's: subtract each digit from F</td><td>16's = 15's + 1</td></tr>
+</table>
+<div class="example">1's complement of 110010 = <b>001101</b>; of 1010110 = 0101001<br>
+2's complement of 110100 → 1's = 001011 → +1 = <b>001100</b><br>
+<i>Shortcut for 2's:</i> copy bits from the right up to and including the first 1, then invert the rest.<br>
+9's complement of 45 = 99 − 45 = <b>54</b>; 10's = 55. 9's of 28 = 71; 9's of 12 = 87.<br>
+10's complement of 455 = 999 − 455 + 1 = <b>545</b><br>
+7's complement of (2570)<sub>8</sub> = 5207 → 8's = <b>5210</b><br>
+15's complement of (4D1)<sub>16</sub> = FFF − 4D1 = <b>B2E</b> → 16's = B2F</div>
+
+<h3>Signed Numbers (sign bit)</h3>
+<p>MSB is the sign bit: <b>0 = positive, 1 = negative</b>. Positive numbers are the same in all three forms; negatives differ.</p>
+<table>
+<tr><th>Number (8-bit)</th><th>Sign-magnitude</th><th>1's complement</th><th>2's complement</th></tr>
+<tr><td>+60</td><td>00111100</td><td>00111100</td><td>00111100</td></tr>
+<tr><td>−60</td><td>10111100</td><td>11000011</td><td>11000100</td></tr>
+<tr><td>−5</td><td>10000101</td><td>11111010</td><td>11111011</td></tr>
+<tr><td>−27</td><td>10011011</td><td>11100100</td><td>11100101</td></tr>
+<tr><td>+122</td><td>01111010</td><td>01111010</td><td>01111010</td></tr>
+<tr><td>−72</td><td>11001000</td><td>10110111</td><td>10111000</td></tr>
+</table>
+<div class="fact">Range of n-bit 2's complement: −2<sup>n−1</sup> to +(2<sup>n−1</sup> − 1). For 8 bits: −128 to +127. 1's complement has two zeros (+0, −0); 2's complement has only one.</div>
+
+<h3>BCD (Binary Coded Decimal) – 8421 code</h3>
+<ul>
+<li>Each decimal digit is written as its own 4-bit binary (0000–1001). Codes 1010–1111 are invalid.</li>
+<li>BCD is a <b>weighted code</b> (weights 8-4-2-1).</li>
+</ul>
+<div class="example">(72)<sub>10</sub> in BCD = 0111 0010<br>
+BCD 1001 1000 → 9 8 → (98)<sub>10</sub> = (1100010)<sub>2</sub><br>
+BCD 0010 1000 → 28 → (11100)<sub>2</sub></div>
+
+<h3>Excess-3 Code (XS-3)</h3>
+<ul>
+<li>Non-weighted, <b>self-complementing</b> BCD code. Obtained by adding 3 (0011) to each decimal digit then writing 4-bit binary.</li>
+<li>Codes 0000 and 1111 are never used — helps detect transmission faults.</li>
+</ul>
+<div class="example">Excess-3 of 3 = 3 + 3 = 6 = <b>0110</b><br>
+Excess-3 of 25 → (2+3)(5+3) = 5 8 = <b>0101 1000</b><br>
+Excess-3 of 46 → 7 9 = 0111 1001<br>
+Excess-3 of 272 → 5 10 5 = 0101 1010 0101<br>
+BCD 0100 0110 (46) → XS-3 0111 1001</div>
+
+<h3>Gray Code</h3>
+<ul>
+<li>Also called <b>unit-distance code / reflected binary code</b> — successive code words differ in only one bit.</li>
+<li>Used in error correction, digital communication, rotary encoders, K-maps. Invented by Frank Gray (patented 1953).</li>
+<li>Non-weighted code.</li>
+</ul>
+<h4>Binary → Gray</h4>
+<p>Step 1: copy the MSB. Step 2: XOR each bit with the next bit (add, ignore carry). Repeat.</p>
+<div class="example">1011 → 1, 1⊕0=1, 0⊕1=1, 1⊕1=0 → <b>1110</b><br>
+(18)<sub>10</sub> = 10010 → Gray <b>11011</b><br>
+110010 → 101011</div>
+<h4>Gray → Binary</h4>
+<p>Step 1: copy the MSB. Step 2: XOR the last <i>binary</i> bit obtained with the next Gray bit. Repeat.</p>
+<div class="example">Gray 1110 → 1, 1⊕1=0, 0⊕1=1, 1⊕0=1 → <b>1011</b><br>
+Gray 1001 → <b>1110</b>; Gray 111101 → <b>101001</b></div>
+
+<h3>Character Encoding: ASCII, EBCDIC, Unicode</h3>
+<ul>
+<li><b>ASCII</b> (American Standard Code for Information Interchange) — 7-bit, 128 characters (0–127); proposed by Bob Bemer (1961), approved 1963. <b>Extended ASCII</b> — 8-bit, 256 characters (128–255).</li>
+<li><b>EBCDIC</b> (Extended Binary Coded Decimal Interchange Code) — 8-bit, IBM mainframes.</li>
+<li><b>Unicode</b> — universal character encoding for all languages; initiated 1987 by Joe Becker (Xerox), Lee Collins and Mark Davis (Apple); maintained by the <b>Unicode Consortium</b> (founded 1991); first version 1991. Encodings: UTF-8 (8-bit units, 1–4 bytes), UTF-16, UTF-32.</li>
+</ul>
+<table>
+<tr><th>Character</th><th>ASCII</th><th>Character</th><th>ASCII</th></tr>
+<tr><td>Space</td><td>32</td><td>'0' – '9'</td><td>48 – 57</td></tr>
+<tr><td>'A' – 'Z'</td><td>65 – 90</td><td>'a' – 'z'</td><td>97 – 122</td></tr>
+<tr><td>NULL</td><td>0</td><td>'@'</td><td>64</td></tr>
+</table>
+<div class="fact">'a' − 'A' = 32. Unicode is also known as UTF (Unicode Transformation Format).</div>
+</section>

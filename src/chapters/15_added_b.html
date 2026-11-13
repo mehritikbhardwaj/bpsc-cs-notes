@@ -1,0 +1,159 @@
+<section class="chapter" data-title="Java Basics" data-added="1">
+<h2>Java Basics</h2>
+
+<h3>Introduction</h3>
+<ul>
+<li>Developed by <b>James Gosling</b> (father of Java), Mike Sheridan, Patrick Naughton at <b>Sun Microsystems</b>; released <b>1995</b>. Earlier names: Green Talk, <b>Oak</b>. Now owned by <b>Oracle</b> (acquired Sun in 2010).</li>
+<li>Motto: <b>WORA</b> — "Write Once, Run Anywhere". Source (.java) → compiler (javac) → <b>bytecode</b> (.class) → JVM executes it on any platform.</li>
+<li><b>JDK</b> (Java Development Kit = JRE + development tools) ⊃ <b>JRE</b> (Java Runtime Environment = JVM + libraries) ⊃ <b>JVM</b> (Java Virtual Machine). JIT compiler speeds up execution.</li>
+<li>Features: simple, object-oriented, platform-independent, secure (no explicit pointers), robust (garbage collection, exception handling), multithreaded, portable, distributed.</li>
+<li>Editions: Java SE (standard), Java EE / Jakarta EE (enterprise), Java ME (micro/mobile). Android apps traditionally use Java/Kotlin.</li>
+</ul>
+<pre><code>public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello Bihar");
+    }
+}</code></pre>
+
+<h3>Data Types & Keywords</h3>
+<table>
+<tr><th>Primitive</th><th>Size</th><th>Default</th></tr>
+<tr><td>byte</td><td>1 byte</td><td>0</td></tr>
+<tr><td>short</td><td>2 bytes</td><td>0</td></tr>
+<tr><td>int</td><td>4 bytes</td><td>0</td></tr>
+<tr><td>long</td><td>8 bytes</td><td>0L</td></tr>
+<tr><td>float</td><td>4 bytes</td><td>0.0f</td></tr>
+<tr><td>double</td><td>8 bytes</td><td>0.0d</td></tr>
+<tr><td>char</td><td>2 bytes (Unicode)</td><td>'\u0000'</td></tr>
+<tr><td>boolean</td><td>1 bit (JVM dependent)</td><td>false</td></tr>
+</table>
+<ul>
+<li>Non-primitive: String, arrays, classes, interfaces.</li>
+<li>Access modifiers: public, protected, default (package), private. Non-access: static, final, abstract, synchronized.</li>
+<li><code>final</code> — constant variable / method can't be overridden / class can't be inherited.</li>
+<li><code>this</code> refers to current object; <code>super</code> to parent class.</li>
+</ul>
+
+<h3>OOP in Java</h3>
+<ul>
+<li>Inheritance via <code>extends</code>; Java supports single, multilevel, hierarchical inheritance with classes; <b>multiple inheritance only through interfaces</b> (<code>implements</code>).</li>
+<li><b>Abstract class</b> — can have abstract and concrete methods; can't be instantiated. <b>Interface</b> — fully abstract contract (default/static methods allowed since Java 8).</li>
+<li>Method overloading (compile-time) and overriding (runtime polymorphism).</li>
+<li>Constructors: default and parameterised; no destructor (garbage collector frees memory).</li>
+<li>Exception handling: try, catch, finally, throw, throws. Checked (IOException) vs unchecked (ArithmeticException, NullPointerException).</li>
+<li>Packages: java.lang (default), java.util (Scanner, ArrayList, HashMap), java.io, java.sql (JDBC).</li>
+<li>Strings are immutable; use StringBuilder/StringBuffer for mutable strings.</li>
+<li>Threads: extend <code>Thread</code> or implement <code>Runnable</code>.</li>
+</ul>
+</section>
+
+<section class="chapter" data-title="Society, Law & Ethics" data-added="1">
+<h2>Society, Law &amp; Ethics</h2>
+
+<h3>Digital Footprint & Netiquette</h3>
+<ul>
+<li><b>Digital footprint</b> — trail of data left online. Active (posts, forms you submit) and passive (data collected without your knowledge — cookies, IP, location).</li>
+<li><b>Netiquette</b> — good manners online: be respectful, don't spam, respect privacy and copyright, avoid cyberbullying, use strong passwords.</li>
+<li><b>Digital citizenship</b> — responsible use of technology.</li>
+</ul>
+
+<h3>Intellectual Property Rights (IPR)</h3>
+<ul>
+<li><b>Copyright</b> — protects creative works (books, music, software code) — © symbol. In India: Copyright Act 1957.</li>
+<li><b>Patent</b> — protects inventions (generally 20 years). Patents Act 1970.</li>
+<li><b>Trademark</b> — protects brand names, logos (™, ®). Trade Marks Act 1999.</li>
+<li><b>Plagiarism</b> — using others' work without credit. <b>Licensing</b>: GPL (copyleft), Apache, MIT, Creative Commons (CC BY, CC BY-SA…).</li>
+<li><b>FOSS</b>: Free and Open Source Software — e.g. Linux, Firefox, LibreOffice, GIMP, Python, MySQL. Free Software Foundation by Richard Stallman (1985).</li>
+</ul>
+
+<h3>Cyber Crime & IT Act 2000</h3>
+<ul>
+<li><b>Information Technology Act, 2000</b> — India's main cyber law; passed 9 June 2000, effective <b>17 October 2000</b>; amended in <b>2008</b>. Gives legal recognition to e-records and digital signatures; based on UNCITRAL Model Law on e-commerce.</li>
+<li>Key sections: <b>43</b> (damage to computer — compensation), <b>65</b> (tampering with source code), <b>66</b> (computer-related offences / hacking), <b>66C</b> (identity theft), <b>66D</b> (cheating by impersonation), <b>66E</b> (privacy violation), <b>66F</b> (cyber terrorism — up to life imprisonment), <b>67</b> (publishing obscene material). Section 66A was struck down by the Supreme Court (Shreya Singhal case, 2015).</li>
+<li>Controller of Certifying Authorities (CCA) issues licences for digital signatures.</li>
+<li><b>Digital Personal Data Protection (DPDP) Act, 2023</b> — India's data protection law; Data Protection Board; rules notified in 2025.</li>
+<li>Cyber crimes: hacking, phishing, identity theft, cyberbullying, cyberstalking, online fraud, child pornography, software piracy, ransomware.</li>
+<li>Reporting: <b>cybercrime.gov.in</b>, helpline <b>1930</b>.</li>
+</ul>
+
+<h3>E-waste & Health</h3>
+<ul>
+<li><b>E-waste</b> — discarded electronic devices containing lead, mercury, cadmium. Management: Reduce, Reuse, Recycle. India: E-Waste (Management) Rules 2016, updated 2022.</li>
+<li>Health concerns of technology: eye strain (20-20-20 rule), repetitive strain injury, bad posture, internet/gaming addiction, sleep problems. <b>Ergonomics</b> — designing workplaces for comfort.</li>
+</ul>
+
+<h3>Digital India & E-Governance</h3>
+<ul>
+<li><b>Digital India</b> launched 1 July 2015. Initiatives: DigiLocker, UMANG app, Aadhaar, BHIM-UPI (NPCI, 2016), e-Hospital, e-Sign, BharatNet, CSC (Common Service Centres), MyGov, DIKSHA, SWAYAM.</li>
+<li><b>NIC</b> (National Informatics Centre, 1976) — government IT services. <b>C-DAC</b> (1988, Pune) — supercomputers. <b>MeitY</b> — Ministry of Electronics and IT.</li>
+<li>Bihar: e-Kalyan, RTPS portal, Bihar Bhumi, Saat Nischay (7 resolves) — includes computer education in schools.</li>
+<li>Gender &amp; disability issues in computing: accessibility (screen readers, Braille keyboards), bridging the digital divide.</li>
+</ul>
+</section>
+
+<section class="chapter" data-title="Emerging Trends" data-added="1">
+<h2>Emerging Trends</h2>
+
+<h3>Big Data & Data Science</h3>
+<ul>
+<li>Extremely large data sets. 5 V's: <b>Volume, Velocity, Variety, Veracity, Value</b>.</li>
+<li>Tools: Hadoop, Apache Spark, NoSQL databases. Data mining, data warehousing (OLAP vs OLTP), data analytics.</li>
+</ul>
+
+<h3>Blockchain</h3>
+<ul>
+<li>Decentralised, distributed digital ledger; blocks linked by cryptographic hashes; immutable. Concept from Satoshi Nakamoto's Bitcoin paper (2008); Bitcoin launched 2009.</li>
+<li>Uses: cryptocurrency, smart contracts (Ethereum, 2015), supply chain, land records, voting. India's Digital Rupee (e₹) — CBDC by RBI (pilot 2022).</li>
+</ul>
+
+<h3>AR, VR, MR</h3>
+<ul>
+<li><b>VR</b> (Virtual Reality) — fully immersive computer-generated environment (Meta Quest headsets).</li>
+<li><b>AR</b> (Augmented Reality) — digital content over the real world (Pokémon Go, Snapchat filters).</li>
+<li><b>MR</b> (Mixed Reality) — real and virtual objects interact (Microsoft HoloLens, Apple Vision Pro).</li>
+</ul>
+
+<h3>Other Trends</h3>
+<ul>
+<li><b>Generative AI &amp; LLMs</b> — ChatGPT, Gemini, Claude; generate text, images (DALL·E, Midjourney), code.</li>
+<li><b>Quantum computing</b> — uses qubits (superposition, entanglement). National Quantum Mission (India, 2023).</li>
+<li><b>Edge / fog computing</b> — processing near the data source to reduce latency.</li>
+<li><b>5G / 6G</b> — 5G launched in India on 1 October 2022.</li>
+<li><b>Robotics &amp; drones</b>, <b>3D printing</b> (additive manufacturing), <b>digital twins</b>, <b>Web 3.0</b> (decentralised web), <b>Metaverse</b>.</li>
+<li><b>Grid computing</b> — many computers work together on one task.</li>
+<li><b>Smart cities</b>, <b>wearables</b>, <b>NLP</b> (machine translation — Bhashini mission in India).</li>
+</ul>
+</section>
+
+<section class="chapter" data-title="Quick Revision: One-liners" data-added="1">
+<h2>Quick Revision: One-liners</h2>
+<h3>Fathers & Firsts</h3>
+<table>
+<tr><th>Topic</th><th>Answer</th></tr>
+<tr><td>Father of computer</td><td>Charles Babbage</td></tr>
+<tr><td>Father of modern computer / TCS / AI test</td><td>Alan Turing</td></tr>
+<tr><td>Father of AI</td><td>John McCarthy</td></tr>
+<tr><td>Father of Internet</td><td>Vint Cerf (with Bob Kahn)</td></tr>
+<tr><td>Inventor of WWW</td><td>Tim Berners-Lee</td></tr>
+<tr><td>Father of relational DB</td><td>E. F. Codd</td></tr>
+<tr><td>Father of computer architecture</td><td>John von Neumann</td></tr>
+<tr><td>First programmer</td><td>Ada Lovelace</td></tr>
+<tr><td>Father of C / C++ / Java / Python / Linux</td><td>Dennis Ritchie / Bjarne Stroustrup / James Gosling / Guido van Rossum / Linus Torvalds</td></tr>
+<tr><td>Father of IoT term</td><td>Kevin Ashton (1999)</td></tr>
+<tr><td>Father of ER model</td><td>Peter Chen (1976)</td></tr>
+<tr><td>Father of Boolean algebra</td><td>George Boole (1854)</td></tr>
+<tr><td>Father of Indian supercomputer</td><td>Vijay Bhatkar (PARAM 8000)</td></tr>
+<tr><td>Father of cloud concept</td><td>J. C. R. Licklider</td></tr>
+<tr><td>Father of e-mail</td><td>Ray Tomlinson (1971)</td></tr>
+</table>
+<h3>Numbers to Remember</h3>
+<ul>
+<li>OSI = 7 layers; TCP/IP = 4 (or 5). IPv4 = 32 bits, IPv6 = 128 bits, MAC = 48 bits. Ports = 16 bits (0–65535).</li>
+<li>HTTP 80, HTTPS 443, FTP 20/21, SSH 22, Telnet 23, SMTP 25, DNS 53, DHCP 67/68, POP3 110, IMAP 143.</li>
+<li>ASCII 7-bit (128), extended 8-bit (256). Unicode UTF-8/16/32.</li>
+<li>C keywords 32; C++ 95; Python 35; Java ~50 (+ reserved literals).</li>
+<li>Codd's rules: 13 (0–12). Normal forms: 1NF, 2NF, 3NF, BCNF, 4NF, 5NF. Coffman deadlock conditions: 4.</li>
+<li>Truth-table rows = 2ⁿ; K-map cells = 2ⁿ; hosts in subnet = 2ʰ − 2; full-mesh links = n(n−1)/2.</li>
+<li>CMM levels = 5; SDLC stages = 7; ML steps = 7.</li>
+</ul>
+</section>

@@ -1,0 +1,138 @@
+<section class="chapter" data-title="Computer Architecture & Memory" data-pages="111–130">
+<h2>Computer Architecture &amp; Memory</h2>
+
+<h3>Computer Organization & CPU</h3>
+<ul>
+<li>Father of computer architecture: <b>John von Neumann</b> (stored-program concept — program and data stored in the same memory).</li>
+<li>Parts of a computer: CPU, memory, input devices, output devices.</li>
+<li><b>CPU</b> (Central Processing Unit) = processor / microprocessor; "brain of the computer". Understands only <b>machine language (binary)</b>.</li>
+<li>CPU speed measured in Hertz — MHz, GHz. Also MIPS (Million Instructions Per Second), KIPS (Kilo IPS).</li>
+<li>Parts of CPU: <b>CU</b> (Control Unit — controls input/output, decodes instructions), <b>ALU</b> (Arithmetic Logic Unit — executes arithmetic &amp; logical operations; result stored in <b>accumulator</b>), <b>MU</b> (Memory unit — registers, fastest memory).</li>
+<li><b>Machine (instruction) cycle</b>: Fetch → Decode → Execute (→ Store).</li>
+<li><b>System bus</b>: address bus (unidirectional), data bus (bidirectional), control bus.</li>
+</ul>
+
+<h3>CPU Architecture Types</h3>
+<table>
+<tr><th>CISC</th><th>RISC</th></tr>
+<tr><td>Complex Instruction Set Computer</td><td>Reduced Instruction Set Computer</td></tr>
+<tr><td>Many complex, variable-length instructions</td><td>Few simple, fixed-length instructions</td></tr>
+<tr><td>Multi-cycle instructions, fewer registers</td><td>Mostly single-cycle, many registers, pipelining</td></tr>
+<tr><td>Intel 386, 486, Pentium (x86), Motorola 68000</td><td>ARM, IBM RS6000, MIPS, DEC Alpha, SPARC</td></tr>
+</table>
+<ul>
+<li><b>EPIC</b> = Explicitly Parallel Instruction Computing (Intel Itanium IA-64).</li>
+<li><b>ARM</b> = Advanced RISC Machine (used in mobiles). <b>SMPS</b> = Switched Mode Power Supply.</li>
+<li><b>GPU</b> (Graphics Processing Unit) — graphics card; parallel processing; used in gaming, AI. Term popularised by NVIDIA (GeForce 256, 1999); "GPU" was earlier used by Sony for PlayStation.</li>
+</ul>
+
+<h3>Microprocessor</h3>
+<ul>
+<li>First microprocessor: <b>Intel 4004</b> (4-bit), 1971.</li>
+<li>Intel = Integrated Electronics; AMD = Advanced Micro Devices.</li>
+<li>Types of CPU by cores: single (Intel 4004), dual, quad, hexa (6), octa (8), deca (10).</li>
+<li><b>8085</b>: Intel, 1976 (notes say 1977), 8-bit data bus, 16-bit address bus (64 KB), 40 pins; 3rd-gen use in home appliances.</li>
+<li><b>8086</b>: 16-bit data, <b>20-bit address</b> (1 MB memory).</li>
+</ul>
+<table>
+<tr><th>Generation</th><th>Bits</th><th>Examples</th></tr>
+<tr><td>1st (1971)</td><td>4-bit</td><td>Intel 4004, 4040</td></tr>
+<tr><td>2nd (1973)</td><td>8-bit</td><td>8008, 8080, 8085</td></tr>
+<tr><td>3rd (1978)</td><td>16-bit</td><td>8086, 8088, 80186, 80286</td></tr>
+<tr><td>4th (1985)</td><td>32-bit</td><td>80386, 80486, Pentium</td></tr>
+<tr><td>5th (1995+)</td><td>64-bit</td><td>Intel Core 2, i3/i5/i7/i9, Xeon</td></tr>
+</table>
+<p>Applications: computers, embedded systems, industrial automation, automobiles, telecommunication.</p>
+
+<h3>Memory Hierarchy</h3>
+<p>Fastest → slowest: <b>Registers → Cache → Main memory (RAM) → Secondary storage (HDD/SSD) → Tertiary (tape)</b>. Speed and cost per bit decrease, capacity increases going down.</p>
+<ul>
+<li><b>Primary / internal / main memory</b>: RAM, ROM (semiconductor memory). Cache &amp; registers are also considered primary.</li>
+<li><b>Secondary / external memory</b>: HDD, SSD, CD, DVD, Blu-ray, pen drive, memory card.</li>
+</ul>
+
+<h3>RAM</h3>
+<ul>
+<li>Random Access Memory — temporary, <b>volatile</b>, read + write. Founder (DRAM): <b>Robert Heath Dennard</b> (IBM, 1966).</li>
+<li><b>SRAM</b> (Static) — made of transistors/flip-flops; fastest; no refresh; used for cache memory; costly.</li>
+<li><b>DRAM</b> (Dynamic) — made of capacitors; slower; needs refreshing; used as main memory in PCs/mobiles.</li>
+<li>DRAM types: SDRAM (Synchronous DRAM), DDR SDRAM (Double Data Rate) — DDR1, DDR2, DDR3, DDR4, DDR5.</li>
+</ul>
+
+<h3>ROM</h3>
+<ul>
+<li>Read Only Memory — <b>non-volatile</b>, permanent; stores BIOS / firmware (firmware = hardware + software); helps in booting.</li>
+<li><b>PROM</b> — Programmable ROM, written once, no editing (Wen Tsing Chow, 1956).</li>
+<li><b>EPROM</b> — Erasable PROM, erased by <b>UV rays</b> (Dov Frohman, 1971).</li>
+<li><b>EEPROM</b> — Electrically Erasable PROM, erased by electric signals (George Perlegos).</li>
+<li><b>Flash memory</b> — type of EEPROM: pen drive, memory card, SSD (invented by Fujio Masuoka, Toshiba).</li>
+<li><b>Booting</b>: loading the OS from secondary storage into RAM. Cold boot (power on) / warm boot (restart). BIOS → POST (Power-On Self-Test) → bootloader.</li>
+</ul>
+
+<h3>Cache Memory</h3>
+<ul>
+<li>2nd fastest memory; volatile; small (KB – MB); located between CPU and RAM; stores frequently used instructions &amp; data.</li>
+<li>Data found in cache = <b>hit</b>; not found = <b>miss</b>. Performance measured by <b>hit ratio</b> = hits / (hits + misses).</li>
+<li>Levels: L1 (inside core, fastest), L2, L3 (shared).</li>
+<li><b>LRU</b> (Least Recently Used) — common cache replacement policy: discards the least recently used item first when the cache is full.</li>
+<li>Word transfer: CPU ↔ cache; block transfer: cache ↔ main memory.</li>
+<li><b>Cache mapping</b>: Direct, Associative (fully), Set-associative.</li>
+</ul>
+
+<h3>Registers</h3>
+<ul>
+<li>Fastest memory; inside CPU; collection of flip-flops. Holds 32/64 bits. CPU word size = register size.</li>
+<li>Functions: fetch, decode, execute.</li>
+</ul>
+<table>
+<tr><th>Register</th><th>Use</th></tr>
+<tr><td>Accumulator (AC)</td><td>Stores data/results for ALU</td></tr>
+<tr><td>Memory Address Register (MAR)</td><td>Address of memory location to access</td></tr>
+<tr><td>Memory Data / Buffer Register (MDR/MBR)</td><td>Data read from / written to memory</td></tr>
+<tr><td>Instruction Register (IR)</td><td>Holds the current instruction</td></tr>
+<tr><td>Program Counter (PC)</td><td>Address of the <b>next</b> instruction</td></tr>
+<tr><td>Temporary register</td><td>Intermediate data</td></tr>
+<tr><td>Input / Output register</td><td>I/O data</td></tr>
+</table>
+<p><b>Latch vs Register:</b> a latch holds 1 bit and is asynchronous (level-triggered, no clock); a register is a group of flip-flops with a clock (edge-triggered) storing multiple bits.</p>
+
+<h3>Virtual, Buffer & Flash Memory</h3>
+<ul>
+<li><b>Virtual memory</b> — illusion of a larger RAM; uses secondary storage; swap in/swap out; implemented via paging/segmentation (page replacement).</li>
+<li><b>Buffer</b> — temporary storage in RAM to hold data before use (e.g. video buffering: first part downloaded then played).</li>
+<li><b>Flash</b> — pen drive (USB stick), memory stick, SD card, SSD.</li>
+</ul>
+
+<h3>Memory Units</h3>
+<table>
+<tr><th>Unit</th><th>Value</th><th>Binary (IEC)</th><th>Value</th></tr>
+<tr><td>Bit</td><td>0 or 1</td><td></td><td></td></tr>
+<tr><td>Nibble</td><td>4 bits</td><td></td><td></td></tr>
+<tr><td>Byte</td><td>8 bits</td><td></td><td></td></tr>
+<tr><td>Kilobyte (KB)</td><td>1024 B</td><td>Kibibyte (KiB)</td><td>2<sup>10</sup> B</td></tr>
+<tr><td>Megabyte (MB)</td><td>1024 KB</td><td>Mebibyte (MiB)</td><td>2<sup>20</sup> B</td></tr>
+<tr><td>Gigabyte (GB)</td><td>1024 MB</td><td>Gibibyte</td><td>2<sup>30</sup></td></tr>
+<tr><td>Terabyte (TB)</td><td>1024 GB</td><td>Tebibyte</td><td>2<sup>40</sup></td></tr>
+<tr><td>Petabyte (PB)</td><td>1024 TB</td><td>Pebibyte</td><td>2<sup>50</sup></td></tr>
+<tr><td>Exabyte (EB)</td><td>1024 PB</td><td>Exbibyte</td><td>2<sup>60</sup></td></tr>
+<tr><td>Zettabyte (ZB)</td><td>1024 EB</td><td>Zebibyte</td><td>2<sup>70</sup></td></tr>
+<tr><td>Yottabyte (YB)</td><td>1024 ZB</td><td>Yobibyte</td><td>2<sup>80</sup></td></tr>
+<tr><td>Brontobyte, Geopbyte</td><td>(unofficial, larger)</td><td></td><td></td></tr>
+</table>
+<p>Decimal (SI) units: 1 KB = 10<sup>3</sup> B, 1 MB = 10<sup>6</sup>, 1 GB = 10<sup>9</sup>, 1 TB = 10<sup>12</sup> … (used by disk manufacturers). Newer SI prefixes: Ronnabyte (10<sup>27</sup>) and Quettabyte (10<sup>30</sup>).</p>
+
+<h3>SIMM vs DIMM</h3>
+<ul>
+<li><b>SIMM</b> — Single In-line Memory Module: 30 / 72 pins; 32-bit data path; 4 MB – 64 MB; 5 V.</li>
+<li><b>DIMM</b> — Dual In-line Memory Module: 168 / 184 / 240 / 288 pins; 64-bit; 32 MB – many GB; 3.3 V or lower. SO-DIMM for laptops.</li>
+</ul>
+
+<h3 class="added">Secondary Storage Devices</h3>
+<ul>
+<li><b>HDD</b> — magnetic platters, tracks &amp; sectors; first HDD IBM 350 (1956, 5 MB).</li>
+<li><b>SSD</b> — flash-based, no moving parts, faster.</li>
+<li><b>Optical</b>: CD (~700 MB), DVD (4.7 GB single layer), Blu-ray (25 GB single layer) — read by laser.</li>
+<li><b>Magnetic tape</b> — sequential access, used for backup.</li>
+<li>Disk access time = seek time + rotational latency + transfer time.</li>
+</ul>
+</section>

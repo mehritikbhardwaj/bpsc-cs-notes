@@ -1,0 +1,92 @@
+<section class="chapter" data-title="Software Engineering" data-pages="220–237">
+<h2>Software Engineering</h2>
+
+<h3>SDLC (Software Development Life Cycle)</h3>
+<p>7 stages: <b>Planning → Requirement Analysis → Design → Development (coding) → Testing → Deployment → Maintenance</b>.</p>
+<table>
+<tr><th>Stage</th><th>Question / Activity</th></tr>
+<tr><td>Planning</td><td>What do we want? Cost, resources, feasibility, risk</td></tr>
+<tr><td>Requirement analysis</td><td>What are the current problems? SWOT (Strength, Weakness, Opportunity, Threat); SRS document</td></tr>
+<tr><td>Design</td><td>How will we get what we want? Algorithms, flowcharts, architecture (HLD/LLD)</td></tr>
+<tr><td>Development</td><td>Coding &amp; programming</td></tr>
+<tr><td>Testing</td><td>Did we get what we want? Bug fixing + quality analysis</td></tr>
+<tr><td>Deployment</td><td>Installation — start using what we got</td></tr>
+<tr><td>Maintenance</td><td>Updating &amp; upgrading — get it closer to what we want</td></tr>
+</table>
+
+<h3>SDLC Models</h3>
+<ol>
+<li><b>Waterfall</b> — first SDLC model; linear sequential; next phase starts only when previous is complete; by <b>Winston W. Royce</b> (1970). Good when requirements are fixed.</li>
+<li><b>V-shaped</b> — Verification &amp; Validation model; testing at each step. Left side = verification (QA team, focus on process); right side = validation (testers, focus on product).</li>
+<li><b>Prototype</b> — dummy prototype built before actual software; customer feedback; refined prototype; good when requirements are unclear.</li>
+<li><b>Spiral</b> — iterative (loops) + prototype; by Barry Boehm (1986); risk-driven. 4 phases: planning, risk analysis, engineering, evaluation. Best for large, risky projects.</li>
+<li><b>Iterative &amp; incremental</b> (RUP) — product divided into small chunks. Phases: inception, elaboration, construction, transition.</li>
+<li><b>Big Bang</b> — no defined process, little planning; small projects; no testing team.</li>
+<li><b>Agile</b> — iterative + incremental; continuous collaboration and improvement; work broken into short phases called <b>sprints</b> (1–4 weeks). Agile Manifesto 2001.</li>
+<li><b>RAD</b> (Rapid Application Development) — modification of incremental model; prototyping; less planning, more development; high speed. Phases: business modelling → data modelling → process modelling → application generation → testing &amp; turnover.</li>
+<li><b>Scrum</b> — Agile framework; focuses on teamwork for timely delivery. Roles: Product Owner, Scrum Master, Development Team. Daily stand-up, sprint review, retrospective.</li>
+<li><b>Kanban</b> — Japanese for "card you can see"; visual task board to manage workflow; Just-in-Time; reduces time to complete tasks.</li>
+<li><b>COCOMO</b> (Constructive Cost Model) — regression cost-estimation model based on LOC (lines of code); by <b>Barry Boehm</b>, 1981. Project types: organic, semi-detached, embedded.</li>
+</ol>
+
+<h3>CASE Tools</h3>
+<ul>
+<li>Computer-Aided Software Engineering tools for high quality, defect-free software. Central component: <b>repository</b> (stores all information).</li>
+<li><b>Upper CASE</b> — planning, analysis, design. <b>Lower CASE</b> — implementation, testing, maintenance. <b>Integrated CASE</b> — all stages.</li>
+</ul>
+
+<h3>Quality, Cohesion & Coupling</h3>
+<ul>
+<li><b>SQA</b> (Software Quality Assurance) — process running parallel to development to assure quality. Focus: portability, usability, reusability, correctness, maintainability, error control.</li>
+<li><b>Cohesion</b> — measure of how strongly elements <i>within</i> a module are related. <b>High cohesion is good</b>.</li>
+<li><b>Coupling</b> — degree of interdependence <i>between</i> modules. <b>Low coupling is good</b> (changes in one module have little impact on others).</li>
+<li>Goal of software engineering: meet user requirements within budget, schedule and time constraints.</li>
+<li>Requirements: functional, non-functional (performance, security), domain, system.</li>
+<li><b>ISO 9000</b> — quality assurance standards. <b>SEI-CMM</b> (Software Engineering Institute — Capability Maturity Model) — benchmark of an organization's software process maturity; 5 levels:</li>
+</ul>
+<ol><li>Initial (chaotic, ad hoc)</li><li>Repeatable (size &amp; cost — COCOMO)</li><li>Defined (documentation)</li><li>Managed (metrics — product &amp; process)</li><li>Optimizing (process improvement)</li></ol>
+
+<h3>Software Maintenance (4 types)</h3>
+<ol>
+<li><b>Corrective</b> — fixing errors &amp; bugs.</li>
+<li><b>Adaptive</b> — modifying software to adapt to environment changes (new OS/hardware).</li>
+<li><b>Perfective</b> — improving functionality, performance, reliability; restructuring.</li>
+<li><b>Preventive</b> — increasing future maintainability, preventing problems (taking backups, refactoring).</li>
+</ol>
+
+<h3>Software Testing</h3>
+<ol>
+<li><b>Alpha testing</b> — at developer's site by internal team in a virtual user environment; at end of development, before beta.</li>
+<li><b>Beta testing</b> — by real customers/users in the real environment before release.</li>
+<li><b>Acceptance testing (UAT)</b> — client verifies whether the system meets business requirements.</li>
+<li><b>Ad-hoc testing</b> — informal, no plan/documentation; anyone in the project can do it.</li>
+<li><b>Accessibility testing</b> — checks software is usable by disabled people (font size, contrast, screen readers).</li>
+<li><b>Back-end (database) testing</b> — tables, schema, stored procedures; GUI not involved.</li>
+<li><b>Browser compatibility</b> — web app works on different browsers/OS.</li>
+<li><b>Backward compatibility</b> — new version works with files/data of older versions.</li>
+<li><b>Black-box testing</b> — internal code <i>not</i> visible to tester; based on requirements; behavioural testing.</li>
+<li><b>White-box testing</b> — code visible to tester; also called glass-box, clear-box, open-box, transparent testing.</li>
+<li><b>Grey-box</b> — partial knowledge of internals.</li>
+<li><b>Unit testing</b> — individual modules; done by programmers.</li>
+<li><b>Integration testing</b> — combined modules tested as a group (top-down, bottom-up, big-bang); checks interfaces.</li>
+<li><b>System testing</b> — complete integrated system.</li>
+<li><b>Smoke testing (build verification)</b> — new build is stable enough for further testing.</li>
+<li><b>Sanity testing</b> — quick check of specific functions after small changes (login, menus).</li>
+<li><b>Regression testing</b> — re-testing after changes to ensure old features still work.</li>
+<li><b>Interface / GUI testing</b> — GUI meets requirements; look and feel.</li>
+<li><b>Boundary value testing</b> — tests at upper and lower boundaries of input ranges.</li>
+<li><b>Gorilla testing</b> — one module tested repeatedly (hundreds of times) — "frustrating testing"; checks robustness.</li>
+<li class="added"><b>Performance testing</b> — load (expected load), stress (beyond limits), volume, scalability.</li>
+<li class="added"><b>Monkey testing</b> — random inputs without test cases. <b>Exploratory testing</b> — learning + testing together.</li>
+</ol>
+<h4 class="added">Verification vs Validation</h4>
+<p><b>Verification</b>: "Are we building the product right?" — reviews, walkthroughs, inspections (static). <b>Validation</b>: "Are we building the right product?" — actual testing (dynamic).</p>
+<h4 class="added">Other key terms</h4>
+<ul>
+<li><b>SRS</b> — Software Requirement Specification document.</li>
+<li><b>Function Point</b> analysis — size measure based on functionality (Allan Albrecht, IBM).</li>
+<li><b>Cyclomatic complexity</b> (McCabe) = E − N + 2P (edges, nodes, connected components) — number of independent paths.</li>
+<li><b>DFD</b> (Data Flow Diagram) levels 0, 1, 2; <b>UML</b> diagrams (use-case, class, sequence, activity).</li>
+<li>Error → fault/defect/bug → failure.</li>
+</ul>
+</section>

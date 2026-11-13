@@ -1,0 +1,225 @@
+<section class="chapter" data-title="Computer Networking" data-pages="1–25">
+<h2>Computer Networking</h2>
+
+<h3>Introduction & History</h3>
+<ul>
+<li><b>Computer networking</b>: interconnected computing devices that exchange data and share resources with each other.</li>
+<li><b>First network:</b> ARPANET (Advanced Research Projects Agency Network) — USA, Department of Defense, <b>1969</b>.</li>
+<li>TCP/IP was developed for ARPANET by <b>Vint Cerf &amp; Bob Kahn</b> (called "Fathers of the Internet").</li>
+<li>Before TCP/IP, ARPANET used <b>NCP</b> (Network Control Protocol).</li>
+<li>First e-mail was sent over ARPANET in <b>1971</b> by <b>Ray Tomlinson</b> (he also introduced the <code>@</code> sign in addresses).</li>
+<li><b>1 January 1983</b> — ARPANET switched to TCP/IP: the "official birthday of the Internet".</li>
+<li>First public internet service in India: <b>VSNL</b> (Videsh Sanchar Nigam Limited) on <b>15 August 1995</b>.</li>
+<li>WWW invented by <b>Tim Berners-Lee</b> (1989, CERN).</li>
+</ul>
+
+<h3>Networking Models: OSI & TCP/IP</h3>
+<p>A networking model is a set of guidelines and standards that define how data is transmitted and received over a network.</p>
+<ul>
+<li><b>TCP/IP model</b> (1970s–1982) — adopted as the standard protocol suite of ARPANET in 1983. Practical model actually used on the Internet.</li>
+<li><b>OSI model</b> (Open Systems Interconnection) — published by <b>ISO</b> (International Organization for Standardization) in <b>1984</b>. 7 layers. It is a <b>reference/conceptual model</b>, not practically implemented as such. Purpose: describe how data travels in a network.</li>
+</ul>
+<table>
+<tr><th>#</th><th>OSI Layer</th><th>Main job</th><th>PDU</th><th>Devices / Protocols</th></tr>
+<tr><td>7</td><td>Application</td><td>Network services to user applications</td><td>Data</td><td>Gateway; HTTP, FTP, SMTP, DNS, Telnet</td></tr>
+<tr><td>6</td><td>Presentation</td><td>Translation, encryption/decryption, compression</td><td>Data</td><td>ASCII, EBCDIC, JPEG, MPEG, GIF, PNG</td></tr>
+<tr><td>5</td><td>Session</td><td>Session management, synchronization, dialog control</td><td>Data</td><td>NetBIOS, RPC</td></tr>
+<tr><td>4</td><td>Transport</td><td>End-to-end delivery, reliability, flow & error control</td><td>Segment</td><td>Firewall; TCP, UDP</td></tr>
+<tr><td>3</td><td>Network</td><td>Logical addressing (IP), routing</td><td>Packet</td><td>Router, Layer-3 switch; IP, ICMP, ARP</td></tr>
+<tr><td>2</td><td>Data Link</td><td>Physical (MAC) addressing, framing, error detection</td><td>Frame</td><td>Switch, Bridge; Ethernet, PPP</td></tr>
+<tr><td>1</td><td>Physical</td><td>Transmits raw bits over the medium</td><td>Bit</td><td>Hub, Repeater, Modem, Cables</td></tr>
+</table>
+<div class="fact"><b>Trick (top→down):</b> <i>All People Seem To Need Data Processing</i>. Bottom→up: <i>Please Do Not Throw Sausage Pizza Away</i>. Layers 1–3 = hardware/"media" layers; 5–7 = software/"host" layers; Transport = "heart of OSI". PDU = Protocol Data Unit.</div>
+
+<h4>Layer details</h4>
+<ul>
+<li><b>Physical layer:</b> physical connection, topology, transmission mode (simplex/half/full duplex), bit synchronization, bit-rate control.</li>
+<li><b>Data Link layer:</b> MAC (Ethernet) addressing, error-free transfer of frames, flow control, error control. Node-to-node delivery. Two sub-layers: <b>LLC</b> (Logical Link Control — error/flow control) and <b>MAC</b> (Media Access Control — 48-bit physical address on NIC).</li>
+<li><b>Network layer:</b> routing &amp; forwarding of packets, internetworking, logical (IP) addressing, source-to-destination (host-to-host) delivery.</li>
+<li><b>Transport layer:</b> end-to-end / process-to-process delivery using <b>port numbers</b>, acknowledgement, segmentation. TCP = connection-oriented, UDP = connectionless. TLS/SSL also operate around here.</li>
+<li><b>Session layer:</b> session establishment &amp; management, synchronization (checkpoints), dialog &amp; token management.</li>
+<li><b>Presentation layer:</b> also called translation/syntax layer — translation, encryption, compression.</li>
+<li><b>Application layer:</b> also called desktop layer; closest to the end user. Network virtual terminal, file transfer (FTAM), mail services, directory services.</li>
+</ul>
+<div class="fact">A <b>firewall</b> can work at layers 3, 4 and 7 of OSI.</div>
+
+<h4>TCP/IP model</h4>
+<table>
+<tr><th>Original (4 layers)</th><th>Updated (5 layers)</th><th>OSI equivalent</th></tr>
+<tr><td>Application</td><td>Application</td><td>Application + Presentation + Session</td></tr>
+<tr><td>Transport (Host-to-Host)</td><td>Transport</td><td>Transport</td></tr>
+<tr><td>Internet</td><td>Network</td><td>Network</td></tr>
+<tr><td rowspan="2">Network Access (Link)</td><td>Data Link</td><td>Data Link</td></tr>
+<tr><td>Physical</td><td>Physical</td></tr>
+</table>
+<p>Session and Presentation layers are absent in TCP/IP (their work is done by the Application layer).</p>
+
+<h4 class="added">TCP vs UDP</h4>
+<table>
+<tr><th>TCP</th><th>UDP</th></tr>
+<tr><td>Connection-oriented (3-way handshake: SYN, SYN-ACK, ACK)</td><td>Connectionless</td></tr>
+<tr><td>Reliable, ordered, acknowledgement & retransmission</td><td>Unreliable, no acknowledgement</td></tr>
+<tr><td>Slower, header 20–60 bytes</td><td>Faster, header 8 bytes</td></tr>
+<tr><td>HTTP, FTP, SMTP, Telnet</td><td>DNS, DHCP, VoIP, video streaming, online gaming</td></tr>
+</table>
+<div class="fact">Checksum in TCP header = 16 bits. Port number size = 16 bits (0–65535). IP is also connectionless.</div>
+
+<h3>IEEE 802 Standards</h3>
+<p><b>IEEE</b> = Institute of Electrical and Electronics Engineers. Purpose: foster technological innovation and excellence for the benefit of humanity.</p>
+<table>
+<tr><th>Standard</th><th>Topic</th><th>Standard</th><th>Topic</th></tr>
+<tr><td>802.1</td><td>LAN protocols / bridging</td><td>802.10</td><td>Network security</td></tr>
+<tr><td>802.2</td><td>Logical Link Control (LLC)</td><td>802.11</td><td>Wireless LAN (Wi-Fi)</td></tr>
+<tr><td>802.3</td><td>Ethernet (wired LAN)</td><td>802.12</td><td>Demand priority</td></tr>
+<tr><td>802.4</td><td>Token Bus</td><td>802.14</td><td>Cable modems</td></tr>
+<tr><td>802.5</td><td>Token Ring</td><td>802.15</td><td>Wireless PAN</td></tr>
+<tr><td>802.6</td><td>MAN</td><td>802.15.1</td><td>Bluetooth</td></tr>
+<tr><td>802.7</td><td>Broadband LAN</td><td>802.15.4</td><td>ZigBee (LR-WPAN)</td></tr>
+<tr><td>802.8</td><td>Fibre optic</td><td>802.15.5</td><td>Mesh network</td></tr>
+<tr><td>802.9</td><td>Integrated voice/data</td><td>802.16</td><td>WiMAX (Wireless MAN)</td></tr>
+</table>
+<p>WiMAX = Worldwide Interoperability for Microwave Access.</p>
+
+<h3>IP Address & MAC Address</h3>
+<table>
+<tr><th>Address</th><th>Size</th><th>Notation</th></tr>
+<tr><td>IPv4</td><td>32 bits (4 bytes)</td><td>Dotted decimal, e.g. 192.168.1.1</td></tr>
+<tr><td>IPv6</td><td>128 bits (16 bytes)</td><td>Hexadecimal, colon separated (8 groups)</td></tr>
+<tr><td>MAC</td><td>48 bits (6 bytes)</td><td>12 hex digits, e.g. 00:1A:3F:F1:4C:C6</td></tr>
+</table>
+<h4>IPv4 classes</h4>
+<table>
+<tr><th>Class</th><th>First octet range</th><th>Leading bits</th><th>Network/Host</th><th>Default mask</th><th>Use</th></tr>
+<tr><td>A</td><td>1 – 126 (127 = loopback)</td><td>0</td><td>N.H.H.H</td><td>255.0.0.0</td><td>Unicast, very large networks</td></tr>
+<tr><td>B</td><td>128 – 191</td><td>10</td><td>N.N.H.H</td><td>255.255.0.0</td><td>Unicast, medium</td></tr>
+<tr><td>C</td><td>192 – 223</td><td>110</td><td>N.N.N.H</td><td>255.255.255.0</td><td>Unicast, small</td></tr>
+<tr><td>D</td><td>224 – 239</td><td>1110</td><td>—</td><td>—</td><td>Multicasting</td></tr>
+<tr><td>E</td><td>240 – 255</td><td>1111</td><td>—</td><td>—</td><td>Reserved / research</td></tr>
+</table>
+<ul>
+<li><b>Loopback address:</b> 127.0.0.1 (range 127.0.0.0 – 127.255.255.255). <b>Broadcast:</b> 255.255.255.255.</li>
+<li><b>Private IP ranges</b> (reserved by IANA): 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. (100.64.0.0/10 is used for carrier-grade NAT.)</li>
+<li><b>Private IP</b> is assigned by the router to devices; <b>public IP</b> is assigned by the ISP to the router.</li>
+<li>IP addresses are managed globally by <b>IANA</b> (Internet Assigned Numbers Authority); in Asia-Pacific (incl. India) by <b>APNIC</b>.</li>
+<li>IPv6 developed by <b>IETF</b> (Internet Engineering Task Force). Internet was funded by DARPA (Defense Advanced Research Projects Agency).</li>
+<li><b>MAC address</b>: first 24 bits = OUI (Organizationally Unique Identifier — manufacturer), last 24 bits = NIC-specific. MAC/Ethernet concept developed at <b>Xerox PARC</b>.</li>
+<li><b>ARP</b> finds MAC address from IP address; <b>RARP</b> finds IP from MAC.</li>
+<li>How to change your IP: restart modem/router, use VPN, use a proxy server, contact your ISP.</li>
+<li>Logical address = IP address (virtual); Physical address = MAC address.</li>
+</ul>
+
+<h3>Subnetting</h3>
+<p>A <b>subnet</b> is a network inside a network. Subnetting divides a large network into smaller ones — makes networks efficient and improves security.</p>
+<ul>
+<li>Number of hosts = 2<sup>h</sup> − 2 (h = host bits; network ID and broadcast ID excluded).</li>
+<li>Number of subnets = 2<sup>n</sup> (n = borrowed bits).</li>
+</ul>
+<div class="example"><b>Q.</b> How many hosts with mask 255.255.255.128? → last octet 10000000 → 7 host bits → 2<sup>7</sup> − 2 = <b>126</b>.<br>
+<b>Q.</b> Mask 255.255.255.252? → 2 host bits → 2<sup>2</sup> − 2 = <b>2</b> hosts.<br>
+<b>Q.</b> Host part of 192.168.10.51 with default mask (class C)? → network 192.168.10, host <b>51</b>.</div>
+
+<h3>Ports & Protocols</h3>
+<p>A <b>port</b> identifies the sender/receiver process of a message. Ports are used at the transport layer (layer 4). Each host can have 65,535 ports per IP address.</p>
+<table>
+<tr><th>Protocol</th><th>Port</th><th>Protocol</th><th>Port</th></tr>
+<tr><td>FTP data / control</td><td>20 / 21</td><td>DHCP server / client</td><td>67 / 68</td></tr>
+<tr><td>SSH, SFTP</td><td>22</td><td>HTTP</td><td>80</td></tr>
+<tr><td>Telnet</td><td>23</td><td>POP3</td><td>110</td></tr>
+<tr><td>SMTP</td><td>25</td><td>IMAP</td><td>143</td></tr>
+<tr><td>DNS</td><td>53</td><td>IRC (Internet Relay Chat)</td><td>194</td></tr>
+<tr><td>HTTPS</td><td>443</td><td>MQTT / secure MQTT</td><td>1883 / 8883</td></tr>
+</table>
+<ul>
+<li><b>DNS</b> (Domain Name System): converts domain name → IP address.</li>
+<li><b>DHCP</b> (Dynamic Host Configuration Protocol): assigns IP addresses to hosts automatically.</li>
+<li><b>ICMP</b>: used by network devices to send error messages and operational info (e.g. <code>ping</code>).</li>
+<li><b>Gopher</b>: early protocol for distributing, searching and retrieving documents over the Internet.</li>
+<li><b>HTTPS</b> uses SSL/TLS for encryption.</li>
+</ul>
+<h4>E-mail protocols</h4>
+<ul>
+<li><b>SMTP</b> — send mail. <b>POP3</b> — download mail from server to local device (used by MS Outlook, Thunderbird, Apple Mail). <b>IMAP</b> — read mail on server without downloading, syncs across devices (webmail like Gmail).</li>
+<li><b>MIME</b> (Multipurpose Internet Mail Extensions) — sending attachments.</li>
+</ul>
+
+<h3>Types of Networks (by area)</h3>
+<table>
+<tr><th>Type</th><th>Range / Features</th><th>Example</th></tr>
+<tr><td><b>PAN</b> (Personal)</td><td>~10 m; Bluetooth, infrared, hotspot</td><td>Wireless mouse, headphones, TV remote</td></tr>
+<tr><td><b>LAN</b> (Local)</td><td>~100 m – 2 km; private; high speed (10 Mbps – 10 Gbps); twisted pair/coax; hub/switch; IEEE 802.3 (wired), 802.11 (Wi-Fi)</td><td>Office, school lab</td></tr>
+<tr><td><b>CAN</b> (Campus)</td><td>1 – 5 km; group of interconnected LANs (corporate area network)</td><td>University campus</td></tr>
+<tr><td><b>MAN</b> (Metropolitan)</td><td>Covers a city; LAN+LAN; fibre optic; cable TV network</td><td>City network</td></tr>
+<tr><td><b>WAN</b> (Wide)</td><td>Countries/continents; satellite; router; less secure; firewall needed</td><td>Internet (largest WAN)</td></tr>
+<tr><td><b>SAN</b> (Storage)</td><td>High-speed network for storage; cloud computing</td><td>AWS, Azure, GCP, Oracle cloud</td></tr>
+</table>
+<ul>
+<li><b>Internet</b> — public, anyone can access. <b>Intranet</b> — private, only for employees. <b>Extranet</b> — private, shared with partners/suppliers.</li>
+</ul>
+
+<h3>Transmission Modes</h3>
+<ul>
+<li><b>Simplex</b> — one direction only: keyboard→CPU, monitor output, radio/TV broadcasting, fire-alarm system, loudspeaker.</li>
+<li><b>Half duplex</b> — both directions, one at a time: walkie-talkie (push-to-talk), browsing (request/response).</li>
+<li><b>Full duplex</b> — both directions simultaneously: mobile phone, video conferencing, live chat.</li>
+</ul>
+
+<h3>Network Topology</h3>
+<p>Topology = physical or logical layout of a network.</p>
+<table>
+<tr><th>Topology</th><th>Description</th></tr>
+<tr><td><b>Bus</b></td><td>Single backbone cable with terminators at ends; multipoint; fault isolation difficult; performance degrades with more computers/heavy traffic. Uses CSMA/CD.</td></tr>
+<tr><td><b>Star</b></td><td>All nodes connect to a central hub/switch; common in LAN; hub failure stops network.</td></tr>
+<tr><td><b>Ring</b></td><td>Each node connects to two neighbours; token passing (Token Ring, FDDI); uni/bi-directional.</td></tr>
+<tr><td><b>Tree</b></td><td>Hierarchy of multiple star (hub) networks.</td></tr>
+<tr><td><b>Mesh</b></td><td>Point-to-point links between every node; very reliable, costly wiring. Links in full mesh = <b>n(n−1)/2</b> (n = 6 → 15).</td></tr>
+<tr><td><b>Hybrid</b></td><td>Combination of 2 or more topologies.</td></tr>
+</table>
+<ul>
+<li><b>CSMA/CD</b> — Carrier Sense Multiple Access with Collision <i>Detection</i> (Ethernet). <b>CSMA/CA</b> — Collision <i>Avoidance</i> (Wi-Fi).</li>
+<li><b>FDDI</b> — Fiber Distributed Data Interface (ring).</li>
+</ul>
+
+<h3>Networking Devices</h3>
+<ul>
+<li><b>Hub</b> — dumb device, broadcasts to all ports (layer 1).</li>
+<li><b>Repeater</b> — regenerates signal; "active hub" (layer 1).</li>
+<li><b>Bridge</b> — connects two segments of the same network (layer 2).</li>
+<li><b>Switch</b> — sends frames to the right port using MAC table (layer 2). A layer-2 switch is also called a <b>multiport bridge</b>.</li>
+<li><b>Router</b> — interconnecting device at layer 3; forwards packets between networks using a <b>routing table</b> (purpose: find most efficient path). Used in LAN &amp; WAN. Features: firewall, VPN, traffic monitoring. Wi-Fi frequency 2.4 GHz &amp; 5 GHz. Makers: Cisco, D-Link, TP-Link.</li>
+<li><b>Gateway</b> — connects two <i>different</i> networks / protocols (works up to layer 7).</li>
+<li><b>Modem</b> — MOdulator (digital → analog) + DEModulator (analog → digital).</li>
+<li><b>Firewall</b> — hardware + software security barrier.</li>
+<li><b>Dial-up</b> — uses telephone lines + modem (slowest). <b>DSL</b> (Digital Subscriber Line) — faster broadband via router.</li>
+</ul>
+
+<h3>Transmission Media (Cables)</h3>
+<h4>Guided (wired)</h4>
+<ul>
+<li><b>Twisted pair</b> — STP (Shielded, used in factories), UTP (Unshielded, LAN). Connector <b>RJ-45</b> (8 pins, Ethernet); <b>RJ-11</b> (6 positions/4 or 2 wires, telephone).</li>
+<li><b>Coaxial</b> — TV cable; connector <b>BNC</b> (Bayonet Neill–Concelman).</li>
+<li><b>Optical fibre</b> — fastest; undersea cables, broadband. Connectors: SC (Subscriber Connector), ST (Straight Tip), LC (Lucent Connector), FC (Ferrule Connector). Works on <b>total internal reflection</b>.</li>
+</ul>
+<h4>Unguided (wireless)</h4>
+<ul>
+<li><b>Radio waves</b> — wireless mouse, FM, AM.</li>
+<li><b>Microwaves</b> — remote sensing, radar, mobile, satellite.</li>
+<li><b>Infrared</b> — short range: TV remote, thermal imaging, astronomy.</li>
+</ul>
+
+<h3>Exam Facts (from notes)</h3>
+<div class="fact"><ul>
+<li>Protocol that sends a datagram to an application program: <b>UDP</b>.</li>
+<li>Dialogue &amp; token management: <b>Session layer</b>.</li>
+<li>Hardware for WAN: <b>Router</b>.</li>
+<li>Port address size in TCP/IP: <b>16 bits</b>. IPv6 length: <b>128 bits</b>.</li>
+<li>Device connecting two systems with different protocols: <b>Gateway</b>.</li>
+<li>Address identifying a process on a host: <b>Port</b>. Address of a node as defined by LAN/WAN: <b>Physical (MAC)</b>.</li>
+<li>Layer that lets users access the network: <b>Application</b>.</li>
+<li>Short-range waves between PC and peripherals: <b>Infrared</b>.</li>
+<li>Protocols for real-time video/gaming: <b>UDP</b>; real-time text chat: <b>IRC</b>.</li>
+<li>Packets to frames: <b>Data link layer</b>. Contention-based MAC protocol in Ethernet: <b>CSMA/CD</b>.</li>
+<li>Maximum length of an IPv4 datagram: <b>65,535 bytes</b> (2<sup>16</sup> − 1).</li>
+<li>First-octet higher-order bits for class D: <b>1110</b>.</li>
+<li>With Telnet/FTP you use the <b>Application layer</b> (highest layer).</li>
+</ul></div>
+</section>
