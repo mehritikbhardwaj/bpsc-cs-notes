@@ -81,6 +81,18 @@ def section(c, i, heading='h1'):
 <div class="chips-wrap"><div class="chips">{chips}</div></div>
 <div class="content">{c['inner']}</div>{pager}</section>'''
 
+# ---------- what each page sells ----------
+NOTES_PRODUCT = {'id': 'notes', 'label': '\u2b07\ufe0f Download PDF',
+                 'sideLabel': '\u2b07\ufe0f Download complete PDF'}
+PAGE_PRODUCT = {
+    'previous-year-questions': {'id': 'bpsc-pyq', 'label': '\u2b07\ufe0f Questions PDF \u20b959',
+                                'sideLabel': '\u2b07\ufe0f BPSC PYQ PDF \u2014 \u20b959',
+                                'alt': 'bpsc-pyq-solved'},
+    'stet-previous-year-questions': {'id': 'stet-pyq', 'label': '\u2b07\ufe0f Questions PDF \u20b999',
+                                     'sideLabel': '\u2b07\ufe0f STET PYQ PDF \u2014 \u20b999',
+                                     'alt': 'stet-pyq-solved'},
+}
+
 # ---------- sidebar, rendered server-side so crawlers see every chapter ----------
 def sidebar(current):
     out = ['<div class="side-prog"><div><b data-done-count>0</b> chapters done</div>'
@@ -111,6 +123,7 @@ def page(path, title, desc, canonical, bodyhtml, topics=None, current='', head_e
     h = h.replace('{{HEAD_EXTRA}}', head_extra)
     h = h.replace('{{CURRENT}}', current)
     h = h.replace('{{SIDE}}', sidebar(current))
+    h = h.replace('{{PRODUCT}}', json.dumps(PAGE_PRODUCT.get(current, NOTES_PRODUCT)))
     h = h.replace('{{BODY}}', bodyhtml)
     h = h.replace('{{META}}', META_JSON)
     h = h.replace('{{TOPICS}}', json.dumps(topics or [], ensure_ascii=False).replace('</', '<\\/'))

@@ -270,10 +270,12 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 
 <script id="meta" type="application/json">{{META}}</script>
 <script id="topics" type="application/json">{{TOPICS}}</script>
+<script id="product" type="application/json">{{PRODUCT}}</script>
 <script>
 (function(){
   var META=JSON.parse(document.getElementById('meta').textContent);
   var TOPICS=JSON.parse(document.getElementById('topics').textContent);
+  var PRODUCT=JSON.parse(document.getElementById('product').textContent);
   var CURRENT=document.body.getAttribute('data-chapter')||'';
   var root=document.documentElement, body=document.body;
   function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -421,14 +423,22 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
     toastEl.textContent=msg;toastEl.classList.add('show');
     clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
   }
-  function paid(){try{return localStorage.getItem('cs-pdf')==='1'}catch(e){return false}}
-  function markPaid(){try{localStorage.setItem('cs-pdf','1')}catch(e){}body.classList.add('paid');syncBuy()}
+  function owned(){try{return JSON.parse(localStorage.getItem('cs-paid')||'{}')||{}}catch(e){return {}}}
+  function own(id){var o=owned();o[id]=1;try{localStorage.setItem('cs-paid',JSON.stringify(o))}catch(e){}}
+  try{if(localStorage.getItem('cs-pdf')==='1'){own('notes');localStorage.removeItem('cs-pdf')}}catch(e){}
+  // does the viewer own something that unlocks THIS page?
+  function paid(){
+    var o=owned();
+    if(o[PRODUCT.id])return true;
+    return !!(PRODUCT.alt&&o[PRODUCT.alt]);
+  }
+  function markPaid(id){own(id||PRODUCT.id);body.classList.add('paid');syncBuy()}
   function syncBuy(){
     var done=body.classList.contains('paid');
     [document.getElementById('buyBtn'),document.getElementById('sideBuy'),document.getElementById('bBuy')]
       .forEach(function(b){if(!b)return;b.disabled=false;
-        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':'\u2B07\uFE0F Download PDF';
-        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save complete PDF':'\u2B07\uFE0F Download complete PDF';
+        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':PRODUCT.label;
+        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save PDF':PRODUCT.sideLabel;
       });
   }
   if(paid())body.classList.add('paid');
@@ -445,7 +455,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 
   var ON_COMPLETE=/\/complete/.test(location.pathname);
   function savePdf(){
-    if(!ON_COMPLETE){location.href='/complete?print=1';return}
+    if(PRODUCT.id==='notes'&&!ON_COMPLETE){location.href='/complete?print=1';return}
     toast('Choose \u201CSave as PDF\u201D in the print dialog');
     setTimeout(function(){window.print()},600);
   }
@@ -460,12 +470,15 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
     });
   }
 
-  function buy(btn){
-    if(body.classList.contains('paid'))return savePdf();
+  function buy(btn,wanted){
+    wanted=wanted||PRODUCT.id;
+    if(wanted===PRODUCT.id&&body.classList.contains('paid'))return savePdf();
     if(btn)btn.disabled=true;
     toast('Opening payment\u2026');
     Promise.all([
-      fetch('/api/pay/order',{method:'POST',cache:'no-store'}).then(function(r){
+      fetch('/api/pay/order',{method:'POST',cache:'no-store',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({product:wanted})}).then(function(r){
         if(!r.ok)throw new Error('order');return r.json()}),
       loadRzp()
     ]).then(function(out){
@@ -473,13 +486,14 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
       var rz=new Razorpay({
         key:o.keyId,amount:o.amount,currency:o.currency,order_id:o.orderId,
         name:'CS Notes \u2014 STET / BPSC TRE',
-        description:'Complete notes PDF',
+        description:o.productName||'Notes PDF',
         theme:{color:'#4f46e5'},
         handler:function(resp){
           toast('Verifying payment\u2026');
           fetch('/api/pay/verify',{method:'POST',headers:{'Content-Type':'application/json'},
             body:JSON.stringify(resp)}).then(function(r){return r.json()}).then(function(d){
-              if(d&&d.ok){markPaid();toast('Payment done \u2014 opening your PDF');setTimeout(savePdf,900)}
+              if(d&&d.ok){markPaid(d.product);toast('Payment done \u2014 opening your PDF');
+                if(paid())setTimeout(savePdf,900)}
               else{toast('Payment could not be verified. Contact us with your payment id.')}
             }).catch(function(){toast('Payment could not be verified. Contact us with your payment id.')});
         },
@@ -494,6 +508,9 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 
   ['buyBtn','sideBuy','bBuy'].forEach(function(id){
     var b=document.getElementById(id);if(b)b.onclick=function(){buy(b)};
+  });
+  document.querySelectorAll('[data-buy]').forEach(function(b){
+    b.onclick=function(){buy(b,b.getAttribute('data-buy'))};
   });
   syncBuy();
 
