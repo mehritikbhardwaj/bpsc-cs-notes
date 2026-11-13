@@ -87,10 +87,12 @@ NOTES_PRODUCT = {'id': 'notes', 'label': '\u2b07\ufe0f Download PDF',
 PAGE_PRODUCT = {
     'previous-year-questions': {'id': 'bpsc-pyq', 'label': '\u2b07\ufe0f Questions PDF \u20b959',
                                 'sideLabel': '\u2b07\ufe0f BPSC PYQ PDF \u2014 \u20b959',
-                                'alt': 'bpsc-pyq-solved'},
+                                'alt': 'bpsc-pyq-solved',
+                                'altLabel': 'Answers + explanation \u2014 \u20b999'},
     'stet-previous-year-questions': {'id': 'stet-pyq', 'label': '\u2b07\ufe0f Questions PDF \u20b999',
                                      'sideLabel': '\u2b07\ufe0f STET PYQ PDF \u2014 \u20b999',
-                                     'alt': 'stet-pyq-solved'},
+                                     'alt': 'stet-pyq-solved',
+                                     'altLabel': 'Answers + explanation \u2014 \u20b9129'},
 }
 
 # ---------- sidebar, rendered server-side so crawlers see every chapter ----------

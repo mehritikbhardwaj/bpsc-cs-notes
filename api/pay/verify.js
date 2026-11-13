@@ -55,5 +55,10 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  return res.status(200).json({ ok: true, product: product });
+  // A grant lets the browser fetch the answer key for a solved product later,
+  // without us having to trust anything it says.
+  const grant = crypto.createHmac('sha256', KEY_SECRET)
+    .update(`${product}|${paymentId}`).digest('hex');
+
+  return res.status(200).json({ ok: true, product: product, paymentId: paymentId, grant: grant });
 };

@@ -78,7 +78,15 @@ aside{position:sticky;top:60px;height:calc(100vh - 60px);width:var(--side);flex:
 .pyq-a{margin-top:10px}
 .pyq-a summary{cursor:pointer;color:var(--brand);font-weight:700;font-size:14px}
 .pyq-a p{margin:8px 0 0;font-size:15px}
-.fab{position:fixed;right:20px;bottom:22px;z-index:46;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border:0;border-radius:999px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 26px rgba(79,70,229,.38);font:700 14px "Plus Jakarta Sans",system-ui,sans-serif}
+.solbox{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0;padding:14px 16px;border-radius:16px;background:var(--brand-soft);border:1px solid var(--line)}
+.solbox b{font:800 14.5px "Plus Jakarta Sans",system-ui,sans-serif}
+.solbox small{display:block;color:var(--muted);font-size:13px}
+.solbox button{margin-left:auto;border:0;border-radius:12px;padding:11px 16px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif}
+.pyq-a details{margin-top:10px}
+.pyq-a summary{cursor:pointer;color:var(--brand);font-weight:700;font-size:14px}
+.pyq-a .ansline{margin:8px 0 2px;font-size:15px;font-weight:600}
+.pyq-a .exp{margin:0;color:var(--muted);font-size:14px}
+;right:20px;bottom:22px;z-index:46;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border:0;border-radius:999px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 26px rgba(79,70,229,.38);font:700 14px "Plus Jakarta Sans",system-ui,sans-serif}
 .fab:hover{transform:translateY(-1px)}
 .helpbox{position:fixed;right:20px;bottom:80px;z-index:47;width:min(92vw,330px);padding:18px;border-radius:20px;background:var(--paper);border:1px solid var(--line);box-shadow:0 20px 50px rgba(30,27,58,.26);display:none}
 .helpbox.open{display:block}
@@ -584,7 +592,8 @@ Gray 1001 → <b>1110</b>; Gray 111101 → <b>101001</b></div>
     clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
   }
   function owned(){try{return JSON.parse(localStorage.getItem('cs-paid')||'{}')||{}}catch(e){return {}}}
-  function own(id){var o=owned();o[id]=1;try{localStorage.setItem('cs-paid',JSON.stringify(o))}catch(e){}}
+  function own(id,pid,grant){var o=owned();o[id]=(pid&&grant)?{p:pid,g:grant}:1;
+    try{localStorage.setItem('cs-paid',JSON.stringify(o))}catch(e){}}
   try{if(localStorage.getItem('cs-pdf')==='1'){own('notes');localStorage.removeItem('cs-pdf')}}catch(e){}
   // does the viewer own something that unlocks THIS page?
   function paid(){
@@ -592,7 +601,9 @@ Gray 1001 → <b>1110</b>; Gray 111101 → <b>101001</b></div>
     if(o[PRODUCT.id])return true;
     return !!(PRODUCT.alt&&o[PRODUCT.alt]);
   }
-  function markPaid(id){own(id||PRODUCT.id);body.classList.add('paid');syncBuy()}
+  function markPaid(id,pid,grant){own(id||PRODUCT.id,pid,grant);
+    if(paid())body.classList.add('paid');
+    syncBuy();loadAnswers();}
   function syncBuy(){
     var done=body.classList.contains('paid');
     [document.getElementById('buyBtn'),document.getElementById('sideBuy'),document.getElementById('bBuy')]
@@ -652,8 +663,11 @@ Gray 1001 → <b>1110</b>; Gray 111101 → <b>101001</b></div>
           toast('Verifying payment\u2026');
           fetch('/api/pay/verify',{method:'POST',headers:{'Content-Type':'application/json'},
             body:JSON.stringify(resp)}).then(function(r){return r.json()}).then(function(d){
-              if(d&&d.ok){markPaid(d.product);toast('Payment done \u2014 opening your PDF');
-                if(paid())setTimeout(savePdf,900)}
+              if(d&&d.ok){
+                var wasLocked=!body.classList.contains('paid');
+                markPaid(d.product,d.paymentId,d.grant);
+                toast('Payment done \u2014 thank you!');
+                if(wasLocked&&paid())setTimeout(savePdf,900)}
               else{toast('Payment could not be verified. Contact us with your payment id.')}
             }).catch(function(){toast('Payment could not be verified. Contact us with your payment id.')});
         },
@@ -665,6 +679,46 @@ Gray 1001 → <b>1110</b>; Gray 111101 → <b>101001</b></div>
   }
 
   if(ON_COMPLETE&&/[?&]print=1/.test(location.search)&&body.classList.contains('paid'))setTimeout(savePdf,400);
+
+  function loadAnswers(){
+    if(!PRODUCT.alt)return;
+    var slots=document.querySelectorAll('[data-ans]');
+    if(!slots.length)return;
+    var rec=owned()[PRODUCT.alt];
+    var box=document.getElementById('solbox');
+    if(!rec||!rec.p||!rec.g){
+      if(!box){
+        box=document.createElement('div');box.className='solbox';box.id='solbox';
+        box.innerHTML='<span><b>Answers chahiye?</b><small>Har question ka sahi option aur chhota explanation</small></span>'+
+          '<button data-buy="'+PRODUCT.alt+'">'+(PRODUCT.altLabel||'Unlock answers')+'</button>';
+        slots[0].closest('.content').insertBefore(box,slots[0].closest('.content').firstChild);
+        box.querySelector('button').onclick=function(){buy(box.querySelector('button'),PRODUCT.alt)};
+      }
+      return;
+    }
+    fetch('/api/pay/solutions',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({product:PRODUCT.alt,paymentId:rec.p,grant:rec.g})})
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){
+        if(!d||!d.answers)return;
+        if(box)box.remove();
+        slots.forEach(function(slot){
+          var a=d.answers[slot.getAttribute('data-ans')];
+          if(!a)return;
+          var li=slot.previousElementSibling&&slot.previousElementSibling.querySelector('li span');
+          var opt='';
+          var lis=slot.previousElementSibling?slot.previousElementSibling.querySelectorAll('li'):[];
+          for(var i=0;i<lis.length;i++){
+            if(lis[i].querySelector('span').textContent===a.a){opt=lis[i].textContent.slice(1).trim();break}
+          }
+          var det=document.createElement('details');
+          det.innerHTML='<summary>Answer</summary><p class="ansline">('+a.a+') '+esc(opt)+'</p>'+
+                        (a.e?'<p class="exp">'+esc(a.e)+'</p>':'');
+          slot.appendChild(det);
+        });
+      }).catch(function(){});
+  }
+  loadAnswers();
 
   ['buyBtn','sideBuy','bBuy'].forEach(function(id){
     var b=document.getElementById(id);if(b)b.onclick=function(){buy(b)};
