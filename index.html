@@ -49,6 +49,9 @@ aside{position:sticky;top:60px;height:calc(100vh - 60px);width:var(--side);flex:
 .side-prog b{font:800 18px "Plus Jakarta Sans",system-ui,sans-serif}
 .pbar2{margin-top:8px;height:6px;border-radius:99px;background:rgba(255,255,255,.3);overflow:hidden}
 .pbar2 i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .4s}
+.buybtn{border:0;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px rgba(79,70,229,.3)}
+.buybtn:disabled{opacity:.6;cursor:progress}
+.side-buy{display:block;margin:10px 6px 0;padding:12px 14px;border-radius:14px;text-align:center;border:0;width:calc(100% - 12px);cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font:800 13.5px "Plus Jakarta Sans",system-ui,sans-serif}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);z-index:99;max-width:min(92vw,340px);padding:11px 16px;border-radius:14px;background:#1b1830;color:#fff;font:600 13.5px "Plus Jakarta Sans",system-ui,sans-serif;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .views{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font:700 12.5px "Plus Jakarta Sans",system-ui,sans-serif;white-space:nowrap}
@@ -169,7 +172,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
   body.nav-open .scrim{display:block;position:fixed;inset:0;z-index:50;background:rgba(15,14,26,.4)}
   .views{padding:5px 8px;font-size:11.5px;gap:3px}
   .hide-m{display:none!important}
-  .bottom{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:45;padding:6px;border-radius:22px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(30,27,58,.18)}
+  .bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:45;padding:6px;border-radius:22px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(30,27,58,.18)}
   .bottom button{border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0;border-radius:16px;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;cursor:pointer}
   .bottom button span{font-size:20px;line-height:1.2}
   .bottom button.on{color:var(--brand);background:var(--brand-soft)}
@@ -193,9 +196,13 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
 }
 @media print{
   html,body{background:#fff!important;height:auto!important;overflow:visible!important}
-  body>*{display:none!important}
-  body::before{content:"\1F4D8\00a0 CS Notes \2014 STET / BPSC TRE";display:block;margin:60px 0 14px;font:800 24px system-ui,sans-serif;color:#111;text-align:center}
-  body::after{content:"Printing and PDF export are turned off for these notes. Please read them online at bpsc-cs-notes.vercel.app";display:block;max-width:420px;margin:0 auto;font:16px/1.6 system-ui,sans-serif;color:#444;text-align:center}
+  body:not(.paid)>*{display:none!important}
+  body:not(.paid)::before{content:"\1F4D8\00a0 CS Notes \2014 STET / BPSC TRE";display:block;margin:60px 0 14px;font:800 24px system-ui,sans-serif;color:#111;text-align:center}
+  body:not(.paid)::after{content:"Printing and PDF export are turned off. Get the complete PDF from bpsc-cs-notes.vercel.app";display:block;max-width:420px;margin:0 auto;font:16px/1.6 system-ui,sans-serif;color:#444;text-align:center}
+  body.paid .top,body.paid aside,body.paid .bottom,body.paid .scrim,body.paid .ov,body.paid .chips-wrap,body.paid .pager,body.paid .done-btn,body.paid .toast{display:none!important}
+  body.paid main{padding:0}
+  body.paid .chapter{display:block!important;break-before:page}
+  body.paid .chapter:first-of-type{break-before:auto}
 }
 </style>
 </head>
@@ -206,6 +213,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:14px;paddi
   <span class="sp"></span>
   <button class="ibtn searchbtn hide-m" data-open-search>🔍 Search… <kbd style="margin-left:auto;font-size:11px;opacity:.7">/</kbd></button>
   <span class="views" id="views" hidden></span>
+  <button class="ibtn buybtn hide-m" id="buyBtn">⬇️ PDF ₹139</button>
   <button class="ibtn" id="fontBtn" aria-label="Text size" title="Text size">Aa</button>
   <button class="ibtn" id="themeBtn" aria-label="Dark mode">🌙</button>
   <div class="progress" id="progress"></div>
@@ -3347,6 +3355,7 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
 
 <nav class="bottom" id="bottom">
   <button id="bIndex"><span>📚</span>Chapters</button>
+  <button id="bBuy"><span>⬇️</span>PDF</button>
   <button data-open-search><span>🔍</span>Search</button>
   <button id="bTop"><span>⬆️</span>Top</button>
 </nav>
@@ -3380,7 +3389,7 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
   document.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
 
   var side=document.getElementById('side');
-  var s1='<div class="side-prog"><div><b id="doneCount">0</b> chapters done</div><div class="pbar2"><i id="doneBar"></i></div></div><div class="side-h">Chapters</div>',n1=0;
+  var s1='<div class="side-prog"><div><b id="doneCount">0</b> chapters done</div><div class="pbar2"><i id="doneBar"></i></div></div><button class="side-buy" id="sideBuy">\u2B07\uFE0F Download complete PDF \u2014 \u20B9139</button><div class="side-h">Chapters</div>',n1=0;
   META.forEach(function(c){
     var card='<a class="card" style="--h:'+c.hue+'" href="#'+c.id+'" data-card="'+c.id+'"><span class="num">'+c.n+'</span><span class="e">'+c.emoji+'</span><b>'+esc(c.title)+'</b><small>'+c.topics.length+' topics · ~'+c.mins+' min</small></a>';
     var sl='<a class="side-ch" style="--h:'+c.hue+'" href="#'+c.id+'" data-side="'+c.id+'"><span class="e">'+c.emoji+'</span><span>'+esc(c.title)+'</span><span class="tick">✓</span></a><ul class="side-topics" data-topics="'+c.id+'">'+c.topics.map(function(t){return '<li><a href="#'+t.id+'" data-t="'+t.id+'">'+esc(t.t)+'</a></li>'}).join('')+'</ul>';
@@ -3494,13 +3503,78 @@ FROM student s INNER JOIN course c ON s.course_id = c.id;</code></pre>
     toastEl.textContent=msg;toastEl.classList.add('show');
     clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
   }
+  function paid(){try{return localStorage.getItem('cs-pdf')==='1'}catch(e){return false}}
+  function markPaid(){try{localStorage.setItem('cs-pdf','1')}catch(e){}body.classList.add('paid');syncBuy()}
+  function syncBuy(){
+    var done=body.classList.contains('paid');
+    [document.getElementById('buyBtn'),document.getElementById('sideBuy'),document.getElementById('bBuy')]
+      .forEach(function(b){if(!b)return;b.disabled=false;
+        if(b.id==='buyBtn')b.innerHTML=done?'\u2B07\uFE0F Save PDF':'\u2B07\uFE0F PDF \u20B9139';
+        else if(b.id==='sideBuy')b.textContent=done?'\u2B07\uFE0F Save complete PDF':'\u2B07\uFE0F Download complete PDF \u2014 \u20B9139';
+      });
+  }
+  if(paid())body.classList.add('paid');
+
   window.addEventListener('keydown',function(e){
-    if(!(e.ctrlKey||e.metaKey))return;
+    if(!(e.ctrlKey||e.metaKey)||body.classList.contains('paid'))return;
     var k=(e.key||'').toLowerCase();
-    if(k==='p'){e.preventDefault();e.stopPropagation();toast('Printing / PDF save is disabled \uD83D\uDD12')}
+    if(k==='p'){e.preventDefault();e.stopPropagation();toast('Printing is locked \u2014 get the PDF for \u20B9139 \uD83D\uDD12')}
     else if(k==='s'){e.preventDefault();e.stopPropagation();toast('Saving the page is disabled \uD83D\uDD12')}
   },true);
-  window.addEventListener('beforeprint',function(){toast('Printing / PDF save is disabled \uD83D\uDD12')});
+  window.addEventListener('beforeprint',function(){
+    if(!body.classList.contains('paid'))toast('Printing is locked \u2014 get the PDF for \u20B9139 \uD83D\uDD12');
+  });
+
+  function savePdf(){
+    document.querySelectorAll('.chapter').forEach(function(c){c.classList.add('show')});
+    toast('Choose \u201CSave as PDF\u201D in the print dialog');
+    setTimeout(function(){window.print();route()},600);
+  }
+
+  function loadRzp(){
+    return new Promise(function(ok,fail){
+      if(window.Razorpay)return ok();
+      var sc=document.createElement('script');
+      sc.src='https://checkout.razorpay.com/v1/checkout.js';
+      sc.onload=function(){ok()};sc.onerror=function(){fail(new Error('checkout script'))};
+      document.head.appendChild(sc);
+    });
+  }
+
+  function buy(btn){
+    if(body.classList.contains('paid'))return savePdf();
+    if(btn)btn.disabled=true;
+    toast('Opening payment\u2026');
+    Promise.all([
+      fetch('/api/pay/order',{method:'POST',cache:'no-store'}).then(function(r){
+        if(!r.ok)throw new Error('order');return r.json()}),
+      loadRzp()
+    ]).then(function(out){
+      var o=out[0];
+      var rz=new Razorpay({
+        key:o.keyId,amount:o.amount,currency:o.currency,order_id:o.orderId,
+        name:'CS Notes \u2014 STET / BPSC TRE',
+        description:'Complete notes PDF',
+        theme:{color:'#4f46e5'},
+        handler:function(resp){
+          toast('Verifying payment\u2026');
+          fetch('/api/pay/verify',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(resp)}).then(function(r){return r.json()}).then(function(d){
+              if(d&&d.ok){markPaid();toast('Payment done \u2014 opening your PDF');setTimeout(savePdf,900)}
+              else{toast('Payment could not be verified. Contact us with your payment id.')}
+            }).catch(function(){toast('Payment could not be verified. Contact us with your payment id.')});
+        },
+        modal:{ondismiss:function(){syncBuy();toast('Payment cancelled')}}
+      });
+      rz.on('payment.failed',function(){syncBuy();toast('Payment failed \u2014 nothing was charged')});
+      rz.open();syncBuy();
+    }).catch(function(){syncBuy();toast('Payment is unavailable right now')});
+  }
+
+  ['buyBtn','sideBuy','bBuy'].forEach(function(id){
+    var b=document.getElementById(id);if(b)b.onclick=function(){buy(b)};
+  });
+  syncBuy();
 
   route();
 })();
