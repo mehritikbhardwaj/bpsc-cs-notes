@@ -240,5 +240,20 @@ open(os.path.join(OUTDIR, 'sitemap.xml'), 'w', encoding='utf-8').write(
 open(os.path.join(OUTDIR, 'robots.txt'), 'w', encoding='utf-8').write(
     f'User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /complete\n\nSitemap: {SITE}/sitemap.xml\n')
 
+open(os.path.join(OUTDIR, 'site.webmanifest'), 'w', encoding='utf-8').write(json.dumps({
+    "name": "CS Notes — Bihar STET / BPSC TRE Computer Science",
+    "short_name": "CS Notes",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f5f3ff",
+    "theme_color": "#4f46e5",
+    "icons": [
+        {"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
+        {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"},
+        {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png",
+         "purpose": "maskable"},
+    ],
+}, indent=2) + '\n')
+
 print(f'chapters {len(chapters)} topics {total_topics} -> {len(written)} pages, '
       f'avg {sum(written)//len(written)//1024} KB each')
